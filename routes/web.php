@@ -24,6 +24,7 @@ use App\Http\Controllers\Client\ScheduleDemoController;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\User\CompanySetup\CompanyProfileController;
 use App\Http\Controllers\User\CompanySetup\DepartmentController;
 use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
@@ -228,6 +229,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
 
         Route::get('emp_profile', [EmployeeProfileController::class, 'index'])->name('index');
+
+    });
+
+    Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
+
+        Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
 
     });
 });

@@ -41,7 +41,7 @@
                                 <a class="ms-link" href="{{route('employee.index')}}">Employee Setup</a>
                             </li>
                             <li>
-                                <a class="ms-link" href="{{route('emp_profile.index')}}">Profile Setup</a>
+                                <a class="ms-link" href="{{route('com_profile.index')}}">Company Profile</a>
                             </li>
 
 

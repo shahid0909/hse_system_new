@@ -104,8 +104,7 @@
                                 <table
                                     id="myProjectTable"
                                     class="table table-hover  align-middle mb-0"
-                                    style="width: 100%"
-                                >
+                                    style="width: 100%">
                                     <thead>
                                     <tr>
                                         <th>Department Name</th>
@@ -305,6 +304,7 @@
                 <!-- Row End -->
             </div>
         </div>
+    </div>
 
 
         @endsection
