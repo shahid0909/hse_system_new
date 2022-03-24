@@ -96,11 +96,11 @@
                                                 <option value="#">Select</option>
                                                 @if(isset($data->ds_status) == 1)
 
-                                                    <option value="1" selected>Active</option>
-                                                    <option value="2">InActive</option>
+                                                    <option value="1"  selected class="bg bg-success">Active</option>
+                                                    
                                                 @elseif(isset($data->ds_status)== 2)
-                                                    {{--                                                    <option value="1" >Active</option>--}}
-                                                    <option value="2" selected>InActive</option>
+                                                
+                                                    <option value="2" selected  class="bg bg-danger">InActive</option>
                                                 @else
                                                     <option value="1">Active</option>
                                                     <option value="2">InActive</option>

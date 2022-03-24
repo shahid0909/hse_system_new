@@ -218,6 +218,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
         Route::get('designation', [DesignationController::class, 'index'])->name('index');
         Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
+
         Route::get('designation-datatable-list', [DesignationController::class, 'datatable'])->name('datatable');
         Route::get('designation.edit/{id}', [DesignationController::class, 'designationedit'])->name('designation-edit');
 
@@ -237,9 +238,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
     });
 
+
+
     Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
 
         Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
+        Route::post('com_profile.store', [CompanyProfileController::class, 'store'])->name('store');
 
     });
 });

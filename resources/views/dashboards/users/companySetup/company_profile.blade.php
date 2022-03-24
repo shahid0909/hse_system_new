@@ -183,17 +183,18 @@
                                 <h6 class="mb-0 fw-bold">Profile Settings</h6>
                             </div>
                             <div class="card-body">
-                                <form class="row g-4">
+                                <form class="row g-4"  action="{{ route('com_profile.store') }}"  method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label">User Name</label>
-                                            <input class="form-control" type="text" />
+                                            <input class="form-control" type="text"  name="u_name"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="form-label">Password</label>
-                                            <input class="form-control" type="Password" />
+                                            <input class="form-control" type="Password" name="password"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12">
@@ -202,13 +203,13 @@
                                             >Company Name
                                                 <span class="text-danger">*</span></label
                                             >
-                                            <input class="form-control" type="text" value="" />
+                                            <input class="form-control" type="text" value=""   name="com_name"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label">Contact Person</label>
-                                            <input class="form-control" type="text" />
+                                            <input class="form-control" type="text"   name="com_person"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12">
@@ -218,7 +219,7 @@
                                                 <span class="text-danger">*</span></label
                                             >
                                             <input class="form-control" type="text"
-                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+                                                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"  name="com_m_number" />
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -226,8 +227,8 @@
                                             <label class="form-label">Address</label>
                                             <textarea
                                                 class="form-control"
-                                                aria-label="With textarea"
-                                            ></textarea>
+                                                aria-label="With textarea" name="com_address"
+                                                           ></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
@@ -236,23 +237,23 @@
                                         >
                                         <div class="input-group">
                                             <span class="input-group-text">@</span>
-                                            <input type="text" class="form-control" />
+                                            <input type="email" class="form-control"   name="com_email" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <label class="form-label">Website Url</label>
                                         <div class="input-group">
                                             <span class="input-group-text">http://</span>
-                                            <input type="text" class="form-control" value="" />
+                                            <input type="text" class="form-control" value=""  name="com_url"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
                                             <label class="form-label">Country</label>
-                                            <select class="form-control select2">
+                                            <select class="form-control select2" name="com_country">
                                                 <option value="">-- Select Country --</option>
                                                 @foreach($country as $list)
-                                                    <option value="{{$list->id}}">{{$list->country}}</option>
+                                                    <option value="{{$list->id}}" >{{$list->country}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -260,7 +261,7 @@
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
                                             <label class="form-label">State/Province</label>
-                                            <select class="form-control">
+                                            <select class="form-control" name="com_state">
                                                 <option>California</option>
                                                 <option>Alaska</option>
                                                 <option>Alabama</option>
@@ -270,19 +271,19 @@
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
                                             <label class="form-label">City</label>
-                                            <input class="form-control" type="text" />
+                                            <input class="form-control" type="text"  name="com_city"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
                                             <label class="form-label">Postal Code</label>
-                                            <input class="form-control" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
+                                            <input class="form-control" name="com_postal" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
                                         </div>
                                     </div>
 
                                     <div class="col-12 mt-4">
                                         <button
-                                            type="button"
+                                            type="submit"
                                             class="btn btn-primary text-uppercase px-5"
                                         >
                                             SAVE
