@@ -23,7 +23,34 @@
         <!-- Body: Header -->
     @include('dashboards.users.partial.header')
 
-    <div class="body d-flex py-lg-3 py-md-2">
+    <body>
+    <div id="ebazar-layout" class="theme-blue">
+      <!-- sidebar -->
+
+
+      <!-- main body area -->
+      <div class="main px-lg-4 px-md-4">
+        <!-- Body: Header -->
+        <div class="header">
+          <nav class="navbar py-4">
+            <div class="container-xxl">
+              
+
+              <!-- menu toggler -->
+              <button
+                class="navbar-toggler p-0 border-0 menu-toggle order-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainHeader"
+              >
+                <span class="fa fa-bars"></span>
+              </button>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Body: Body -->
+        <div class="body d-flex py-lg-3 py-md-2">
           <div class="container-xxl">
             <div class="row align-items-center">
               <div class="border-0 mb-4">
@@ -75,7 +102,7 @@
                             <a href="employee-detail.html">
                               <img
                                 class="avatar rounded"
-                                src="assets/images/xs/avatar1.svg"
+                                src="{{asset('assets/images/xs/avatar1.svg')}}"
                                 alt=""
                               />
                               <span class="fw-bold ms-1">Joan Dyer</span>
@@ -117,7 +144,49 @@
                             <a href="employee-detail.html">
                               <img
                                 class="avatar rounded"
-                                src="assets/images/xs/avatar1.svg"
+                                src="{{asset('assets/images/xs/avatar1.svg')}}"
+                                alt=""
+                              />
+                              <span class="fw-bold ms-1">Joan Dyer</span>
+                            </a>
+                          </td>
+                          <td>GENERAL MANAGER</td>
+                          <td>FOOD</td>
+                          <td>880807-56-5116</td>
+                          <td>JoanDyer@gmail.com</td>
+                          <td>202-555-0983</td>
+                          <td>Bangladesh</td>
+                          <td>18-02-2022</td>
+                          <td>
+                            <div
+                              class="btn-group"
+                              role="group"
+                              aria-label="Basic outlined example"
+                            >
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#expedit"
+                              >
+                                <i class="icofont-edit text-success"></i>
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary deleterow"
+                              >
+                                <i class="icofont-ui-delete text-danger"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#CS-00002</strong></td>
+                          <td>
+                            <a href="employee-detail.html">
+                              <img
+                                class="avatar rounded"
+                                src="{{asset('assets/images/xs/avatar1.svg')}}"
                                 alt=""
                               />
                               <span class="fw-bold ms-1">Joan Dyer</span>
@@ -514,8 +583,9 @@
             </div>
           </div>
         </div>
-                <!-- Edit Employees -->
-                <div class="modal fade" id="expedit" tabindex="-1" aria-hidden="true">
+
+        <!-- Edit Employees -->
+        <div class="modal fade" id="expedit" tabindex="-1" aria-hidden="true">
           <div
             class="modal-dialog modal-dialog-centered modal-md modal-dialog-scrollable"
           >
@@ -618,10 +688,34 @@
         </div>
       </div>
     </div>
+
+    <!-- Jquery Core Js -->
+    <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
+
+    <!-- Plugin Js-->
+    <script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
+
+    <!-- Jquery Page Js -->
+    <script src="{{asset('../js/template.js')}}"></script>
+  </body>
         @endsection
 
         @section('script')
+
             <script>
+            // project data table
+              $(document).ready(function () {
+                $("#myProjectTable")
+                  .addClass("nowrap")
+                  .dataTable({
+                    responsive: true,
+                    columnDefs: [{ targets: [-1, -3], className: "dt-body-right" }],
+                  });
+                $(".deleterow").on("click", function () {
+                  var tablename = $(this).closest("table").DataTable();
+                  tablename.row($(this).parents("tr")).remove().draw();
+                });
+              });
                 $(document).ready(function() {
                     $('#country').on('change', function() {
                         let country_id = this.value;
