@@ -1,5 +1,16 @@
 <?php
 
+Route::get('clear-all', function () {
+    \Illuminate\Support\Facades\Artisan::call('view:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:cache');
+    \Illuminate\Support\Facades\Artisan::call('clear-compiled');
+    \Illuminate\Support\Facades\Artisan::call('route:clear');
+    dd('Cached Cleared');
+});
+
+
 use App\Http\Controllers\Admin\AdminA\ChemicalController;
 use App\Http\Controllers\Admin\AdminA\ChemicalListingController;
 use App\Http\Controllers\Admin\AdminA\ChemicalRegisterController;
@@ -216,7 +227,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
 
         Route::get('designation', [DesignationController::class, 'index'])->name('index');
+        Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
 
+        Route::get('designation.edit/{id}', [DesignationController::class, 'designationedit'])->name('designation-edit');
+
+        Route::put('designation/{id}', [DesignationController::class, 'editstore'])->name('editstore');
     });
 
     Route::group(['name' => 'employee', 'as' => 'employee.'], function () {

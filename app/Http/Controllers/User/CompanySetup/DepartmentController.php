@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-
 class DepartmentController extends Controller
 {
     public function index(){
@@ -19,13 +18,5 @@ class DepartmentController extends Controller
 
     }
 
-    public function store(Request $request){
-        dd($request);
-
-    }
-
-
-
-
-
+   
 }

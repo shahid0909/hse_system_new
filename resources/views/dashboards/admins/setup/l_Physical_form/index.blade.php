@@ -47,7 +47,7 @@
                           action="{{ route('l_physical_form.update', ['id' => $data->id]) }}">
                         <input name="_method" type="hidden" value="PUT">
                         @else
-                            action="{{route('l_physical_form.store')}}">
+                            action="{{ route('l_physical_form.store') }}">
                         @endif
                         @csrf
 

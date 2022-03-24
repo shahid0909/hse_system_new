@@ -1,0 +1,189 @@
+@extends('layouts.app')
+@section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <style>
+        .inpcol {
+
+            outline: 1px solid #5b998d;
+        }
+
+        .span {
+            content: '*';
+            color: red;
+        }
+
+        .toast-top-center {
+            top: 2rem;
+            left: 0%;
+            margin: 0 0 0 0;
+        }
+
+    </style>
+    <!-- Body: Body -->
+@endsection
+@section('content')
+    <!-- sidebar -->
+    @include('dashboards.users.partial.sidebar')
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+        <!-- Body: Header -->
+        @include('dashboards.users.partial.header')
+
+        <div class="body d-flex py-3">
+          <div class="container-xxl">
+            <div class="row align-items-center">
+              <div class="border-0 mb-4">
+                <div
+                  class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"
+                >
+                  <h3 class="fw-bold py-3 mb-0">Designation</h3>
+                </div>
+              </div>
+            </div>
+            <!-- Row end  -->
+            <div class="row clearfix g-3">
+              <div class="col-lg-4">
+                <div class="card">
+                  <div
+                    class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
+                  >
+                    <h6 class="mb-0 fw-bold">Designation Add</h6>
+                  </div>
+                  <div class="card-body">
+                    <form  action="{{ route('designation.designationstore')}}"  method="post">
+                      @csrf
+                      <div class="row g-3 mb-3">
+                        <div class="col-sm-12">
+                          <label for="depone" class="form-label"
+                            >Designation Name</label
+                          >
+                          <input type="text" class="form-control" id="depone"   name="ds_name"/>
+                        </div>
+
+                        <div class="col-sm-12">
+                          <label for="depone" class="form-label">Rank</label>
+                          <input type="text" class="form-control" id="depone"  name="ds_rank" />
+                        </div>
+
+                        <div class="col-sm-12">
+                          <label for="depone" class="form-label">Status</label>
+                          <select name="ds_status" id="" class="form-control">
+                              <option value="#">Select</option>
+                              <option value="1">Active</option>
+                              <option value="2">InActive</option>
+                          </select>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Add Designation
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+			  
+
+              <div class="col-lg-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <table
+                      id="myProjectTable"
+                      class="table table-hover align-middle mb-0"
+                      style="width: 100%"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Designation Name</th>
+                          <th>Rank</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($designations as  $designation)
+                          
+                  
+                        <tr>
+                          <td>
+                            <span>{{   $designation->ds_name }}</span>
+                          </td>
+                          <td>{{ $designation->ds_rank }}</td>
+
+                          <td>
+                            @if ($designation->ds_status==1)
+                              <button class="bg bg-success">Active</button>
+                              @elseif ($designation->ds_status==2)
+                              <button class="bg bg-danger">Inactive</button>
+                            @endif
+                          </td>
+                          <td>
+                            <div
+                              class="btn-group"
+                              role="group"
+                              aria-label="Basic outlined example"
+                            >
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#expedit"
+                              >
+
+                               <a href="{{ route('designation.designation-edit',$designation->id) }}"> <i class="icofont-edit text-success"></i></a>
+
+                              </button>
+                              <button
+                                type="button"
+                                class="btn btn-outline-secondary deleterow"
+                              >
+                                <i class="icofont-ui-delete text-danger"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        @endforeach
+
+
+                      
+
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Row End -->
+          </div>
+        </div>
+ 
+
+
+        @endsection
+        @section('script')
+            <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
+
+            <!-- Plugin Js-->
+            <script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
+
+            <!-- Jquery Page Js -->
+            <script src="{{asset('../js/template.js')}}"></script>
+            <script>
+                // project data table
+                $(document).ready(function () {
+                    $("#myProjectTable")
+                        .addClass("nowrap")
+                        .dataTable({
+                            responsive: true,
+                            columnDefs: [{targets: [-1, -3], className: "dt-body-right"}],
+                        });
+                    $(".deleterow").on("click", function () {
+                        var tablename = $(this).closest("table").DataTable();
+                        tablename.row($(this).parents("tr")).remove().draw();
+                    });
+                });
+            </script>
+
+@endsection
