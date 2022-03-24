@@ -16,7 +16,7 @@ class EmployeeController extends Controller
     {
 
         $user = Auth::user();
-        return view('dashboards.users.companySetup.l_department', compact('user'));
+        return view('dashboards.users.companySetup.l_employee', compact('user'));
 
     }
 
