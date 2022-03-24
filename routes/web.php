@@ -223,6 +223,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
 
         Route::get('employee', [EmployeeController::class, 'index'])->name('index');
+        Route::get('employee/store', [EmployeeController::class, 'store'])->name('store');
 
     });
 

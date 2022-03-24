@@ -526,7 +526,8 @@
               </div>
               <div class="modal-body">
                 <div class="deadline-form">
-                  <form>
+                  <form method="POST" action="{{Route('employee.store'}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="row g-3 mb-3">
                       <div class="col-sm-12">
                         <label for="item" class="form-label"
