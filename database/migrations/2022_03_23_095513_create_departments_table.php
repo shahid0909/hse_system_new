@@ -19,7 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('depertment_location');
             $table->string('depertment_image');
             $table->integer('phone');
-            $table->tinyint('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

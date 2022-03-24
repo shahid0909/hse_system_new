@@ -31,20 +31,19 @@
         <!-- Body: Header -->
         @include('dashboards.users.partial.header')
 
-                @if ($message = Session::get('success'))
+        @if ($message = Session::get('success'))
             <div class="alert alert-success message">
                 <p>{{ $message }}</p>
             </div>
-@endif
-        <div class="body d-flex">
+        @endif
+        <div class="body d-flex py-3">
             <div class="container-xxl">
-{{--                <x-action.response-message/>--}}
                 <div class="row align-items-center">
-                    <div class="border-0 py-3">
+                    <div class="border-0 mb-4">
                         <div
                             class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"
                         >
-                            <h3 class="fw-bold py-3 mb-0">Department</h3>
+                            <h3 class="fw-bold py-3 mb-0">Designation</h3>
                         </div>
                     </div>
                 </div>
@@ -53,15 +52,16 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div
-                                class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                <h6 class="mb-0 fw-bold">Department Add</h6>
+                                class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
+                            >
+                                <h6 class="mb-0 fw-bold">Designation Add</h6>
                             </div>
-                             
+
                             <div class="card-body">
                                 <form method="POST" enctype="multipart/form-data" id="department"
-                                     
-                                    @if(isset($data->id))
-                                      action="{{ route('department.updtae', ['id' => $data->id]) }}">
+
+                                      @if(isset($data->id))
+                                      action="{{ route('department.update', ['id' => $data->id]) }}">
                                     <input name="_method" type="hidden" value="PUT">
                                     @else
                                         action="{{ route('department.store')}}">
@@ -72,23 +72,23 @@
                                             <label for="depone" class="form-label"
                                             >Depertment Name</label
                                             >
-                                            <input type="text" 
-                                            class="form-control" 
-                                            name="department_name"
-                                            id="dept_name"
-                                            value="{{isset($data->dept_name) ? $data->dept_name:''}}"
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="department_name"
+                                                   id="dept_name"
+                                                   value="{{isset($data->dept_name) ? $data->dept_name:''}}"
                                             />
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label"
                                             >Depertment Location</label
                                             >
-                                            <input type="text" 
-                                            class="form-control"
-                                             name="dept_loc"
-                                              id="dept_loc"
-                                              value="{{isset($data->dept_loc) ? $data->dept_loc:''}}"
-                                              />
+                                            <input type="text"
+                                                   class="form-control"
+                                                   name="dept_loc"
+                                                   id="dept_loc"
+                                                   value="{{isset($data->dept_loc) ? $data->dept_loc:''}}"
+                                            />
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="deptwophone" class="form-label"
@@ -112,28 +112,28 @@
                                                 name="depertment_image"
                                                 value="{{isset($data->depertment_image) ? $data->depertment_image:''}}"
                                             />
-                                        </div> 
+                                        </div>
 
-                             <div class=" col-sm-12">
-                                 <div class="form-group mt-2">
-                                                            <div class="form-check-inline">
-                                                                <input class="form-check-input" type="radio" 
-                                                                name="active_yn" id="active_y" value="Y" checked 
-                                                                
-                                                                >
-                                                                <label class="form-check-label" for="active_y">
-                                                                    Active
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="active_yn" id="active_n" value="N">
-                                                                <label class="form-check-label" for="active_n">
-                                                                    In-Active
-                                                                </label>
-                                                            </div>
+                                        <div class=" col-sm-12">
+                                            <div class="form-group mt-2">
+                                                <div class="form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                           name="active_yn" id="active_y" value="Y" checked
 
-                                
-                            </div></div>
+                                                    >
+                                                    <label class="form-check-label" for="active_y">
+                                                        Active
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="active_yn" id="active_n" value="N">
+                                                    <label class="form-check-label" for="active_n">
+                                                        In-Active
+                                                    </label>
+                                                </div>
+
+
+                                            </div></div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         Add Contact
@@ -142,13 +142,16 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="col-lg-8">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <table
                                     id="myProjectTable"
-                                    class="table table-hover  align-middle mb-0"
-                                    style="width: 100%">
+                                    class="table table-hover datatable align-middle mb-0"
+                                    style="width: 100%"
+                                >
                                     <thead>
                                     <tr>
                                         <th>id</th>
@@ -157,14 +160,11 @@
                                         <th>status</th>
                                         <th>Image</th>
                                         <th>Phone</th>
-                                       <th>Actions</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
-
                                     <tbody>
 
-
-                                                  
                                     </tbody>
                                 </table>
                             </div>
@@ -175,15 +175,9 @@
             </div>
         </div>
 
-@endsection
-@section('script')
-
-    </div>
-
 
         @endsection
         @section('script')
-
             <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 
             <!-- Plugin Js-->
@@ -192,12 +186,13 @@
             <!-- Jquery Page Js -->
             <script src="{{asset('../js/template.js')}}"></script>
             <script>
+
                 // project data table
                 $(document).ready(function () {
                     setTimeout(function () {
                         $('.message').fadeOut('fast');
                     }, 500);
-                    $('#myProjectTable').DataTable({
+                    $('.datatable').DataTable({
                         processing: true,
                         serverSide: true,
                         ajax: {
@@ -227,3 +222,4 @@
             </script>
 
 @endsection
+
