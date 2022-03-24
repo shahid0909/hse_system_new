@@ -184,6 +184,7 @@
                             </div>
                             <div class="card-body">
                                 <form class="row g-4"  action="{{ route('com_profile.store') }}"  method="post" enctype="multipart/form-data">
+     
                                     @csrf
                                     <div class="col-sm-6">
                                         <div class="form-group">

@@ -42,7 +42,6 @@ class DesignationController extends Controller
         $user = Auth::user();
         $designations =Designation::all();
         $data = Designation::where('id',$id)->first();
-
          return view('dashboards.users.companySetup.l_designation',compact('user','designations','data'));
     }
 

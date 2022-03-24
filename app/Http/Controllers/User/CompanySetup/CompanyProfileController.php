@@ -23,7 +23,9 @@ class CompanyProfileController extends Controller
     }
 
     public function store(Request $request){
- 
+
+     
+        // $input = CompanyProfile::find($id);
         $input =new CompanyProfile();
         $input->u_name = $request->input('u_name');
         $input->password = $request->input('password');
@@ -38,8 +40,17 @@ class CompanyProfileController extends Controller
         $input->com_city= $request->input('com_city');
         $input->com_postal= $request->input('com_postal');
         $input -> save();
-        return redirect()->route('dashboards.users.companySetup.company_profile');
+        return redirect()->route('com_profile.index');
     }
+
+    // public function comprofileedit($id){
+
+    //     $user = Auth::user();
+    //     $profiles =CompanyProfile::all();
+    //     $data =CompanyProfile::where('id',$id)->first();
+    //      return view('dashboards.users.companySetup.company_profile',compact('user','profiles','data'));
+    // }
+
 
 
 

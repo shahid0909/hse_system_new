@@ -244,6 +244,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
         Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
         Route::post('com_profile.store', [CompanyProfileController::class, 'store'])->name('store');
+      
 
     });
 });
