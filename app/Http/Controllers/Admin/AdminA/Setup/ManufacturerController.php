@@ -41,7 +41,6 @@ class ManufacturerController extends Controller
 
     public function update(Request $request, $id){
 
-dd($request);
 
         $manufacture = l_manufacturer::find($id);
 

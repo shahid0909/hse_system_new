@@ -38,6 +38,7 @@
 @endif
         <div class="body d-flex">
             <div class="container-xxl">
+{{--                <x-action.response-message/>--}}
                 <div class="row align-items-center">
                     <div class="border-0 py-3">
                         <div
@@ -147,8 +148,7 @@
                                 <table
                                     id="myProjectTable"
                                     class="table table-hover  align-middle mb-0"
-                                    style="width: 100%"
-                                >
+                                    style="width: 100%">
                                     <thead>
                                     <tr>
                                         <th>id</th>
@@ -174,8 +174,16 @@
                 <!-- Row End -->
             </div>
         </div>
+<<<<<<< HEAD
 @endsection
 @section('script')
+=======
+    </div>
+
+
+        @endsection
+        @section('script')
+>>>>>>> 3a36cfce7976254ccf224f70c460b651dc3b7047
             <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 
             <!-- Plugin Js-->

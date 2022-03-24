@@ -20,6 +20,7 @@ use App\Http\Controllers\Client\ScheduleDemoController;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\User\CompanySetup\CompanyProfileController;
 use App\Http\Controllers\User\CompanySetup\DepartmentController;
 use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
@@ -212,8 +213,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
 
         Route::get('designation', [DesignationController::class, 'index'])->name('index');
-        
-
+        Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
+        Route::get('designation-datatable-list', [DesignationController::class, 'datatable'])->name('datatable');
+        Route::get('designation.edit/{id}', [DesignationController::class, 'designationedit'])->name('designation-edit');
+        Route::put('designation/{id}', [DesignationController::class, 'editstore'])->name('editstore');
+        Route::get('designation-destroy/{id}', [DesignationController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
@@ -225,6 +229,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
 
         Route::get('emp_profile', [EmployeeProfileController::class, 'index'])->name('index');
+
+    });
+
+    Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
+
+        Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
 
     });
 });
