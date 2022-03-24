@@ -174,16 +174,16 @@
                 <!-- Row End -->
             </div>
         </div>
-<<<<<<< HEAD
+
 @endsection
 @section('script')
-=======
+
     </div>
 
 
         @endsection
         @section('script')
->>>>>>> 3a36cfce7976254ccf224f70c460b651dc3b7047
+
             <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 
             <!-- Plugin Js-->
