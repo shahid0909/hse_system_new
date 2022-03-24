@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $user = Auth::user();
         return view('dashboards.users.companySetup.l_department', compact('user'));

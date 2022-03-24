@@ -14,10 +14,6 @@ use App\Http\Controllers\Admin\AdminA\UsercreateController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 
-
-
-
-
 use App\Http\Controllers\FrontendController;
 
 use App\Http\Controllers\Client\ScheduleDemoController;
@@ -207,15 +203,16 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
         Route::get('department', [DepartmentController::class, 'index'])->name('index');
         Route::POST('department-store', [DepartmentController::class, 'store'])->name('store');
-//        Route::get('department-edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
-//        Route::put('department-update/{id}', [DepartmentController::class, 'update'])->name('update');
-//        Route::get('department-datatable-list', [DepartmentController::class, 'datatable'])->name('datatable');
-//        Route::get('department-destroy/{id}', [DepartmentController::class, 'destroy'])->name('destroy');
+       Route::get('department-edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
+       Route::put('department-update/{id}', [DepartmentController::class, 'update'])->name('update');
+       Route::get('department-datatable-list', [DepartmentController::class, 'datatable'])->name('datatable');
+       Route::get('department-destroy/{id}', [DepartmentController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
 
         Route::get('designation', [DesignationController::class, 'index'])->name('index');
+        
 
     });
 

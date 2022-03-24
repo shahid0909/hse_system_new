@@ -31,6 +31,11 @@
         <!-- Body: Header -->
         @include('dashboards.users.partial.header')
 
+                @if ($message = Session::get('success'))
+            <div class="alert alert-success message">
+                <p>{{ $message }}</p>
+            </div>
+@endif
         <div class="body d-flex">
             <div class="container-xxl">
                 <div class="row align-items-center">
@@ -47,27 +52,42 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div
-                                class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
-                            >
+                                class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                                 <h6 class="mb-0 fw-bold">Department Add</h6>
                             </div>
+                             
                             <div class="card-body">
                                 <form method="POST" enctype="multipart/form-data" id="department"
-                                      action="{{route('department.store')}}">
+                                     
+                                    @if(isset($data->id))
+                                      action="{{ route('department.updtae', ['id' => $data->id]) }}">
+                                    <input name="_method" type="hidden" value="PUT">
+                                    @else
+                                        action="{{ route('department.store')}}">
+                                    @endif
                                     @csrf
                                     <div class="row g-3 mb-3">
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label"
                                             >Depertment Name</label
                                             >
-                                            <input type="text" class="form-control" name="department_name"
-                                                   id="dept_name"/>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            name="department_name"
+                                            id="dept_name"
+                                            value="{{isset($data->dept_name) ? $data->dept_name:''}}"
+                                            />
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label"
                                             >Depertment Location</label
                                             >
-                                            <input type="text" class="form-control" name="dept_loc" id="dept_loc"/>
+                                            <input type="text" 
+                                            class="form-control"
+                                             name="dept_loc"
+                                              id="dept_loc"
+                                              value="{{isset($data->dept_loc) ? $data->dept_loc:''}}"
+                                              />
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="deptwophone" class="form-label"
@@ -77,6 +97,7 @@
                                                 class="form-control"
                                                 id="dept_phone"
                                                 name="dept_phone"
+                                                value="{{isset($data->dept_phone) ? $data->dept_phone:''}}"
                                             />
                                         </div>
                                         <div class="col-sm-12">
@@ -86,10 +107,32 @@
                                             <input
                                                 type="File"
                                                 class="form-control"
-                                                id="fileimg"
-                                                name="fileimg"
+                                                id="depertment_image"
+                                                name="depertment_image"
+                                                value="{{isset($data->depertment_image) ? $data->depertment_image:''}}"
                                             />
-                                        </div>
+                                        </div> 
+
+                             <div class=" col-sm-12">
+                                 <div class="form-group mt-2">
+                                                            <div class="form-check-inline">
+                                                                <input class="form-check-input" type="radio" 
+                                                                name="active_yn" id="active_y" value="Y" checked 
+                                                                
+                                                                >
+                                                                <label class="form-check-label" for="active_y">
+                                                                    Active
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="active_yn" id="active_n" value="N">
+                                                                <label class="form-check-label" for="active_n">
+                                                                    In-Active
+                                                                </label>
+                                                            </div>
+
+                                
+                            </div></div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         Add Contact
@@ -108,194 +151,20 @@
                                 >
                                     <thead>
                                     <tr>
+                                        <th>id</th>
                                         <th>Department Name</th>
                                         <th>Location</th>
+                                        <th>status</th>
                                         <th>Image</th>
                                         <th>Phone</th>
-                                        <th>Actions</th>
+                                       <th>Actions</th>
                                     </tr>
                                     </thead>
+
                                     <tbody>
-                                    <tr>
-                                        <td>
-                                            <span>Kitchne</span>
-                                        </td>
-                                        <td>Second Floor</td>
-                                        <td>
-                                            <img
-                                                class="avatar"
-                                                src="assets/images/xs/avatar1.svg"
-                                                alt=""
-                                            />
-                                        </td>
-                                        <td>518-555-0145</td>
-                                        <td>
-                                            <div
-                                                class="btn-group"
-                                                role="group"
-                                                aria-label="Basic outlined example"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#expedit"
-                                                >
-                                                    <i class="icofont-edit text-success"></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary deleterow"
-                                                >
-                                                    <i class="icofont-ui-delete text-danger"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>Londry</span>
-                                        </td>
-                                        <td>Second Floor</td>
-                                        <td>
-                                            <img
-                                                class="avatar"
-                                                src="assets/images/xs/avatar1.svg"
-                                                alt=""
-                                            />
-                                        </td>
-                                        <td>518-555-0145</td>
-                                        <td>
-                                            <div
-                                                class="btn-group"
-                                                role="group"
-                                                aria-label="Basic outlined example"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#expedit"
-                                                >
-                                                    <i class="icofont-edit text-success"></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary deleterow"
-                                                >
-                                                    <i class="icofont-ui-delete text-danger"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>Food</span>
-                                        </td>
-                                        <td>Second Floor</td>
-                                        <td>
-                                            <img
-                                                class="avatar"
-                                                src="assets/images/xs/avatar1.svg"
-                                                alt=""
-                                            />
-                                        </td>
-                                        <td>518-555-0145</td>
-                                        <td>
-                                            <div
-                                                class="btn-group"
-                                                role="group"
-                                                aria-label="Basic outlined example"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#expedit"
-                                                >
-                                                    <i class="icofont-edit text-success"></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary deleterow"
-                                                >
-                                                    <i class="icofont-ui-delete text-danger"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>Painting</span>
-                                        </td>
-                                        <td>Second Floor</td>
-                                        <td>
-                                            <img
-                                                class="avatar"
-                                                src="assets/images/xs/avatar1.svg"
-                                                alt=""
-                                            />
-                                        </td>
-                                        <td>518-555-0145</td>
-                                        <td>
-                                            <div
-                                                class="btn-group"
-                                                role="group"
-                                                aria-label="Basic outlined example"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#expedit"
-                                                >
-                                                    <i class="icofont-edit text-success"></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary deleterow"
-                                                >
-                                                    <i class="icofont-ui-delete text-danger"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span>Drywash</span>
-                                        </td>
-                                        <td>Second Floor</td>
-                                        <td>
-                                            <img
-                                                class="avatar"
-                                                src="assets/images/xs/avatar1.svg"
-                                                alt=""
-                                            />
-                                        </td>
-                                        <td>518-555-0145</td>
-                                        <td>
-                                            <div
-                                                class="btn-group"
-                                                role="group"
-                                                aria-label="Basic outlined example"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#expedit"
-                                                >
-                                                    <i class="icofont-edit text-success"></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-outline-secondary deleterow"
-                                                >
-                                                    <i class="icofont-ui-delete text-danger"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+
+
+                                                  
                                     </tbody>
                                 </table>
                             </div>
@@ -305,10 +174,8 @@
                 <!-- Row End -->
             </div>
         </div>
-
-
-        @endsection
-        @section('script')
+@endsection
+@section('script')
             <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 
             <!-- Plugin Js-->
@@ -319,15 +186,34 @@
             <script>
                 // project data table
                 $(document).ready(function () {
-                    $("#myProjectTable")
-                        .addClass("nowrap")
-                        .dataTable({
-                            responsive: true,
-                            columnDefs: [{targets: [-1, -3], className: "dt-body-right"}],
-                        });
-                    $(".deleterow").on("click", function () {
-                        var tablename = $(this).closest("table").DataTable();
-                        tablename.row($(this).parents("tr")).remove().draw();
+                    setTimeout(function () {
+                        $('.message').fadeOut('fast');
+                    }, 500);
+                    $('#myProjectTable').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: {
+                            url: "{{ route('department.datatable') }}",
+                            type: 'GET',
+                            'headers': {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        },
+                        "columns": [
+                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
+                            {"data": "depertment_name"},
+                            {"data": "depertment_location"},
+                            {"data": "phone"},
+                            {"data": "depertment_image"},
+                            {"data": "status"},
+                            {data: 'action', name: 'action', orderable: false, searchable: false}
+                        ],
+                        language: {
+                            paginate: {
+                                next: '<i class="bx bx-chevron-right">',
+                                previous: '<i class="bx bx-chevron-left">'
+                            }
+                        }
                     });
                 });
             </script>
