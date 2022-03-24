@@ -95,7 +95,6 @@
                                             <select name="ds_status" id="" class="form-control">
                                                 <option value="#">Select</option>
                                                 @if(isset($data->ds_status) == 1)
-
                                                     <option value="1" selected>Active</option>
                                                     <option value="2">InActive</option>
                                                 @elseif(isset($data->ds_status)== 2)

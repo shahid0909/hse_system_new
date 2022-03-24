@@ -532,19 +532,37 @@
                         <label for="item" class="form-label"
                           >Employees Name</label
                         >
-                        <input type="text" class="form-control" id="item" />
+                        <input type="text" class="form-control" name="em_name" />
+                      </div>
+                      <div class="col-sm-12">
+                        <label for="item" class="form-label"
+                          >Employees Designation</label
+                        >
+                        <input type="text" class="form-control" name="em_designation" />
+                      </div>
+                      <div class="col-sm-12">
+                        <label for="item" class="form-label"
+                          >Employees Department</label
+                        >
+                        <input type="text" class="form-control" name="em_department" />
+                      </div>
+                      <div class="col-sm-12">
+                        <label for="item" class="form-label"
+                          >Employees IC/Passport No</label
+                        >
+                        <input type="text" class="form-control" name="em_ic_passport_no" />
                       </div>
                       <div class="col-sm-12">
                         <label for="taxtno" class="form-label"
                           >Employees Profile</label
                         >
-                        <input type="File" class="form-control" id="taxtno" />
+                        <input type="File" class="form-control" name="em_profile" />
                       </div>
                     </div>
                     <div class="row g-3 mb-3">
                       <div class="col-sm-6">
                         <label for="depone" class="form-label">Country</label>
-                        <input type="text" class="form-control" id="depone" />
+                        <input type="text" class="form-control" name="em_country" />
                       </div>
                       <div class="col-sm-6">
                         <label for="abc" class="form-label"
@@ -553,18 +571,18 @@
                         <input
                           type="date"
                           class="form-control w-100"
-                          id="abc"
+                          name="em_j_date"
                         />
                       </div>
                     </div>
                     <div class="row g-3 mb-3">
                       <div class="col-sm-6">
                         <label for="abc11" class="form-label">Mail</label>
-                        <input type="text" class="form-control" id="abc11" />
+                        <input type="text" class="form-control" name="em_mail" />
                       </div>
                       <div class="col-sm-6">
                         <label for="abc111" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="abc111" />
+                        <input type="text" class="form-control" name="em_phone" />
                       </div>
                     </div>
                   </form>
