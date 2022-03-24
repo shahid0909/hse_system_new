@@ -217,7 +217,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
 
         Route::get('designation', [DesignationController::class, 'index'])->name('index');
+        Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
+        Route::get('designation-datatable-list', [DesignationController::class, 'datatable'])->name('datatable');
+        Route::get('designation.edit/{id}', [DesignationController::class, 'designationedit'])->name('designation-edit');
 
+        Route::put('designation/{id}', [DesignationController::class, 'editstore'])->name('editstore');
+        Route::get('designation-destroy/{id}', [DesignationController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
