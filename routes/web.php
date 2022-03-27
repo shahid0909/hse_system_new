@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminA\Setup\SupplierController;
 use App\Http\Controllers\Admin\AdminA\UsercreateController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\safety\SafetyPolicyController;
 
 use App\Http\Controllers\FrontendController;
 
@@ -225,6 +226,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('employee', [EmployeeController::class, 'index'])->name('index');
         Route::Post('employee/store', [EmployeeController::class, 'store'])->name('store');
 
+    });
+
+    Route::group(['name'=>'safety','as'=>'safety.'],function(){
+    Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
+    Route::get('policy/generate',[SafetyPolicyController::class,'policyindex'])->name('policy-index');
+    Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
     });
 
 //    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
