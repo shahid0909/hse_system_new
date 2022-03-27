@@ -51,12 +51,10 @@
                 <div class="row clearfix g-3">
                     <div class="col-lg-4">
                         <div class="card">
-                            <div
-                                class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
-                            >
-                                <h6 class="mb-0 fw-bold">Designation Add</h6>
+                            
+                            <div  class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                             <h6 class="mb-0 fw-bold">Designation Add</h6>
                             </div>
-
                             <div class="card-body">
                                 <form name="supplierForm" id="supplierForm" method="post"
                                       @if(isset($data->id))
@@ -65,7 +63,6 @@
                                     @else
                                         action="{{ route('designation.designationstore')}}">
                                     @endif
-
                                     @csrf
                                     <div class="row g-3 mb-3">
                                         <div class="col-sm-12">
