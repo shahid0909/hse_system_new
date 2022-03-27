@@ -90,28 +90,17 @@
                                             />
                                         </div>
 
-                                        <div class="col-sm-12">
-                                            <label for="depone" class="form-label">Status</label>
-                                            <select name="ds_status" id="" class="form-control">
-                                                <option value="#">Select</option>
-                                                @if(isset($data->ds_status) == 1)
 
-                                                    <option value="1" selected>Active</option>
-                                                    <option value="2">InActive</option>
-                                                @elseif(isset($data->ds_status)== 2)
-                                                    {{--                                                    <option value="1" >Active</option>--}}
-                                                    <option value="2" selected>InActive</option>
-                                                @else
-                                                    <option value="1">Active</option>
-                                                    <option value="2">InActive</option>
-                                                @endif
-
-                                            </select>
-                                        </div>
                                     </div>
+                                    @if(isset($data->id))
+                                        <button type="submit" class="btn btn-primary">
+                                            Update Designation
+                                        </button>
+                                    @else
                                     <button type="submit" class="btn btn-primary">
                                         Add Designation
                                     </button>
+                                        @endif
                                 </form>
                             </div>
                         </div>
@@ -131,7 +120,7 @@
                                         <th>Sl.</th>
                                         <th>Designation Name</th>
                                         <th>Rank</th>
-                                        <th>Status</th>
+{{--                                        <th>Status</th>--}}
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -178,7 +167,7 @@
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
                             {"data": "ds_name"},
                             {"data": "ds_rank"},
-                            {"data": "status"},
+                            // {"data": "status"},
                             {data: 'action', name: 'action', orderable: false, searchable: false}
                         ],
                         language: {

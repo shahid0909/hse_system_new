@@ -231,7 +231,7 @@
                                         <div class="form-group">
                                             <label for="mobile_number" class="form-label">Mobile Number<span class="text-danger">*</span></label>
                                             <input id="mobile_number"
-                                                   type="number"
+                                                   type="text"
                                                    oninput="javascript: if (this.value.length > this.maxLength)
                                                        this.value = this.value.slice(0, this.maxLength);"
                                                    maxlength="11"

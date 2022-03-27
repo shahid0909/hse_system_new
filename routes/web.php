@@ -223,14 +223,15 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
 
         Route::get('employee', [EmployeeController::class, 'index'])->name('index');
+        Route::Post('employee/store', [EmployeeController::class, 'store'])->name('store');
 
     });
 
-    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
-
-        Route::get('emp_profile', [EmployeeProfileController::class, 'index'])->name('index');
-
-    });
+//    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
+//
+//        Route::get('emp_profile', [EmployeeProfileController::class, 'index'])->name('index');
+//
+//    });
 
     Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
 

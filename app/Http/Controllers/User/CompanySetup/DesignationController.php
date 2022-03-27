@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\CompanySetup;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -15,8 +16,8 @@ class DesignationController extends Controller
 {
     public function index(){
         $user = Auth::user();
-        $designations=Designation::all();
-        return view('dashboards.users.companySetup.l_designation', compact('designations','user'));
+//        $dept=Department::all();
+        return view('dashboards.users.companySetup.l_designation', compact('user'));
     }
 
     public function store(Request $request){
@@ -24,12 +25,12 @@ class DesignationController extends Controller
         $request->validate([
             'ds_name' => 'required',
             'ds_rank' => 'required',
-            'ds_status' => 'required',
+
         ]);
         $input =new Designation();
         $input->ds_name = $request->input('ds_name');
         $input->ds_rank = $request->input('ds_rank');
-        $input->ds_status= $request->input('ds_status');
+        $input->ds_status= 'Y';
 
 //dd($input);
         $input->save();
@@ -51,23 +52,14 @@ class DesignationController extends Controller
         $request->validate([
             'ds_name' => 'required',
             'ds_rank' => 'required',
-            'ds_status' => 'required',
+
         ]);
-//        $input =new Designation();
-//        $input->ds_name = $request->input('ds_name');
-//        $input->ds_rank = $request->input('ds_rank');
-//        $input->ds_status= $request->input('ds_status');
-//
-////dd($input);
-//        $input->save();
-//
-//
 
         $input = Designation::find($id);
 
         $input->ds_name = $request->input('ds_name');
         $input->ds_rank = $request->input('ds_rank');
-        $input->ds_status= $request->input('ds_status');
+        $input->ds_status= 'Y';
         $input -> update();
 
         return redirect()->route('designation.index')->with(['success'=>'Form is successfully Updated!']);

@@ -43,7 +43,7 @@
                         <div
                             class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"
                         >
-                            <h3 class="fw-bold py-3 mb-0">Designation</h3>
+                            <h3 class="fw-bold py-3 mb-0">Department</h3>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             <div
                                 class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
                             >
-                                <h6 class="mb-0 fw-bold">Designation Add</h6>
+{{--                                <h6 class="mb-0 fw-bold"></h6>--}}
                             </div>
 
                             <div class="card-body">
@@ -76,7 +76,7 @@
                                                    class="form-control"
                                                    name="department_name"
                                                    id="dept_name"
-                                                   value="{{isset($data->dept_name) ? $data->dept_name:''}}"
+                                                   value="{{isset($data->depertment_name) ? $data->depertment_name:''}}"
                                             />
                                         </div>
                                         <div class="col-sm-12">
@@ -87,7 +87,7 @@
                                                    class="form-control"
                                                    name="dept_loc"
                                                    id="dept_loc"
-                                                   value="{{isset($data->dept_loc) ? $data->dept_loc:''}}"
+                                                   value="{{isset($data->depertment_location) ? $data->depertment_location:''}}"
                                             />
                                         </div>
                                         <div class="col-sm-12">
@@ -98,7 +98,8 @@
                                                 class="form-control"
                                                 id="dept_phone"
                                                 name="dept_phone"
-                                                value="{{isset($data->dept_phone) ? $data->dept_phone:''}}"
+                                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))"
+                                                value="{{isset($data->phone) ? $data->phone:''}}"
                                             />
                                         </div>
                                         <div class="col-sm-12">
@@ -110,34 +111,22 @@
                                                 class="form-control"
                                                 id="depertment_image"
                                                 name="depertment_image"
+                                                accept="image/png, image/jpeg,image/jpg"
                                                 value="{{isset($data->depertment_image) ? $data->depertment_image:''}}"
                                             />
+                                            @if(isset($data->id))
+                                                <img src="/image/Department/{{ $data->depertment_image }}" width="10%">@endif
                                         </div>
-
-                                        <div class=" col-sm-12">
-                                            <div class="form-group mt-2">
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                           name="active_yn" id="active_y" value="Y" checked
-
-                                                    >
-                                                    <label class="form-check-label" for="active_y">
-                                                        Active
-                                                    </label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="active_yn" id="active_n" value="N">
-                                                    <label class="form-check-label" for="active_n">
-                                                        In-Active
-                                                    </label>
-                                                </div>
-
-
-                                            </div></div>
                                     </div>
+                                    @if(isset($data->id))
+                                        <button type="submit" class="btn btn-primary">
+                                            Update
+                                        </button>
+                                    @else
                                     <button type="submit" class="btn btn-primary">
-                                        Add Contact
+                                        Submit
                                     </button>
+                                        @endif
                                 </form>
                             </div>
                         </div>
@@ -154,12 +143,12 @@
                                 >
                                     <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th>Sl</th>
                                         <th>Department Name</th>
                                         <th>Location</th>
-                                        <th>status</th>
-                                        <th>Image</th>
+{{--                                        <th>status</th>--}}
                                         <th>Phone</th>
+                                        <th>Image</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -208,7 +197,7 @@
                             {"data": "depertment_location"},
                             {"data": "phone"},
                             {"data": "depertment_image"},
-                            {"data": "status"},
+                            // {"data": "status"},
                             {data: 'action', name: 'action', orderable: false, searchable: false}
                         ],
                         language: {
