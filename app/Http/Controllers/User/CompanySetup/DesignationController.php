@@ -43,7 +43,6 @@ class DesignationController extends Controller
         $user = Auth::user();
         $designations =Designation::all();
         $data = Designation::where('id',$id)->first();
-
          return view('dashboards.users.companySetup.l_designation',compact('user','designations','data'));
     }
 
@@ -56,12 +55,10 @@ class DesignationController extends Controller
         ]);
 
         $input = Designation::find($id);
-
         $input->ds_name = $request->input('ds_name');
         $input->ds_rank = $request->input('ds_rank');
         $input->ds_status= 'Y';
         $input -> update();
-
         return redirect()->route('designation.index')->with(['success'=>'Form is successfully Updated!']);
 
 //        return redirct('dashboards.users.companySetup.l_designation');

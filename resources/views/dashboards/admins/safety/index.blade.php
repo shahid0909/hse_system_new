@@ -143,12 +143,14 @@
                         color: #315948;
                       "
                     >
-                      Already Have Exesting Safety Policy
+                      Already Have Exesting Safety Policy view and Download
                     </h2>
                     <br />
-                    <button type="button" class="btn btn-primary">
-                      Upload
-                    </button>
+                    <a href="{{ route('safety.safety-view') }}">
+                      <button type="button" class="btn btn-primary">
+                        Click
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

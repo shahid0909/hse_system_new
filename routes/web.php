@@ -232,6 +232,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
     Route::get('policy/generate',[SafetyPolicyController::class,'policyindex'])->name('policy-index');
     Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
+    Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
+    Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
+    Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
+    Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('modifystore');
+    Route::get('safety/delete/{id}',[SafetyPolicyController::class,'destroy'])->name('destroy');
     });
 
 //    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
