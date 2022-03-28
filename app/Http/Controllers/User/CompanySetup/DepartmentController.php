@@ -49,7 +49,6 @@ class DepartmentController extends Controller
             $department['depertment_image'] = "$profileImage";
         }
 
-
         if ($department->save()) {
 
             return redirect()->back()->with('success', 'Departments information successfully store.');
