@@ -95,7 +95,7 @@ public  function getempinfo(Request $request){
 }
  public function empUpdate(Request $request){
 
-        dd($request);
+
         $id = $request->emp_id;
 
      $input = l_employee::find($id);
