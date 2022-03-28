@@ -23,6 +23,9 @@
 
     <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{asset('js/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('js/alertifyjs/css/themes/bootstrap.min.css')}}">
+
     @yield('style')
 </head>
 <body>
@@ -51,6 +54,7 @@
 <script src="{{ asset('assets/js/page/index.js') }}"></script>
 <!-- Select2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 <script type="text/javascript">
     $( document ).ready(function()
     {
@@ -61,6 +65,7 @@
     });
 
 </script>
+<script src="{{asset('js/alertifyjs/alertify.min.js')}}"></script>
 @yield('script')
 </body>
 

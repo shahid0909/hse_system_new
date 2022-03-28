@@ -224,6 +224,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
         Route::get('employee', [EmployeeController::class, 'index'])->name('index');
         Route::Post('employee/store', [EmployeeController::class, 'store'])->name('store');
+        Route::get('emp-information-ajax-data', [EmployeeController::class, 'getempinfo'])->name('getempinfo');
+        Route::post('emp-information-update-data', [EmployeeController::class, 'empUpdate'])->name('empUpdate');
+
 
     });
 
