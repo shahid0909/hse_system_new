@@ -28,6 +28,10 @@ use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
 use App\Http\Controllers\User\CompanySetup\EmployeeProfileController;
 use App\Http\Controllers\User\safety\SafetyPolicyController;
+use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
+use App\Http\Controllers\User\WorkInspection\ListInspectionController;
+use App\Http\Controllers\User\WorkInspection\RectifiedInspectionController;
+use App\Http\Controllers\User\WorkInspection\WorkInspectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -230,7 +234,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('emp-information-ajax-data', [EmployeeController::class, 'getempinfo'])->name('getempinfo');
         Route::post('emp-information-update-data', [EmployeeController::class, 'empUpdate'])->name('empUpdate');
 
-
     });
 
     Route::group(['name'=>'safety','as'=>'safety.'],function(){
@@ -258,5 +261,45 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     });
 
     Route::post('get-states-by-country',[CompanyProfileController::class, 'getState']);
+
+
+    Route::group(['name' => 'workinspection', 'as' => 'workinspection.'], function () {
+
+        Route::get('workpalce_inspection', [WorkInspectionController::class, 'index'])->name('index');
+        Route::POST('workpalce_inspection-store', [WorkInspectionController::class, 'store'])->name('store');
+        Route::get('workpalce_inspection-edit/{id}', [WorkInspectionController::class, 'edit'])->name('edit');
+        Route::put('workpalce_inspection-update/{id}', [WorkInspectionController::class, 'update'])->name('update');
+        Route::get('workpalce_inspection-datatable-list', [WorkInspectionController::class, 'datatable'])->name('datatable');
+        Route::get('workpalce_inspection-destroy/{id}', [WorkInspectionController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['name' => 'create_ispection', 'as' => 'create_ispection.'], function () {
+
+        Route::get('create_ispection', [CreateIspectionController::class, 'index'])->name('index');
+        Route::POST('create_ispection-store', [CreateIspectionController::class, 'store'])->name('store');
+        Route::get('create_ispection-edit/{id}', [CreateIspectionController::class, 'edit'])->name('edit');
+        Route::put('create_ispection-update/{id}', [CreateIspectionController::class, 'update'])->name('update');
+        Route::get('create_ispection-datatable-list', [CreateIspectionController::class, 'datatable'])->name('datatable');
+        Route::get('create_ispection-destroy/{id}', [CreateIspectionController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['name' => 'rectified_inspection', 'as' => 'rectified_inspection.'], function () {
+
+        Route::get('rectified-inspection', [RectifiedInspectionController::class, 'index'])->name('index');
+        Route::POST('rectified-inspection-store', [RectifiedInspectionController::class, 'store'])->name('store');
+        Route::get('rectified-inspection-edit/{id}', [RectifiedInspectionController::class, 'edit'])->name('edit');
+        Route::put('rectified-inspection-update/{id}', [RectifiedInspectionController::class, 'update'])->name('update');
+        Route::get('rectified-inspection-datatable-list', [RectifiedInspectionController::class, 'datatable'])->name('datatable');
+        Route::get('rectified-inspection-destroy/{id}', [RectifiedInspectionController::class, 'destroy'])->name('destroy');
+    });
+    Route::group(['name' => 'list_inspection', 'as' => 'list_inspection.'], function () {
+
+        Route::get('list-inspection', [ListInspectionController::class, 'index'])->name('index');
+        Route::POST('list-inspection-store', [ListInspectionController::class, 'store'])->name('store');
+        Route::get('list-inspection-edit/{id}', [ListInspectionController::class, 'edit'])->name('edit');
+        Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
+        Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
+        Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
+    });
 });
 
