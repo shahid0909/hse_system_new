@@ -41,24 +41,24 @@
                                @else
                                        action="{{ route('create_ispection.store') }}" novalidate>
                                @endif
-                                    
-                             
+
+
                              @csrf
                               <div class="row g-3 col-md-8 align-items-center" style="margin: 0 auto;">
                                   <div class="col-md-12">
                                       <div class="form-group">
                                           <label class="form-label">Location</label>
                                           <!-- <input type="text" class="form-control" required> -->
-                                          <select 
-                                          name="location" 
-                                          id="location" 
+                                          <select
+                                          name="location"
+                                          id="location"
                                           class="col-md-12"
                                            style="padding: 10px; border-radius: 3px; border-color: var(--border-color);
-                                           
+
 
                                            ">
                                             <option value="{{isset($data->location) ? $data->location:''}}" > {{isset($data->location) ? $data->location:''}}</option>
-                                           
+
                                           </select>
                                       </div>
                                   </div>
@@ -66,25 +66,25 @@
                                     <div class="form-group">
                                         <label class="form-label">PIC</label>
                                         <!-- <input type="text" class="form-control" required> -->
-                                        <select 
-                                        name="pic" 
-                                        id="pic" 
-                                        class="col-md-12" 
+                                        <select
+                                        name="pic"
+                                        id="pic"
+                                        class="col-md-12"
                                         style="padding: 10px; border-radius: 3px; border-color: var(--border-color);
-                                        
+
 
                                         ">
                                           <option value="{{isset($data->pic) ? $data->pic:''}}">{{isset($data->pic) ? $data->pic:''}}</option>
-                                         
+
                                         </select>
                                     </div>
                                 </div>
                                   <div class="col-md-12">
                                       <div class="form-group">
                                           <label class="form-label">UNSAFE ACT/UNSAFE CONDITION/HAZARDS/ISSUES </label>
-                                          <textarea class="form-control" 
-                                          name="unsafe" 
-                                          rows="5" 
+                                          <textarea class="form-control"
+                                          name="unsafe"
+                                          rows="5"
                                           cols="30"
                                           value="{{isset($data->unsafe) ? $data->unsafe:''}}"
                                            required>{{isset($data->unsafe) ? $data->unsafe:''}}</textarea>
@@ -93,11 +93,11 @@
                                   <div class="col-md-12">
                                    <div class="form-group">
                                         <label class="form-label" for="text">CORRECTIVE ACTIONS TO BE TAKEN</label>
-                                        <textarea 
+                                        <textarea
                                          class="form-control"
-                                         rows="5" 
+                                         rows="5"
                                          cols="30"
-                                         name="text" 
+                                         name="text"
                                          value="{{isset($data->text) ? $data->text:''}}"
 
                                          required > {{isset($data->text) ? $data->text:''}}</textarea>
@@ -107,11 +107,11 @@
                                     <div class="form-group">
                                         <label class="form-label">Justification</label>
                                         <textarea
-                                         class="form-control" 
-                                         name="Justification" 
-                                         rows="5" 
+                                         class="form-control"
+                                         name="Justification"
+                                         rows="5"
                                          cols="30"
-                                         value="{{isset($data->Justification) ? $data->Justification:''}}" 
+                                         value="{{isset($data->Justification) ? $data->Justification:''}}"
                                          required>{{isset($data->Justification) ? $data->Justification:''}}</textarea>
                                     </div>
                                   </div>
@@ -122,7 +122,7 @@
                                       class="form-control w-100"
                                       id="admitdate"
                                       name="admitdate"
-                                      value="{{isset($data->admitdate) ? $data->admitdate:''}}" 
+                                      value="{{isset($data->admitdate) ? $data->admitdate:''}}"
                                       required
                                     />
                                   </div>
@@ -138,13 +138,13 @@
                                       required
                                     />
                                   </div>
-                                  
+
                                   <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-label" style="margin-bottom: 20px;">PRIORITY</label>
                                         <br />
                                         <label class="fancy-radio" for="urgent">
-                                            <input type="radio"  name="priority"  id="urgent" value="0" @if(($data['priority']== 0) or  old('priority')== 0) {{"checked"}} @endif>
+                                            <input type="radio"  name="priority"  id="urgent" value="0" @if((isset($data->priority) == 0) or  old('priority')== 0) {{"checked"}} @endif>
 
 
                                             <span style="padding: 10px 10px; border-radius: 10px;  color: #ee1010; box-shadow: 0px 0px 5px 0px #315948; font-size: 20px; font-weight: bold;margin-right: 20px;"><i></i>Urgent</span>
@@ -152,17 +152,17 @@
 
                                         <label class="fancy-radio" for="1_or_2_days">
 
-                                            
-                                            <input type="radio"  name="priority" id="1_or_2_days" value="1" @if(($data->priority== 1) or  old('priority')== 1) {{"checked"}} @endif>
+
+                                            <input type="radio"  name="priority" id="1_or_2_days" value="1" @if((isset($data->priority) == 1) or  old('priority')== 1) {{"checked"}} @endif>
 
                                             <span style="padding: 10px 10px; border-radius: 10px;  color: #d2fd12; box-shadow: 0px 0px 5px 0px #315948; font-size: 20px; font-weight: bold;margin-right: 20px"><i></i>1 or 2 days</span>
                                         </label>
 
 
                                         <label class="fancy-radio" for="1_week_more">
-                                          
 
-                                          <input type="radio" name="priority" id="1_week_more" value="2" @if(($data->priority== 2) or  old('priority')== 2) {{"checked"}} @endif> 
+
+                                          <input type="radio" name="priority" id="1_week_more" value="2" @if((isset($data->priority)== 2) or  old('priority')== 2) {{"checked"}} @endif>
 
                                           <span style="padding: 10px 10px; border-radius: 10px;  color: #9510ee; box-shadow: 0px 0px 5px 0px #315948; font-size: 20px; font-weight: bold;margin-right: 20px"><i></i>1 week/more </span>
                                       </label>
@@ -180,7 +180,7 @@
                                     name="image"
                                     value="{{isset($data->image) ? $data->image:''}}"
 
-                                   
+
                                   />
                                 </div>
                                 @if(isset($data->id))
@@ -195,7 +195,7 @@
                                     @endif
 
 
-                                 <a href="{{route('list_inspection.index')}}" class="btn btn-danger col-md-5  " style="margin-left: 25px; width: 420px; color: white; "> Back</a> 
+                                 <a href="{{route('list_inspection.index')}}" class="btn btn-danger col-md-5  " style="margin-left: 25px; width: 420px; color: white; "> Back</a>
                               </div>
                           </form>
                       </div>
@@ -206,7 +206,7 @@
           </div>
         </div>
 
-   
+
 @endsection
 
 @section('script')
@@ -253,7 +253,7 @@
                         }
                     });
             $('.deleterow').on('click',function(){
-            var tablename = $(this).closest('table').DataTable();  
+            var tablename = $(this).closest('table').DataTable();
             tablename
                 .row( $(this)
                 .parents('tr') )
