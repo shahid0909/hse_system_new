@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\AdminA\Setup\ppeController;
 use App\Http\Controllers\Admin\AdminA\Setup\SupplierController;
 use App\Http\Controllers\Admin\AdminA\UsercreateController;
 use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\Admin\UserController;
+
 
 use App\Http\Controllers\FrontendController;
 
@@ -25,6 +27,7 @@ use App\Http\Controllers\User\CompanySetup\DepartmentController;
 use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
 use App\Http\Controllers\User\CompanySetup\EmployeeProfileController;
+use App\Http\Controllers\User\safety\SafetyPolicyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -228,6 +231,17 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('emp-information-update-data', [EmployeeController::class, 'empUpdate'])->name('empUpdate');
 
 
+    });
+
+    Route::group(['name'=>'safety','as'=>'safety.'],function(){
+    Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
+    Route::get('policy/generate',[SafetyPolicyController::class,'policyindex'])->name('policy-index');
+    Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
+    Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
+    Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
+    Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
+    Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('modifystore');
+    Route::get('safety/delete/{id}',[SafetyPolicyController::class,'destroy'])->name('destroy');
     });
 
 //    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {

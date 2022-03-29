@@ -406,7 +406,6 @@
 
                             let values = data.split("||");
                             let designation = values[2];
-                            let emp_id = values[0];
                             let department = values[4];
                             let country = values[9];
                             let emp_image = values[12];

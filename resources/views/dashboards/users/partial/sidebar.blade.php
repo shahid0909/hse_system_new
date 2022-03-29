@@ -46,7 +46,32 @@
 
 
                         </ul>
+
+                        
                     </li>
+
+                    <li class="collapsed">
+                        <a class="m-link  active"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#menu-product"
+                           href="#" >
+                            <i class="icofont-users-alt-2 fs-5"></i>
+                            <span>Safety Policy</span>
+                            <span
+                                class="arrow icofont-rounded-down ms-auto text-end fs-5"
+                            ></span
+                            ></a>
+                        <!-- Menu: Sub menu ul -->
+
+
+                        <ul class="sub-menu collapse" id="menu-product">
+                            <li>
+                                <a class="ms-link" href="{{ route('safety.index') }}">Safety</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
 
 
 
