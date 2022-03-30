@@ -95,7 +95,7 @@
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
                             {"data": "location"},
                             {"data": "image"},
-                            {"data": "pic"},
+                            {"data": "em_name"},
                             {"data": "priority"},
                             {"data": "admitdate"},
                             {"data": "targetdate"},

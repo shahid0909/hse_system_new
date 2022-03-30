@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\create_inspection;
 use Illuminate\Support\Facades\DB;
+use App\Models\l_employee;
+use App\Models\l_country;
 
 
 class CreateIspectionController extends Controller
@@ -15,9 +17,20 @@ class CreateIspectionController extends Controller
     {
 
         $user = Auth::user();
+        $emp = l_employee::all();
+        $country = l_country::all();
         
         $data = ''; 
-        return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data'));
+
+      $inspection = DB::table('create_inspections')
+               ->join('l_employees','create_inspections.pic','l_employees.id')
+                ->join('l_country','create_inspections.location','l_country.id')
+               
+              
+               ->select('create_inspections.*','l_employees.em_name','l_country.country')->get();
+
+
+        return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data','emp','inspection','country'));
 
     }
 
@@ -79,11 +92,26 @@ class CreateIspectionController extends Controller
      public function datatable()
      {
         
-          $list = create_inspection::orderby('id','desc')->get();
+          $list =  DB::table('create_inspections')
+               ->join('l_employees','create_inspections.pic','l_employees.id')
+                ->join('l_country','create_inspections.location','l_country.id')
+               
+            
+               ->select('create_inspections.*','l_employees.em_name','l_country.country')->get();
 
+dd($list['priority']);
         return datatables()
             ->of($list)
           
+           ->addColumn('priority', function($query){
+            if ($query->priority == '0') {
+                return 'Urgent';
+            }elseif ($query->priority == '1') {
+               return '1 or 2 Days';
+            }else{
+                return '1 Week More';
+            }
+           })
              ->addColumn('image', function ($query) {
                 $url=asset("image/workplace/$query->image");
                 return '<img src='.$url.' border="0" width="40"  class="img-rounded" align="center" />';
