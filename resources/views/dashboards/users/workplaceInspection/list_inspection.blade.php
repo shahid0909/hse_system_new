@@ -38,22 +38,22 @@
                       <table id="myProjectTable" class="table table-hover datatable align-middle mb-0" style="width:100%">
                           <thead>
                               <tr>
-                                  <th>SL No</th> 
+                                  <th>SL No</th>
                                   <th>LOCATION </th>
-                                  <th>PICTURE</th> 
-                                  <th>PIC</th> 
-                                  <th>PRIORITY</th> 
+                                  <th>PICTURE</th>
+                                  <th>PIC</th>
+                                  <th>PRIORITY</th>
                                   <th>DATE IDENTIFIED  </th>
                                   <th>TARGET DATE </th>
-                                 
-                                  
-                                  <th>Action</th> 
-                                 
-                                    
+
+
+                                  <th>Action</th>
+
+
                               </tr>
                           </thead>
-                          <tbody id="example tbody" >
-                       
+                          <tbody>
+
                     </tbody>
                       </table>
                   </div>
@@ -64,7 +64,7 @@
       </div>
 
 
-   
+
 @endsection
 
 
@@ -93,9 +93,9 @@
                         },
                         "columns": [
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "location"},
+                            {"data": "country.country"},
                             {"data": "image"},
-                            {"data": "em_name"},
+                            {"data": "employee.em_name"},
                             {"data": "priority"},
                             {"data": "admitdate"},
                             {"data": "targetdate"},
@@ -111,7 +111,7 @@
                         }
                     });
             $('.deleterow').on('click',function(){
-            var tablename = $(this).closest('table').DataTable();  
+            var tablename = $(this).closest('table').DataTable();
             tablename
                 .row( $(this)
                 .parents('tr') )
@@ -128,7 +128,7 @@
           $('#example tbody').on('click', 'td.dt-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
- 
+
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
