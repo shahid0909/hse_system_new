@@ -11,6 +11,7 @@
         .select2-selection__arrow {
             height: 34px !important;
         }
+
     </style>
 @endsection
 
@@ -38,15 +39,14 @@
                       <table id="myProjectTable" class="table table-hover datatable align-middle mb-0" style="width:100%">
                           <thead>
                               <tr>
-                                  <th>SL No</th>
-                                  <th>LOCATION </th>
+                                  <th></th>
+                                  <th>Sl</th>
+                                  <th>LOCATION</th>
                                   <th>PICTURE</th>
                                   <th>PIC</th>
                                   <th>PRIORITY</th>
-                                  <th>DATE IDENTIFIED  </th>
-                                  <th>TARGET DATE </th>
-
-
+                                  <th>DATE IDENTIFIED</th>
+                                  <th>TARGET DATE</th>
                                   <th>Action</th>
 
 
@@ -79,9 +79,27 @@
     <!-- Jquery Page Js -->
     <script src="assets/js/template.js"></script>
     <script>
+
+        function format ( d ) {
+            // `d` is the original data object for the row
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+                '<tr>'+
+                '<td>Full name:</td>'+
+                '<td>'+d.employee.em_name+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td>Extension number:</td>'+
+                '<td>'+d.country.country+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td>Extra info:</td>'+
+                '<td>And any further details here (images etc)...</td>'+
+                '</tr>'+
+                '</table>';
+        }
         // project data table
         $(document).ready(function() {
-            $('.datatable').DataTable({
+            var table = $('.datatable').DataTable({
                         processing: true,
                         serverSide: true,
                         ajax: {
@@ -92,6 +110,12 @@
                             }
                         },
                         "columns": [
+                            {
+                                "className":      'dt-control',
+                                "orderable":      false,
+                                "data":           null,
+                                "defaultContent": ''
+                            },
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
                             {"data": "country.country"},
                             {"data": "image"},
@@ -110,38 +134,26 @@
                             }
                         }
                     });
-            $('.deleterow').on('click',function(){
-            var tablename = $(this).closest('table').DataTable();
-            tablename
-                .row( $(this)
-                .parents('tr') )
-                .remove()
-                .draw();
+            $('.datatable tbody').on('click', 'td.dt-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row( tr );
 
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child( format(row.data()) ).show();
+                    tr.addClass('shown');
+                }
             } );
+
         });
     </script>
 
 
-
-       <script>
-          $('#example tbody').on('click', 'td.dt-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row( tr );
-
-        if ( row.child.isShown() ) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
-        }
-    } );
-} );;
-    </script>
 
 
 @endsection

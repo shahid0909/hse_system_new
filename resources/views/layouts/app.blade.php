@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title') </title>
     <link rel="icon" href="../favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link
         rel="stylesheet"
         href="{{ asset('assets/plugin/datatables/dataTables.bootstrap5.min.css') }}"
@@ -18,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/datetime/tempusdominus-bootstrap-4.min.css')}}" />
     <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
     <!-- project css file  -->
     <link rel="stylesheet" href="{{ asset('assets/css/ebazar.style.min.css') }}">
 
