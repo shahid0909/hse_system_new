@@ -13,23 +13,16 @@ class CreateIspectionController extends Controller
 {
       public function index()
     {
-
         $user = Auth::user();
-        
-        $data = ''; 
+        $data = null;
         return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data'));
 
     }
 
-
     public function store(Request $request)
 
     {
-
-
-
       // dd($request);
-
         $this->validate($request, [
             'location' => 'required',
             'pic' => 'required',
@@ -39,16 +32,12 @@ class CreateIspectionController extends Controller
             'admitdate' => 'required',
             'targetdate' => 'required',
             'priority' => 'required',
-           
-          
-
-            
 
         ]);
 
         $input = new create_inspection;
        // dd($input);
-       
+
         $input->location = $request->input('location');
         $input->pic = $request->input('pic');
         $input->unsafe = $request->input('unsafe');
@@ -57,9 +46,7 @@ class CreateIspectionController extends Controller
         $input->admitdate = $request->input('admitdate');
         $input->targetdate = $request->input('targetdate');
         $input->priority = $request->input('priority');
-       
-        
-       
+
 
         if ($image = $request->file('image')) {
             $destinationPath = 'image/workplace';
@@ -67,7 +54,6 @@ class CreateIspectionController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
         }
-
 
         if ($input->save()) {
 
@@ -78,18 +64,18 @@ class CreateIspectionController extends Controller
 
      public function datatable()
      {
-        
+
           $list = create_inspection::orderby('id','desc')->get();
 
         return datatables()
             ->of($list)
-          
+
              ->addColumn('image', function ($query) {
                 $url=asset("image/workplace/$query->image");
                 return '<img src='.$url.' border="0" width="40"  class="img-rounded" align="center" />';
             })
             ->editColumn('action', function ($query) {
-                return '<a href="' . route('create_ispection.edit', $query['id']) . '" class=""><i class="icofont-edit"></i></a> || 
+                return '<a href="' . route('create_ispection.edit', $query['id']) . '" class=""><i class="icofont-edit"></i></a> ||
                 <a href="' . route('create_ispection.destroy', $query['id']) . '" class="" onclick="return confirm(\'Are You Sure You Want To Delete This Item?\')"> <i class="icofont-delete-alt"></i></a>';
             })
               ->addIndexColumn()
@@ -122,7 +108,7 @@ class CreateIspectionController extends Controller
         $input->admitdate = $request->input('admitdate');
          $input->targetdate = $request->input('targetdate');
         $input->priority = $request->input('priority');
-        
+
 
         if ($image = $request->file('image')) {
             $destinationPath = 'image/workplace';
@@ -140,7 +126,7 @@ class CreateIspectionController extends Controller
     }
 
 
-     public function destroy(Request $request,$id) 
+     public function destroy(Request $request,$id)
          {
 
 

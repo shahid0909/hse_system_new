@@ -50,16 +50,16 @@
                 </div>
               </div>
               <!-- Row end  -->
-  
+
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12">
                   <div class="row justify-content-center">
                    @if (isset($data->id))
                    <form action="{{ route('safety.modifystore', ['id' => $data->id]) }}"   enctype="multipart/form-data" method="POST">
-                    
+
                     @csrf
                     <input name="_method" type="hidden" value="PUT">
-               
+
                     <div class="form-group">
                       <label >Safety Details</label>
                       <textarea name="s_head" id="" cols="65" rows="">{{  $data->s_head }}</textarea>
@@ -68,12 +68,12 @@
                         <label >Modify Rules A</label>
                         <textarea name="rules_a" id="" cols="65" rows="">{{  $data->rules_a }}</textarea>
                       </div>
-             
+
                       <div class="form-group">
                         <label >Modify Rules B</label>
                         <textarea name="rules_b" id="" cols="65" rows="">{{  $data->rules_b }}</textarea>
                       </div>
-                    
+
                       <div class="form-group">
                         <label >Modify Rules C</label>
                         <textarea name="rules_c" id="" cols="65" rows="">{{  $data->rules_c }}</textarea>
@@ -93,7 +93,7 @@
                         <label >Modify Rules F</label>
                         <textarea name="rules_f" id="" cols="65" rows="">{{  $data->rules_f }}</textarea>
                       </div>
-  
+
                     <button type="submit" class="btn btn-primary">Click For Modify</button>
                   </form>
                        @else
@@ -111,15 +111,15 @@
                           <div class="mb-3 pb-3 border-bottom text-center">
                             <h3><b> SAFETY & HEALTH POLICY</b></h3>
                           </div>
-  
+
                           <div class="row mb-4">
-                          
+
                             <div class="col-sm-12">
-                             
+
                               <div>
                                 <h6>
                                  {{ $safety->s_head}}
-                                  
+
                                 </h6>
                               </div>
                               <div class="mid">
@@ -147,7 +147,7 @@
                                     work environment.
                                   </li>
                                 </ul>
-  
+
                                 <p style="text-align: center">Tag Line Here</p>
                               </div>
                             </div>
@@ -186,7 +186,7 @@
                               </button>
                         </a>
                       </div>
-                      
+
                     </div>
                     @endforeach
                    @endif
@@ -199,7 +199,7 @@
               <!-- Row end  -->
             </div>
           </div>
-          
+
 
 
 

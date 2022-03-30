@@ -32,17 +32,7 @@ class SafetyPolicyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -77,20 +67,6 @@ class SafetyPolicyController extends Controller
         $user = Auth::user();
         $safetys=s_rule::OrderBy('id','desc')->get();
 
-        // $safetys = [
-        //    's_head' => $demo->s_head,
-        //     'rules_a' => $demo->rules_a,
-        //     'r ules_b' => $demo->rules_b,
-        //     'rules_c' => $demo->rules_c,
-        //     'rules_d' => $demo->rules_d,
-        //     'rules_e' => $demo->rules_e,
-        //     'rules_f' => $demo->rules_f
-        // ];
-
-        // dd($safetys);
-
-        // $pdf = PDF::loadView('dashboards.admins.safety.s_view', $safetys);
-        // return $pdf->download('Rouls.pdf');
         return view('dashboards.admins.safety.s_view',compact('safetys','user'));
 
     }
