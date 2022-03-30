@@ -57,7 +57,12 @@
 
 
                                            ">
-                                            <option value="{{isset($data->location) ? $data->location:''}}" > {{isset($data->location) ? $data->location:''}}</option>
+                                            <option value="" >choose</option>
+                                             @foreach($country as $list)
+
+                                          <option value="{{$list->id}}">{{$list->country}}</option>
+
+                                          @endforeach
 
                                           </select>
                                       </div>
@@ -70,11 +75,15 @@
                                         name="pic"
                                         id="pic"
                                         class="col-md-12"
-                                        style="padding: 10px; border-radius: 3px; border-color: var(--border-color);
+                                        style="padding: 10px; border-radius: 3px; border-color: var(--border-color); ">
 
 
-                                        ">
-                                          <option value="{{isset($data->pic) ? $data->pic:''}}">{{isset($data->pic) ? $data->pic:''}}</option>
+                                          <option value="">---Choose---</option>
+                                          @foreach($emp as $list)
+
+                                          <option value="{{$list->id}}">{{$list->em_name}}</option>
+
+                                          @endforeach
 
                                         </select>
                                     </div>
@@ -223,35 +232,7 @@
     <script>
         // project data table
         $(document).ready(function() {
-            $('.datatable').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: {
-                            url: "{{ route('create_ispection.datatable') }}",
-                            type: 'GET',
-                            'headers': {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        },
-                        "columns": [
-                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "location"},
-                            {"data": "image"},
-                            {"data": "pic"},
-                            {"data": "priority"},
-                            {"data": "admitdate"},
-                            {"data": "targetdate"},
-
-                            // {"data": "status"},
-                            {data: 'action', name: 'action', orderable: false, searchable: false}
-                        ],
-                        language: {
-                            paginate: {
-                                next: '<i class="bx bx-chevron-right">',
-                                previous: '<i class="bx bx-chevron-left">'
-                            }
-                        }
-                    });
+            
             $('.deleterow').on('click',function(){
             var tablename = $(this).closest('table').DataTable();
             tablename
