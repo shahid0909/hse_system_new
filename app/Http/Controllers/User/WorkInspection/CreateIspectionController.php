@@ -13,6 +13,18 @@ use App\Models\l_country;
 
 class CreateIspectionController extends Controller
 {
+
+    private $create_inspection;
+
+
+    public function __construct(create_inspection $create_inspection)
+    {
+        $this->create_inspection = $create_inspection;
+
+    }
+
+
+
     public function index()
     {
 
@@ -54,9 +66,6 @@ class CreateIspectionController extends Controller
             'priority' => 'required',
 
 
-
-
-
         ]);
 
         $input = new create_inspection;
@@ -92,17 +101,10 @@ class CreateIspectionController extends Controller
     public function datatable()
     {
 
-        $list =  DB::table('create_inspections')
-            ->join('l_employees','create_inspections.pic','l_employees.id')
-            ->join('l_country','create_inspections.location','l_country.id')
+        $inspection = create_inspection::with('country', 'employee')->get();
 
-
-            ->select('create_inspections.*','l_employees.em_name','l_country.country')->get();
-
-        dd($list['priority']);
-        return datatables()
-            ->of($list)
-
+        return datatables()->of($inspection)
+//
             ->addColumn('priority', function($query){
                 if ($query->priority == '0') {
                     return 'Urgent';
