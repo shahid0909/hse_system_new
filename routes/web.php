@@ -312,7 +312,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('safety_committee/store', [SafetyCommitteeController::class, 'store'])->name('store');
         Route::post('safety_committee/edit/{id}', [SafetyCommitteeController::class, 'edit'])->name('edit');
         Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
-
+    });
     Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
 
         Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
