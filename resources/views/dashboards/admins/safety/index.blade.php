@@ -91,7 +91,7 @@
                     class="mb-0 fw-bold"
                     style="text-align: center !important; color: #315948"
                   >
-                    Next Rewiew Date Of Safety Policy
+                    Next Rewiew Date Of Safety Ploicy
                   </h6>
                 </div>
                 <div
