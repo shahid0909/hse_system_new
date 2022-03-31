@@ -28,6 +28,7 @@ use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
 use App\Http\Controllers\User\CompanySetup\EmployeeProfileController;
 use App\Http\Controllers\User\safety\SafetyPolicyController;
+use App\Http\Controllers\User\safety\UploadPolicyController;
 use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
 use App\Http\Controllers\User\WorkInspection\ListInspectionController;
 use App\Http\Controllers\User\WorkInspection\RectifiedInspectionController;
@@ -300,6 +301,15 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
         Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
         Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
+    });
+    Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
+
+        Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
+        Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
+        Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
+        Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
+        Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
+        Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
     });
 });
 

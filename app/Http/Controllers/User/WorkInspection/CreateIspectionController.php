@@ -34,15 +34,7 @@ class CreateIspectionController extends Controller
 
         $data = '';
 
-        $inspection = DB::table('create_inspections')
-            ->join('l_employees','create_inspections.pic','l_employees.id')
-            ->join('l_country','create_inspections.location','l_country.id')
-
-
-            ->select('create_inspections.*','l_employees.em_name','l_country.country')->get();
-
-
-        return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data','emp','inspection','country'));
+        return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data','emp','country'));
 
     }
 
@@ -50,9 +42,6 @@ class CreateIspectionController extends Controller
     public function store(Request $request)
 
     {
-
-
-
         // dd($request);
 
         $this->validate($request, [
@@ -79,8 +68,6 @@ class CreateIspectionController extends Controller
         $input->admitdate = $request->input('admitdate');
         $input->targetdate = $request->input('targetdate');
         $input->priority = $request->input('priority');
-
-
 
 
         if ($image = $request->file('image')) {
@@ -133,9 +120,11 @@ class CreateIspectionController extends Controller
     public function  edit($id){
 
         $user = Auth::user();
+        $emp = l_employee::all();
+        $country = l_country::all();
         $data = create_inspection::where('id', $id)->first();
 
-        return view('dashboards.users.workplaceInspection.create_inspection', compact('data','user'));
+        return view('dashboards.users.workplaceInspection.create_inspection', compact('data','user','emp','country'));
     }
 
 
