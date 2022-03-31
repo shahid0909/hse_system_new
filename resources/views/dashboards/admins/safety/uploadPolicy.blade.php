@@ -58,7 +58,8 @@
                             </div>
 
                             <div class="card-body">
-                                <form name="supplierForm" id="policyUploadrForm" method="post" enctype="multipart/form-data"
+                                <form name="supplierForm" id="policyUploadrForm" method="post"
+                                      enctype="multipart/form-data"
                                       @if(isset($data->id))
                                       action="{{ route('upload_policy.update', ['id' => $data->id]) }}">
                                     <input name="_method" type="hidden" value="PUT">
@@ -74,8 +75,7 @@
                                                    class="form-control"
                                                    id="policy_name"
                                                    name="policyName" autocomplete="off"
-                                                   value="{{isset($data->policy_name)?$data->policy_name :''}}"
-                                                   />
+                                                   value="{{isset($data->policy_name)?$data->policy_name :''}}"/>
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label">Policy</label>
@@ -85,9 +85,11 @@
                                                    name="policyFile"
                                                    accept="application/pdf">
                                         </div>
-                                        <div>{{isset($data->policy_file)?$data->policy_file :''}}</div>
 
-                                    </div>
+                                        <div>
+                                            {{isset($data->policy_file)?$data->policy_file :''}}</div>
+                                        </div>
+
                                     @if(isset($data->id))
                                         <button type="submit" class="btn btn-primary">
                                             Update Policy
