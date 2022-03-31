@@ -50,6 +50,12 @@
 {{--                                        @dd($data)--}}
                                         <div class="row g-3 col-md-8 align-items-center" style="margin: 0 auto;">
                                             <div class="col-md-12">
+                                                <div class="col-sm-12">
+                                                    <label for="item" class="form-label"
+                                                    >Inspection Title</label
+                                                    >
+                                                    <input type="text" class="form-control"  id="inspection_title" name="inspection_title"/>
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="form-label">Location</label>
                                                     <!-- <input type="text" class="form-control" required> -->

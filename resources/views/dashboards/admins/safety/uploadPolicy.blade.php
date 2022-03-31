@@ -73,7 +73,7 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="policy_name"
-                                                   name="policyName"
+                                                   name="policyName" autocomplete="off"
                                                    value="{{isset($data->policy_name)?$data->policy_name :''}}"
                                                    />
                                         </div>
@@ -86,7 +86,7 @@
                                                    accept="application/pdf">
                                         </div>
                                         <div>{{isset($data->policy_file)?$data->policy_file :''}}</div>
-                                        
+
                                     </div>
                                     @if(isset($data->id))
                                         <button type="submit" class="btn btn-primary">

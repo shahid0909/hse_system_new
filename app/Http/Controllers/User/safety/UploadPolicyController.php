@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\uploadPolicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\File;
 
 class UploadPolicyController extends Controller
 {
@@ -32,10 +33,11 @@ class UploadPolicyController extends Controller
 
         if ($policy_File = $request->file('policyFile')) {
             $destinationPath = 'policy/file';
-            $file = date('YmdHis') . "." . $policy_File->getClientOriginalExtension();
+            $file =$policy_File->getClientOriginalName();
             $policy_File->move($destinationPath, $file);
             $input['policy_File'] = "$file";
         }
+
 
         $input->insert_by = Auth::user()->id;
 
@@ -53,7 +55,7 @@ class UploadPolicyController extends Controller
 //
             ->editColumn('view', function ($query) {
                 $url=asset("policy/file/$query->policy_file");
-                return '<a href="'.$url.'">'.$query->policy_file.'</a>';
+                return '<a href="'.$url.'" target="_blank">'.$query->policy_file.'</a>';
 //
             })
             ->editColumn('action', function ($query) {
@@ -73,5 +75,50 @@ public function edit(Request $request, $id){
     return view('dashboards.admins.safety.uploadPolicy',compact('user','data'));
 
 }
+
+    public function update(Request $request, $id)
+    {
+
+
+        $input = uploadPolicy::find($id);
+        $input->policy_name = $request->input('policyName');
+
+
+        if ($policy_File = $request->file('policyFile')) {
+            $destinationPath = 'policy/file';
+            $file = $policy_File->getClientOriginalName();
+            $policy_File->move($destinationPath, $file);
+            $input['policy_File'] = "$file";
+
+
+        }else{
+            unset( $input['policy_File']);
+
+        }
+
+        $input->insert_by = Auth::user()->id;
+        $input->update();
+
+
+        return redirect()->route('upload_policy.index')->with(['success' => 'Policy is successfully Updated!']);
+
+    }
+
+    public function destroy($id)
+
+    {
+
+        $policy = uploadPolicy::findOrFail($id);
+
+        if ($policy) {
+            if (file_exists('policy/file/' . $policy->policy_file) and !empty($policy->policy_file)) {
+                unlink('policy/file/' . $policy->policy_file);
+            }
+            $policy->delete();
+            return redirect()->back()->with('success', 'Policy information successfully deleted.');
+        }
+
+    }
+
 
 }
