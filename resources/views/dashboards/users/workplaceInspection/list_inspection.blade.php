@@ -42,6 +42,8 @@
                                   <th></th>
                                   <th>Sl</th>
                                   <th>LOCATION</th>
+                                  <th>Find Inspection</th>
+                                  
                                   <th>PICTURE</th>
                                   <th>PIC</th>
                                   <th>PRIORITY</th>
@@ -118,6 +120,7 @@
                             },
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
                             {"data": "country.country"},
+                            {"data": "inspection_title"},
                             {"data": "image"},
                             {"data": "employee.em_name"},
                             {"data": "priority"},

@@ -96,7 +96,7 @@
                       <hr>
                     </div>
                     <div class="card-body">
-                        <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
+                        <table id="" class="table table-hover align-middle mb-0 datatable" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>SL No</th> 
@@ -105,179 +105,11 @@
                                     <th>UNSAFE ACT/UNSAFE CONDITION/HAZARDS/ISSUES </th>  
                                     <th>DATE IDENTIFIED  </th>
                                     <th>CORRECTIVE ACTIONS TO BE TAKEN</th> 
-                                    <th>PIC</th>  
-                                    <th>TARGET DATE </th>
-                                    <th>PRIORITY</th> 
-                                    <th>TASK RECTIFIED WITH PICTURE</th> 
-                                    <th>DATE RECTIFIED  </th>
-                                    <th>STATUS </th> 
-                                    <th>JUSTIFICATION </th> 
-                                    <th>Actions</th>  
+                                     <th>Actions</th>  
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Laundy Department</td>
-                                    <td>
-                                        <img class="avatar" src="assets/images/xs/avatar1.svg" alt="">
-                                    </td>
-                                    <td>
-                                        Portable Steam Iron's Tube too hot when it is in operation and its defective
-                                    </td>
-                                    <td>Shakib Hasan</td>
-                                    <td>Shakib Hasan</td>
-                                    <td>09-05-2021</td>
-                                    <td>IMMEDIATELY (URGENT)</td>
-                                    <td> <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt=""></td>
-                                    <td>09-05-2021</td>
-                                    <td>closed</td>
-                                    <td>The tube insulated with heat resistant material. </td>
-                                    <td>"1. Wrap insulation around the hot tube
-                                        2. Put signage on to warn the hazard (emits hot steam - burn hazard)"
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#expedit"><i class="icofont-edit text-success"></i></button>
-                                            <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Laundy Department</td>
-                                    <td>
-                                        <img class="avatar" src="assets/images/xs/avatar1.svg" alt="">
-                                    </td>
-                                    <td>
-                                        Portable Steam Iron's Tube too hot when it is in operation and its defective
-                                    </td>
-                                    <td>Shakib Hasan</td>
-                                    <td>Shakib Hasan</td>
-                                    <td>09-05-2021</td>
-                                    <td>IMMEDIATELY (URGENT)</td>
-                                    <td> <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt=""></td>
-                                    <td>09-05-2021</td>
-                                    <td>closed</td>
-                                    <td>The tube insulated with heat resistant material. </td>
-                                    <td>"1. Wrap insulation around the hot tube
-                                        2. Put signage on to warn the hazard (emits hot steam - burn hazard)"
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#expedit"><i class="icofont-edit text-success"></i></button>
-                                            <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Laundy Department</td>
-                                    <td>
-                                        <img class="avatar" src="assets/images/xs/avatar1.svg" alt="">
-                                    </td>
-                                    <td>
-                                        Portable Steam Iron's Tube too hot when it is in operation and its defective
-                                    </td>
-                                    <td>Shakib Hasan</td>
-                                    <td>Shakib Hasan</td>
-                                    <td>09-05-2021</td>
-                                    <td>IMMEDIATELY (URGENT)</td>
-                                    <td> <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt=""></td>
-                                    <td>09-05-2021</td>
-                                    <td>closed</td>
-                                    <td>The tube insulated with heat resistant material. </td>
-                                    <td>"1. Wrap insulation around the hot tube
-                                        2. Put signage on to warn the hazard (emits hot steam - burn hazard)"
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#expedit"><i class="icofont-edit text-success"></i></button>
-                                            <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Laundy Department</td>
-                                    <td>
-                                        <img class="avatar" src="assets/images/xs/avatar1.svg" alt="">
-                                    </td>
-                                    <td>
-                                        Portable Steam Iron's Tube too hot when it is in operation and its defective
-                                    </td>
-                                    <td>Shakib Hasan</td>
-                                    <td>Shakib Hasan</td>
-                                    <td>09-05-2021</td>
-                                    <td>IMMEDIATELY (URGENT)</td>
-                                    <td> <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt=""></td>
-                                    <td>09-05-2021</td>
-                                    <td>closed</td>
-                                    <td>The tube insulated with heat resistant material. </td>
-                                    <td>"1. Wrap insulation around the hot tube
-                                        2. Put signage on to warn the hazard (emits hot steam - burn hazard)"
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#expedit"><i class="icofont-edit text-success"></i></button>
-                                            <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Laundy Department</td>
-                                    <td>
-                                        <img class="avatar" src="assets/images/xs/avatar1.svg" alt="">
-                                    </td>
-                                    <td>
-                                        Portable Steam Iron's Tube too hot when it is in operation and its defective
-                                    </td>
-                                    <td>Shakib Hasan</td>
-                                    <td>Shakib Hasan</td>
-                                    <td>09-05-2021</td>
-                                    <td>IMMEDIATELY (URGENT)</td>
-                                    <td> <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt=""></td>
-                                    <td>09-05-2021</td>
-                                    <td>closed</td>
-                                    <td>The tube insulated with heat resistant material. </td>
-                                    <td>"1. Wrap insulation around the hot tube
-                                        2. Put signage on to warn the hazard (emits hot steam - burn hazard)"
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#expedit"><i class="icofont-edit text-success"></i></button>
-                                            <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Laundy Department</td>
-                                    <td>
-                                        <img class="avatar" src="assets/images/xs/avatar1.svg" alt="">
-                                    </td>
-                                    <td>
-                                        Portable Steam Iron's Tube too hot when it is in operation and its defective
-                                    </td>
-                                    <td>Shakib Hasan</td>
-                                    <td>Shakib Hasan</td>
-                                    <td>09-05-2021</td>
-                                    <td>IMMEDIATELY (URGENT)</td>
-                                    <td> <img class="avatar rounded-circle" src="assets/images/xs/avatar1.svg" alt=""></td>
-                                    <td>09-05-2021</td>
-                                    <td>closed</td>
-                                    <td>The tube insulated with heat resistant material. </td>
-                                    <td>"1. Wrap insulation around the hot tube
-                                        2. Put signage on to warn the hazard (emits hot steam - burn hazard)"
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <button type="button" class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#expedit"><i class="icofont-edit text-success"></i></button>
-                                            <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                              
                             </tbody>
                         </table>
                     </div>
@@ -302,6 +134,51 @@
     <script src="{{asset('assets/bundles/apexcharts.bundle.js')}}"></script>
     <script src="{{asset('assets/js/page/chart-apex.js')}}"></script
   <script src="../js/template.js"></script>
+
+   <script>
+        // project data table
+        $(document).ready(function() {
+            $('.datatable').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: {
+                            url: "{{ route('create_ispection.datatable') }}",
+                            type: 'GET',
+                            'headers': {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        },
+                        "columns": [
+                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
+                            {"data": "country.country"},
+                            {"data": "image"},
+                            {"data": "Justification"},
+                            
+                            {"data": "admitdate"},
+                            {"data": "text"},
+                            
+
+                            // {"data": "status"},
+                            {data: 'action', name: 'action', orderable: false, searchable: false}
+                        ],
+                        language: {
+                            paginate: {
+                                next: '<i class="bx bx-chevron-right">',
+                                previous: '<i class="bx bx-chevron-left">'
+                            }
+                        }
+                    });
+            $('.deleterow').on('click',function(){
+            var tablename = $(this).closest('table').DataTable();
+            tablename
+                .row( $(this)
+                .parents('tr') )
+                .remove()
+                .draw();
+
+            } );
+        });
+    </script>
     <script>
         // project data table
         $(document).ready(function() {

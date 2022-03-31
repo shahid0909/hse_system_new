@@ -46,6 +46,15 @@
                              @csrf
                               <div class="row g-3 col-md-8 align-items-center" style="margin: 0 auto;">
                                   <div class="col-md-12">
+
+                                    <div class="col-sm-12">
+                                                <label for="item" class="form-label"
+                                                >Inspection Title</label
+                                                >
+                                                <input type="text" class="form-control"  id="inspection_title" name="inspection_title"/>
+                                      </div>
+
+
                                       <div class="form-group">
                                           <label class="form-label">Location</label>
                                           <!-- <input type="text" class="form-control" required> -->
@@ -53,14 +62,11 @@
                                           name="location"
                                           id="location"
                                           class="col-md-12"
-                                           style="padding: 10px; border-radius: 3px; border-color: var(--border-color);
-
-
-                                           ">
+                                           style="padding: 10px; border-radius: 3px; border-color: var(--border-color);">
                                             <option value="" >choose</option>
                                              @foreach($country as $list)
 
-                                          <option value="{{$list->id}}">{{$list->country}}</option>
+                                          <option value="{{isset{$list->id}}">{{$list->country}}</option>
 
                                           @endforeach
 
@@ -186,7 +192,10 @@
                                     class="form-control"
                                     type="file"
                                     id="image"
-                                    name="image"
+                                     accept="image/*"
+                                    name="image" 
+                                     multiple
+                                    required
                                     value="{{isset($data->image) ? $data->image:''}}"
 
 
