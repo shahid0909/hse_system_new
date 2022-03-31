@@ -16,7 +16,7 @@ class CreateSafetyCommitteesTable extends Migration
         Schema::create('safety_committees', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id');
-            $table->integer('designation_id');
+            $table->string('designation');
             $table->string('photo')->default('profile.jpg');
             $table->timestamps();
         });

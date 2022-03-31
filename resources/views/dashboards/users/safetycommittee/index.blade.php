@@ -41,20 +41,26 @@
                         </div>
                     </div>
                     <div class="card-body" id="card-content">
-                        <h1 class="mb-4 mt-4 committee-designation"> {{ $chairman[0]->designation }} </h1>
-                        <div id="chairman"></div>
-                        <h1 class="mb-4 mt-4 committee-designation"> {{ $secretary[0]->designation }} </h1>
-                        <div id="secretary"></div>
                         @php
                             $count = $management_representative->count();
                             $count_emp_rep = $employee_representative->count();
+                            $count_chairman = $chairman->count();
+                            $count_secretary = $secretary->count();
                         @endphp
+                        @if($count_chairman !== 0)
+                        <h1 class="mb-4 mt-4 committee-designation"> {{ $chairman[0]->designation }} </h1>
+                        @endif
+                        <div id="chairman"></div>
+                        @if($count_secretary !== 0)
+                        <h1 class="mb-4 mt-4 committee-designation"> {{ $secretary[0]->designation }} </h1>
+                        @endif
+                        <div id="secretary"></div>
                         @if($count_emp_rep !== 0)
-                        <h1 class="mb-4 mt-4 committee-designation"> {{ $employee_representative[0]->designation }} </h1>
+                          <h1 class="mb-4 mt-4 committee-designation"> {{ $employee_representative[0]->designation }} </h1>
                         @endif
                         <div id="employee_representative"></div>
                         @if($count !== 0)
-                        <h1 class="mb-4 mt-4 committee-designation"> {{ $management_representative[0]->designation }} </h1>
+                          <h1 class="mb-4 mt-4 committee-designation"> {{ $management_representative[0]->designation }} </h1>
                         @endif
                         <div id="management_representative"></div>
                     </div>
