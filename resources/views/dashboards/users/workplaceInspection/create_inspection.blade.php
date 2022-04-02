@@ -67,10 +67,7 @@
                                            ">
                                                         <option value="">choose</option>
                                                         @foreach($country as $list)
-
                                                             <option value="{{$list->id}}"{{isset($data->location) && $data->location == $list->id ? 'selected': ''}}>{{$list->country}}</option>
-
-
                                                         @endforeach
 
                                                     </select>
