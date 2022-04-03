@@ -14,12 +14,12 @@
                 >
             </li>
 
-            <li>
+            {{-- <li>
                 <a class="m-link" href="{{ route('safety_committee.index') }}"
                 ><i class="icofont-users fs-5"></i>
                     <span>Safety Committee</span></a
                 >
-            </li>
+            </li> --}}
 
 
             <li class="collapsed">
@@ -141,6 +141,8 @@
 
 
         </ul>
+
+        
         <!-- Menu: menu collepce btn -->
         <button
             type="button"

@@ -12,8 +12,6 @@ class WorkInspectionController extends Controller
     {
 
         $user = Auth::user();
-        
-        
         return view('dashboards.users.workplaceInspection.dashboard', compact('user'));
 
     }
