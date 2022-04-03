@@ -99,17 +99,18 @@
                         <table id="" class="table table-hover align-middle mb-0 datatable" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>SL No</th> 
+                                    <th></th>
+                                    <th>SL No</th>
                                     <th>LOCATION </th>
-                                    <th>PICTURE</th> 
-                                    <th>UNSAFE ACT/UNSAFE CONDITION/HAZARDS/ISSUES </th>  
+                                    <th>PICTURE</th>
+                                    <th>UNSAFE ACT/UNSAFE CONDITION/HAZARDS/ISSUES </th>
                                     <th>DATE IDENTIFIED  </th>
-                                    <th>CORRECTIVE ACTIONS TO BE TAKEN</th> 
-                                     <th>Actions</th>  
+                                    <th>CORRECTIVE ACTIONS TO BE TAKEN</th>
+                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              
+
                             </tbody>
                         </table>
                     </div>
@@ -124,7 +125,7 @@
 @endsection
 
 @section('script')
-        
+
 
  <!-- Jquery Core Js -->
     <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
@@ -134,112 +135,178 @@
     <script src="{{asset('assets/bundles/apexcharts.bundle.js')}}"></script>
     <script src="{{asset('assets/js/page/chart-apex.js')}}"></script
 
-    
+
      <script src="../js/template.js"></script>
 
-   <script>
+ <script type="text/javascript">
 
      function format ( d ) {
-            // `d` is the original data object for the row
-            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-                '<tr>'+
-                '<td>Full name:</td>'+
-                '<td>'+d.country.country+'</td>'+
-                '</tr>'+
-                '<tr>'+
-                '<td>Extension number:</td>'+
-                '<td>'+d.Justification+'</td>'+
-                '</tr>'+
-                '<tr>'+
-                '<td>Extra info:</td>'+
-                '<td>And any further details here (images etc)...</td>'+
-                '</tr>'+
-                '</table>';
-        }
+                 // `d` is the original data object for the row
+                 return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+                     '<tr>'+
+                     '<td>Full name:</td>'+
+                     '<td>'+d.country.country+'</td>'+
+                     '</tr>'+
+                     '<tr>'+
+                     '<td>Extension number:</td>'+
+                     '<td>'+d.Justification+'</td>'+
+                     '</tr>'+
+                     '<tr>'+
+                     '<td>Extra info:</td>'+
+                     '<td>And any further details here (images etc)...</td>'+
+                     '</tr>'+
+                     '</table>';
+             }
 
-        // project data table
-        $(document).ready(function() {
-            var table =$('.datatable').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: {
-                            url: "{{ route('create_ispection.datatable') }}",
-                            type: 'GET',
-                            'headers': {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        },
-                        "columns": [
-                            {
-                                "className":      'dt-control',
-                                "orderable":      false,
-                                "data":           null,
-                                "defaultContent": ''
-                            },
+     $(document).ready(function() {
+         var table = $('.datatable').DataTable({
+             processing: true,
+             serverSide: true,
+             ajax: {
+                 url: "{{ route('create_ispection.datatable') }}",
+                 type: 'GET',
+                 'headers': {
+                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                 }
+             },
+             "columns": [
+                 {
+                     "className": 'dt-control',
+                     "orderable": false,
+                     "data": null,
+                     "defaultContent": ''
+                 },
 
-                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "country.country"},
-                            {"data": "image"},
-                            {"data": "Justification"},
-                            
-                            {"data": "admitdate"},
-                            {"data": "text"},
-                            
+                 {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
+                 {"data": "country.country"},
+                 {"data": "image"},
+                 {"data": "Justification"},
 
-                            // {"data": "status"},
-                            {data: 'action', name: 'action', orderable: false, searchable: false}
-                        ],
-                        language: {
-                            paginate: {
-                                next: '<i class="bx bx-chevron-right">',
-                                previous: '<i class="bx bx-chevron-left">'
-                            }
-                        }
-                    });
+                 {"data": "admitdate"},
+                 {"data": "text"},
 
-            $('.datatable tbody').on('click', 'td.dt-control', function () {
-                var tr = $(this).closest('tr');
-                var row = table.row( tr );
 
-                if ( row.child.isShown() ) {
-                    // This row is already open - close it
-                    row.child.hide();
-                    tr.removeClass('shown');
-                }
-                else {
-                    // Open this row
-                    row.child( format(row.data()) ).show();
-                    tr.addClass('shown');
-                }
-            } );
+                 // {"data": "status"},
+                 {data: 'action', name: 'action', orderable: false, searchable: false}
+             ],
+             language: {
+                 paginate: {
+                     next: '<i class="bx bx-chevron-right">',
+                     previous: '<i class="bx bx-chevron-left">'
+                 }
+             }
+         });
 
-        
+         $('.datatable tbody').on('click', 'td.dt-control', function () {
+                     var tr = $(this).closest('tr');
+                     var row = table.row( tr );
+
+                     if ( row.child.isShown() ) {
+                         // This row is already open - close it
+                         row.child.hide();
+                         tr.removeClass('shown');
+                     }
+                     else {
+                         // Open this row
+                         row.child( format(row.data()) ).show();
+                         tr.addClass('shown');
+                     }
+                 } );
+
 
          
-        });
-    </script>
 
 
-    <script>
-        // project data table
-        $(document).ready(function() {
-            $('#myProjectTable')
-            .addClass( 'nowrap' )
-            .dataTable( {
-                responsive: true,
-                columnDefs: [
-                    { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            });
-            $('.deleterow').on('click',function(){
-            var tablename = $(this).closest('table').DataTable();  
-            tablename
-                .row( $(this)
-                .parents('tr') )
-                .remove()
-                .draw();
 
-            } );
-        });
-    </script>
+     });
+
+
+  </script>
+
+
+
+
+ {{--   <script>
+
+{{--     function format ( d ) {--}}
+{{--            // `d` is the original data object for the row--}}
+{{--            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+--}}
+{{--                '<tr>'+--}}
+{{--                '<td>Full name:</td>'+--}}
+{{--                '<td>'+d.country.country+'</td>'+--}}
+{{--                '</tr>'+--}}
+{{--                '<tr>'+--}}
+{{--                '<td>Extension number:</td>'+--}}
+{{--                '<td>'+d.Justification+'</td>'+--}}
+{{--                '</tr>'+--}}
+{{--                '<tr>'+--}}
+{{--                '<td>Extra info:</td>'+--}}
+{{--                '<td>And any further details here (images etc)...</td>'+--}}
+{{--                '</tr>'+--}}
+{{--                '</table>';--}}
+{{--        }--}}
+
+{{--        // project data table--}}
+{{--        $(document).ready(function() {--}}
+{{--            var table =$('.datatable').DataTable({--}}
+{{--                        processing: true,--}}
+{{--                        serverSide: true,--}}
+{{--                        ajax: {--}}
+{{--                            url: "{{ route('create_ispection.datatable') }}",--}}
+{{--                            type: 'GET',--}}
+{{--                            'headers': {--}}
+{{--                                'X-CSRF-TOKEN': '{{ csrf_token() }}'--}}
+{{--                            }--}}
+{{--                        },--}}
+{{--                        "columns": [--}}
+{{--                            {--}}
+{{--                                "className":      'dt-control',--}}
+{{--                                "orderable":      false,--}}
+{{--                                "data":           null,--}}
+{{--                                "defaultContent": ''--}}
+{{--                            },--}}
+
+{{--                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},--}}
+{{--                            {"data": "country.country"},--}}
+{{--                            {"data": "image"},--}}
+{{--                            {"data": "Justification"},--}}
+{{--                            --}}
+{{--                            {"data": "admitdate"},--}}
+{{--                            {"data": "text"},--}}
+{{--                            --}}
+
+{{--                            // {"data": "status"},--}}
+{{--                            {data: 'action', name: 'action', orderable: false, searchable: false}--}}
+{{--                        ],--}}
+{{--                        language: {--}}
+{{--                            paginate: {--}}
+{{--                                next: '<i class="bx bx-chevron-right">',--}}
+{{--                                previous: '<i class="bx bx-chevron-left">'--}}
+{{--                            }--}}
+{{--                        }--}}
+{{--                    });--}}
+
+{{--            $('.datatable tbody').on('click', 'td.dt-control', function () {--}}
+{{--                var tr = $(this).closest('tr');--}}
+{{--                var row = table.row( tr );--}}
+
+{{--                if ( row.child.isShown() ) {--}}
+{{--                    // This row is already open - close it--}}
+{{--                    row.child.hide();--}}
+{{--                    tr.removeClass('shown');--}}
+{{--                }--}}
+{{--                else {--}}
+{{--                    // Open this row--}}
+{{--                    row.child( format(row.data()) ).show();--}}
+{{--                    tr.addClass('shown');--}}
+{{--                }--}}
+{{--            } );--}}
+
+{{--        --}}
+
+{{--         --}}
+{{--        });--}}
+{{--    </script>--}}
+
+
 @endsection

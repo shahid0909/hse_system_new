@@ -122,9 +122,7 @@ class SafetyCommitteeController extends Controller
             if ($file !== $currentPhoto) {
                 $oldPhoto = public_path('uploads/safetyCommittee/').$currentPhoto;
                 if(file_exists($oldPhoto)){
-
                     unlink($oldPhoto); // then delete previous photo
-
                 }
             }
             $file->move('uploads/safetyCommittee/', $filename);

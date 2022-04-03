@@ -11,8 +11,8 @@ use App\Models\create_inspection;
 
 class RectifiedInspectionController extends Controller
 {
-    
-  
+
+
 
       public function index()
     {
@@ -20,22 +20,24 @@ class RectifiedInspectionController extends Controller
         $user = Auth::user();
 
         $cri = create_inspection::all();
-       
+
 
         $data = DB::table('rectified_inspections')
                ->join('create_inspections','rectified_inspections.find_inspection','create_inspections.id')
-               
+
                ->select('rectified_inspections.*','create_inspections.inspection_title')->get();
-        
-        
+
+
         return view('dashboards.users.workplaceInspection.rectified_inspection', compact('user','cri','data'));
 
     }
 
+
+
     public function store(Request $request)
 
     {
- 
+
 
         $input = new RectifiedInspection;
         // dd($input);
@@ -101,7 +103,7 @@ public function  edit($id){
            $cri = create_inspection::all();
         $data = RectifiedInspection::where('id', $id)->first();
 
-        
+
         return view('dashboards.users.workplaceInspection.rectified_inspection', compact('user','data','cri'));
     }
 }
