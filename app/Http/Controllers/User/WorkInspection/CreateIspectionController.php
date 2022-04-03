@@ -91,7 +91,7 @@ class CreateIspectionController extends Controller
     {
 
         $inspection = create_inspection::with('country', 'employee')->get();
-      
+
 
         return datatables()->of($inspection)
 //
