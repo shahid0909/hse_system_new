@@ -15,6 +15,10 @@ class CreateRectifiedInspectionsTable extends Migration
     {
         Schema::create('rectified_inspections', function (Blueprint $table) {
             $table->id();
+            $table->string('find_inspection');
+            $table->date('date_rectified');
+            $table->string('r_image');
+           
             $table->timestamps();
         });
     }

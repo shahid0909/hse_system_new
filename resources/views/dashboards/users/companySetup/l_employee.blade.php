@@ -191,7 +191,7 @@
                                             <div class="col-sm-12">
                                                 <label for="taxtno" class="form-label"
                                                 >Employees Photo</label>
-                                                <input type="File" class="form-control" name="em_photo"/>
+                                                <input type="File" class="form-control" name="em_photo" accept="image/*"/>
                                             </div>
                                         </div>
                                         <div class="row g-3 mb-3">

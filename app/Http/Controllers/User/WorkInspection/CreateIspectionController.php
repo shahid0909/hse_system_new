@@ -45,6 +45,7 @@ class CreateIspectionController extends Controller
         // dd($request);
 
         $this->validate($request, [
+            'inspection_title' => 'required',
             'location' => 'required',
             'pic' => 'required',
             'unsafe' => 'required',
@@ -60,6 +61,7 @@ class CreateIspectionController extends Controller
         $input = new create_inspection;
         // dd($input);
 
+        $input->inspection_title = $request->input('inspection_title');
         $input->location = $request->input('location');
         $input->pic = $request->input('pic');
         $input->unsafe = $request->input('unsafe');
@@ -89,6 +91,7 @@ class CreateIspectionController extends Controller
     {
 
         $inspection = create_inspection::with('country', 'employee')->get();
+
 
         return datatables()->of($inspection)
 //
