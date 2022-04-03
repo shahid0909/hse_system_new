@@ -58,7 +58,8 @@
                             </div>
 
                             <div class="card-body">
-                                <form name="supplierForm" id="policyUploadrForm" method="post" enctype="multipart/form-data"
+                                <form name="supplierForm" id="policyUploadrForm" method="post"
+                                      enctype="multipart/form-data"
                                       @if(isset($data->id))
                                       action="{{ route('upload_policy.update', ['id' => $data->id]) }}">
                                     <input name="_method" type="hidden" value="PUT">
@@ -73,19 +74,22 @@
                                             <input type="text"
                                                    class="form-control"
                                                    id="policy_name"
-                                                   name="policy_name"
-                                                   value="{{isset($data->policy_name)? $data->policy_name: ''}}"/>
+                                                   name="policyName" autocomplete="off"
+                                                   value="{{isset($data->policy_name)?$data->policy_name :''}}"/>
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label">Policy</label>
                                             <input type="file"
                                                    class="form-control"
                                                    id="policy_file"
-                                                   name="policy_file"
-                                                   value="{{isset($data->policy_file)? $data->policy_file: ''}}"/>
+                                                   name="policyFile"
+                                                   accept="application/pdf">
                                         </div>
 
-                                    </div>
+                                        <div>
+                                            {{isset($data->policy_file)?$data->policy_file :''}}</div>
+                                        </div>
+
                                     @if(isset($data->id))
                                         <button type="submit" class="btn btn-primary">
                                             Update Policy
@@ -112,9 +116,8 @@
                                     <thead>
                                     <tr>
                                         <th>Sl.</th>
-                                        <th>Designation Name</th>
-                                        <th>Rank</th>
-                                        {{--                                        <th>Status</th>--}}
+                                        <th>policy Name</th>
+                                        <th>policy File</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -151,7 +154,7 @@
                         processing: true,
                         serverSide: true,
                         ajax: {
-                            url: "{{ route('designation.datatable') }}",
+                            url: "{{ route('upload_policy.datatable') }}",
                             type: 'GET',
                             'headers': {
                                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -159,8 +162,8 @@
                         },
                         "columns": [
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "ds_name"},
-                            {"data": "ds_rank"},
+                            {"data": "policy_name"},
+                            {"data": "view"},
                             // {"data": "status"},
                             {data: 'action', name: 'action', orderable: false, searchable: false}
                         ],

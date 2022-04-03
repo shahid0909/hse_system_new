@@ -163,13 +163,12 @@
                           <!-- Row end  -->
                         </div>
                       </div>
-                      <div class="col-lg-12 text-end">
-                        <button
-                          type="button"
-                          class="btn btn-outline-secondary btn-lg my-1"
-                        >
-                          <i class="fa fa-print"></i> upload
-                        </button>
+                      <div class="col-lg-12 text-end mt-2">
+                        <a href="{{route('upload_policy.index')}}"> <button
+                                type="button"
+                                class="btn btn-dark btn-lg my-1" >
+                                <i class="fa fa-print"></i> Upload
+                            </button></a>
                         <a href="{{ route('safety.download',$safety->id) }}">
                             <button type="button" class="btn btn-primary btn-lg my-1">
                                 <i class="fa fa-paper-plane-o"></i> Download
@@ -181,7 +180,7 @@
                               </button>
                         </a>
                         <a href="{{ route('safety.destroy',$safety->id) }}">
-                            <button type="button" class="btn btn-info btn-lg my-1">
+                            <button type="button" class="btn btn-danger btn-lg my-1">
                                 <i class="fa fa-paper-plane-o"></i>Delete
                               </button>
                         </a>
