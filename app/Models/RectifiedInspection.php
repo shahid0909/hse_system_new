@@ -10,4 +10,10 @@ class RectifiedInspection extends Model
     use HasFactory;
     protected $guarded = [''];
   
+
+
+   public function findInsp()
+    {
+        return $this->belongsTo(create_inspection::class,'find_inspection', 'id');
+    }
 }

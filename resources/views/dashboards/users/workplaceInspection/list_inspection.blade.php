@@ -112,12 +112,14 @@
                             }
                         },
                         "columns": [
+
                             {
                                 "className":      'dt-control',
                                 "orderable":      false,
                                 "data":           null,
                                 "defaultContent": ''
                             },
+                            
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
                             {"data": "country.country"},
                             {"data": "inspection_title"},

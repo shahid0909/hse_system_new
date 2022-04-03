@@ -20,6 +20,8 @@ class create_inspection extends Model
         return $this->belongsTo(l_employee::class,'pic', 'id');
     }
 
+    
+
 //    public function getallData(){
 //        $list =  DB::table('create_inspections')
 //            ->join('l_employees','create_inspections.pic','l_employees.id')

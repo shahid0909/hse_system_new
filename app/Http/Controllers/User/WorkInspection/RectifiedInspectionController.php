@@ -61,7 +61,7 @@ class RectifiedInspectionController extends Controller
 
     public function datatable()
     {
-        $data = RectifiedInspection::orderBy('id', 'DESC')->get();
+        $data = RectifiedInspection::with('findInsp')->orderby('id','desc')->get();
 
         return datatables()
             ->of($data)
@@ -98,9 +98,10 @@ class RectifiedInspectionController extends Controller
 public function  edit($id){
 
         $user = Auth::user();
+           $cri = create_inspection::all();
         $data = RectifiedInspection::where('id', $id)->first();
 
         
-        return view('dashboards.users.workplaceInspection.rectified_inspection', compact('user','data'));
+        return view('dashboards.users.workplaceInspection.rectified_inspection', compact('user','data','cri'));
     }
 }

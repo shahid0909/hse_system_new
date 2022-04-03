@@ -55,16 +55,18 @@
                                           id="find_inspection" 
                                           class="col-md-12" 
                                           style="padding: 10px; border-radius: 3px; border-color: var(--border-color);">
-                                             <option value="" >choose</option>
-                                             @foreach($cri as $list)
 
-                                          <option value="{{isset{$list->id}}">{{$list->inspection_title}}
+                                           <option value="" >choose</option>
+                                            @foreach($cri as $list)
+
+                                          <option value="{{isset($list->id)}}">{{$list->inspection_title}}
 
 
                                           </option>
 
                                           @endforeach
                                           </select>
+                                        
                                       </div>
                                   </div>
                                   <div class="col-md-12">
@@ -115,6 +117,7 @@
                                 >
                                     <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Sl</th>
                                         <th>Find_inspection</th>
                                         <th>Image</th>
@@ -156,13 +159,32 @@
 
          <script>
 
+             function format ( d ) {
+            // `d` is the original data object for the row
+            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+                '<tr>'+
+                '<td>Full name:</td>'+
+                '<td>'+d.find_insp.inspection_title+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td>Extension number:</td>'+
+                '<td>'+d.find_insp.inspection_title+'</td>'+
+                '</tr>'+
+                '<tr>'+
+                '<td>Extra info:</td>'+
+                '<td>And any further details here (images etc)...</td>'+
+                '</tr>'+
+                '</table>';
+        }
+
 
                 // project data table
                 $(document).ready(function () {
                     setTimeout(function () {
                         $('.message').fadeOut('fast');
                     }, 500);
-                    $('.datatable').DataTable({
+
+                     var table = $('.datatable').DataTable({
                         processing: true,
                         serverSide: true,
                         ajax: {
@@ -173,8 +195,14 @@
                             }
                         },
                         "columns": [
+                         {
+                                "className":      'dt-control',
+                                "orderable":      false,
+                                "data":           null,
+                                "defaultContent": ''
+                            },
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "find_inspection"},
+                            {"data": "find_insp.inspection_title"},
                             {"data": "r_image"},
 
                             {"data": "date_rectified"},
@@ -189,15 +217,29 @@
                             }
                         }
                     });
+
+
+
+                    $('.datatable tbody').on('click', 'td.dt-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row( tr );
+
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child( format(row.data()) ).show();
+                    tr.addClass('shown');
+                }
+            } );
+
                 });
             </script>
 
 
-    <script>
-      $(function () {
-        // initialize after multiselect
-        $("#basic-form").parsley();
-      });
-    </script>
+    
 
 @endsection
