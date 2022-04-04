@@ -235,8 +235,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
     Route::group(['name'=>'safety','as'=>'safety.'],function(){
     Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
-    Route::get('policy/generate',[::class,'policyindex'])->name('policy-index');
-        SafetyPolicyController    Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
+    Route::get('policy/generate',[SafetyPolicyController::class,'policyindex'])->name('policy-index');
+    Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
     Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
     Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
     Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
@@ -336,7 +336,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 });
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){
-  Route::get('accident.index',[AccidentController::class,'index'])->name('index');
+  Route::get('accident',[AccidentController::class,'index'])->name('index');
   Route::post('store',[AccidentController::class,'store'])->name('store');
   Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
 });

@@ -24,15 +24,18 @@
         <form method="post" action="{{ route('committee.store') }}" id="committee" enctype="multipart/form-data">
             @csrf
             <div class="row g-3 mb-3">
-               
+
                 <div class="col-sm-6">
                     <label class="form-label">Select Designation</label>
                     <select name="designation_id"
                             id="designation_id" class="form-control col-md-12">
                         <option value="">Select Designation</option>
-                        @foreach ($committes as $committe)
-                        <option value="{{$committe->id }}">{{$committe->designation }}</option>
-                        @endforeach
+                        <option value="CHAIRMAN">Chairman</option>
+                        <option value="SECRETARY">Secretary</option>
+                        <option value="EMPLOYEE REPRESENTATIVE">EMPLOYEE REPRESENTATIVE</option>
+                        <option value="MANAGEMENT/EMPLOYER REPRESENTATIVE">
+                            MANAGEMENT/EMPLOYER REPRESENTATIVE
+                        </option>
                     </select>
                 </div>
 
@@ -53,10 +56,10 @@
                 <div class="col-sm-12">
                     <input type="submit"  value="submit">
                 </div>
-                
+
             </div>
-       
-         
+
+
         </form>
 
 @endsection
@@ -77,7 +80,7 @@ $.ajax({
         url:"{{ route('committee.employee') }}",
         data: {designation:designation},
         success: function (data) {
-           
+
           $('#employee_list').html(data);
         }
       });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\SafetyCommittee;
 use App\Models\g_committe;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class generateCommittee extends Controller
 {
@@ -23,10 +24,12 @@ class generateCommittee extends Controller
     }
 
     public function employee(Request $request){
-dd($request);
 
-       $committes= SafetyCommittee::where('employee_id',$request->designation)->get();
-       dd($committes);
+
+       $committes= DB::select("SELECT e.id,e.em_name FROM safety_committees s
+LEFT join l_employees e on e.id = s.employee_id
+WHERE  s.designation = '$request->designation'");
+
        $stringTosend = '';
        if(!empty($committes)){
            $stringTosend .= ' <option value="">--- Choose ---</option>';
@@ -39,7 +42,7 @@ dd($request);
 
         echo ' <option value="">--- Choose ---</option>';
        }
-   
+
 
     }
 
