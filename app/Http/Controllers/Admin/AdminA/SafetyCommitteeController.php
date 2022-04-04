@@ -135,4 +135,7 @@ class SafetyCommitteeController extends Controller
 
         return json_encode($update, 200);
     }
+    public function committeedetails(){
+        
+    }
 }

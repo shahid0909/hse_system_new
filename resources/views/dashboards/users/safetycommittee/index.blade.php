@@ -1,12 +1,8 @@
 @extends('layouts.app')
-
 @section('title')
-
 @endsection
-
 @section('style')
 @endsection
-
 @section('content')
     <!-- sidebar -->
     @include('dashboards.users.partial.sidebar')
@@ -22,6 +18,10 @@
             </div>
         @endif
         <div class="body d-flex py-3">
+            <a href="{{ route('committee.index') }}">
+                 <button class="bg bg-info">Generate Committe</button>
+                </a>
+           
             <div class="container-xxl">
                 <div class="card">
                     <div
@@ -38,6 +38,9 @@
                                 <i class="icofont-plus-circle me-2 fs-6"></i>Add Safety
                                 Committee
                             </button>
+
+                    
+                           
                         </div>
                     </div>
                     <div class="card-body" id="card-content">

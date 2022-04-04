@@ -11,4 +11,5 @@ class SafetyCommittee extends Model
     protected $table = "safety_committees";
     protected $fillable = ['employee_id', 'designation','photo'];
     protected $primaryKey = "id";
+
 }

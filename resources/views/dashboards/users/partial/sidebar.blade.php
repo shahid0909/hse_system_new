@@ -13,13 +13,12 @@
                 ><i class="icofont-home fs-5"></i> <span>Dashboard</span></a
                 >
             </li>
-
-            {{-- <li>
+ <li>
                 <a class="m-link" href="{{ route('safety_committee.index') }}"
                 ><i class="icofont-users fs-5"></i>
                     <span>Safety Committee</span></a
                 >
-            </li> --}}
+            </li> 
 
 
             <li class="collapsed">

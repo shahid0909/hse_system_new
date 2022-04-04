@@ -3,6 +3,7 @@ use App\Http\Controllers\Admin\AdminA\ChemicalController;
 use App\Http\Controllers\Admin\AdminA\ChemicalListingController;
 use App\Http\Controllers\Admin\AdminA\ChemicalRegisterController;
 use App\Http\Controllers\Admin\AdminA\SafetyCommitteeController;
+use App\Http\Controllers\Admin\AdminA\generateCommittee;
 use App\Http\Controllers\Admin\AdminA\Setup\CasController;
 use App\Http\Controllers\Admin\AdminA\Setup\GhslabelController;
 use App\Http\Controllers\Admin\AdminA\Setup\HazardController;
@@ -297,7 +298,19 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('safety_committee/store', [SafetyCommitteeController::class, 'store'])->name('store');
         Route::post('safety_committee/edit/{id}', [SafetyCommitteeController::class, 'edit'])->name('edit');
         Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
+
+       
     });
+
+
+    Route::group(['name'=>'committee','as'=>'committee.'],function(){
+        Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
+        Route::post('store',[generateCommittee::class,'store'])->name('store');
+        Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
+    });
+
+    
+   
     Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
         Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');

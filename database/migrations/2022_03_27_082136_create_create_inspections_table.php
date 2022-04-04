@@ -15,7 +15,7 @@ class CreateCreateInspectionsTable extends Migration
     {
         Schema::create('create_inspections', function (Blueprint $table) {
             $table->id();
-            $table->string('inspection_title')
+            $table->string('inspection_title');
             $table->string('location');
             $table->string('pic');
             $table->text('unsafe');
@@ -24,7 +24,6 @@ class CreateCreateInspectionsTable extends Migration
             $table->date('admitdate');
             $table->date('targetdate');
             $table->string('priority');
-            
             $table->string('image');
             $table->timestamps();
         });
