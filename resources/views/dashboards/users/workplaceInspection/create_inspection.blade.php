@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('style')
     <style type="text/css">
         .select2-selection__rendered {
@@ -44,10 +43,8 @@
                                         @else
                                             action="{{ route('create_ispection.store') }}" novalidate>
                                         @endif
-
-
                                         @csrf
-{{--                                        @dd($data)--}}
+{{--@dd($data)--}}
                                         <div class="row g-3 col-md-8 align-items-center" style="margin: 0 auto;">
                                             <div class="col-md-12">
                                                 <div class="col-sm-12">
@@ -61,19 +58,14 @@
                                                     <!-- <input type="text" class="form-control" required> -->
                                                     <select  name="location"  id="location"
                                                         class="col-md-12"
-                                                        style="padding: 10px; border-radius: 3px; border-color: var(--border-color);
+                                                        style="padding: 10px; border-radius: 3px; border-color: var(--border-color);">
 
-
-                                           ">
                                                         <option value="">choose</option>
                                                         @foreach($country as $list)
-
                                                             <option value="{{$list->id}}"{{isset($data->location) && $data->location == $list->id ? 'selected': ''}}>{{$list->country}}</option>
-
-
                                                         @endforeach
-
                                                     </select>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

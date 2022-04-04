@@ -135,19 +135,14 @@
                 <!-- Row End -->
             </div>
         </div>
-
-
         @endsection
         @section('script')
             <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
-
             <!-- Plugin Js-->
             <script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
-
             <!-- Jquery Page Js -->
             <script src="{{asset('../js/template.js')}}"></script>
             <script>
-
                 // project data table
                 $(document).ready(function () {
                     setTimeout(function () {
@@ -179,5 +174,4 @@
                     });
                 });
             </script>
-
 @endsection

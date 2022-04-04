@@ -1,9 +1,9 @@
 <?php
-
 use App\Http\Controllers\Admin\AdminA\ChemicalController;
 use App\Http\Controllers\Admin\AdminA\ChemicalListingController;
 use App\Http\Controllers\Admin\AdminA\ChemicalRegisterController;
 use App\Http\Controllers\Admin\AdminA\SafetyCommitteeController;
+use App\Http\Controllers\Admin\AdminA\generateCommittee;
 use App\Http\Controllers\Admin\AdminA\Setup\CasController;
 use App\Http\Controllers\Admin\AdminA\Setup\GhslabelController;
 use App\Http\Controllers\Admin\AdminA\Setup\HazardController;
@@ -13,14 +13,11 @@ use App\Http\Controllers\Admin\AdminA\Setup\ppeController;
 use App\Http\Controllers\Admin\AdminA\Setup\SupplierController;
 use App\Http\Controllers\Admin\AdminA\UsercreateController;
 use App\Http\Controllers\Admin\AdminController;
-
 use App\Http\Controllers\Admin\UserController;
-
+use App\Http\Controllers\Admin\user\AccidentController;
 
 use App\Http\Controllers\FrontendController;
-
 use App\Http\Controllers\Client\ScheduleDemoController;
-
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\user\AccidentInvesttigation\AccidentInvestController;
@@ -35,6 +32,7 @@ use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
 use App\Http\Controllers\User\WorkInspection\ListInspectionController;
 use App\Http\Controllers\User\WorkInspection\RectifiedInspectionController;
 use App\Http\Controllers\User\WorkInspection\WorkInspectionController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -211,7 +209,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
 
     Route::group(['name' => 'department', 'as' => 'department.'], function () {
-
         Route::get('department', [DepartmentController::class, 'index'])->name('index');
         Route::POST('department-store', [DepartmentController::class, 'store'])->name('store');
        Route::get('department-edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
@@ -221,7 +218,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     });
 
     Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
-
         Route::get('designation', [DesignationController::class, 'index'])->name('index');
         Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
         Route::get('designation-datatable-list', [DesignationController::class, 'datatable'])->name('datatable');
@@ -229,9 +225,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::put('designation/{id}', [DesignationController::class, 'editstore'])->name('editstore');
         Route::get('designation-destroy/{id}', [DesignationController::class, 'destroy'])->name('destroy');
     });
-
     Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
-
         Route::get('employee', [EmployeeController::class, 'index'])->name('index');
         Route::Post('employee/store', [EmployeeController::class, 'store'])->name('store');
         Route::get('emp-information-ajax-data', [EmployeeController::class, 'getempinfo'])->name('getempinfo');
@@ -241,8 +235,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
     Route::group(['name'=>'safety','as'=>'safety.'],function(){
     Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
-    Route::get('policy/generate',[SafetyPolicyController::class,'policyindex'])->name('policy-index');
-    Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
+    Route::get('policy/generate',[::class,'policyindex'])->name('policy-index');
+        SafetyPolicyController    Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
     Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
     Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
     Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
@@ -257,17 +251,11 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 //    });
 
     Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
-
         Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
         Route::post('com_profile/store', [CompanyProfileController::class, 'store'])->name('store');
-
     });
-
     Route::post('get-states-by-country',[CompanyProfileController::class, 'getState']);
-
-
     Route::group(['name' => 'workinspection', 'as' => 'workinspection.'], function () {
-
         Route::get('workpalce_inspection', [WorkInspectionController::class, 'index'])->name('index');
         Route::POST('workpalce_inspection-store', [WorkInspectionController::class, 'store'])->name('store');
         Route::get('workpalce_inspection-edit/{id}', [WorkInspectionController::class, 'edit'])->name('edit');
@@ -277,7 +265,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     });
 
     Route::group(['name' => 'create_ispection', 'as' => 'create_ispection.'], function () {
-
         Route::get('create_ispection', [CreateIspectionController::class, 'index'])->name('index');
         Route::POST('create_ispection-store', [CreateIspectionController::class, 'store'])->name('store');
         Route::get('create_ispection-edit/{id}', [CreateIspectionController::class, 'edit'])->name('edit');
@@ -287,7 +274,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     });
 
     Route::group(['name' => 'rectified_inspection', 'as' => 'rectified_inspection.'], function () {
-
         Route::get('rectified-inspection', [RectifiedInspectionController::class, 'index'])->name('index');
         Route::POST('rectified-inspection-store', [RectifiedInspectionController::class, 'store'])->name('store');
         Route::get('rectified-inspection-edit/{id}', [RectifiedInspectionController::class, 'edit'])->name('edit');
@@ -313,9 +299,20 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('safety_committee/store', [SafetyCommitteeController::class, 'store'])->name('store');
         Route::post('safety_committee/edit/{id}', [SafetyCommitteeController::class, 'edit'])->name('edit');
         Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
-    });
-    Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
 
+
+    });
+
+
+    Route::group(['name'=>'committee','as'=>'committee.'],function(){
+        Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
+        Route::post('store',[generateCommittee::class,'store'])->name('store');
+        Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
+    });
+
+
+
+    Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
         Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
@@ -337,4 +334,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
     });
 });
+
+Route::group(['name'=>'accident','as' => 'accident.'],function(){
+  Route::get('accident.index',[AccidentController::class,'index'])->name('index');
+  Route::post('store',[AccidentController::class,'store'])->name('store');
+  Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
+});
+
+
 

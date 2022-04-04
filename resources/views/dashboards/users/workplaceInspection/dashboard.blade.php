@@ -1,18 +1,13 @@
 @extends('layouts.app')
-
 @section('style')
-
 @endsection
-
 @section('content')
     <!-- sidebar -->
     @include('dashboards.users.partial.sidebar')
-
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
         <!-- Body: Header -->
     @include('dashboards.users.partial.header')
-
            <div class="body d-flex py-3">
             <div class="container-xxl">
                 <div
@@ -118,9 +113,6 @@
             </div>
           </div>
         </div>
-
-
-
 
 @endsection
 
