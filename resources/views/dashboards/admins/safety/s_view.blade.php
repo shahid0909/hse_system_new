@@ -189,17 +189,11 @@
                     </div>
                     @endforeach
                    @endif
-
                   </div>
-
                   <!-- Row end  -->
                 </div>
               </div>
               <!-- Row end  -->
             </div>
           </div>
-
-
-
-
         @endsection

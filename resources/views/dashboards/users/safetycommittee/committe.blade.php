@@ -21,6 +21,7 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
+        <h3 class="bg bg-success text-center text-white">Generate Committe</h3>
         <form method="post" action="{{ route('committee.store') }}" id="committee" enctype="multipart/form-data">
             @csrf
             <div class="row g-3 mb-3">
@@ -54,7 +55,7 @@
                     <input type="text" name="c_name"   class="form-control col-md-12" placeholder="Enter Company Name">
                 </div>
                 <div class="col-sm-12">
-                    <input type="submit"  value="submit">
+                    <input type="submit"  value="submit"  class="bg bg-success text-white">
                 </div>
 
             </div>
@@ -62,6 +63,39 @@
 
         </form>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="bg bg-success text-white text-center">View Generate Committes </h3>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Sr </th>
+                        <th scope="col">Designation </th>
+                        <th scope="col">Employee name</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($gc as $key=>$g)
+                        <tr>
+                            <td>{{ $key+1}}</td>
+                            <td>{{ $g->designation_name  }}</td>
+                            <td>{{ $g->employee->em_name  }}</td>
+                            <td>{{  $g->company_name }}</td>
+                            <td>
+                                <a href="{{ route('committee.pdf',$g->id) }}"><button class="btn btn-info">
+                                    Download</button></a>
+                                    <a href="{{ route('committee.destroy',$g->id) }}"><button class="btn btn-danger"> Delete</button></a>
+                            </td>
+                          </tr>
+                        @endforeach   
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')

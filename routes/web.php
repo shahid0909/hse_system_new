@@ -308,6 +308,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
+        Route::get('generate-pdf/{id}', [generateCommittee ::class, 'generatepdf'])->name('pdf');
+        Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
 

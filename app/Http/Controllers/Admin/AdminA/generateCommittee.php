@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SafetyCommittee;
 use App\Models\g_committe;
-use Auth;
 use Illuminate\Support\Facades\DB;
+use Auth;
+use PDF;
+
 
 class generateCommittee extends Controller
 {
@@ -20,15 +22,16 @@ class generateCommittee extends Controller
     {
        $committes= SafetyCommittee::all();
         $user = Auth::user();
-        return view('dashboards.users.safetycommittee.committe',compact('user','committes'));
+       $gc= g_committe::all();
+        return view('dashboards.users.safetycommittee.committe',compact('user','committes','gc'));
     }
 
     public function employee(Request $request){
 
 
-       $committes= DB::select("SELECT e.id,e.em_name FROM safety_committees s
-LEFT join l_employees e on e.id = s.employee_id
-WHERE  s.designation = '$request->designation'");
+       $committes=DB::select("SELECT e.id,e.em_name FROM safety_committees s
+          LEFT join l_employees e on e.id = s.employee_id
+         WHERE  s.designation = '$request->designation'");
 
        $stringTosend = '';
        if(!empty($committes)){
@@ -64,13 +67,12 @@ WHERE  s.designation = '$request->designation'");
      */
     public function store(Request $request)
     {
-        // $input= new g_committe();
-        // $input->designation_id=$request->input('designation_id');
-        // $input->employee_id=$request->input('employee_id');
-        // $input->company_name=$request->input('c_name');
-        // $input->save();
-        // return redirect('committee.index');
-        dd($request);
+        $input= new g_committe();
+        $input->designation_name=$request->input('designation_id');
+        $input->employee_id=$request->input('employee_id');
+        $input->company_name=$request->input('c_name');
+        $input->save();
+        return redirect( route('safety_committee.index'));
     }
 
     /**
@@ -78,7 +80,15 @@ WHERE  s.designation = '$request->designation'");
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
+     * public function  
      */
+
+    public function generatepdf($id){
+        $data=g_committe::where('id',$id)->first();
+        $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',compact('data'));
+         return $pdf->download('Committe.pdf');
+    }
     public function show($id)
     {
         //
@@ -116,5 +126,7 @@ WHERE  s.designation = '$request->designation'");
     public function destroy($id)
     {
         //
+        g_committe::find($id)->delete();
+        return back();
     }
 }

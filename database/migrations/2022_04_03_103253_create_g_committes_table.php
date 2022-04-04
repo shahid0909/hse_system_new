@@ -15,7 +15,7 @@ class CreateGCommittesTable extends Migration
     {
         Schema::create('g_committes', function (Blueprint $table) {
             $table->id();
-            $table->integer('designation_id');
+            $table->string('designation_name');
             $table->integer('employee_id');
             $table->string('company_name');
             $table->timestamps();
