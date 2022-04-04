@@ -55,7 +55,7 @@
                     <div class="d-flex align-items-center">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Immediately (Urgent)</div>
-                        <span class="small">120</span>
+                        <span class="small">{{$urgent[0]->urgent}}</span>
                     </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
     <!-- Plugin Js-->
     <script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
     <script src="{{asset('assets/bundles/apexcharts.bundle.js')}}"></script>
-    <script src="{{asset('assets/js/page/chart-apex.js')}}"></script
+    <script src="{{asset('assets/js/page/chart-apex.js')}}"></script>
 
 
      <script src="../js/template.js"></script>

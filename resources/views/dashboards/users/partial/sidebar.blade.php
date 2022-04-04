@@ -113,6 +113,39 @@
 
                 </ul>
             </li>
+            <li class="collapsed">
+                <a class="m-link  active"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#menu-Accident"
+                   href="#">
+                    <i class="icofont-users-alt-2 fs-5"></i>
+                    <span>Accident investigation</span>
+
+                    <span
+                        class="arrow icofont-rounded-down ms-auto text-end fs-5"
+                    ></span
+                    ></a>
+                <!-- Menu: Sub menu ul -->
+
+
+                <ul class="sub-menu collapse" id="menu-Accident">
+
+                    <li>
+                        <a class="ms-link" href="{{route('workinspection.index')}}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a class="ms-link" href="{{route('Accident_investigation.index')}}">Accident analysis</a>
+                    </li>
+                    <li>
+                        <a class="ms-link" href="{{route('list_inspection.index')}}">list of Accident</a>
+                    </li>
+                    <li>
+                        <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>
+                    </li>
+
+
+                </ul>
+            </li>
 
 
         </ul>

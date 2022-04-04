@@ -23,6 +23,7 @@ use App\Http\Controllers\Client\ScheduleDemoController;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\user\AccidentInvesttigation\AccidentInvestController;
 use App\Http\Controllers\User\CompanySetup\CompanyProfileController;
 use App\Http\Controllers\User\CompanySetup\DepartmentController;
 use App\Http\Controllers\User\CompanySetup\DesignationController;
@@ -322,6 +323,18 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
 
+    });
+
+    Route::group(['name' => 'Accident_investigation', 'as' => 'Accident_investigation.'], function () {
+
+        Route::get('Accident-investigation', [AccidentInvestController::class, 'accident'])->name('index');
+        //JSN request
+        Route::get('get-em-name/{id}', [AccidentInvestController::class, 'getempName'])->name('getempName');
+        // Route::POST('list-inspection-store', [ListInspectionController::class, 'store'])->name('store');
+        // Route::get('list-inspection-edit/{id}', [ListInspectionController::class, 'edit'])->name('edit');
+        // Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
+        // Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
+        // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
     });
 });
 
