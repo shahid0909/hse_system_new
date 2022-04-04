@@ -26,7 +26,7 @@ class generateCommittee extends Controller
     public function employee(Request $request){
 
 
-       $committes= DB::select("SELECT e.id,e.em_name FROM safety_committees s
+       $committes= DB::select("SELECT e.id as id,e.em_name as em_name FROM safety_committees s
 LEFT join l_employees e on e.id = s.employee_id
 WHERE  s.designation = '$request->designation'");
 
