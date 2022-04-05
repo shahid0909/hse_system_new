@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\AdminA\UsercreateController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\user\AccidentController;
+use App\Http\Controllers\Admin\user\meetingController;
+
 
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Client\ScheduleDemoController;
@@ -306,13 +308,17 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
     Route::group(['name'=>'committee','as'=>'committee.'],function(){
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
-        Route::post('store',[generateCommittee::class,'store'])->name('store');
+        // Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
-        Route::get('generate-pdf', [generateCommittee ::class, 'generatepdf'])->name('pdf');
+        Route::post('store', [generateCommittee ::class, 'generatepdf'])->name('store');
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
-
+Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
+ Route::get('view-meeting',[meetingController::class,'index'])->name('index');
+ Route::post('store',[meetingController::class,'store'])->name('store');
+ Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
+});
 
     Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
         Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
@@ -323,6 +329,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
 
     });
+
+
 
     Route::group(['name' => 'Accident_investigation', 'as' => 'Accident_investigation.'], function () {
 

@@ -71,15 +71,7 @@ WHERE  s.designation = '$request->designation'");
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $input= new g_committe();
-        $input->designation_name=$request->input('designation_id');
-        $input->employee_id=$request->input('employee_id');
-        $input->company_name=$request->input('c_name');
-        $input->save();
-        return redirect( route('safety_committee.index'));
-    }
+   
 
     /**
      * Display the specified resource.
@@ -90,17 +82,16 @@ WHERE  s.designation = '$request->designation'");
      * public function  
      */
 
-    public function generatepdf(Request $request,$id){
-        // $data=g_committe::where('id',$id)->first();
-        $pdf =PDF::loadView('dashboards.users.safetycommittee.pdf', [
-            'designation_name' => $request->input('designation_id'),
-            'employee_id' => $request->input('employee_id'),
-            'company_name' => $request->input('c_name'),
-        ]);
-    
-        return $pdf->download('Committe.pdf');
-        // $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',compact('data'));
-        //  return $pdf->download('Committe.pdf');
+    public function generatepdf(Request $request){
+
+        $data=[
+            'designation_name' => $request->designation_id,
+            'employee_id' => $request->employee_id,
+            'company_name' => $request->c_name,
+        ];
+       
+         $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',$data);
+         return $pdf->download('Committe.pdf');
     }
     public function show($id)
     {

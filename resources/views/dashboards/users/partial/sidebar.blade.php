@@ -171,6 +171,33 @@
                 </ul>
               </li>
 
+              <li class="collapsed">
+                <a
+                  class="m-link"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#categories"
+                  href="#"
+                >
+                  <i class="icofont-chart-flow fs-5"></i>
+                  <span>Arrange Meeting</span>
+                  <span
+                    class="arrow icofont-rounded-down ms-auto text-end fs-5"
+                  ></span
+                ></a>
+                <!-- Menu: Sub menu ul -->
+                <ul class="sub-menu collapse" id="categories">
+                  <li>
+                    <a class="ms-link" href="{{ route('meeting.index') }}"
+                      >Meeting</a
+                    >
+                  </li>
+            
+                </ul>
+              </li>
+
+
+              
+
 
         </ul>
 

@@ -8,11 +8,11 @@
 </head>
 <body>
     
-  <p>Name:{{ $data->employee->em_name }}</p>
+  <p>Designation:{{ $designation_name }}</p> 
 <p>Food & Beverage Manager</p>
-<p> Company Name:{{ $data->company_name }}</p>										
+<p> Company Name:{{ $company_name }}</p>										
 
-<h5>Date:{{ $data-> created_at }}</h5>
+{{-- <h5>Date:{{ $data-> created_at }}</h5> --}}
 
 <h4>RE : APPOINTMENT AS SAFETY & HEALTH COMMITTEE – EMPLOYER REPRESENTATIVE</h4>
 
