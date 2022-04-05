@@ -29,15 +29,15 @@ class generateCommittee extends Controller
     public function employee(Request $request){
 
 
-<<<<<<< HEAD
+
        $committes=DB::select("SELECT e.id,e.em_name FROM safety_committees s
           LEFT join l_employees e on e.id = s.employee_id
          WHERE  s.designation = '$request->designation'");
-=======
+
        $committes= DB::select("SELECT e.id as id,e.em_name as em_name FROM safety_committees s
 LEFT join l_employees e on e.id = s.employee_id
 WHERE  s.designation = '$request->designation'");
->>>>>>> c5a401e328d0158cb012ae8624f624e7cd8b133f
+
 
        $stringTosend = '';
        if(!empty($committes)){
@@ -90,10 +90,17 @@ WHERE  s.designation = '$request->designation'");
      * public function  
      */
 
-    public function generatepdf($id){
-        $data=g_committe::where('id',$id)->first();
-        $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',compact('data'));
-         return $pdf->download('Committe.pdf');
+    public function generatepdf(Request $request,$id){
+        // $data=g_committe::where('id',$id)->first();
+        $pdf =PDF::loadView('dashboards.users.safetycommittee.pdf', [
+            'designation_name' => $request->input('designation_id'),
+            'employee_id' => $request->input('employee_id'),
+            'company_name' => $request->input('c_name'),
+        ]);
+    
+        return $pdf->download('Committe.pdf');
+        // $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',compact('data'));
+        //  return $pdf->download('Committe.pdf');
     }
     public function show($id)
     {

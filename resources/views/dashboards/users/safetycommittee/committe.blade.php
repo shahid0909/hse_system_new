@@ -55,7 +55,7 @@
                     <input type="text" name="c_name"   class="form-control col-md-12" placeholder="Enter Company Name">
                 </div>
                 <div class="col-sm-12">
-                    <input type="submit"  value="submit"  class="bg bg-success text-white">
+                    <a href="{{ route('committee.pdf') }}"><button class="btn btn-info">
                 </div>
 
             </div>
