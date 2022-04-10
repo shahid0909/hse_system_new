@@ -43,7 +43,7 @@ class meetingController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $meeting=new MeetingModel();
         $meeting->title=$request->input('title');
         $meeting->date=$request->input('date');
@@ -62,15 +62,15 @@ class meetingController extends Controller
      */
     public function datatable()
     {
+
         $data=MeetingModel::orderBy('id','DESC')->get();
-        return datatables()
-            ->of($data)
+        return datatables()->of($data)
             ->addIndexColumn()
             ->make();
     }
 
-            
-    
+
+
 
     /**
      * Show the form for editing the specified resource.
