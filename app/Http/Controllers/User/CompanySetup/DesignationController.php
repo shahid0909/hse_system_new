@@ -68,7 +68,6 @@ class DesignationController extends Controller
     public function datatable()
     {
         $data = Designation::orderBy('id','DESC')->get();
-
         return datatables()
             ->of($data)
             ->addIndexColumn()
@@ -78,20 +77,15 @@ class DesignationController extends Controller
                 }else{
                     return 'In-Active';
                 }
-
             })
             ->editColumn('action',function ($query) {
                 return  '<a href="' . route('designation.designation-edit', $query['id']) . '" class=""><i class="icofont-edit"></i></a> || <a href="' . route('designation.destroy', $query['id']) . '" class="btn btn-danger" onclick="return confirm(\'Are You Sure You Want To Delete This Designation?\')"> <i class="icofont-delete-alt"></i></a>';
             }
             )->make();
     }
-
     public function destroy(Request $request, $id){
         DB::delete('delete from designations where id = ?',[$id]);
         return redirect()->route('designation.index')->with(['success'=>'Form is successfully Deleted!']);
 
     }
-
-
-
 }

@@ -5,10 +5,11 @@ namespace App\Http\Controllers\admin\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\MeetingModel;
+use App\Models\Meeting;
 use App\Models\SafetyCommittee;
 use Auth;
 use DB;
+use PDF;
 class meetingController extends Controller
 {
     /**
@@ -22,7 +23,8 @@ class meetingController extends Controller
         $values = DB::table('safety_committees')
              ->leftJoin('l_employees', 'l_employees.id', '=', 'safety_committees.employee_id')
             ->get();
-        return view('dashboards.admins.meeting.index',compact('user','values'));
+            $s_values=Meeting::all();
+        return view('dashboards.admins.meeting.index',compact('user','values','s_values'));
     }
 
     /**
@@ -43,15 +45,20 @@ class meetingController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $meeting=new MeetingModel();
-        $meeting->title=$request->input('title');
+    
+        $meeting=new Meeting();
         $meeting->date=$request->input('date');
         $meeting->time=$request->input('time');
         $meeting->venue=$request->input('venue');
-        $meeting->m_attend_id=$request->input('m_attend_id');
+        $meeting['p_member']= $request->input('p_member');
+        $meeting->introduction=$request->input('introduction');
+        $meeting->endorsement=$request->input('endorsement');
+        $meeting['agenda']= json_encode($request->input('agenda'));
+        $meeting['pic']=  json_encode($request->input('pic'));
+        $meeting['remarks']=json_encode( $request->input('remarks'));
+        $meeting->closing=$request->input('closing');
         $meeting->save();
-        return back();
+       return back();
     }
 
     /**
@@ -60,18 +67,6 @@ class meetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function datatable()
-    {
-        $data=MeetingModel::orderBy('id','DESC')->get();
-        return datatables()
-            ->of($data)
-            ->addIndexColumn()
-            ->make();
-    }
-
-            
-    
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,6 +98,20 @@ class meetingController extends Controller
      */
     public function destroy($id)
     {
-        //
+       Meeting::find($id)->delete();
+       return back();
+    }
+
+    public function show($id){
+     $user=Auth::user();
+     $values=Meeting::where('id','=',$id)->first();
+       return  view('dashboards.admins.meeting.report',compact('user','values'));
+    }
+
+    public function reportpdf($id){
+        $user=Auth::user();
+        $values=Meeting::where('id','=',$id)->first(); 
+        $pdf = PDF::loadView('dashboards.admins.meeting.report-pdf', compact('values','user'));
+        return $pdf->download('Meeting-Report.pdf');
     }
 }

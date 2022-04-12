@@ -190,7 +190,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
 
 
     Route::group(['name' => 'l_ppe', 'as' => 'l_ppe.'], function () {
-
         Route::get('ppe-entry', [ppeController::class, 'index'])->name('index');
         Route::POST('ppe-entry-store', [ppeController::class, 'store'])->name('store');
         Route::get('ppe-entry-edit/{id}', [ppeController::class, 'edit'])->name('edit');
@@ -198,10 +197,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
         Route::get('ppe-entry-datatable-list}', [ppeController::class, 'datatable'])->name('datatable');
         Route::get('ppe-entry-destroy/{id}', [ppeController::class, 'destroy'])->name('destroy');
     });
-
-
-
-
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBackHistory']], function () {
@@ -318,16 +313,18 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('view-meeting',[meetingController::class,'index'])->name('index');
  Route::post('store',[meetingController::class,'store'])->name('store');
  Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
+ Route::get('report.delete/{id}',[meetingController::class,'destroy'])->name('delete');
+ Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
+ Route::get('report.pdf/{id}',[meetingController::class,'reportpdf'])->name('report-pdf');
 });
 
-    Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
+ Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
         Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
         Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
-
     });
 
 
