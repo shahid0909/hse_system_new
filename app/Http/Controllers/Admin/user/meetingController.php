@@ -45,8 +45,7 @@ class meetingController extends Controller
      */
     public function store(Request $request)
     {
-    
-        $meeting=new Meeting();
+
         $meeting->date=$request->input('date');
         $meeting->time=$request->input('time');
         $meeting->venue=$request->input('venue');
@@ -67,6 +66,7 @@ class meetingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     /**
      * Show the form for editing the specified resource.
      *

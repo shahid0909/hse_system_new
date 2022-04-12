@@ -13,12 +13,7 @@
                 ><i class="icofont-home fs-5"></i> <span>Dashboard</span></a
                 >
             </li>
- <li>
-                <a class="m-link" href="{{ route('safety_committee.index') }}"
-                ><i class="icofont-users fs-5"></i>
-                    <span>Safety Committee</span></a
-                >
-            </li> 
+
 
 
             <li class="collapsed">
@@ -146,7 +141,7 @@
                 </ul>
             </li>
 
-  
+
             <li class="collapsed">
                 <a
                   class="m-link"
@@ -164,44 +159,49 @@
                 <ul class="sub-menu collapse" id="categories">
                   <li>
                     <a class="ms-link" href="{{ route('accident.index') }}"
-                      >Accidentt</a
+                      >Accident</a
                     >
                   </li>
-            
+
                 </ul>
               </li>
 
-              <li class="collapsed">
-                <a
-                  class="m-link"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#categories"
-                  href="#"
-                >
-                  <i class="icofont-chart-flow fs-5"></i>
-                  <span>Arrange Meeting</span>
-                  <span
-                    class="arrow icofont-rounded-down ms-auto text-end fs-5"
-                  ></span
-                ></a>
+
+            <li class="collapsed">
+                <a class="m-link  active"
+                   data-bs-toggle="collapse"
+                   data-bs-target="#Safety_Committee"
+                   href="#">
+                    <i class="icofont-users-alt-2 fs-5"></i>
+                    <span>Safety Committee</span>
+
+                    <span
+                        class="arrow icofont-rounded-down ms-auto text-end fs-5"
+                    ></span
+                    ></a>
                 <!-- Menu: Sub menu ul -->
-                <ul class="sub-menu collapse" id="categories">
-                  <li>
-                    <a class="ms-link" href="{{ route('meeting.index') }}"
-                      >Meeting</a
-                    >
-                  </li>
-            
+
+
+                <ul class="sub-menu collapse" id="Safety_Committee">
+
+                    <li>
+                        <a class="ms-link" href="{{route('safety_committee.index')}}">Safety Committee</a>
+                    </li>
+                    <li>
+                        <a class="ms-link" href="{{route('meeting.index')}}">Meeting Minutes</a>
+                    </li>
                 </ul>
-              </li>
-
-
-              
+            </li>
+            <li>
+                <a class="m-link active" href="{{route('safe_work_procedure.index')}}"
+                ><i class="icofont-home fs-5"></i> <span>Safe Work Procedure</span></a
+                >
+            </li>
 
 
         </ul>
 
-        
+
         <!-- Menu: menu collepce btn -->
         <button
             type="button"

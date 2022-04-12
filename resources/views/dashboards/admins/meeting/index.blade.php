@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Meeting
+    Meeting
 @endsection
 
 @section('style')
@@ -37,6 +37,7 @@ Meeting
                 <p>{{ $message }}</p>
             </div>
         @endif
+
         <h3 class="bg bg-success text-center text-white p-3">Meeting Minutes</h3>
         <form method="post" action="{{ route('meeting.store') }}"  enctype="multipart/form-data">
             @csrf       
@@ -158,11 +159,15 @@ Meeting
 
                      </div>
                     @endforeach
+
                     </div>
                     
                 </div>
+               
+                <!-- Row End -->
             </div>
         </div>
+
 
     </div>
 @endsection
@@ -198,5 +203,10 @@ Meeting
       $(this).closest('tr').remove();
    });
 </script>
-@endsection
 
+
+        <!-- Row End -->
+    </div>
+
+
+@endsection

@@ -29,6 +29,7 @@ use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
 use App\Http\Controllers\User\CompanySetup\EmployeeProfileController;
 use App\Http\Controllers\User\safety\SafetyPolicyController;
+use App\Http\Controllers\User\safety\SafeWorkProcedureController;
 use App\Http\Controllers\User\safety\UploadPolicyController;
 use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
 use App\Http\Controllers\User\WorkInspection\ListInspectionController;
@@ -312,10 +313,14 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('view-meeting',[meetingController::class,'index'])->name('index');
  Route::post('store',[meetingController::class,'store'])->name('store');
+
  Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
  Route::get('report.delete/{id}',[meetingController::class,'destroy'])->name('delete');
  Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
  Route::get('report.pdf/{id}',[meetingController::class,'reportpdf'])->name('report-pdf');
+
+ 
+
 });
 
  Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
@@ -339,6 +344,15 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         // Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
         // Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
         // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
+    });
+    Route::group(['name' => 'safe_work_procedure', 'as' => 'safe_work_procedure.'], function () {
+
+        Route::get('safe-work-procedure', [SafeWorkProcedureController::class, 'index'])->name('index');
+        Route::post('safe-work-procedure-store', [SafeWorkProcedureController::class, 'store'])->name('store');
+        Route::get('safe-work-procedure-edit', [SafeWorkProcedureController::class, 'edit'])->name('edit');
+        Route::put('safe-work-procedure-update', [SafeWorkProcedureController::class, 'update'])->name('update');
+
+
     });
 });
 
