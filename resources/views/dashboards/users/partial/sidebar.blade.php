@@ -190,12 +190,13 @@
                     <li>
                         <a class="ms-link" href="{{route('meeting.index')}}">Meeting Minutes</a>
                     </li>
-
-
-
                 </ul>
             </li>
-
+            <li>
+                <a class="m-link active" href="{{route('safe_work_procedure.index')}}"
+                ><i class="icofont-home fs-5"></i> <span>Safe Work Procedure</span></a
+                >
+            </li>
 
 
         </ul>
