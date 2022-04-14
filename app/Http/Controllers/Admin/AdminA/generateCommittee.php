@@ -80,7 +80,13 @@ WHERE  s.designation = '$request->designation'");
      * @return \Illuminate\Http\Response
      * 
      * public function  
+     
      */
+
+     public function committeestore(Request $request){
+
+     }
+
 
     public function generatepdf(Request $request){
 

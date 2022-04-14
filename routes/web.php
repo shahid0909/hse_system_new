@@ -306,7 +306,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         // Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
-        Route::post('store', [generateCommittee ::class, 'generatepdf'])->name('store');
+     
+        Route::post('committee.insert',[generateCommittee::class,'generatepdf'])->name('store');
+       
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
@@ -349,10 +351,10 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 
         Route::get('safe-work-procedure', [SafeWorkProcedureController::class, 'index'])->name('index');
         Route::post('safe-work-procedure-store', [SafeWorkProcedureController::class, 'store'])->name('store');
-        Route::get('safe-work-procedure-edit', [SafeWorkProcedureController::class, 'edit'])->name('edit');
-        Route::put('safe-work-procedure-update', [SafeWorkProcedureController::class, 'update'])->name('update');
-
-
+        Route::get('safe-work-procedure-edit/{id}', [SafeWorkProcedureController::class, 'edit'])->name('edit');
+        Route::put('safe-work-procedure-update/{id}', [SafeWorkProcedureController::class, 'update'])->name('update');
+        Route::get('safe-work-procedure-view/{id}', [SafeWorkProcedureController::class, 'swpView'])->name('details');
+        Route::get('destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
     });
 });
 

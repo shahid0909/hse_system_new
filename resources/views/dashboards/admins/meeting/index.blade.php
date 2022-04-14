@@ -202,11 +202,9 @@
    $(document).on('click','#remove',function(){
       $(this).closest('tr').remove();
    });
+   
 </script>
-
-
         <!-- Row End -->
     </div>
-
 
 @endsection
