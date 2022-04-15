@@ -13,24 +13,25 @@
       }
       .wrap ul li{
        font-size: 25px;
-       background-color: azure;
-        list-style: none;
-       border: 2px dotted gray;
+          list-style: none;
+
       }
     </style>
 </head>
 <body>
-     
+
     <div class="wrap">
              <ul class="text-size" style="width: 100%;word-spacing:5px">
            <li style="text-align: center;font-size: 40px;">Safety Policy Rules</li>
-             <li>{{ $data->s_head }}</li>
-             <li>{{ $data->rules_a}}</li>
-             <li>{{ $data->rules_b}}</li>
-             <li>{{ $data->rules_c}}</li>
-             <li>{{ $data->rules_d}}</li>
-             <li>{{ $data->rules_e}}</li>
-             <li>{{ $data->rules_f}}</li>
+             <li>{{ $data->title }}</li>
+             <li>{!!$data->commitment!!}</li>
+             <li>{{ $data->tagline}}</li>
+                 <li>
+                     A safety culture to achieve an accident-free
+                     work environment.
+                 </li>
+                 <p style="text-align: center">Tag Line Here</p>
+
          </ul>
          <h4>Miss Vimala</h4>
          <p>Chief Executive Officer</p>

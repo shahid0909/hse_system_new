@@ -18,6 +18,7 @@ class SafetyPolicyController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $values=s_rule::orderby('id','desc')->get();
         return view('dashboards.admins.safety.index',compact('user'));
     }
 
@@ -35,23 +36,16 @@ class SafetyPolicyController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
-            's_head'=>'required|string',
-            'rules_a'=>'required|string',
-            'rules_b'=>'required|string',
-            'rules_c'=>'required|string',
-            'rules_d'=>'required|string',
-            'rules_e'=>'required|string',
-            'rules_f'=>'required|string',
+            'title'=>'required|string',
+            'tagline'=>'required|string',
         ]);
+
         $input=new s_rule();
-        $input->s_head=$request->input('s_head');
-        $input->rules_a=$request->input('rules_a');
-        $input->rules_b=$request->input('rules_b');
-        $input->rules_c=$request->input('rules_c');
-        $input->rules_d=$request->input('rules_d');
-        $input->rules_e=$request->input('rules_e');
-        $input->rules_f=$request->input('rules_f');
+        $input->title=$request->input('title');
+        $input->commitment=$request->input('commitment');
+        $input->tagline=$request->input('tagline');
         $input->save();
         return redirect()->route('safety.index')->with('msg','Safety Generated Successfully');
     }
@@ -86,13 +80,9 @@ class SafetyPolicyController extends Controller
     public function  modifystore(Request $request,$id){
 
         $input=s_rule::find($id);
-        $input->s_head=$request->input('s_head');
-        $input->rules_a=$request->input('rules_a');
-        $input->rules_b=$request->input('rules_b');
-        $input->rules_c=$request->input('rules_c');
-        $input->rules_d=$request->input('rules_d');
-        $input->rules_e=$request->input('rules_e');
-        $input->rules_f=$request->input('rules_f');
+        $input->title=$request->input('title');
+        $input->commitment=$request->input('commitment');
+        $input->tagline=$request->input('tagline');
         $input->update();
         return redirect()->route('safety.safety-view');
     }

@@ -2,6 +2,7 @@
 @section('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"/>
     <style>
         .inpcol {
 
@@ -55,47 +56,54 @@
                 <div class="col-lg-12 col-md-12">
                   <div class="row justify-content-center">
                    @if (isset($data->id))
-                   <form action="{{ route('safety.modifystore', ['id' => $data->id]) }}"   enctype="multipart/form-data" method="POST">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-8">
+                              <form action="{{ route('safety.update', ['id' => $data->id]) }}"   enctype="multipart/form-data" method="POST">
 
-                    @csrf
-                    <input name="_method" type="hidden" value="PUT">
+                                  @csrf
+                                  <input name="_method" type="hidden" value="PUT">
 
-                    <div class="form-group">
-                      <label >Safety Details</label>
-                      <textarea name="s_head" id="" cols="65" rows="">{{  $data->s_head }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label >Modify Rules A</label>
-                        <textarea name="rules_a" id="" cols="65" rows="">{{  $data->rules_a }}</textarea>
+                                  <div class="form-group">
+                                      <label >Title</label>
+                                      <textarea name="title" id="" cols="115" >{{ old('title',isset($data->title)?$data->title:'') }}</textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label >Commitment</label>
+                                      <textarea id="summernote" name="commitment" >{{ old('commitment',isset($data->commitment) ? $data->commitment:'') }}</textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label >Tagline</label>
+                                      <select
+                                          name="tagline"
+                                          id="depertment"
+                                          class="col-md-12"
+                                          style=" padding: 10px; border-radius: 3px; border-color: var(--border-color);>
+                                            <option value="#" "selected">Select Tagline</option>
+                                      <option value="SAFETY AND HEALTH IS EVERYONE'S BUSINESS">
+                                          SAFETY AND HEALTH IS EVERYONE'S BUSINESS
+                                      </option>
+                                      <option value="Zero injuries does not indicate the presence
+                                                of safety.">
+                                          Zero injuries does not indicate the presence
+                                          of safety.
+                                      </option>
+                                      <option value="Never take safety for granted.">
+                                          Never take safety for granted.
+                                      </option>
+                                      <option value="Safety first, to last in life.">
+                                          Safety first, to last in life.
+                                      </option>
+                                      </select>
+                                  </div>
+
+                                  <button type="submit" class="btn btn-primary">Click For Modify</button>
+                              </form>
+                          </div>
                       </div>
-
-                      <div class="form-group">
-                        <label >Modify Rules B</label>
-                        <textarea name="rules_b" id="" cols="65" rows="">{{  $data->rules_b }}</textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label >Modify Rules C</label>
-                        <textarea name="rules_c" id="" cols="65" rows="">{{  $data->rules_c }}</textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label >Modify Rules D</label>
-                        <textarea name="rules_d" id="" cols="65" rows="">{{  $data->rules_d }}</textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label >Modify Rules E</label>
-                        <textarea name="rules_e" id="" cols="65" rows="">{{  $data->rules_e }}</textarea>
-                      </div>
-
-                      <div class="form-group">
-                        <label >Modify Rules F</label>
-                        <textarea name="rules_f" id="" cols="65" rows="">{{  $data->rules_f }}</textarea>
-                      </div>
-
-                    <button type="submit" class="btn btn-primary">Click For Modify</button>
-                  </form>
+                  </div>
                        @else
                        @foreach ($safetys as  $safety)
                     <div class="col-lg-6 col-md-12">
@@ -118,30 +126,20 @@
 
                               <div>
                                 <h6>
-                                 {{ $safety->s_head}}
+                                 {{ $safety->title}}
 
                                 </h6>
                               </div>
                               <div class="mid">
-                                <p>
-                                    {{ $safety->rules_a}}
-                                </p>
+
                                 <ul>
                                   <li>
-                                    {{ $safety->rules_b}}
+                                    {!!$safety->commitment!!}
                                   </li>
                                   <li>
-                                    {{ $safety->rules_c}}
+                                    {{ $safety->tagline}}
                                   </li>
-                                  <li>
-                                    {{ $safety->rules_d}}
-                                  </li>
-                                  <li>
-                                    {{ $safety->rules_e}}
-                                  </li>
-                                  <li>
-                                    {{ $safety->rules_f}}
-                                  </li>
+
                                   <li>
                                     A safety culture to achieve an accident-free
                                     work environment.
@@ -197,3 +195,11 @@
             </div>
           </div>
         @endsection
+@section('script')
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#summernote').summernote();
+                });</script>
+            <script>
+@endsection

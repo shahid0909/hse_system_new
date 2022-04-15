@@ -238,7 +238,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
     Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
     Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
-    Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('modifystore');
+    Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('update');
     Route::get('safety/delete/{id}',[SafetyPolicyController::class,'destroy'])->name('destroy');
     });
 
@@ -306,9 +306,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         // Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
-     
+
         Route::post('committee.insert',[generateCommittee::class,'generatepdf'])->name('store');
-       
+
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
@@ -321,7 +321,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
  Route::get('report.pdf/{id}',[meetingController::class,'reportpdf'])->name('report-pdf');
 
- 
+
 
 });
 
