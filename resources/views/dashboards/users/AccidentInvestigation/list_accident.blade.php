@@ -33,12 +33,8 @@
                     <div class="card mb-3">
                         <div
                             class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                            <h3 class="fw-bold mb-0">WorkPlace Inspection List</h3>
+                            <h3 class="fw-bold mb-0">Accident Analysis List</h3>
                             <div class="col-auto d-flex w-sm-100">
-                                <button type="button" class="btn btn-primary btn-set-task w-sm-100"
-                                        data-bs-toggle="modal" data-bs-target="#expadd"><i
-                                        class="icofont-plus-circle me-2 fs-6"></i>Add Workplace Inspection
-                                </button>
                             </div>
                         </div>
                         <div class="card-body">
@@ -48,14 +44,13 @@
                                 <tr>
                                     <th></th>
                                     <th>Sl</th>
-                                    <th>LOCATION</th>
-                                    <th>Title</th>
-                                    <th>PICTURE</th>
-                                    <th>PIC</th>
-                                    <th>PRIORITY</th>
-                                    <!-- <th>DATE IDENTIFIED</th> -->
-                                    <th>TARGET DATE</th>
-                                    <th>Admit DATE</th>
+                                    <th>Name</th>
+                                    <th>Departmet</th>
+                                    <th>Designation</th>
+                                    <th>Incident location</th>
+                                    <th>Type of accitent</th>
+                                    <th>Time of accitentE</th>
+                                    <th>Repost to DOSH</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -139,8 +134,6 @@
                             {"data": "admitdate"},
                             {"data": "targetdate"},
 
-
-                    // {"data": "status"},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ],
                 language: {

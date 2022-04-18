@@ -131,7 +131,7 @@
                         <a class="ms-link" href="{{route('Accident_investigation.index')}}">Accident analysis</a>
                     </li>
                     <li>
-                        <a class="ms-link" href="{{route('list_inspection.index')}}">list of Accident</a>
+                        <a class="ms-link" href="{{route('Accident_investigation.acci_list')}}">list of Accident</a>
                     </li>
                     <li>
                         <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>

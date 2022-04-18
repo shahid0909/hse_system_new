@@ -209,7 +209,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
 
-
+});
     Route::group(['name' => 'department', 'as' => 'department.'], function () {
         Route::get('department', [DepartmentController::class, 'index'])->name('index');
         Route::POST('department-store', [DepartmentController::class, 'store'])->name('store');
@@ -264,7 +264,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::put('workpalce_inspection-update/{id}', [WorkInspectionController::class, 'update'])->name('update');
         Route::get('workpalce_inspection-datatable-list', [WorkInspectionController::class, 'datatable'])->name('datatable');
         Route::get('workpalce_inspection-destroy/{id}', [WorkInspectionController::class, 'destroy'])->name('destroy');
-    });
+    }); 
 
     Route::group(['name' => 'create_ispection', 'as' => 'create_ispection.'], function () {
         Route::get('create_ispection', [CreateIspectionController::class, 'index'])->name('index');
@@ -337,19 +337,23 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('Accident-investigation', [AccidentInvestController::class, 'accident'])->name('index');
         //JSN request
         Route::get('get-em-name/{id}', [AccidentInvestController::class, 'getempName'])->name('getempName');
-        // Route::POST('list-inspection-store', [ListInspectionController::class, 'store'])->name('store');
-        // Route::get('list-inspection-edit/{id}', [ListInspectionController::class, 'edit'])->name('edit');
-        // Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
-        // Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
-        // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
+        Route::get('get-emp_designation/{id}', [AccidentInvestController::class, 'getdesignation'])->name('getdesignation');
+        // JSN END
+        Route::POST('Accident-investigation-store', [AccidentInvestController::class, 'store'])->name('store');
+        Route::get('list-accident', [AccidentInvestController::class, 'list_acci'])->name('acci_list');
     });
-});
+
+//     Route::group(['name' => 'list_accident', 'as' => 'list_accident.'], function () {
+//         Route::get('list-accident', [UploadPolicyController::class, 'index'])->name('index');
+//         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
+//         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
+//         Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
+//         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
+//         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
+// });
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){
   Route::get('accident',[AccidentController::class,'index'])->name('index');
   Route::post('store',[AccidentController::class,'store'])->name('store');
   Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
 });
-
-
-
