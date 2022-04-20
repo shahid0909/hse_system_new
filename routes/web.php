@@ -34,6 +34,7 @@ use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
 use App\Http\Controllers\User\WorkInspection\ListInspectionController;
 use App\Http\Controllers\User\WorkInspection\RectifiedInspectionController;
 use App\Http\Controllers\User\WorkInspection\WorkInspectionController;
+use App\Http\Controllers\User\hirarc\HirarcController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -323,5 +324,20 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
 
     });
+
+    Route::group(['name' => 'hirarc', 'as' => 'hirarc.'], function () {
+
+        Route::get('hirarc', [HirarcController::class, 'index'])->name('index');
+        Route::POST('hirarc-store', [HirarcController::class, 'store'])->name('store');
+        Route::get('hirarc-edit/{id}', [HirarcController::class, 'edit'])->name('edit');
+        Route::put('hirarc-update/{id}', [HirarcController::class, 'update'])->name('update');
+        Route::get('hirarc-data-list-view', [HirarcController::class, 'listview'])->name('listview');
+        Route::get('hirarc-data-list', [HirarcController::class, 'datatable'])->name('datatable');
+        Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
+        Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
+
+
+    });
+
 });
 

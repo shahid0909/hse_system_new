@@ -54,9 +54,8 @@
                                     <th>PRIORITY</th>
                                     <th>DATE IDENTIFIED</th>
                                     <th>TARGET DATE</th>
+                                    
                                     <th>Action</th>
-
-
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,37 +65,14 @@
                         </div>
                     </div>
 
-                  </div>
-                  <div class="card-body">
-                      <table id="myProjectTable" class="table table-hover datatable align-middle mb-0" style="width:100%">
-                          <thead>
-                              <tr>
-                                  <th></th>
-                                  <th>Sl</th>
-                                  <th>LOCATION</th>
-                                  <th>Find Inspection</th>
-                                  
-                                  <th>PICTURE</th>
-                                  <th>PIC</th>
-                                  <th>PRIORITY</th>
-                                  <th>DATE IDENTIFIED</th>
-                                  <th>TARGET DATE</th>
-                                  <th>Action</th>
-
-
-                              </tr>
-                          </thead>
-                          <tbody>
-
-                    </tbody>
-                      </table>
-                  </div>
-              </div>
-
                 </div>
 
             </div>
+
         </div>
+
+    </div>
+    </div>
     </div>
 
 
@@ -114,68 +90,28 @@
 
     <!-- Jquery Page Js -->
     <script src="assets/js/template.js"></script>
-    <script>
 
-        function format(d) {
-            // `d` is the original data object for the row
-            return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
-                '<tr>' +
-                '<td>Full name:</td>' +
-                '<td>' + d.employee.em_name + '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<td>Extension number:</td>' +
-                '<td>' + d.country.country + '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<td>Extra info:</td>' +
-                '<td>And any further details here (images etc)...</td>' +
-                '</tr>' +
-                '</table>';
-        }
+    <script type="text/javascript">
 
-        // project data table
-        $(document).ready(function () {
+                 function format(d) {
+                     // `d` is the original data object for the row
+                     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                        '<tr>' +
+                         '<td>Full name:</td>' +
+                         '<td>' + d.employee.em_name + '</td>' +
+                        '</tr>' +
+                         '<tr>' +
+                         '<td>Extension number:</td>' +
+                         '<td>' + d.country.country + '</td>' +
+                         '</tr>' +
+                         '<tr>' +
+                         '<td>Extra info:</td>' +
+                         '<td>And any further details here (images etc)...</td>' +
+                         '</tr>' +
+                         '</table>';
+                }
+        $(document).ready(function() {
             var table = $('.datatable').DataTable({
-
-                        processing: true,
-                        serverSide: true,
-                        ajax: {
-                            url: "{{ route('create_ispection.datatable') }}",
-                            type: 'GET',
-                            'headers': {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        },
-                        "columns": [
-
-                            {
-                                "className":      'dt-control',
-                                "orderable":      false,
-                                "data":           null,
-                                "defaultContent": ''
-                            },
-                            
-                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "country.country"},
-                            {"data": "inspection_title"},
-                            {"data": "image"},
-                            {"data": "employee.em_name"},
-                            {"data": "priority"},
-                            {"data": "admitdate"},
-                            {"data": "targetdate"},
-
-                            // {"data": "status"},
-                            {data: 'action', name: 'action', orderable: false, searchable: false}
-                        ],
-                        language: {
-                            paginate: {
-                                next: '<i class="bx bx-chevron-right">',
-                                previous: '<i class="bx bx-chevron-left">'
-                            }
-                        }
-                    });
-
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -192,13 +128,16 @@
                         "data": null,
                         "defaultContent": ''
                     },
+
                     {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                    {"data": "country.country"},
-                    {"data": "image"},
-                    {"data": "employee.em_name"},
-                    {"data": "priority"},
-                    {"data": "admitdate"},
-                    {"data": "targetdate"},
+                            {"data": "country.country"},
+                            // {"data": "inspection_title"},
+                            {"data": "image"},
+                            {"data": "employee.em_name"},
+                            {"data": "priority"},
+                            {"data": "admitdate"},
+                            {"data": "targetdate"},
+
 
                     // {"data": "status"},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -213,24 +152,25 @@
 
             $('.datatable tbody').on('click', 'td.dt-control', function () {
                 var tr = $(this).closest('tr');
-                var row = table.row(tr);
+                var row = table.row( tr );
 
-                if (row.child.isShown()) {
+                if ( row.child.isShown() ) {
                     // This row is already open - close it
                     row.child.hide();
                     tr.removeClass('shown');
-                } else {
+                }
+                else {
                     // Open this row
-                    row.child(format(row.data())).show();
+                    row.child( format(row.data()) ).show();
                     tr.addClass('shown');
                 }
-            });
+            } );
 
-     
+
+        });
+
     </script>
-
-
-
+    
 
 @endsection
 

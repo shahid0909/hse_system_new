@@ -115,6 +115,34 @@
             </li>
 
 
+          <li class="collapsed">
+              <a
+                class="m-link active"
+                data-bs-toggle="collapse"
+                data-bs-target="#customers-info"
+                href="#"
+              >
+                <i class="icofont-funky-man fs-5"></i> <span>HIRARC</span>
+                <span
+                  class="arrow icofont-rounded-down ms-auto text-end fs-5"
+                ></span
+              ></a>
+              <!-- Menu: Sub menu ul -->
+              <ul class="sub-menu collapse" id="customers-info">
+                <li>
+                  <a class="ms-link" href="{{route('hirarc.index')}}">Add Hirarc</a>
+                </li>
+                
+              </ul>
+               <ul class="sub-menu collapse" id="customers-info">
+                <li>
+                  <a class="ms-link" href="{{route('hirarc.listview')}}">Hirarc List</a>
+                </li>
+                
+              </ul>
+            </li>
+
+
         </ul>
         <!-- Menu: menu collepce btn -->
         <button
