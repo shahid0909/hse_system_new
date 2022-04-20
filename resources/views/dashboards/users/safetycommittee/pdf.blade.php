@@ -8,15 +8,15 @@
 </head>
 <body>
     
-  <p>Designation:{{ $designation_name }}</p> 
+  <p>{{ $designation_name }}</p> 
 <p>Food & Beverage Manager</p>
-<p> Company Name:{{ $company_name }}</p>										
+<p> {{ $company_name }}</p>										
 
 {{-- <h5>Date:{{ $data-> created_at }}</h5> --}}
 
-<h4>RE : APPOINTMENT AS SAFETY & HEALTH COMMITTEE – EMPLOYER REPRESENTATIVE</h4>
+<h4>RE : APPOINTMENT AS SAFETY & HEALTH COMMITTEE – {{ $em_name}}</h4>
 
-<p>We are pleased to inform you that you have been appointed as an Employer Representative for the Safety & Health Committee for a period of 2 years.</p>
+<p>We are pleased to inform you that you have been appointed as an {{$designation_name}} for the Safety & Health Committee for a period of 2 years.</p>
 
 <p>Your duties as stipulated in the Safety & Health Committee Regulations 1996  as far as reasonably practical includes amongst others: </p>
 

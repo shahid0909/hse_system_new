@@ -38,7 +38,7 @@ class SafeWorkProcedureController extends Controller
         $input->during_work_rules = $request->input('during_work');
         $input->after_work_rules = $request->input('after_work');
         $input->potential_hazard = $request->input('potential_hazard');
-        $input->ppe = $request->input('ppe_name');
+        $input['ppe']= json_encode($request->input('ppe_name'));
         $input->remarks = $request->input('remarks');
         if ($before_work_image = $request->file('before_work_image')) {
             $destinationPath = 'image/SafetyWorkProcedure/beforeWork';

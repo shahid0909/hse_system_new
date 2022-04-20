@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Admin\AdminA\ChemicalController;
 use App\Http\Controllers\Admin\AdminA\ChemicalListingController;
 use App\Http\Controllers\Admin\AdminA\ChemicalRegisterController;
@@ -35,7 +36,6 @@ use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
 use App\Http\Controllers\User\WorkInspection\ListInspectionController;
 use App\Http\Controllers\User\WorkInspection\RectifiedInspectionController;
 use App\Http\Controllers\User\WorkInspection\WorkInspectionController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,7 +58,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/sdsSearch', [FrontendController::class, 'sdsSearch'])->name('sdsSearch');
 Route::get('/pagination/fetch_data', [FrontendController::class, 'fetch_data'])->name('fetch_data');
-
 Route::post('/sds-search-result', [FrontendController::class, 'getSearchResult'])->name('sds-search-result');
 
 
@@ -240,7 +239,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
     Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('update');
     Route::get('safety/delete/{id}',[SafetyPolicyController::class,'destroy'])->name('destroy');
+    Route::get('policy/getdesignation/{id}', [SafetyPolicyController::class, 'getempdesignation'])->name('employeedesignation');
     });
+
+
 
 //    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
 //
@@ -306,23 +308,17 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         // Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
-
         Route::post('committee.insert',[generateCommittee::class,'generatepdf'])->name('store');
-
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
 Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('view-meeting',[meetingController::class,'index'])->name('index');
  Route::post('store',[meetingController::class,'store'])->name('store');
-
  Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
  Route::get('report.delete/{id}',[meetingController::class,'destroy'])->name('delete');
  Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
  Route::get('report.pdf/{id}',[meetingController::class,'reportpdf'])->name('report-pdf');
-
-
-
 });
 
  Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
@@ -347,6 +343,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         // Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
         // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
     });
+
     Route::group(['name' => 'safe_work_procedure', 'as' => 'safe_work_procedure.'], function () {
 
         Route::get('safe-work-procedure', [SafeWorkProcedureController::class, 'index'])->name('index');
@@ -358,11 +355,11 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
     });
 });
 
+
 Route::group(['name'=>'accident','as' => 'accident.'],function(){
   Route::get('accident',[AccidentController::class,'index'])->name('index');
   Route::post('store',[AccidentController::class,'store'])->name('store');
   Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
 });
-
 
 

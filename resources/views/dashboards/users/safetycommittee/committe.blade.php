@@ -26,7 +26,7 @@
             @csrf
             <div class="row g-3 mb-3">
 
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <label class="form-label">Select Designation</label>
                     <select name="designation_id"
                             id="designation_id" class="form-control col-md-12">
@@ -40,22 +40,29 @@
                     </select>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <label for="item" class="form-label">Employee</label>
                     <select
                         name="employee_id"
                         id="employee_list" autofocus
                         class="form-control col-md-12">
-                        <option>Select Employee</option>
+                        <option >Select Employee</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Comany Name</label>
+                    <select name="company_id" id=""  class="form-control">
+                      
+                        <option value="">Select</option>
+                        @foreach ($companies as $company)
+                            <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
-                <div class="col-sm-6">
-                    <label for="item" class="form-label">Add Company Name</label>
-                    <input type="text" name="c_name"   class="form-control col-md-12" placeholder="Enter Company Name">
-                </div>
-                <div class="col-sm-12">
-                    <button type="submit" >Submit</button>
+               
+                <div class="col-md-3 mt-4 ">
+                    <button type="submit" class="btn btn-info">Generate</button>
                 </div>
 
             </div>

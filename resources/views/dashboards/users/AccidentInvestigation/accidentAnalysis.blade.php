@@ -408,19 +408,6 @@
                                         //         // $('#rent_per_hour').val('');
                                         //     }
                                         // });
-
-
-
-
-
-
-
-
-
-
-
-
                                     });
                                 </script>
-
 @endsection

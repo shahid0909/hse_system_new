@@ -24,7 +24,7 @@ class CreateSWorkProceduresTable extends Migration
             $table->string('after_work_image');
             $table->longText('potential_hazard');
             $table->string('potential_hazard_image');
-            $table->integer('ppe');
+            $table->text('ppe');
             $table->string('remarks');
             $table->timestamps();
         });
