@@ -13,4 +13,18 @@ class s_rule extends Model
 
 
     use HasFactory;
+
+    public function employee()
+    {
+        return $this->belongsTo(l_employee::class, 'employee_id');
+    }
+    public function designation()
+    {
+        return $this->belongsTo(designation::class, 'designation_id');
+    }
+    public function company()
+    {
+        return $this->belongsTo(CompanyProfile::class, 'company_id');
+    }
+
 }

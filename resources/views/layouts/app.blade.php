@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 
     @yield('style')
+    
 </head>
 <body>
 <div id="ebazar-layout" class="theme-blue">

@@ -15,13 +15,12 @@ class CreateSRulesTable extends Migration
     {
         Schema::create('s_rules', function (Blueprint $table) {
             $table->id();
-            $table->longText('s_head');
-            $table->string('rules_a');
-            $table->string('rules_b');
-            $table->string('rules_c');
-            $table->string('rules_d');
-            $table->string('rules_e');
-            $table->string('rules_f');
+            $table->longText('title');
+            $table->longText('commitment');
+            $table->string('tagline');
+            $table->integer('employee_id');
+            $table->integer('designation_id');
+            $table->integer('comapny_id');
             $table->timestamps();
         });
     }

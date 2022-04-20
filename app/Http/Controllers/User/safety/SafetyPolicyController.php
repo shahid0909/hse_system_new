@@ -5,8 +5,11 @@ namespace App\Http\Controllers\User\safety;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\s_rule;
+use App\Models\l_employee;
+use App\Models\CompanyProfile;
 use Auth;
 use PDF;
+use DB;
 
 class SafetyPolicyController extends Controller
 {
@@ -18,13 +21,16 @@ class SafetyPolicyController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $values=s_rule::orderby('id','desc')->get();
         return view('dashboards.admins.safety.index',compact('user'));
     }
 
     public function policyindex()
     {
         $user = Auth::user();
-        return view('dashboards.admins.safety.g_policy',compact('user'));
+        $employees=l_employee::all();
+        $companies=CompanyProfile::all();
+        return view('dashboards.admins.safety.g_policy',compact('user','employees','companies'));
     }
 
     /**
@@ -35,23 +41,19 @@ class SafetyPolicyController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
-            's_head'=>'required|string',
-            'rules_a'=>'required|string',
-            'rules_b'=>'required|string',
-            'rules_c'=>'required|string',
-            'rules_d'=>'required|string',
-            'rules_e'=>'required|string',
-            'rules_f'=>'required|string',
+            'title'=>'required|string',
+            'tagline'=>'required|string',
         ]);
+
         $input=new s_rule();
-        $input->s_head=$request->input('s_head');
-        $input->rules_a=$request->input('rules_a');
-        $input->rules_b=$request->input('rules_b');
-        $input->rules_c=$request->input('rules_c');
-        $input->rules_d=$request->input('rules_d');
-        $input->rules_e=$request->input('rules_e');
-        $input->rules_f=$request->input('rules_f');
+        $input->title=$request->input('title');
+        $input->commitment=$request->input('commitment');
+        $input->tagline=$request->input('tagline');
+        $input->employee_id=$request->input('employee_id');
+        $input->designation_id=$request->input('designation_id');
+        $input->company_id=$request->input('company_id');
         $input->save();
         return redirect()->route('safety.index')->with('msg','Safety Generated Successfully');
     }
@@ -66,7 +68,6 @@ class SafetyPolicyController extends Controller
     {
         $user = Auth::user();
         $safetys=s_rule::OrderBy('id','desc')->get();
-
         return view('dashboards.admins.safety.s_view',compact('safetys','user'));
 
     }
@@ -86,13 +87,9 @@ class SafetyPolicyController extends Controller
     public function  modifystore(Request $request,$id){
 
         $input=s_rule::find($id);
-        $input->s_head=$request->input('s_head');
-        $input->rules_a=$request->input('rules_a');
-        $input->rules_b=$request->input('rules_b');
-        $input->rules_c=$request->input('rules_c');
-        $input->rules_d=$request->input('rules_d');
-        $input->rules_e=$request->input('rules_e');
-        $input->rules_f=$request->input('rules_f');
+        $input->title=$request->input('title');
+        $input->commitment=$request->input('commitment');
+        $input->tagline=$request->input('tagline');
         $input->update();
         return redirect()->route('safety.safety-view');
     }
@@ -129,4 +126,19 @@ class SafetyPolicyController extends Controller
         s_rule::find($id)->delete();
         return back();
     }
+
+public function  getempdesignation($id)
+{
+
+$designation=DB::selectOne("SELECT d.id, d.ds_name from designations d 
+left join l_employees e on e.em_designation = d.id
+where e.id =  '$id'");
+return $designation;
+
+    }
 }
+
+
+
+
+

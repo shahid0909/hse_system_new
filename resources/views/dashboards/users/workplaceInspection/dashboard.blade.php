@@ -1,18 +1,13 @@
 @extends('layouts.app')
-
 @section('style')
-
 @endsection
-
 @section('content')
     <!-- sidebar -->
     @include('dashboards.users.partial.sidebar')
-
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
         <!-- Body: Header -->
     @include('dashboards.users.partial.header')
-
            <div class="body d-flex py-3">
             <div class="container-xxl">
                 <div
@@ -55,7 +50,11 @@
                     <div class="d-flex align-items-center">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Immediately (Urgent)</div>
+<<<<<<< HEAD
                         <span class="small">{{$priority[0]->urgent}}</span>
+=======
+                        <span class="small">{{$urgent[0]->urgent}}</span>
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
                     </div>
                     </div>
                 </div>
@@ -119,9 +118,6 @@
           </div>
         </div>
 
-
-
-
 @endsection
 
 @section('script')
@@ -133,7 +129,7 @@
     <!-- Plugin Js-->
     <script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
     <script src="{{asset('assets/bundles/apexcharts.bundle.js')}}"></script>
-    <script src="{{asset('assets/js/page/chart-apex.js')}}"></script
+    <script src="{{asset('assets/js/page/chart-apex.js')}}"></script>
 
 
      <script src="../js/template.js"></script>
@@ -214,7 +210,7 @@
                  } );
 
 
-         
+
 
 
 

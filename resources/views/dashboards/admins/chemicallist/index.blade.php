@@ -392,7 +392,7 @@
                                 @foreach($chemical as $key=>$list)
                                     <tr>
                                         <td>{{++$key}}.</td>
-                                        <td style="padding-right: .5px;padding-left: 15px">{{$list->chemical_Name}}</td>
+                                        <td style="padding-right: .5px;padding-left: 15px">{{$list->Chemical_Name}}</td>
                                         <td style="padding-right: .5px;padding-left: 15px">{{$list->product_code}}</td>
                                         <td style="padding-right: .5px;padding-left: 15px">{{$list->product_indentifier}}</td>
                                         <td style="padding-right: .5px;padding-left: 15px"><img

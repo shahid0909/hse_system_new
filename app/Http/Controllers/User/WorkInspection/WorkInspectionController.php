@@ -5,7 +5,10 @@ namespace App\Http\Controllers\User\WorkInspection;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+<<<<<<< HEAD
 use App\Models\create_inspection;
+=======
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
 use Illuminate\Support\Facades\DB;
 
 class WorkInspectionController extends Controller
@@ -15,6 +18,7 @@ class WorkInspectionController extends Controller
 
         $user = Auth::user();
 
+<<<<<<< HEAD
         $priority = DB::select("SELECT count(priority) as urgent FROM `create_inspections` WHERE  priority = 0");
 
         $priority1 = DB::select("SELECT count(priority) as days FROM create_inspections WHERE  priority = 1");
@@ -29,6 +33,14 @@ class WorkInspectionController extends Controller
         return view('dashboards.users.workplaceInspection.dashboard', compact('user','count','priority','priority1','priority2'));
 
 
+
+=======
+
+        $urgent = DB::select("SELECT count(priority) urgent FROM create_inspections WHERE  priority = 1");
+
+
+        return view('dashboards.users.workplaceInspection.dashboard', compact('user'));
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
 
 
     }

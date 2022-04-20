@@ -54,7 +54,11 @@
                                     <th>PRIORITY</th>
                                     <th>DATE IDENTIFIED</th>
                                     <th>TARGET DATE</th>
+<<<<<<< HEAD
                                     
+=======
+                                    <th>Admit DATE</th>
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -131,7 +135,11 @@
 
                     {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
                             {"data": "country.country"},
+<<<<<<< HEAD
                             // {"data": "inspection_title"},
+=======
+                            {"data": "inspection_title"},
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
                             {"data": "image"},
                             {"data": "employee.em_name"},
                             {"data": "priority"},
@@ -165,9 +173,18 @@
                     tr.addClass('shown');
                 }
             } );
+<<<<<<< HEAD
+=======
 
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
 
         });
+
+<<<<<<< HEAD
+        });
+=======
+    </script>
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
 
     </script>
     
