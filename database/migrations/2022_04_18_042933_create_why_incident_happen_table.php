@@ -15,6 +15,7 @@ class CreateWhyIncidentHappenTable extends Migration
     {
         Schema::create('why_incident_happen', function (Blueprint $table) {
             $table->id();
+            $table->string('incidence_number');
             $table->unsignedBigInteger('l_employee_id');
             $table->string('in_guard')->nullable();
             $table->string('operating_permission')->nullable();

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\User\accidentInvestigation;
 
 use App\Http\Controllers\Controller;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Models\IdentifyInjuredPart;
 use App\Models\WhyAnalysis;
 use App\Models\WhyIncidentHappen;
 use Illuminate\Contracts\View\View;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function compact;
@@ -134,7 +136,11 @@ class AccidentInvestigationController extends Controller
 
     public function whyIncidentHappenStore(Request $request)
     {
+   
+       $incidence_number = IdGenerator::generate(['table' => 'why_incident_happen', 'length' => 6, 'prefix' => 'AC-']);
+    
         $input = new WhyIncidentHappen();
+        $input->incidence_number=$incidence_number;
         $input->l_employee_id = $request->input('l_employee_id');
         $input->in_guard = $request->input('in_guard');
         $input->operating_permission = $request->input('operating_permission');
@@ -164,6 +170,8 @@ class AccidentInvestigationController extends Controller
         $input->prior_incident = $request->input('prior_incident');
         $input->similar_incidents = $request->input('similar_incidents');
         $input->save();
+
+      
 
         return redirect()->route('accident_report.identify_injured_part', ['id'=>$request->l_employee_id])->with('success', 'Incident Happen Successfully Inserted!!');
     }

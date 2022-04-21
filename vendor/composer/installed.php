@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3ada102c7056b4a29f7dd85b4648d4a84acb13b5',
+        'reference' => 'f9810fe7eb9d45a783e43e99a619034d7f380084',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -229,6 +229,15 @@
             'reference' => '8c3d0a3f6af734494ad8f6fbbee0ba92422859f3',
             'dev_requirement' => true,
         ),
+        'haruncpi/laravel-id-generator' => array(
+            'pretty_version' => 'v1.1.0',
+            'version' => '1.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../haruncpi/laravel-id-generator',
+            'aliases' => array(),
+            'reference' => 'b227dc2391ea45e9d070f19d35dc0a5f7a8f4185',
+            'dev_requirement' => false,
+        ),
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -436,7 +445,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3ada102c7056b4a29f7dd85b4648d4a84acb13b5',
+            'reference' => 'f9810fe7eb9d45a783e43e99a619034d7f380084',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -829,8 +838,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
