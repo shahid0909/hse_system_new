@@ -35,10 +35,9 @@ class CreateIspectionController extends Controller
         $country = l_country::all();
         $data = '';
 
-<<<<<<< HEAD
+
         return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data','emp','country','count'));
-=======
->>>>>>> b28238978e6a9d453357205e752115200c6565da
+
 
         return view('dashboards.users.workplaceInspection.create_inspection', compact('user', 'data', 'emp', 'country'));
 

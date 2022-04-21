@@ -54,11 +54,7 @@
                                     <th>PRIORITY</th>
                                     <th>DATE IDENTIFIED</th>
                                     <th>TARGET DATE</th>
-<<<<<<< HEAD
-                                    
-=======
                                     <th>Admit DATE</th>
->>>>>>> b28238978e6a9d453357205e752115200c6565da
                                     <th>Action</th>
                                 </tr>
                                 </thead>
