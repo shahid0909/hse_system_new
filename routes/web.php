@@ -23,6 +23,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Client\ScheduleDemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\User\accidentInvestigation\AccidentInvestigationController;
 use App\Http\Controllers\user\AccidentInvesttigation\AccidentInvestController;
 use App\Http\Controllers\User\CompanySetup\CompanyProfileController;
 use App\Http\Controllers\User\CompanySetup\DepartmentController;
@@ -60,7 +61,6 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/sdsSearch', [FrontendController::class, 'sdsSearch'])->name('sdsSearch');
 Route::get('/pagination/fetch_data', [FrontendController::class, 'fetch_data'])->name('fetch_data');
 Route::post('/sds-search-result', [FrontendController::class, 'getSearchResult'])->name('sds-search-result');
-
 
 //Route::view('/','web.home.home')->name('web.home');
 //
@@ -333,9 +333,9 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 
 
 
-    Route::group(['name' => 'Accident_investigation', 'as' => 'Accident_investigation.'], function () {
+    Route::group(['name' => 'accident_investigation', 'as' => 'accident_investigation.'], function () {
 
-        Route::get('Accident-investigation', [AccidentInvestController::class, 'accident'])->name('index');
+        Route::get('accident-investigation', [AccidentInvestController::class, 'accident'])->name('index');
         //JSN request
         Route::get('get-em-name/{id}', [AccidentInvestController::class, 'getempName'])->name('getempName');
         // Route::POST('list-inspection-store', [ListInspectionController::class, 'store'])->name('store');
@@ -345,6 +345,17 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
     });
 
+    Route::group(['name' => 'accident_report', 'as' => 'accident_report.'], function () {
+
+        Route::get('accident-report', [AccidentInvestigationController::class, 'index'])->name('index');
+        Route::get('why-wizerd/{id}', [AccidentInvestigationController::class, 'whyWizerd'])->name('why_wizerd');
+        Route::get('why-incident-happen/{id}', [AccidentInvestigationController::class, 'whyIncidentHappen'])->name('why_incident_happen');
+        Route::get('identify-injured-part/{id}', [AccidentInvestigationController::class, 'identifyInjuredPart'])->name('identify_injured_part');
+        Route::post('why-incident-happen-store', [AccidentInvestigationController::class, 'whyIncidentHappenStore'])->name('why_incident_happen_store');
+        Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
+        Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
+
+    });
     Route::group(['name' => 'safe_work_procedure', 'as' => 'safe_work_procedure.'], function () {
 
         Route::get('safe-work-procedure', [SafeWorkProcedureController::class, 'index'])->name('index');
@@ -354,6 +365,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('safe-work-procedure-view/{id}', [SafeWorkProcedureController::class, 'swpView'])->name('details');
         Route::get('destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
     });
+
 
     Route::group(['name' => 'hirarc', 'as' => 'hirarc.'], function () {
 

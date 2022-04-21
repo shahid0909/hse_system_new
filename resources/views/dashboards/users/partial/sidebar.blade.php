@@ -128,10 +128,13 @@
                         <a class="ms-link" href="{{route('workinspection.index')}}">Dashboard</a>
                     </li>
                     <li>
-                        <a class="ms-link" href="{{route('Accident_investigation.index')}}">Accident analysis</a>
+                        <a class="ms-link" href="{{route('accident_investigation.index')}}">Accident analysis</a>
                     </li>
                     <li>
                         <a class="ms-link" href="{{route('list_inspection.index')}}">list of Accident</a>
+                    </li>
+                    <li>
+                        <a class="ms-link" href="{{route('accident_report.index')}}">Accident Report</a>
                     </li>
                     <li>
                         <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>
@@ -216,13 +219,13 @@
                 <li>
                   <a class="ms-link" href="{{route('hirarc.index')}}">Add Hirarc</a>
                 </li>
-                
+
               </ul>
                <ul class="sub-menu collapse" id="customers-info">
                 <li>
                   <a class="ms-link" href="{{route('hirarc.listview')}}">Hirarc List</a>
                 </li>
-                
+
               </ul>
             </li>
 
