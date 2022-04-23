@@ -136,17 +136,16 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-6">
-                                <label><strong>PPE</strong></label>
-                                <select class="form-control" name="ppe_name" id="ppe_name">
-                                    <option value="">---Choose---</option>
-                                    @foreach($ppe as $value)
-                                    <option value="{{$value->id}}"{{old('ppe_name',isset($data->ppe) ? 'selected':'') }}>
-                                     {{$value->ppeName}} </option>
+
+                                <h5>PPE</h5>
+                                <div id="checkboxes">
+                                    @foreach ($ppe as $pp)
+                                    <label>
+                                        <input type="checkbox" name="ppe_name[]" value="{{ $pp->ppeName  }}" />{{ $pp->ppeName }}</label><br>
                                     @endforeach
-                                    
-                                   
-                                </select>
+
                             </div>
+
                             <div class="col-md-6">
                                 <label><strong>Remarks</strong></label>
                                 <textarea type="text" class="form-control" name="remarks" id="remarks"

@@ -28,6 +28,9 @@ class RectifiedInspectionController extends Controller
                ->select('rectified_inspections.*','create_inspections.inspection_title')->get();
 
 
+             
+
+
         return view('dashboards.users.workplaceInspection.rectified_inspection', compact('user','cri','data'));
 
     }

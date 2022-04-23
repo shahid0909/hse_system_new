@@ -317,10 +317,11 @@
                                                 $(row_item).remove();
                                             });
                                         });
+
                                     });
-                                </script>
                                 
-                                <script>
+                                
+                                
                                     function calculateDays() {
                                         var d1 = document.getElementById("s_date[]").value;
                                         var d2 = document.getElementById("e_date[]").value;
@@ -331,6 +332,33 @@
                                         var Myelement = document.getElementById("output[]");
                                         Myelement.value = days;
                                     }
+                                       $('#em_dept').on('change', function () {
+                                            let emDepartment = $(this).val();
+                                            if( ((emDepartment !== undefined) || (emDepartment != null)) && emDepartment) {
+                                                $.ajax({
+                                                    url: "get-em-name"+'/'+emDepartment,
+                                                    type: "GET",
+                                                  data : {"_token":"{{ csrf_token() }}"},
+                                                    dataType: "json",
+                                                    success: function (data) {
+                                                        console.log(data)
+                                                        if (data) {
+                                                            $('#employee_name').empty();
+                                                            $('#employee_name').append('<option hidden>Choose Employee</option>');
+                                                            $.each(data, function (key, emp) {
+                                                                $('select[name="employee_name"]').append('<option value="' + key + '">' +emp.em_name + '</option>');
+                                                            });
+                                                        } else {
+                                                            $('#employee_name').empty();
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                $('#employee_name').empty();
+                                            }
+                                        });
+                                       
+                                    });
                                 </script>
 
 @endsection

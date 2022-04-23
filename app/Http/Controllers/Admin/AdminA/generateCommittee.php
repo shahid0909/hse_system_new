@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SafetyCommittee;
 use App\Models\g_committe;
+use App\Models\CompanyProfile;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use PDF;
@@ -23,7 +24,8 @@ class generateCommittee extends Controller
        $committes= SafetyCommittee::all();
         $user = Auth::user();
        $gc= g_committe::all();
-        return view('dashboards.users.safetycommittee.committe',compact('user','committes','gc'));
+       $companies=CompanyProfile::all();
+        return view('dashboards.users.safetycommittee.committe',compact('user','committes','gc','companies'));
     }
 
     public function employee(Request $request){
@@ -44,7 +46,7 @@ WHERE  s.designation = '$request->designation'");
            $stringTosend .= ' <option value="">--- Choose ---</option>';
            foreach($committes as $committe){
 
-            $stringTosend .="<option value='".$committe->id."'>".$committe->em_name."</option>";
+            $stringTosend .="<option value='".$committe->em_name."'>".$committe->em_name."</option>";
         }
         echo   $stringTosend;
        }else{
@@ -93,7 +95,8 @@ WHERE  s.designation = '$request->designation'");
         $data=[
             'designation_name' => $request->designation_id,
             'employee_id' => $request->employee_id,
-            'company_name' => $request->c_name,
+            'company_name' => $request->company_id,
+            'em_name'=>$request->employee_id,
         ];
        
          $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',$data);

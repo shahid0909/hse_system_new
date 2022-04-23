@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
+class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
 {
     public static $files = array (
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -141,6 +141,10 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Foundation\\Auth\\' => 27,
             'Illuminate\\' => 11,
+        ),
+        'H' => 
+        array (
+            'Haruncpi\\LaravelIdGenerator\\' => 28,
         ),
         'G' => 
         array (
@@ -445,6 +449,10 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Haruncpi\\LaravelIdGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/haruncpi/laravel-id-generator/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -606,6 +614,8 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
         'App\\Http\\Controllers\\User\\WorkInspection\\ListInspectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/WorkInspection/ListInspectionController.php',
         'App\\Http\\Controllers\\User\\WorkInspection\\RectifiedInspectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/WorkInspection/RectifiedInspectionController.php',
         'App\\Http\\Controllers\\User\\WorkInspection\\WorkInspectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/WorkInspection/WorkInspectionController.php',
+        'App\\Http\\Controllers\\User\\accidentInvestigation\\AccidentInvestigationController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/accidentInvestigation/AccidentInvestigationController.php',
+        'App\\Http\\Controllers\\User\\hirarc\\HirarcController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/hirarc/HirarcController.php',
         'App\\Http\\Controllers\\User\\safety\\SafeWorkProcedureController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/safety/SafeWorkProcedureController.php',
         'App\\Http\\Controllers\\User\\safety\\SafetyPolicyController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/safety/SafetyPolicyController.php',
         'App\\Http\\Controllers\\User\\safety\\UploadPolicyController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/safety/UploadPolicyController.php',
@@ -627,6 +637,8 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
         'App\\Models\\CompanyProfile' => __DIR__ . '/../..' . '/app/Models/CompanyProfile.php',
         'App\\Models\\Department' => __DIR__ . '/../..' . '/app/Models/Department.php',
         'App\\Models\\Designation' => __DIR__ . '/../..' . '/app/Models/Designation.php',
+        'App\\Models\\I_hirarc' => __DIR__ . '/../..' . '/app/Models/I_hirarc.php',
+        'App\\Models\\IdentifyInjuredPart' => __DIR__ . '/../..' . '/app/Models/IdentifyInjuredPart.php',
         'App\\Models\\IndustryType' => __DIR__ . '/../..' . '/app/Models/IndustryType.php',
         'App\\Models\\L_state' => __DIR__ . '/../..' . '/app/Models/L_state.php',
         'App\\Models\\ListInspection' => __DIR__ . '/../..' . '/app/Models/ListInspection.php',
@@ -635,10 +647,13 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
         'App\\Models\\SafetyCommittee' => __DIR__ . '/../..' . '/app/Models/SafetyCommittee.php',
         'App\\Models\\ScheduleDemo' => __DIR__ . '/../..' . '/app/Models/ScheduleDemo.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\WhyAnalysis' => __DIR__ . '/../..' . '/app/Models/WhyAnalysis.php',
+        'App\\Models\\WhyIncidentHappen' => __DIR__ . '/../..' . '/app/Models/WhyIncidentHappen.php',
         'App\\Models\\WorkInspection' => __DIR__ . '/../..' . '/app/Models/WorkInspection.php',
         'App\\Models\\accident_analyz' => __DIR__ . '/../..' . '/app/Models/accident_analyz.php',
         'App\\Models\\create_inspection' => __DIR__ . '/../..' . '/app/Models/create_inspection.php',
         'App\\Models\\g_committe' => __DIR__ . '/../..' . '/app/Models/g_committe.php',
+        'App\\Models\\hazard' => __DIR__ . '/../..' . '/app/Models/hazard.php',
         'App\\Models\\l_case' => __DIR__ . '/../..' . '/app/Models/l_case.php',
         'App\\Models\\l_country' => __DIR__ . '/../..' . '/app/Models/l_country.php',
         'App\\Models\\l_employee' => __DIR__ . '/../..' . '/app/Models/l_employee.php',
@@ -1871,6 +1886,9 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Haruncpi\\LaravelIdGenerator\\IdGenerator' => __DIR__ . '/..' . '/haruncpi/laravel-id-generator/src/IdGenerator.php',
+        'Haruncpi\\LaravelIdGenerator\\IdGeneratorServiceProvider' => __DIR__ . '/..' . '/haruncpi/laravel-id-generator/src/IdGeneratorServiceProvider.php',
+        'Haruncpi\\LaravelIdGenerator\\Traits\\IdFactory' => __DIR__ . '/..' . '/haruncpi/laravel-id-generator/src/Traits/IdFactory.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Events\\GateEvaluated' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Events/GateEvaluated.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
@@ -5894,10 +5912,10 @@ class ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit5c6e6dc5740843abe4a34d81efe31e33::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08::$classMap;
 
         }, null, ClassLoader::class);
     }

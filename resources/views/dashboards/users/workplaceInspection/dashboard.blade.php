@@ -18,7 +18,7 @@
                     <div class="d-flex align-items-center">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Total Inspection</div>
-                        <span class="small">120</span>
+                        <span class="small">{{$count}}</span>
                     </div>
                     </div>
                 </div>
@@ -50,7 +50,11 @@
                     <div class="d-flex align-items-center">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Immediately (Urgent)</div>
+<<<<<<< HEAD
+                        <span class="small">{{$priority[0]->urgent}}</span>
+=======
                         <span class="small">{{$urgent[0]->urgent}}</span>
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
                     </div>
                     </div>
                 </div>
@@ -60,7 +64,7 @@
                     <div class="d-flex align-items-center">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Do it within 1 or 2 days</div>
-                        <span class="small">120</span>
+                        <span class="small">{{$priority1[0]->days}}</span>
                     </div>
                     </div>
                 </div>
@@ -69,7 +73,7 @@
                 <div class="alert-warning alert mb-0" style="background-color: #D9D9D9 !important;">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Do it within 1 week/more </div>
-                        <span class="small">120</span>
+                        <span class="small">{{$priority2[0]->more_week}}</span>
                     </div>
                     </div>
                 </div>

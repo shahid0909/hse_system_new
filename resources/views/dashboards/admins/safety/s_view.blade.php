@@ -80,8 +80,8 @@
                                           name="tagline"
                                           id="depertment"
                                           class="col-md-12"
-                                          style=" padding: 10px; border-radius: 3px; border-color: var(--border-color);>
-                                            <option value="#" "selected">Select Tagline</option>
+                                          style=" padding: 10px; border-radius: 3px; border-color: var(--border-color);">
+                                            <option >Select Tagline</option>
                                       <option value="SAFETY AND HEALTH IS EVERYONE'S BUSINESS">
                                           SAFETY AND HEALTH IS EVERYONE'S BUSINESS
                                       </option>
@@ -131,31 +131,35 @@
                                 </h6>
                               </div>
                               <div class="mid">
-
+                                <div>
+                                  <h6>
+                                    <strong>GCH RETAIL (M) SDN BHD</strong> is
+                                    committed to continual improvement in health,
+                                    safety and welfare of all its employees,
+                                    customers, contractors and visitors and those
+                                    under its influence in the neighborhood and
+                                    community at large.
+                                  </h6>
+                                </div>
+                                    <p> {!!$safety->commitment!!} </p>
                                 <ul>
-                                  <li>
-                                    {!!$safety->commitment!!}
-                                  </li>
                                   <li>
                                     {{ $safety->tagline}}
                                   </li>
-
-                                  <li>
-                                    A safety culture to achieve an accident-free
-                                    work environment.
-                                  </li>
                                 </ul>
-
-                                <p style="text-align: center">Tag Line Here</p>
                               </div>
                             </div>
                           </div>
 
                           <!-- Row end  -->
                           <div class="row">
-                            <div class="col-lg-12">
-                              <h6>Miss Vimala</h6>
-                              <p class="text-muted">Chief Executive Officer</p>
+                            <div class="col-lg-6">
+                              <h6> {{ $safety->employee->em_name}}</h6>
+                              <p class="text-muted">{{  $safety->designation->ds_name }}</p>
+                            </div>
+                            <div class="col-lg-6">
+                              <p>{{ $safety->company->company_name }}</p>
+                              <p>{{ $safety->created_at->format('Y:M:D') }}</p>
                             </div>
                           </div>
                           <!-- Row end  -->
@@ -179,8 +183,7 @@
                         </a>
                         <a href="{{ route('safety.destroy',$safety->id) }}">
                             <button type="button" class="btn btn-danger btn-lg my-1">
-                                <i class="fa fa-paper-plane-o"></i>Delete
-                              </button>
+                              <i class="fa fa-paper-plane-o"></i>Delete </button>
                         </a>
                       </div>
 
@@ -201,5 +204,5 @@
                 $(document).ready(function() {
                     $('#summernote').summernote();
                 });</script>
-            <script>
+            
 @endsection

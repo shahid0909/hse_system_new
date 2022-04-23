@@ -58,8 +58,12 @@
                                                     <!-- <input type="text" class="form-control" required> -->
                                                     <select  name="location"  id="location"
                                                         class="col-md-12"
+<<<<<<< HEAD
+                                                        style="padding: 10px; border-radius: 3px; border-color: var(--border-color); ">
+=======
                                                         style="padding: 10px; border-radius: 3px; border-color: var(--border-color);">
 
+>>>>>>> b28238978e6a9d453357205e752115200c6565da
                                                         <option value="">choose</option>
                                                         @foreach($country as $list)
                                                             <option value="{{$list->id}}"{{isset($data->location) && $data->location == $list->id ? 'selected': ''}}>{{$list->country}}</option>

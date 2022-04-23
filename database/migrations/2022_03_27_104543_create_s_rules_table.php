@@ -18,6 +18,9 @@ class CreateSRulesTable extends Migration
             $table->longText('title');
             $table->longText('commitment');
             $table->string('tagline');
+            $table->integer('employee_id');
+            $table->integer('designation_id');
+            $table->integer('comapny_id');
             $table->timestamps();
         });
     }

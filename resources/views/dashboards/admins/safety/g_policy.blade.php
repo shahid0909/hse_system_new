@@ -97,8 +97,6 @@
                                             class="col-md-12"
                                             style=" padding: 10px; border-radius: 3px; border-color: var(--border-color);>
 
-
-
                                         <option value="SAFETY AND HEALTH IS EVERYONE'S BUSINESS">
                                             SAFETY AND HEALTH IS EVERYONE'S BUSINESS
                                         </option>
@@ -122,18 +120,40 @@
                                         </select>
                                       </div>
 
+                                      <div class="form-group">
+                                        <label >Company Name</label>
+                                      <select name="company_id" id="" class="form-control">
+                                        <option value="">-select--</option>
+                                       @foreach ($companies as $company)
 
+                                       <option value="{{ $company->id }}">{{  $company->company_name }}</option>
+                                         
+                                       @endforeach
+                                         </select>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-lg-12">
+                                          <h6>Employee</h6>
+                                   <select name="employee_id" id="employee_id" class="form-control mb-2" >
+                                     <option value="">--Select--</option>
+                                     @foreach ($employees as $employee)
+                                     <option value="{{ $employee->id }}">{{ $employee->em_name }}</option>
+                                     @endforeach
+                                   </select>
+                                        </div>
+                                        <div class="col-lg-12">
+                                          <h6>Designation</h6>
+                                        <input name="designation" id="designation" class="form-control" readonly>
+                                    
+                                        </div>
+                                        <input type="hidden"  name="designation_id" id="designation_id" class="form-control">
+                                      </div>
                                     <button type="submit" class="btn btn-primary">Create</button>
                                   </form>
                             </div>
                           </div>
                           <!-- Row end  -->
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <h6>Miss Vimala</h6>
-                              <p class="text-muted">Chief Executive Officer</p>
-                            </div>
-                          </div>
+                        
                           <!-- Row end  -->
                         </div>
                       </div>
@@ -160,7 +180,20 @@
             <script>
                 $(document).ready(function() {
                     $('#summernote').summernote();
-                });</script>
-            <script>
 
+                    $("#employee_id").on("change", function () {
+                      let emp_id = $("#employee_id").val();
+                 $.ajax({
+                type: 'get',
+                url: "getdesignation"+'/'+emp_id,   
+                success: function (data) {
+                    $('#designation').val(data.ds_name);
+                    $('#designation_id').val(data.id);
+                }
+            });
+                    });
+
+                });
+
+                </script>
 @endsection

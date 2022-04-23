@@ -27,10 +27,16 @@ class CreateIspectionController extends Controller
     public function index()
     {
 
+
+        $count = DB::table('create_inspections')->count();
+
         $user = Auth::user();
         $emp = l_employee::all();
         $country = l_country::all();
         $data = '';
+
+
+        return view('dashboards.users.workplaceInspection.create_inspection', compact('user','data','emp','country','count'));
 
 
         return view('dashboards.users.workplaceInspection.create_inspection', compact('user', 'data', 'emp', 'country'));
