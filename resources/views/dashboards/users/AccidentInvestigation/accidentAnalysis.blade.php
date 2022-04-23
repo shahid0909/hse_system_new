@@ -60,7 +60,7 @@
                                                     Information </h6>
                                                 <div class="checkout-steps-form-content collapse show" id="collapseOne"
                                                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <form class="mt-3" method="POST" action="{{route('Accident_investigation.store')}}">
+                                                    <form class="mt-3" method="POST" action="{{route('accident_investigation.store')}}">
                                                         @csrf 
                                                         <div class="row g-3 align-items-center">
                                                             <div class="col-md-4">
@@ -322,6 +322,9 @@
                                 
                                 
                                 
+                                </script>
+                                <script>
+                                    
                                     function calculateDays() {
                                         var d1 = document.getElementById("s_date[]").value;
                                         var d2 = document.getElementById("e_date[]").value;
@@ -332,7 +335,10 @@
                                         var Myelement = document.getElementById("output[]");
                                         Myelement.value = days;
                                     }
-                                       $('#em_dept').on('change', function () {
+                                       
+                                </script>
+                                <script>
+                                    $('#em_dept').on('change', function () {
                                             let emDepartment = $(this).val();
                                             if( ((emDepartment !== undefined) || (emDepartment != null)) && emDepartment) {
                                                 $.ajax({

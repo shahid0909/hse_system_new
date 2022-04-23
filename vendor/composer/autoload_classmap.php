@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Helpers\\Helper' => $baseDir . '/app/Helpers/Helper.php',
     'App\\Http\\Controllers\\Admin\\AdminA\\ChemicalController' => $baseDir . '/app/Http/Controllers/Admin/AdminA/ChemicalController.php',
     'App\\Http\\Controllers\\Admin\\AdminA\\ChemicalListingController' => $baseDir . '/app/Http/Controllers/Admin/AdminA/ChemicalListingController.php',
     'App\\Http\\Controllers\\Admin\\AdminA\\ChemicalRegisterController' => $baseDir . '/app/Http/Controllers/Admin/AdminA/ChemicalRegisterController.php',
@@ -64,6 +65,7 @@ return array(
     'App\\Http\\Middleware\\isAdminMiddleware' => $baseDir . '/app/Http/Middleware/isAdminMiddleware.php',
     'App\\Http\\Middleware\\isUserMiddleware' => $baseDir . '/app/Http/Middleware/isUserMiddleware.php',
     'App\\Http\\Requests\\ScheduleDemoRequest' => $baseDir . '/app/Http/Requests/ScheduleDemoRequest.php',
+    'App\\Models\\AcciAnnalysis' => $baseDir . '/app/Models/AcciAnnalysis.php',
     'App\\Models\\Chemical' => $baseDir . '/app/Models/Chemical.php',
     'App\\Models\\ChemicalListing' => $baseDir . '/app/Models/ChemicalListing.php',
     'App\\Models\\CompanyProfile' => $baseDir . '/app/Models/CompanyProfile.php',
@@ -74,6 +76,7 @@ return array(
     'App\\Models\\IndustryType' => $baseDir . '/app/Models/IndustryType.php',
     'App\\Models\\L_state' => $baseDir . '/app/Models/L_state.php',
     'App\\Models\\ListInspection' => $baseDir . '/app/Models/ListInspection.php',
+    'App\\Models\\McAnnalysis' => $baseDir . '/app/Models/McAnnalysis.php',
     'App\\Models\\Meeting' => $baseDir . '/app/Models/Meeting.php',
     'App\\Models\\RectifiedInspection' => $baseDir . '/app/Models/RectifiedInspection.php',
     'App\\Models\\SafetyCommittee' => $baseDir . '/app/Models/SafetyCommittee.php',

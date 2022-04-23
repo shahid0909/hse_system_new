@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Models\IdentifyInjuredPart;
 use App\Models\WhyAnalysis;
+use App\Models\AcciAnnalysis;
 use App\Models\WhyIncidentHappen;
 use Illuminate\Contracts\View\View;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function compact;
@@ -26,7 +26,8 @@ class AccidentInvestigationController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('dashboards.users.accidentInvestigation.index', compact('user'));
+        $values=AcciAnnalysis::orderBy('id','desc')->get();
+        return view('dashboards.users.accidentInvestigation.index', compact('user','values'));
     }
 
     public function whyWizerd()
@@ -137,7 +138,7 @@ class AccidentInvestigationController extends Controller
     public function whyIncidentHappenStore(Request $request)
     {
    
-       $incidence_number = IdGenerator::generate(['table' => 'why_incident_happen', 'length' => 6, 'prefix' => 'AC-']);
+      
     
         $input = new WhyIncidentHappen();
         $input->incidence_number=$incidence_number;

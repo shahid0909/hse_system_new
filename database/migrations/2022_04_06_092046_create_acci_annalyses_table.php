@@ -15,6 +15,7 @@ class CreateAcciAnnalysesTable extends Migration
     {
         Schema::create('acci_annalyses', function (Blueprint $table) {
             $table->id();
+            $table->text('inc_number');
             $table->string('em_dept');
             $table->string('em_name');
             $table->string('em_des');

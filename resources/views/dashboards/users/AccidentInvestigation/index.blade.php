@@ -21,11 +21,9 @@
                         <label for="name" class="form-label">Name</label>
                         <select name="name" id="name" class="form-control">
                             <option value="">--Select One--</option>
-                            <option value="1">name01</option>
-                            <option value="2">name02</option>
-                            <option value="3">name03</option>
-                            <option value="4">name04</option>
-                            <option value="5">name05</option>
+                            @foreach ($values as  $value)
+                            <option value="{{ $value->id }}">{{$value->inc_number }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -49,18 +47,21 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
+                        @foreach ($values as $value)
+                        <td>{{ $value->inc_number }}</td>
+                        {{-- <td>System Architect</td>
                         <td>Edinburgh</td>
                         <td>61</td>
-                        <td>2011/04/25</td>
+                        <td>2011/04/25</td> --}}
                         <td>
                             <a href="javascript:void(0)">
                                 <i class="icofont-edit"></i>
                             </a>
                         </td>
+                        @endforeach
+                    
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Garrett Winters</td>
                         <td>Accountant</td>
                         <td>Tokyo</td>
@@ -179,7 +180,7 @@
                                 <i class="icofont-edit"></i>
                             </a>
                         </td>
-                    </tr>
+                    </tr> --}}
                     </tbody>
                 </table>
                 <div class="row mt-2">

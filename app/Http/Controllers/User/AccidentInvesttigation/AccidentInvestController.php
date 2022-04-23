@@ -12,6 +12,7 @@ use App\Models\AcciAnnalysis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
 
 class AccidentInvestController extends Controller
 {
@@ -59,9 +60,11 @@ class AccidentInvestController extends Controller
      public function store(Request $request)
      {
         //  dd($request->input('st_of_invesg'));die;
-        //  dd($request);
-     
+         //dd($request);
+        $incnumber=Helper::IDGenerator(new AcciAnnalysis,'inc_number',5,'INC');
+        
          $input = new AcciAnnalysis();
+         $input->inc_number=$incnumber;
          $input->em_dept  = $request->input('em_dept');
          $input->em_name  = $request->input('em_name');
          $input->em_des = $request->input('em_des');
@@ -73,7 +76,7 @@ class AccidentInvestController extends Controller
          $input->outcom_of_investg = $request->input('outcom_of_investg');
          $input->summ_of_incident = $request->input('summ_of_incident');
          $input->save();
-
+       
         // count array value
 
         $count = $request->start_dateMC;
@@ -90,27 +93,20 @@ class AccidentInvestController extends Controller
             $inputMC->typ_of_record = $request->typ_of_record[$main];
             $inputMC->save();
          }
-
-       
-         session()->flash('message','Accident Investigation has been saved successfully !!');
+         session()->flash('message','Accident Investigation has been saved successfully!!');
          return redirect()->back();
      }
 
      public function list_acci()
      {
         $user = Auth::user();
-        
-
         $data = DB::select("SELECT  a.id as id,a.em_dept,a.em_name,a.em_des,a.l_of_incident,a.t_of_accident,a.tim_of_incident,a.rpt_to_dosh,a.st_of_invesg,a.outcom_of_investg,a.summ_of_incident,d.depertment_name,
-
         b.s_date,b.e_date,b.total_duration,b.typ_of_notif,b.typ_of_record,
-
         d.depertment_name,e.em_name,de.ds_name FROM acci_annalyses A
         LEFT join mc_annalyses B on B.acci_annalyses_id = A.id
         left join departments d on d.id = a.em_dept
         left join l_employees e on e.id =a.em_name
         LEFT JOIN designations de on de.id =a.em_des");
-        // dd($data);
         return view('dashboards.users.AccidentInvestigation.list_accident',compact('user', 'data'));
      }
 

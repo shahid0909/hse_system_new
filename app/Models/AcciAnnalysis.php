@@ -9,6 +9,7 @@ class AcciAnnalysis extends Model
 {
     use HasFactory;
     protected $fillable = ['id',
+    'inc_number',
     'em_dept', 
     'em_name',
     'em_des',

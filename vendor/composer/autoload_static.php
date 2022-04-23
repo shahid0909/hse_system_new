@@ -38,6 +38,7 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'caf23243e9cb3afd48d0414815ebf07e' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/helper.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
+        '8fde5feda9697fe0ee53a3938c839fb0' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -576,6 +577,7 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
         'App\\Http\\Controllers\\Admin\\AdminA\\ChemicalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminA/ChemicalController.php',
         'App\\Http\\Controllers\\Admin\\AdminA\\ChemicalListingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminA/ChemicalListingController.php',
         'App\\Http\\Controllers\\Admin\\AdminA\\ChemicalRegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminA/ChemicalRegisterController.php',
@@ -632,6 +634,7 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'App\\Http\\Middleware\\isAdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/isAdminMiddleware.php',
         'App\\Http\\Middleware\\isUserMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/isUserMiddleware.php',
         'App\\Http\\Requests\\ScheduleDemoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ScheduleDemoRequest.php',
+        'App\\Models\\AcciAnnalysis' => __DIR__ . '/../..' . '/app/Models/AcciAnnalysis.php',
         'App\\Models\\Chemical' => __DIR__ . '/../..' . '/app/Models/Chemical.php',
         'App\\Models\\ChemicalListing' => __DIR__ . '/../..' . '/app/Models/ChemicalListing.php',
         'App\\Models\\CompanyProfile' => __DIR__ . '/../..' . '/app/Models/CompanyProfile.php',
@@ -642,6 +645,7 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'App\\Models\\IndustryType' => __DIR__ . '/../..' . '/app/Models/IndustryType.php',
         'App\\Models\\L_state' => __DIR__ . '/../..' . '/app/Models/L_state.php',
         'App\\Models\\ListInspection' => __DIR__ . '/../..' . '/app/Models/ListInspection.php',
+        'App\\Models\\McAnnalysis' => __DIR__ . '/../..' . '/app/Models/McAnnalysis.php',
         'App\\Models\\Meeting' => __DIR__ . '/../..' . '/app/Models/Meeting.php',
         'App\\Models\\RectifiedInspection' => __DIR__ . '/../..' . '/app/Models/RectifiedInspection.php',
         'App\\Models\\SafetyCommittee' => __DIR__ . '/../..' . '/app/Models/SafetyCommittee.php',

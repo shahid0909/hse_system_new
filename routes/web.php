@@ -363,6 +363,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('why-incident-happen/{id}', [AccidentInvestigationController::class, 'whyIncidentHappen'])->name('why_incident_happen');
         Route::get('identify-injured-part/{id}', [AccidentInvestigationController::class, 'identifyInjuredPart'])->name('identify_injured_part');
         Route::post('why-incident-happen-store', [AccidentInvestigationController::class, 'whyIncidentHappenStore'])->name('why_incident_happen_store');
+        
         Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
         Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
 
