@@ -99,6 +99,31 @@ class AccidentInvestController extends Controller
      public function list_acci()
      {
         $user = Auth::user();
-        return view('dashboards.users.AccidentInvestigation.list_accident',compact('user'));
+        
+
+        $data = DB::select("SELECT  a.id as id,a.em_dept,a.em_name,a.em_des,a.l_of_incident,a.t_of_accident,a.tim_of_incident,a.rpt_to_dosh,a.st_of_invesg,a.outcom_of_investg,a.summ_of_incident,d.depertment_name,
+
+        b.s_date,b.e_date,b.total_duration,b.typ_of_notif,b.typ_of_record,
+
+        d.depertment_name,e.em_name,de.ds_name FROM acci_annalyses A
+        LEFT join mc_annalyses B on B.acci_annalyses_id = A.id
+        left join departments d on d.id = a.em_dept
+        left join l_employees e on e.id =a.em_name
+        LEFT JOIN designations de on de.id =a.em_des");
+        // dd($data);
+        return view('dashboards.users.AccidentInvestigation.list_accident',compact('user', 'data'));
      }
+
+    //  public function list_view()
+    //  {
+    //     $data = DB::select("SELECT  a.id as id,a.em_dept,a.em_name,a.em_des,a.l_of_incident,a.t_of_accident,a.tim_of_incident,a.rpt_to_dosh,a.st_of_invesg,a.outcom_of_investg,a.summ_of_incident,
+
+    //     b.s_date,b.e_date,b.total_duration,b.typ_of_notif,b.typ_of_record,
+
+    //     d.depertment_name,e.em_name,de.ds_name FROM acci_annalyses A 
+    //     LEFT join mc_annalyses B on B.acci_annalyses_id = A.id
+    //     left join departments d on d.id = a.depertment_id
+    //     left join l_employees e on e.id =a.employee_id
+    //     LEFT JOIN designations de on de.id =a.designation_id");
+    //  }
 }

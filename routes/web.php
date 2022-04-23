@@ -29,6 +29,7 @@ use App\Http\Controllers\User\CompanySetup\DesignationController;
 use App\Http\Controllers\User\CompanySetup\EmployeeController;
 use App\Http\Controllers\User\CompanySetup\EmployeeProfileController;
 use App\Http\Controllers\User\safety\SafetyPolicyController;
+use App\Http\Controllers\User\safety\SafeWorkProcedureController;
 use App\Http\Controllers\User\safety\UploadPolicyController;
 use App\Http\Controllers\User\WorkInspection\CreateIspectionController;
 use App\Http\Controllers\User\WorkInspection\ListInspectionController;
@@ -190,7 +191,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
 
 
     Route::group(['name' => 'l_ppe', 'as' => 'l_ppe.'], function () {
-
         Route::get('ppe-entry', [ppeController::class, 'index'])->name('index');
         Route::POST('ppe-entry-store', [ppeController::class, 'store'])->name('store');
         Route::get('ppe-entry-edit/{id}', [ppeController::class, 'edit'])->name('edit');
@@ -198,10 +198,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'preventB
         Route::get('ppe-entry-datatable-list}', [ppeController::class, 'datatable'])->name('datatable');
         Route::get('ppe-entry-destroy/{id}', [ppeController::class, 'destroy'])->name('destroy');
     });
-
-
-
-
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBackHistory']], function () {
@@ -242,7 +238,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
     Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
     Route::get('safety/modify/{id}',[SafetyPolicyController::class,'modify'])->name('modify');
-    Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('modifystore');
+    Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('update');
     Route::get('safety/delete/{id}',[SafetyPolicyController::class,'destroy'])->name('destroy');
     });
 
@@ -310,24 +306,32 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         // Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
-        Route::post('store', [generateCommittee ::class, 'generatepdf'])->name('store');
+
+        Route::post('committee.insert',[generateCommittee::class,'generatepdf'])->name('store');
+
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
 Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('view-meeting',[meetingController::class,'index'])->name('index');
  Route::post('store',[meetingController::class,'store'])->name('store');
+
  Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
+ Route::get('report.delete/{id}',[meetingController::class,'destroy'])->name('delete');
+ Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
+ Route::get('report.pdf/{id}',[meetingController::class,'reportpdf'])->name('report-pdf');
+
+
+
 });
 
-    Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
+ Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
         Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
         Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
-
     });
 
 
@@ -343,6 +347,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('list-accident', [AccidentInvestController::class, 'list_acci'])->name('acci_list');
     });
 
+
 //     Route::group(['name' => 'list_accident', 'as' => 'list_accident.'], function () {
 //         Route::get('list-accident', [UploadPolicyController::class, 'index'])->name('index');
 //         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
@@ -351,6 +356,18 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 //         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
 //         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
 // });
+
+    Route::group(['name' => 'safe_work_procedure', 'as' => 'safe_work_procedure.'], function () {
+
+        Route::get('safe-work-procedure', [SafeWorkProcedureController::class, 'index'])->name('index');
+        Route::post('safe-work-procedure-store', [SafeWorkProcedureController::class, 'store'])->name('store');
+        Route::get('safe-work-procedure-edit/{id}', [SafeWorkProcedureController::class, 'edit'])->name('edit');
+        Route::put('safe-work-procedure-update/{id}', [SafeWorkProcedureController::class, 'update'])->name('update');
+        Route::get('safe-work-procedure-view/{id}', [SafeWorkProcedureController::class, 'swpView'])->name('details');
+        Route::get('destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
+    });
+
+
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){
   Route::get('accident',[AccidentController::class,'index'])->name('index');

@@ -42,7 +42,7 @@
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th></th>
+                                    <!-- <th></th> -->
                                     <th>Sl</th>
                                     <th>Name</th>
                                     <th>Departmet</th>
@@ -53,10 +53,25 @@
                                     <th>Repost to DOSH</th>
                                     <th>Action</th>
                                 </tr>
-                                </thead>
+                            </thead>
+                                @foreach($data as $key=>$v_data)
                                 <tbody>
-
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $v_data->em_name }}</td>
+                                    <td>{{ $v_data->depertment_name }}</td>
+                                    <td>{{ $v_data->em_des }}</td>
+                                    <td>{{ $v_data->l_of_incident }}</td>
+                                    @if($v_data->t_of_accident==1)
+                                    <td>Near miss</td>
+                                    @elseif($v_data->t_of_accident==2)
+                                    <td>Demo</td>
+                                    @endif
+                                    
+                                    <td>{{ $v_data->tim_of_incident }}</td>
+                                    <td>{{ $v_data->typ_of_notif }}</td>
+                                
                                 </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>
@@ -87,7 +102,7 @@
     <!-- Jquery Page Js -->
     <script src="assets/js/template.js"></script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
 
                  function format(d) {
                      // `d` is the original data object for the row
@@ -163,7 +178,7 @@
 
         });
 
-    </script>
+    </script> -->
 
 
 @endsection

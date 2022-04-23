@@ -80,7 +80,7 @@
                                                                 <label for="employee_name" class="form-label">Injured
                                                                     Person Name </label>
                                                                 <select
-                                                                    name="em_name"
+                                                                    name="em_name" 
                                                                     id="employee_list" autofocus
                                                                     class="form-control col-md-12">
                                                                     <option>Select Employee</option>
@@ -91,7 +91,7 @@
                                                                 <input class="form-control"
                                                                         aria-label="Default select example" readonly
                                                                         name="em_des" id="employee_designation">
-                                                                    {{-- <option selected>-- Select Name --</option> --}}
+                                                                        <option selected>-- Select Name --</option>
 
                                                             </div>
                                                             <div class="col-md-4">
@@ -104,13 +104,13 @@
                                                                 <select class="form-select" name="t_of_accident">
                                                                     <option selected>-- Select --</option>
                                                                     <option value="1">Near Miss</option>
-                                                                    <option value="1">First Aid Injury</option>
-                                                                    <option value="1">Injury(4 Days MC)</option>
-                                                                    <option value="1">Serious Bodily Injury</option>
-                                                                    <option value="2">Fatal Injury</option>
-                                                                    <option value="3">Occupational Diseases</option>
-                                                                    <option value="3">Occupational Poisoning</option>
-                                                                    <option value="3">Dangerous Occurrence</option>
+                                                                    <option value="2">First Aid Injury</option>
+                                                                    <option value="3">Injury(4 Days MC)</option>
+                                                                    <option value="4">Serious Bodily Injury</option>
+                                                                    <option value="5">Fatal Injury</option>
+                                                                    <option value="6">Occupational Diseases</option>
+                                                                    <option value="7">Occupational Poisoning</option>
+                                                                    <option value="8">Dangerous Occurrence</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-4">
@@ -125,7 +125,7 @@
                                                                         name="rpt_to_dosh">
                                                                     <option selected>-- Select --</option>
                                                                     <option value="1">Yes</option>
-                                                                    <option value="1">No</option>
+                                                                    <option value="2">No</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-12">
@@ -281,8 +281,8 @@
                                             height: 100
                                         });
 
-                                        $(".addROw").click(function () {
-                                            // e.preventDefault();
+                                        $(".addROw ").click(function (e) {
+                                            e.preventDefault();
                                             $("#show_item").prepend(`
                                                 <div class="row">
                                                 <div class="row g-3 align-items-center">

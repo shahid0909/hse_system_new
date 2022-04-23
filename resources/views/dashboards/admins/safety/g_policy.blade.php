@@ -2,13 +2,14 @@
 @section('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"/>
     <style>
-        .inpcol {
+        .inpcol{
 
             outline: 1px solid #5b998d;
         }
 
-        .span {
+        .span{
             content: '*';
             color: red;
         }
@@ -48,7 +49,7 @@
                 </div>
               </div>
               <!-- Row end  -->
-  
+
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12">
                   <div class="row justify-content-center">
@@ -65,49 +66,63 @@
                           <div class="mb-3 pb-3 border-bottom text-center">
                             <h3><b> SAFETY & HEALTH POLICY</b></h3>
                           </div>
-  
+
                           <div class="row mb-4">
                             <div class="col-sm-12">
-                             
+
                                 <form action="{{ route('safety.store') }}"  method="post" enctype="multipart/form-data">
                                     @csrf
-                                <ul  class="bg bg-danger">
+                                <ul class="bg bg-danger">
                                     @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
                                    @endforeach
-                                    
+
                                 </ul>
-                                   
+
                                     <div class="form-group">
-                                      <label >Safety Details</label>
-                                      <textarea name="s_head" id="" cols="65" rows="">{{ old('s_head') }}</textarea>
+                                      <label >Title</label>
+                                      <textarea name="title" id="" cols="65" rows="">{{ old('title') }}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <label >Rules A</label>
-                                        <input type="text" class="form-control" name="rules_a"  placeholder="write Here"  value="{{ old('rules_a') }}">
+                                        <label >Commitment</label>
+                                        <textarea id="summernote" name="commitment" value="{{ old('commitment') }}"></textarea>
                                       </div>
+
                                     <div class="form-group">
-                                        <label >Rules B</label>
-                                        <input type="text" class="form-control" name="rules_b"  placeholder="write Here" value="{{ old('rules_b') }}">
+                                        <label >Tagline</label>
+                                        <select
+                                            name="tagline"
+                                            id="depertment"
+                                            class="col-md-12"
+                                            style=" padding: 10px; border-radius: 3px; border-color: var(--border-color);>
+
+
+
+                                        <option value="SAFETY AND HEALTH IS EVERYONE'S BUSINESS">
+                                            SAFETY AND HEALTH IS EVERYONE'S BUSINESS
+                                        </option>
+                                        <option value="Zero injuries does not indicate the presence
+                                                of safety.">
+                                            Zero injuries does not indicate the presence
+                                            of safety.
+                                        </option>
+
+                                            <option value="Zero injuries does not indicate the presence
+                                                of safety.">
+                                                Zero injuries does not indicate the presence
+                                                of safety.
+                                            </option>
+                                            <option value="Never take safety for granted.">
+                                                Never take safety for granted.
+                                            </option>
+                                            <option value="Safety first, to last in life.">
+                                                Safety first, to last in life.
+                                            </option>
+                                        </select>
                                       </div>
-                                    <div class="form-group">
-                                        <label >Rules C</label>
-                                        <input type="text" class="form-control" name="rules_c"  placeholder="write Here" value="{{ old('rules_c') }}">
-                                      </div>
-                                    <div class="form-group">
-                                        <label >Rules D</label>
-                                        <input type="text" class="form-control" name="rules_d"  placeholder="write Here" value="{{ old('rules_d') }}">
-                                      </div>
-                                    <div class="form-group">
-                                        <label >Rules E</label>
-                                        <input type="text" class="form-control" name="rules_e"  placeholder="write Here" value="{{ old('rules_e') }}">
-                                      </div>
-                                    <div class="form-group">
-                                        <label >Rules F</label>
-                                        <input type="text" class="form-control" name="rules_f"  placeholder="write Here" value="{{ old('rules_f') }}">
-                                      </div>
-                                    
+
+
                                     <button type="submit" class="btn btn-primary">Create</button>
                                   </form>
                             </div>
@@ -122,7 +137,7 @@
                           <!-- Row end  -->
                         </div>
                       </div>
-                     
+
                     </div>
                   </div>
                   <!-- Row end  -->
@@ -131,8 +146,6 @@
               <!-- Row end  -->
             </div>
           </div>
-          
-
 
         @endsection
         @section('script')
@@ -143,38 +156,11 @@
 
             <!-- Jquery Page Js -->
             <script src="{{asset('../js/template.js')}}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
             <script>
-
-                // project data table
-                $(document).ready(function () {
-                    setTimeout(function () {
-                        $('.message').fadeOut('fast');
-                    }, 500);
-                    $('.datatable').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: {
-                            url: "{{ route('designation.datatable') }}",
-                            type: 'GET',
-                            'headers': {
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        },
-                        "columns": [
-                            {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "ds_name"},
-                            {"data": "ds_rank"},
-                            // {"data": "status"},
-                            {data: 'action', name: 'action', orderable: false, searchable: false}
-                        ],
-                        language: {
-                            paginate: {
-                                next: '<i class="bx bx-chevron-right">',
-                                previous: '<i class="bx bx-chevron-left">'
-                            }
-                        }
-                    });
-                });
-            </script>
+                $(document).ready(function() {
+                    $('#summernote').summernote();
+                });</script>
+            <script>
 
 @endsection
