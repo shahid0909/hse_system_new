@@ -315,7 +315,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 
 Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('view-meeting',[meetingController::class,'index'])->name('index');
- Route::post('store',[meetingController::class,'store'])->name('store');
+ Route::post('meeting-store',[meetingController::class,'store'])->name('store');
  Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
  Route::get('report.delete/{id}',[meetingController::class,'destroy'])->name('delete');
  Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
@@ -366,6 +366,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         
         Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
         Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
+        Route::post('report', [AccidentInvestigationController::class, 'report'])->name('reportstore');
 
     });
 
@@ -376,14 +377,10 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('safe-work-procedure-edit/{id}', [SafeWorkProcedureController::class, 'edit'])->name('edit');
         Route::put('safe-work-procedure-update/{id}', [SafeWorkProcedureController::class, 'update'])->name('update');
         Route::get('safe-work-procedure-view/{id}', [SafeWorkProcedureController::class, 'swpView'])->name('details');
-        Route::get('destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
+        Route::get('safe_work_procedure-destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
     });
 
-
-
-
     Route::group(['name' => 'hirarc', 'as' => 'hirarc.'], function () {
-
         Route::get('hirarc', [HirarcController::class, 'index'])->name('index');
         Route::POST('hirarc-store', [HirarcController::class, 'store'])->name('store');
         Route::get('hirarc-edit/{id}', [HirarcController::class, 'edit'])->name('edit');
@@ -392,20 +389,10 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('hirarc-data-list', [HirarcController::class, 'datatable'])->name('datatable');
         Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
         Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
-
-
     });
-
-
-
-
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){
   Route::get('accident',[AccidentController::class,'index'])->name('index');
   Route::post('store',[AccidentController::class,'store'])->name('store');
   Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
 });
-
-
-
-

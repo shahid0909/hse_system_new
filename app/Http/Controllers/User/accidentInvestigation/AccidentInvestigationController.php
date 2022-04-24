@@ -15,7 +15,7 @@ use function compact;
 use function dd;
 use function md5;
 use function redirect;
-
+use DB;
 class AccidentInvestigationController extends Controller
 {
     /**
@@ -23,13 +23,15 @@ class AccidentInvestigationController extends Controller
      *
      * @return View
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $values=AcciAnnalysis::orderBy('id','desc')->get();
-        return view('dashboards.users.accidentInvestigation.index', compact('user','values'));
+        $data=AcciAnnalysis::all();
+   
+        return view('dashboards.users.accidentInvestigation.index', compact('user','data'));
     }
 
+   
     public function whyWizerd()
     {
         $user = Auth::user();
@@ -237,4 +239,15 @@ class AccidentInvestigationController extends Controller
 
         return redirect()->route('accident_report.identify_injured_part', ['id'=>$request->l_employee_id])->with('success', 'Injured Body Part Successfully Inserted!!');
     }
+    public function report(Request $request) { 
+        $user=Auth::user();
+        $values= DB::table('acci_annalyses')
+        ->leftJoin('l_employees', 'l_employees.id', '=', 'acci_annalyses.em_name')->leftJoin('departments','departments.id','=','acci_annalyses.em_dept')
+       ->get();
+
+        $data=AcciAnnalysis::all();
+
+        return view('dashboards.users.accidentInvestigation.index', compact('values','user','data')); 
+    }
+
 }

@@ -50,11 +50,11 @@
                     <div class="d-flex align-items-center">
                     <div class="flex-fill ms-3 text-truncate">
                         <div class="h3 mb-0">Immediately (Urgent)</div>
-<<<<<<< HEAD
+
                         <span class="small">{{$priority[0]->urgent}}</span>
-=======
+
                         <span class="small">{{$urgent[0]->urgent}}</span>
->>>>>>> b28238978e6a9d453357205e752115200c6565da
+
                     </div>
                     </div>
                 </div>

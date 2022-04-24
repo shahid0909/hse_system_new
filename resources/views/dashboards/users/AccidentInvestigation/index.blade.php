@@ -18,171 +18,22 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <label for="name" class="form-label">Name</label>
-                        <select name="name" id="name" class="form-control">
-                            <option value="">--Select One--</option>
-                            @foreach ($values as  $value)
-                            <option value="{{ $value->id }}">{{$value->inc_number }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mt-2" id="inv-table-card" style="display: none">
-            <div class="card-header">
-                <storng><h5>ACCIDENT INVESTIGATION ANALYSIS LISTS</h5></storng>
-            </div>
-            <div class="card-body">
-                <table id="example" class="display table table-bordered table-striped" style="width:100%">
-                    <thead>
-                    <tr>
-                        <th>Injured Person (IP)</th>
-                        <th>Department</th>
-                        <th>Date of Incident</th>
-                        <th>Time of Incident</th>
-                        <th>Location of Incident</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        @foreach ($values as $value)
-                        <td>{{ $value->inc_number }}</td>
-                        {{-- <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td> --}}
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                        @endforeach
-                    
-                    </tr>
-                    {{-- <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td>2008/11/28</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Brielle Williamson</td>
-                        <td>Integration Specialist</td>
-                        <td>New York</td>
-                        <td>61</td>
-                        <td>2012/12/02</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Herrod Chandler</td>
-                        <td>Sales Assistant</td>
-                        <td>San Francisco</td>
-                        <td>59</td>
-                        <td>2012/08/06</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Rhona Davidson</td>
-                        <td>Integration Specialist</td>
-                        <td>Tokyo</td>
-                        <td>55</td>
-                        <td>2010/10/14</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Colleen Hurst</td>
-                        <td>Javascript Developer</td>
-                        <td>San Francisco</td>
-                        <td>39</td>
-                        <td>2009/09/15</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sonya Frost</td>
-                        <td>Software Engineer</td>
-                        <td>Edinburgh</td>
-                        <td>23</td>
-                        <td>2008/12/13</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Jena Gaines</td>
-                        <td>Office Manager</td>
-                        <td>London</td>
-                        <td>30</td>
-                        <td>2008/12/19</td>
-                        <td>
-                            <a href="javascript:void(0)">
-                                <i class="icofont-edit"></i>
-                            </a>
-                        </td>
-                    </tr> --}}
-                    </tbody>
-                </table>
+
+                        <form action="{{ route('accident_report.reportstore') }}" method="POST" role="search">
+                          @csrf
+                            <div class="input-group">
+                                <select name="report" id="report" class="form-control input-lg dynamic" data-dependent="report">
+                                    <option value="">Choose an item</option>
+                                 @foreach($data as $value)
+                                 
+                                    <option value="{{ $value->inc_number}}">{{$value->inc_number}} </option>
+                                 @endforeach
+                                
+                                <input type="submit">
+                                </span>
+                            </div>
+                        </form>   
+        
                 <div class="row mt-2">
                     <div class="col-lg-12 d-flex justify-content-end">
                         <div class="btn-block next-button">
@@ -190,8 +41,37 @@
                         </div>
                     </div>
                 </div>
+
+                @if(isset($values))
+               
+            <h2>Sample User details</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Injured Person</th>
+                        
+                        <th>Designation</th>
+                        <th>Location </th>
+                        <th>Time of Incident</th>
+                       
+                
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($values as $value)
+                    <tr>
+                        <td>{{ $value->em_name }}</td>
+                        {{-- <td>{{ $value->department_name}}</td> --}}
+                        <td>{{ $value->em_des }}</td>
+                        <td>{{ $value->l_of_incident }}</td>
+                        <td>{!! $value->outcom_of_investg!!}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @endif
             </div>
-        </div>
+       
     </div>
 @endsection
 @section('script')
