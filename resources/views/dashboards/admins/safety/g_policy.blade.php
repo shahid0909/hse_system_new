@@ -139,7 +139,6 @@
                                      @foreach ($employees as $employee)
                                      <option value="{{ $employee->id }}">{{ $employee->em_name }}</option>
                                      @endforeach
-                                    
                                    </select>
                                         </div>
                                         <div class="col-lg-12">
@@ -149,11 +148,7 @@
                                         </div>
                                         
                                         <input type="hidden"  name="designation_id" id="designation_id" class="form-control">
-                                   
-                                      
                                       </div>
-
-                                   
                                     <button type="submit" class="btn btn-primary">Create</button>
                                   </form>
                             </div>

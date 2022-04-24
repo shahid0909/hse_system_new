@@ -23,6 +23,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Client\ScheduleDemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\User\accidentInvestigation\AccidentInvestigationController;
 use App\Http\Controllers\user\AccidentInvesttigation\AccidentInvestController;
 use App\Http\Controllers\User\CompanySetup\CompanyProfileController;
 use App\Http\Controllers\User\CompanySetup\DepartmentController;
@@ -60,7 +61,6 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/sdsSearch', [FrontendController::class, 'sdsSearch'])->name('sdsSearch');
 Route::get('/pagination/fetch_data', [FrontendController::class, 'fetch_data'])->name('fetch_data');
 Route::post('/sds-search-result', [FrontendController::class, 'getSearchResult'])->name('sds-search-result');
-
 
 //Route::view('/','web.home.home')->name('web.home');
 //
@@ -205,7 +205,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
 
-
+});
     Route::group(['name' => 'department', 'as' => 'department.'], function () {
         Route::get('department', [DepartmentController::class, 'index'])->name('index');
         Route::POST('department-store', [DepartmentController::class, 'store'])->name('store');
@@ -263,7 +263,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::put('workpalce_inspection-update/{id}', [WorkInspectionController::class, 'update'])->name('update');
         Route::get('workpalce_inspection-datatable-list', [WorkInspectionController::class, 'datatable'])->name('datatable');
         Route::get('workpalce_inspection-destroy/{id}', [WorkInspectionController::class, 'destroy'])->name('destroy');
-    });
+    }); 
 
     Route::group(['name' => 'create_ispection', 'as' => 'create_ispection.'], function () {
         Route::get('create_ispection', [CreateIspectionController::class, 'index'])->name('index');
@@ -333,16 +333,40 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 
 
 
-    Route::group(['name' => 'Accident_investigation', 'as' => 'Accident_investigation.'], function () {
+    Route::group(['name' => 'accident_investigation', 'as' => 'accident_investigation.'], function () {
 
-        Route::get('Accident-investigation', [AccidentInvestController::class, 'accident'])->name('index');
+        Route::get('accident-investigation', [AccidentInvestController::class, 'accident'])->name('index');
         //JSN request
         Route::get('get-em-name/{id}', [AccidentInvestController::class, 'getempName'])->name('getempName');
-        // Route::POST('list-inspection-store', [ListInspectionController::class, 'store'])->name('store');
-        // Route::get('list-inspection-edit/{id}', [ListInspectionController::class, 'edit'])->name('edit');
-        // Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
-        // Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
-        // Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
+        Route::get('get-emp_designation/{id}', [AccidentInvestController::class, 'getdesignation'])->name('getdesignation');
+        // JSN END
+        Route::POST('Accident-investigation-store', [AccidentInvestController::class, 'store'])->name('store');
+        Route::get('list-accident', [AccidentInvestController::class, 'list_acci'])->name('acci_list');
+    });
+
+
+
+//     Route::group(['name' => 'list_accident', 'as' => 'list_accident.'], function () {
+//         Route::get('list-accident', [UploadPolicyController::class, 'index'])->name('index');
+//         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
+//         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
+//         Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
+//         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
+//         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
+// });
+
+
+    Route::group(['name' => 'accident_report', 'as' => 'accident_report.'], function () {
+
+        Route::get('accident-report', [AccidentInvestigationController::class, 'index'])->name('index');
+        Route::get('why-wizerd/{id}', [AccidentInvestigationController::class, 'whyWizerd'])->name('why_wizerd');
+        Route::get('why-incident-happen/{id}', [AccidentInvestigationController::class, 'whyIncidentHappen'])->name('why_incident_happen');
+        Route::get('identify-injured-part/{id}', [AccidentInvestigationController::class, 'identifyInjuredPart'])->name('identify_injured_part');
+        Route::post('why-incident-happen-store', [AccidentInvestigationController::class, 'whyIncidentHappenStore'])->name('why_incident_happen_store');
+        
+        Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
+        Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
+
     });
 
     Route::group(['name' => 'safe_work_procedure', 'as' => 'safe_work_procedure.'], function () {
@@ -354,6 +378,9 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('safe-work-procedure-view/{id}', [SafeWorkProcedureController::class, 'swpView'])->name('details');
         Route::get('destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
     });
+
+
+
 
     Route::group(['name' => 'hirarc', 'as' => 'hirarc.'], function () {
 
@@ -371,7 +398,8 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 
     });
 
-});
+
+
 
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){
@@ -379,5 +407,7 @@ Route::group(['name'=>'accident','as' => 'accident.'],function(){
   Route::post('store',[AccidentController::class,'store'])->name('store');
   Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
 });
+
+
 
 

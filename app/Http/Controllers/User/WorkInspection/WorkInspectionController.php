@@ -32,14 +32,16 @@ class WorkInspectionController extends Controller
         
         return view('dashboards.users.workplaceInspection.dashboard', compact('user','count','priority','priority1','priority2'));
 
-
-
+  $urgent = DB::select("SELECT count(priority) urgent FROM create_inspections WHERE  priority = 1");
 
 
        
 
 
         // return view('dashboards.users.workplaceInspection.dashboard', compact('user'));
+
+
+        return view('dashboards.users.workplaceInspection.dashboard', compact('user'));
 
 
 

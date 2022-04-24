@@ -49,14 +49,19 @@
                                     <th></th>
                                     <th>Sl</th>
                                     <th>LOCATION</th>
+                                    <th>Title</th>
                                     <th>PICTURE</th>
                                     <th>PIC</th>
                                     <th>PRIORITY</th>
-                                    <th>DATE IDENTIFIED</th>
+                                    <!-- <th>DATE IDENTIFIED</th> -->
                                     <th>TARGET DATE</th>
+<<<<<<< HEAD
 
                                     <th>Admit DATE</th>
 
+=======
+                                    <th>Admit DATE</th>
+>>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
                                     <th>Action</th>
                                 </tr>
                                 </thead>
