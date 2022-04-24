@@ -366,6 +366,8 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
         Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
 
+        Route::get('getempdesignation/{id}', [HirarcController::class, 'getempdesignation'])->name('getempdesignation');
+
 
     });
 

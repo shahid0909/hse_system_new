@@ -70,7 +70,9 @@
                                     <div class="row g-3 mb-3">
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label"
-                                            >Designation Name</label
+                                            >Designation Name
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -81,7 +83,9 @@
                                         </div>
 
                                         <div class="col-sm-12">
-                                            <label for="depone" class="form-label">Rank</label>
+                                            <label for="depone" class="form-label">Rank
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <input type="text"
                                                    class="form-control"
                                                    id="depone"

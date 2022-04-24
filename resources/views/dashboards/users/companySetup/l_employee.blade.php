@@ -153,13 +153,17 @@
                                         <div class="row g-3 mb-3">
                                             <div class="col-sm-12">
                                                 <label for="item" class="form-label"
-                                                >Employees Name</label
+                                                >Employees Name
+                                                <span class="text-danger">*</span>
+                                                </label
                                                 >
                                                 <input type="text" class="form-control"  id="ema_name" name="em_name"/>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label for="item" class="form-label"
-                                                >Employees Designation</label>
+                                                >Employees Designation
+                                                <span class="text-danger">*</span>
+                                            </label>
                                                 <select class="form-control" name="emp_des" id="emp_des">
                                                     <option value="">---Choose</option>
                                                     @foreach($des as $list)
@@ -172,7 +176,9 @@
 
                                             <div class="col-sm-12">
                                                 <label for="item" class="form-label"
-                                                >Employees Department</label
+                                                >Employees Department
+                                                <span class="text-danger">*</span>
+                                                </label
                                                 >
                                                 <select class="form-control" name="em_department" id="em_department">
                                                     <option value="">---Choose---</option>
@@ -184,19 +190,25 @@
                                             </div>
                                             <div class="col-sm-12">
                                                 <label for="item" class="form-label"
-                                                >Employees IC/Passport No</label
+                                                >Employees IC/Passport No
+                                                <span class="text-danger">*</span>
+                                                </label
                                                 >
                                                 <input type="text" class="form-control" name="em_ic_passport_no"/>
                                             </div>
                                             <div class="col-sm-12">
                                                 <label for="taxtno" class="form-label"
-                                                >Employees Photo</label>
+                                                >Employees Photo
+                                                <span class="text-danger">*</span>
+                                            </label>
                                                 <input type="File" class="form-control" name="em_photo" accept="image/*"/>
                                             </div>
                                         </div>
                                         <div class="row g-3 mb-3">
                                             <div class="col-sm-6">
-                                                <label for="depone" class="form-label">Country</label>
+                                                <label for="depone" class="form-label">Country
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <select class="form-control" name="country" id="country">
                                                     <option value="">---Choose---</option>
                                                     @foreach($country as $list)
@@ -206,7 +218,9 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <label for="abc" class="form-label"
-                                                >Employees Register date</label
+                                                >Employees Register date
+                                                <span class="text-danger">*</span>
+                                                </label
                                                 >
                                                 <input
                                                     type="date"
@@ -217,11 +231,15 @@
                                         </div>
                                         <div class="row g-3 mb-3">
                                             <div class="col-sm-6">
-                                                <label for="abc11" class="form-label">Mail</label>
+                                                <label for="abc11" class="form-label">Mail
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <input type="text" class="form-control" name="em_mail" id="em_mail"/>
                                             </div>
                                             <div class="col-sm-6">
-                                                <label for="abc111" class="form-label">Phone</label>
+                                                <label for="abc111" class="form-label">Phone
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <input type="text" class="form-control" name="em_phone" id="em_phone"/>
                                             </div>
                                         </div>

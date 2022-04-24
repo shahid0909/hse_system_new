@@ -71,7 +71,9 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-6">
-                                <label><strong>Before Work</strong></label>
+                                <label><strong>Before Work
+                                    <span class="text-danger">*</span>
+                                </strong></label>
                                 <textarea class="form-control" name="before_work" id="before_work"
                                           placeholder="Please Enter Before Work Procedure">{{ old('before_work', isset($data->before_work_rules) ? $data->before_work_rules:'')}}</textarea>
                             </div>

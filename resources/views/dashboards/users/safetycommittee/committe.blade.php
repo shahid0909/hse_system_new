@@ -27,7 +27,9 @@
             <div class="row g-3 mb-3">
 
                 <div class="col-sm-3">
-                    <label class="form-label">Select Designation</label>
+                    <label class="form-label">Select Designation
+                        <span class="text-danger">*</span>
+                    </label>
                     <select name="designation_id"
                             id="designation_id" class="form-control col-md-12">
                         <option value="">Select Designation</option>
@@ -41,7 +43,9 @@
                 </div>
 
                 <div class="col-sm-3">
-                    <label for="item" class="form-label">Employee</label>
+                    <label for="item" class="form-label">Employee
+                        <span class="text-danger">*</span>
+                    </label>
                     <select
                         name="employee_id"
                         id="employee_list" autofocus
@@ -50,7 +54,9 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label">Comany Name</label>
+                    <label class="form-label">Comany Name
+                        <span class="text-danger">*</span>
+                    </label>
                     <select name="company_id" id=""  class="form-control">
                       
                         <option value="">Select</option>

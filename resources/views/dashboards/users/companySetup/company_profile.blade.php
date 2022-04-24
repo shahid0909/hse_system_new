@@ -185,18 +185,22 @@
                                     @csrf
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="user_name" class="form-label">User Name</label>
+                                            <label for="user_name" class="form-label">User Name
+                                                  <span class="text-danger">*</span>
+                                            </label>
                                             <input id="user_name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus placeholder="User Name">
                                             @error('user_name')
                                             <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                </span>
+                                            <strong>{{ $message }}</strong>
+                                            </span>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="password" class="form-label">Password</label>
+                                            <label for="password" class="form-label">Password
+                                                  <span class="text-danger">*</span>
+                                            </label>
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus placeholder="Password">
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -218,7 +222,9 @@
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
-                                            <label for="contact_person" class="form-label">Contact Person</label>
+                                            <label for="contact_person" class="form-label">Contact Person
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <input id="contact_person" type="text" class="form-control @error('contact_person') is-invalid @enderror" name="contact_person" value="{{ old('contact_person') }}" required autocomplete="contact_person" autofocus placeholder="Contact Person">
                                             @error('contact_person')
                                             <span class="invalid-feedback" role="alert">
@@ -229,7 +235,9 @@
                                     </div>
                                     <div class="col-md-4 col-sm-12">
                                         <div class="form-group">
-                                            <label for="mobile_number" class="form-label">Mobile Number<span class="text-danger">*</span></label>
+                                            <label for="mobile_number" class="form-label">Mobile Number
+
+                                                <span class="text-danger">*</span></label>
                                             <input id="mobile_number"
                                                    type="text"
                                                    oninput="javascript: if (this.value.length > this.maxLength)
@@ -247,7 +255,9 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="form-label">Address</label>
+                                            <label class="form-label">Address
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <textarea
                                                 id="address"
                                                 class="form-control @error('address')
@@ -275,7 +285,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
-                                        <label class="form-label">Website Url</label>
+                                        <label class="form-label">Website Url
+                                            <span class="text-danger">*</span>
+                                        </label>
                                         <div class="input-group">
                                             <span class="input-group-text">http://</span>
                                             <input id="web_url" type="text" class="form-control @error('web_url') is-invalid @enderror" name="web_url" value="{{ old('web_url') }}" required autocomplete="web_url" autofocus placeholder="Website Url">
@@ -288,7 +300,9 @@
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
-                                            <label class="form-label">Country</label>
+                                            <label class="form-label">Country
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <select class="form-control" name="country" id="country">
                                                 <option value="">-- Select Country --</option>
                                                 @foreach($country as $list)
@@ -299,14 +313,18 @@
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
-                                            <label class="form-label">State/Province</label>
+                                            <label class="form-label">State/Province
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <select class="form-control" name="state" id="state">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
-                                            <label for="city" class="form-label">City</label>
+                                            <label for="city" class="form-label">City
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus placeholder="City Name">
                                             @error('city')
                                                 <span class="invalid-feedback" role="alert">
@@ -317,7 +335,9 @@
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-lg-3">
                                         <div class="form-group">
-                                            <label for="postal_code" class="form-label">Postal Code</label>
+                                            <label for="postal_code" class="form-label">Postal Code
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus placeholder="Postal Code">
                                             @error('postal_code')
                                                 <span class="invalid-feedback" role="alert">

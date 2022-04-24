@@ -43,7 +43,9 @@
             @csrf
 
             <div class="col-md-6">
-                <label  class="form-label">Name of Department</label>
+                <label  class="form-label">Name of Department
+                      <span class="text-danger">*</span>
+                </label>
                 <select class="form-select" aria-label="Default select example" name="department">
                     <option selected>--Select--</option>
                     @foreach ($departments as  $department)
@@ -53,7 +55,9 @@
             </div>
 
             <div class="col-md-6">
-                <label  class="form-label">Injured Person</label>
+                <label  class="form-label">Injured Person
+                      <span class="text-danger">*</span>
+                </label>
                 <select class="form-select" aria-label="Default select example" name="person">
                     @foreach ($employes as $employe)
                     <option selected>--select--</option>
@@ -63,17 +67,23 @@
             </div>
 
             <div class="col-md-6">
-                <label for="postcode" class="form-label">Date of Incident</label>
+                <label for="postcode" class="form-label">Date of Incident
+                      <span class="text-danger">*</span>
+                </label>
                 <input type="date" class="form-control" name="i_date" required>
             </div>
       
             <div class="col-md-6">
-                <label for="postcode" class="form-label">Time of Incident</label>
+                <label for="postcode" class="form-label">Time of Incident
+                      <span class="text-danger">*</span>
+                </label>
                 <input type="time" class="form-control" name="i_time" required>
             </div>
 
             <div class="col-md-6">
-                <label for="postcode" class="form-label">Location of Incident</label>
+                <label for="postcode" class="form-label">Location of Incident
+                      <span class="text-danger">*</span>
+                </label>
                 <input type="text" class="form-control" name="l_incident"  placeholder="Enter location" required>
             </div>
 
