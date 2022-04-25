@@ -17,8 +17,6 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\user\AccidentController;
 use App\Http\Controllers\Admin\user\meetingController;
-
-
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Client\ScheduleDemoController;
 use App\Http\Controllers\LoginController;
@@ -300,11 +298,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('safety_committee/store', [SafetyCommitteeController::class, 'store'])->name('store');
         Route::post('safety_committee/edit/{id}', [SafetyCommitteeController::class, 'edit'])->name('edit');
         Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
-
-
     });
 
-
+    
     Route::group(['name'=>'committee','as'=>'committee.'],function(){
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         // Route::post('store',[generateCommittee::class,'store'])->name('store');
@@ -312,6 +308,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('committee.insert',[generateCommittee::class,'generatepdf'])->name('store');
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
+
 
 Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
  Route::get('view-meeting',[meetingController::class,'index'])->name('index');
@@ -323,7 +320,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 });
 
  Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
-        Route::get('policy', [UploadPolicyController::class, 'index'])->name('index');
+        Route::get('upload-policy', [UploadPolicyController::class, 'index'])->name('index');
         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
         Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
@@ -389,13 +386,9 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('hirarc-data-list', [HirarcController::class, 'datatable'])->name('datatable');
         Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
         Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
-<<<<<<< HEAD
+
 
         Route::get('getempdesignation/{id}', [HirarcController::class, 'getempdesignation'])->name('getempdesignation');
-
-
-=======
->>>>>>> c77654a806b6339456f67b24a27c3253fc5a9388
     });
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){

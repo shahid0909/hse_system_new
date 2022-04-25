@@ -31,25 +31,21 @@ class AccidentInvestigationController extends Controller
         return view('dashboards.users.accidentInvestigation.index', compact('user','data'));
     }
 
-   
     public function whyWizerd()
     {
         $user = Auth::user();
         return view('dashboards.users.accidentInvestigation.why_wizerd', compact('user'));
     }
-
     public function whyIncidentHappen()
     {
         $user = Auth::user();
         return view('dashboards.users.accidentInvestigation.why_incident_happen', compact('user'));
     }
-
     public function identifyInjuredPart()
     {
         $user = Auth::user();
         return view('dashboards.users.accidentInvestigation.identify_injured_part', compact('user'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -139,9 +135,6 @@ class AccidentInvestigationController extends Controller
 
     public function whyIncidentHappenStore(Request $request)
     {
-   
-      
-    
         $input = new WhyIncidentHappen();
         $input->incidence_number=$incidence_number;
         $input->l_employee_id = $request->input('l_employee_id');

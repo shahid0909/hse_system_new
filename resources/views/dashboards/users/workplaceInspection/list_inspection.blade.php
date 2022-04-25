@@ -55,13 +55,13 @@
                                     <th>PRIORITY</th>
                                     <!-- <th>DATE IDENTIFIED</th> -->
                                     <th>TARGET DATE</th>
-<<<<<<< HEAD
+
 
                                     <th>Admit DATE</th>
 
-=======
+
                                     <th>Admit DATE</th>
->>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
+
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -176,18 +176,9 @@
                     tr.addClass('shown');
                 }
             } );
-
-
         });
-
-
-
-
     </script>
-
     </script>
-    
-
 @endsection
 
 

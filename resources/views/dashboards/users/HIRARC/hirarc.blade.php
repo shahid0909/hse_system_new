@@ -91,8 +91,8 @@
                                      <div class="col-md-4 mb-6">
                                         <div class="form-group">
                                             <label for="postal_code" class="form-label">Postal Code</label>
-                                            <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus placeholder="Postal Code">
-                                            @error('postal_code')
+                                            <input id="process" type="text" class="form-control @error('process') is-invalid @enderror" name="process" value="{{ old('process') }}" required autocomplete="process" autofocus placeholder="process">
+                                            @error('process')
                                                 <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                 </span>

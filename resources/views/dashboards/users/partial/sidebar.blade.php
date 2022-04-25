@@ -136,17 +136,11 @@
                     <li>
                         <a class="ms-link" href="{{route('accident_report.index')}}">Accident Report</a>
                     </li>
-                    <li>
-                        <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>
-                    </li>
+                
 
 
                 </ul>
             </li>
-
-
-            
-
 
             <li class="collapsed">
                 <a class="m-link  active"
