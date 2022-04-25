@@ -70,7 +70,9 @@
                                     <div class="row g-3 mb-3">
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label"
-                                            >Depertment Name</label
+                                            >Depertment Name
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -81,7 +83,9 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label"
-                                            >Depertment Location</label
+                                            >Depertment Location
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -92,7 +96,9 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="deptwophone" class="form-label"
-                                            >Phone</label>
+                                            >Phone
+                                            <span class="text-danger">*</span>
+                                        </label>
                                             <input
                                                 type="text"
                                                 class="form-control"
@@ -104,7 +110,9 @@
                                         </div>
                                         <div class="col-sm-12">
                                             <label for="fileimg" class="form-label"
-                                            >Depertment Image</label
+                                            >Depertment Image
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input
                                                 type="File"

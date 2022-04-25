@@ -124,17 +124,15 @@ class HirarcController extends Controller
             $user = Auth::user();
         
 
-                $data = DB::select("SELECT  a.id as id,a.process,a.job_activity,a.location,a.last_assessment,a.assessment_date,a.Signature,a.date,a.employee_id,a.depertment_id,a.employee_id
-                    ,a.designation_id,a.Reference_no,
-
-                    b.sequence_job,b.hazard,b.c_hazard,b.event_consequences,b.risk_control,
-                    b.rmn,b.j_likelihood,b.additional_risk,b.rmn1,b.remarks,b.pic_date,a.rm_assessor,a.rm_member1,a.rm_member2,a.rm_member3,a.rm_member4,
-
-                    d.depertment_name,e.em_name,de.ds_name FROM i_hirarcs A 
-                    LEFT join hazards B on B.hirarc_id = A.id
-                    left join departments d on d.id = a.depertment_id
-                    left join l_employees e on e.id =a.employee_id
-                    LEFT JOIN designations de on de.id =a.designation_id");
+                $data = DB::select("SELECT a.*,d.depertment_name,e.em_name as rm, e1.em_name as rm1,e2.em_name as rm2, e3.em_name as rm3, e4.em_name as rm4,emp.em_name as employee_name,de.ds_name from i_hirarcs a
+                            left join departments d on d.id = a.depertment_id
+                            left JOIN l_employees e on e.id =a.rm_assessor
+                            left JOIN l_employees e1 on a.rm_member1 = e1.id
+                            left JOIN l_employees e2 on a.rm_member2 = e2.id
+                            left JOIN l_employees e3 on a.rm_member3 = e3.id
+                            left JOIN l_employees e4 on a.rm_member4 = e4.id
+                            left JOIN l_employees emp on a.employee_id = emp.id
+                            LEFT JOIN designations de on de.id =a.designation_id");
               
              return view('dashboards.users.HIRARC.hirarc_list',compact('user','data'));
 
@@ -242,15 +240,10 @@ class HirarcController extends Controller
 
     {
 
-            $hirarc = I_hirarc::findOrFail($id);
 
-            if ($hirarc) {
-                if (file_exists('image/hirarc/' . $hirarc->image) and !empty($hirarc->image)) {
-                    unlink('image/hirarc/' . $hirarc->image);
-                }
-                $hirarc->delete();
-                return redirect()->back()->with('success', 'Department information successfully deleted.');
-            }
+            DB::table("i_hirarcs")->where("id",$id)->delete();
+            DB::table("hazards")->where("hirarc_id",$id)->delete();
+            return redirect()->back()->with('success', 'Hirarc information successfully deleted.');
 
     }
 
@@ -278,7 +271,7 @@ public function edit($id)
     public function update(Request $request, $id)
     {
         
-       
+      
 
        $input = I_hirarc::find($id);
         $input->depertment_id = $request->input('depertment_id');
@@ -304,7 +297,7 @@ public function edit($id)
             $input['Signature'] = "$profileImage";
         }
 
-         $input->save();
+         $input->update();
         
 
          $count = $request->sequence_job;
@@ -313,10 +306,11 @@ public function edit($id)
        foreach($count as $main=>$row)
          {
    
-            $input1 = hazard::find($id);
+            $input1 = hazard::where('hirarc_id',$id)->first();
           // $input1->hirarc_id = $input->id;   
-        $input1->hirarc_id = $request->hirarc_id[$main];
-        $input1->sequence_job = $request->sequence_job[$main];
+             $input1->hirarc_id = $request->hirarc_id;
+        
+         $input1->sequence_job = $request->sequence_job[$main];
         $input1->hazard = $request->hazard[$main];
         $input1->c_hazard = $request->c_hazard[$main];
         $input1->event_consequences = $request->event_consequences[$main];
@@ -332,9 +326,11 @@ public function edit($id)
         $input1->pic_date = $request->pic_date[$main];
 
         $input1->rmn1 = $request->rmn1[$main];
+
+
       
-       // dd($input1);
-        $input1->save();
+       
+        $input1->update();
     }
 
 
@@ -375,6 +371,18 @@ public function edit($id)
 
 
 //     }
+
+
+    public function  getempdesignation($id)
+   {
+    
+
+$designation=DB::selectOne("SELECT d.id, d.ds_name from designations d 
+left join l_employees e on e.em_designation = d.id
+where e.id =  '$id'");
+return $designation;
+
+    }
 
 
 }

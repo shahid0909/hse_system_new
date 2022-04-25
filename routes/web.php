@@ -389,6 +389,13 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('hirarc-data-list', [HirarcController::class, 'datatable'])->name('datatable');
         Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
         Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
+<<<<<<< HEAD
+
+        Route::get('getempdesignation/{id}', [HirarcController::class, 'getempdesignation'])->name('getempdesignation');
+
+
+=======
+>>>>>>> c77654a806b6339456f67b24a27c3253fc5a9388
     });
 
 Route::group(['name'=>'accident','as' => 'accident.'],function(){

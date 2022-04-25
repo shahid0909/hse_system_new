@@ -33,7 +33,7 @@ class CompanyProfileController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'user_name' => 'required',
+            // 'user_name' => 'required',
             'password' => 'required',
             'company_name' => 'required',
             'contact_person' => 'required',

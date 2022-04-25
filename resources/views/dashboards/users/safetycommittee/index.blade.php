@@ -89,7 +89,9 @@
                                         @csrf
                                         <div class="row g-3 mb-3">
                                             <div class="col-sm-6">
-                                                <label for="item" class="form-label">Employee</label>
+                                                <label for="item" class="form-label">Employee
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <select
                                                     name="employee_id"
                                                     id="employee_id" autofocus
@@ -101,7 +103,9 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-6">
-                                                <label class="form-label">Select Designation</label>
+                                                <label class="form-label">Select Designation
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <select name="designation"
                                                         id="designation" class="form-control col-md-12">
                                                     <option value="">Select Designation</option>
@@ -114,7 +118,9 @@
                                                 </select>
                                             </div>
                                             <div class="offset-3 col-sm-6">
-                                                <label for="photo" class="form-label">Photo</label>
+                                                <label for="photo" class="form-label">Photo
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <input type="file" class="form-control" name="photo" id="photo">
                                             </div>
                                         </div>
@@ -159,7 +165,9 @@
                                         <input type="hidden" name="id" id="edit_form_id">
                                         <div class="row g-3 mb-3">
                                             <div class="col-sm-6">
-                                                <label for="item" class="form-label">Employee</label>
+                                                <label for="item" class="form-label">Employee
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <select
                                                     name="employee_id"
                                                     id="employee_id" autofocus
@@ -171,7 +179,9 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-6">
-                                                <label class="form-label">Select Designation</label>
+                                                <label class="form-label">Select Designation
+                                                    <span class="text-danger">*</span>
+                                                </label>
                                                 <select name="designation"
                                                         id="designation" class="form-control col-md-12">
                                                     <option value="">Select Designation</option>

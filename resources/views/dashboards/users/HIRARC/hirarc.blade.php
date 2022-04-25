@@ -60,8 +60,12 @@
                                     @csrf
                               <div class="row g-3" style="margin: 0 auto;">
                                   <div class="col-md-4 mb-6">
-                                      <div class="form-group">
-                                          <label class="form-label">Department</label>
+                                      <div class="form-group " >
+                                          <label class="form-label" >
+                                         Department
+                                      <span class="text-danger">*</span>
+                                      </label>
+
                                           <!-- <input type="text" class="form-control" required> -->
 
                                           
@@ -86,20 +90,21 @@
 
                                      <div class="col-md-4 mb-6">
                                         <div class="form-group">
-                                            <label for="validationCustom0001">Process</label>
-                                            <div class="input-group">
-                                                <input  style=" border-color:#c0b1b1;" type="text" class="form-control" 
-                                                id="validationCustom0001" 
-                                                name="process" 
-                                                value="{{isset($data->process)? $data->process: ''}}"
-                                                placeholder="Enter Process"  required>
-                                            </div>
-                                            </div>
+                                            <label for="postal_code" class="form-label">Postal Code</label>
+                                            <input id="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" value="{{ old('postal_code') }}" required autocomplete="postal_code" autofocus placeholder="Postal Code">
+                                            @error('postal_code')
+                                                <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                         </div>
 
                                    <div class="col-md-4 mb-6">
                                         <div class="form-group">
-                                            <label for="validationCustom0001">Location</label>
+                                            <label for="validationCustom0001">Location
+                                                <span class="text-danger">*</span>
+                                            </label>
                                             <div class="input-group">
                                                 <input style=" border-color:#c0b1b1;" 
                                                 type="text" 
@@ -115,7 +120,9 @@
                                         </div>
 
                                <div class="col-md-4 mb-6">
-                                    <label for="last_assessment" class="form-label">Last Assessment</label>
+                                    <label for="last_assessment" class="form-label">Last Assessment
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input
                                       type="date"
                                       style=" border-color:#c0b1b1;"
@@ -130,7 +137,9 @@
                                     
 
                                  <div class="col-md-4 mb-6">
-                                    <label for="assessment_date" class="form-label">Assessment Date/Review Date* </label>
+                                    <label for="assessment_date" class="form-label">Assessment Date/Review Date
+                                        <span class="text-danger">*</span>
+                                     </label>
                                     <input
                                       type="date"
                                       style=" border-color:#c0b1b1;"
@@ -144,16 +153,21 @@
                                   </div >
 
                                      <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                                        <h6 class="fw-bold mb-0">RM Assessor</h6>
+                                        <h6 class="fw-bold mb-0">RM Assessor
+                                            <span class="text-danger">*</span>
+                                        </h6>
                                     </div> 
                                
                                  
                                         <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RM Assessor</label
+                                            >RM Assessor
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <select  name="rm_assessor" id="rm_assessor" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color); border-color:#c0b1b1;">
-                                            <option value="">Select Employee Name</option>
+                                            <option value="">Select Employee Name
+                                            </option>
                                              @foreach($l_employee as $list)
 
                                           <option value="{{$list->id}}">
@@ -167,7 +181,9 @@
                                         </div>
                                            <div class="col-md-2 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RM Team Member 1</label
+                                            >RM Team Member 1
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <select   name="rm_member1" id="rm_member1" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color); border-color:#c0b1b1;">
                                             <option value="">Select Employee</option>
@@ -183,7 +199,9 @@
                                         </div>
                                            <div class="col-md-2 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RM Team Member 2</label
+                                            >RM Team Member 2
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <select   name="rm_member2" id="rm_member2" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color); border-color:#c0b1b1;">
                                             <option value="">Select Employee</option>
@@ -200,7 +218,9 @@
                                         </div>
                                            <div class="col-md-2 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RM Team Member 3</label
+                                            >RM Team Member 3
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <select   name="rm_member3" id="rm_member3" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color);border-color:#c0b1b1;">
                                             <option value="">Select Employee</option>
@@ -217,7 +237,9 @@
 
                                          <div class="col-md-2 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RM Team Member 4</label
+                                            >RM Team Member 4
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <select   name="rm_member4" id="rm_member4" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color);border-color:#c0b1b1;">
                                             <option value="">Select Employee</option>
@@ -239,7 +261,9 @@
 
                                   <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Signature</label
+                                            >Signature
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="file"
                                                    style=" border-color:#c0b1b1;"
@@ -252,7 +276,9 @@
 
                                             <div class="col-md-4 mb-6">
                                             <label for="employee_id" class="form-label"
-                                            >Name </label
+                                            >Name 
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
 
                                              <select   
@@ -272,9 +298,11 @@
 
                                           <div class="col-md-4 mb-6">
                                             <label for="designation_id" class="form-label"
-                                            >Designation</label
+                                            >Designation
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
-                                             <select 
+                                           <!--   <select 
                                              
                                              name="designation_id" id="designation_id" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color); border-color:#c0b1b1;">
                                             <option value="">Select Designation</option>
@@ -286,7 +314,14 @@
                                           </option>
 
                                           @endforeach
-                                          </select>
+                                          </select> -->
+                                          <div class="col-lg-12">
+                                          
+                                        <input name="designation" id="designation" class="form-control" readonly>
+                                    
+                                        </div>
+                                        
+                                        <input type="hidden"  name="designation_id" id="designation_id" class="form-control">
                                            
                                         </div>
 
@@ -294,7 +329,9 @@
                                        
 
                                     <div class="col-md-6 mb-6">
-                                    <label for="admitdate" class="form-label">Date</label>
+                                    <label for="admitdate" class="form-label">Date
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input
                                       type="date"
                                       style=" border-color:#c0b1b1;"
@@ -307,7 +344,9 @@
                                   </div>   
 
                                     <div class="col-md-6 mb-6">
-                                    <label for="admitdate" class="form-label">Reference no</label>
+                                    <label for="admitdate" class="form-label">Reference no
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input
                                       type="text"
                                       style=" border-color:#c0b1b1;"
@@ -318,16 +357,7 @@
                                       required
                                     />
                                   </div>       
-
-
-                                   
-
-                                      
-                                      
-                                         
-
-
-                                    <div  id="show_item">
+                                  <div  id="show_item">
                                     <div class="row">
 
                                     <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
@@ -337,7 +367,9 @@
 
                                      <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >JOB ACTIVITY</label
+                                            >JOB ACTIVITY
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    style=" border-color:#c0b1b1;"
@@ -350,7 +382,9 @@
 
                                              <div class="col-md-6 mb-6">
                                                   <label for="formFileMultiple" class="form-label">
-                                                 Picture</label
+                                                 Picture
+                                                 <span class="text-danger">*</span>
+                                                 </label
                                                   >
                                                   <input
                                                     class="form-control"
@@ -363,19 +397,15 @@
                                                     required
                                                   />
                                                 </div>
-                                               
-
-
-                                               
-
-
-                                           <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                             <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
                                         <h6 class="fw-bold mb-0">Create Hazard</h6>
                                     </div> 
 
                                      <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >SEQUENCE OF THE JOB</label
+                                            >SEQUENCE OF THE JOB
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    style=" border-color:#c0b1b1;" 
@@ -389,7 +419,9 @@
 
                                      <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >HAZARD</label
+                                            >HAZARD
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    style=" border-color:#c0b1b1;"
@@ -402,7 +434,9 @@
 
                                      <div class="col-md-6 mb-6">
                                       <div class="form-group">
-                                          <label class="form-label">Category Hazard </label>
+                                          <label class="form-label">Category Hazard 
+                                            <span class="text-danger">*</span>
+                                          </label>
                                           <!-- <input type="text" class="form-control" required> -->
                                           <select  name="c_hazard[]" id="c_hazard" class="col-md-12" style="padding: 10px; border-radius: 3px; border-color: var(--border-color);border-color:#c0b1b1;">
                                             <option value="">Select Hazard</option>
@@ -416,7 +450,9 @@
 
                                             <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Event and Consequences</label
+                                            >Event and Consequences
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    style=" border-color:#c0b1b1;"
@@ -434,7 +470,9 @@
                                  
                                      <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Existing Risk Control (if any)</label
+                                            >Existing Risk Control (if any)
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    style=" border-color:#c0b1b1;"
@@ -446,7 +484,9 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Justification of Likelihood</label
+                                            >Justification of Likelihood 
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
 
                                             <input type="text"
@@ -462,7 +502,9 @@
 
                                             <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Likelihood (L)</label
+                                            >Likelihood (L)
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
 
                                             <input type="text"
@@ -477,7 +519,9 @@
 
                                            <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            > Severity (S)</label
+                                            > Severity (S)
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -490,7 +534,9 @@
                                         </div>
                                             <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RMN</label
+                                            >RMN
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type=""
                                                    class="form-control"
@@ -501,12 +547,16 @@
                                             />
                                         </div>
                                           <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-                                        <h6 class="fw-bold mb-0"> RISK CONTROL</h6>
+                                        <h6 class="fw-bold mb-0"> RISK CONTROL
+                                            <span class="text-danger">*</span>
+                                        </h6>
                                     </div> 
 
                                          <div class="col-md-12 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Additional Risk Control</label
+                                            >Additional Risk Control
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -525,7 +575,9 @@
                                  
                                      <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Likelihood (L)</label
+                                            >Likelihood (L)
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -540,7 +592,10 @@
 
                                      <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Severity (S)</label
+                                            >Severity (S)
+                                              <span class="text-danger">*</span>
+
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -554,7 +609,9 @@
 
                                              <div class="col-md-4 mb-6">
                                             <label for="depone" class="form-label"
-                                            >RMN</label
+                                            >RMN
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type=""
                                                    class="form-control"
@@ -569,7 +626,9 @@
 
                                             <div class="col-md-6 mb-6">
                                             <label for="depone" class="form-label"
-                                            >Remarks</label
+                                            >Remarks
+                                            <span class="text-danger">*</span>
+                                            </label
                                             >
                                             <input type="text"
                                                    class="form-control"
@@ -581,7 +640,10 @@
                                         </div>
 
                                     <div class="col-md-6 mb-6">
-                                    <label for="admitdate" class="form-label">PIC (Due Date)</label>
+                                    <label for="admitdate" class="form-label">PIC (Due Date)
+                                        <span class="text-danger">*</span>
+
+                                    </label>
                                     <input
                                       type="date"
                                       style=" border-color:#c0b1b1;"
@@ -624,15 +686,29 @@
 
         @endsection
         @section('script')
-            <script src="assets/bundles/libscripts.bundle.js"></script>
+  <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 
-    <!-- Plugin Js-->
-    <script src="assets/bundles/dataTables.bundle.js"></script>
+            <!-- Plugin Js-->
+            <script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
 
-    <!-- Jquery Page Js -->
-    <script src="../js/template.js"></script>
+            <!-- Jquery Page Js -->
+            <script src="{{asset('../js/template.js')}}"></script>
     <script>
         // project data table
+             $("#employee_id").on("change", function () {
+                      let emp_id = $("#employee_id").val();
+                 $.ajax({
+                type: 'get',
+                url: "getempdesignation"+'/'+emp_id,   
+                success: function (data) {
+
+
+                    $('#designation').val(data.ds_name);
+                    $('#designation_id').val(data.id);
+                }
+            });
+                    });
+
         $(document).ready(function() {
             $('#myProjectTable')
             .addClass( 'nowrap' )

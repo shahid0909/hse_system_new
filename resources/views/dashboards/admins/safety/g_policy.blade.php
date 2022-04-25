@@ -146,6 +146,7 @@
                                         <input name="designation" id="designation" class="form-control" readonly>
                                     
                                         </div>
+                                        
                                         <input type="hidden"  name="designation_id" id="designation_id" class="form-control">
                                       </div>
                                     <button type="submit" class="btn btn-primary">Create</button>

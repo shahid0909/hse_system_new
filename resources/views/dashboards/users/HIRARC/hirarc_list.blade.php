@@ -49,12 +49,7 @@
                                     <th>Location</th>
                                     <th>RM_Assessor</th>
                                     <th>Job Activity</th>
-                                    <th>Sequence job</th>
-                                    <th>RMN1</th>
-                                    <th>RMN</th>
-
-
-
+                                  
                                     <th>Action</th>
                                     <!-- <th>View</th> -->
                                 </tr>
@@ -66,11 +61,9 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$value->depertment_name}}</td>
                                         <td>{{$value->location}}</td>
-                                        <td>{{$value->em_name}}</td>
+                                        <td>{{$value->rm}}</td>
                                         <td>{{$value->job_activity}}</td>
-                                        <td>{{$value->sequence_job}}</td>
-                                        <td>{{$value->rm_member1}}</td>
-                                        <td>{{$value->rmn}}</td>
+                                      
                                        
 
                                          <td>

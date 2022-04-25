@@ -53,7 +53,11 @@
 
                         <span class="small">{{$priority[0]->urgent}}</span>
 
+<<<<<<< HEAD
+                        
+=======
                         <span class="small">{{$urgent[0]->urgent}}</span>
+>>>>>>> c77654a806b6339456f67b24a27c3253fc5a9388
 
                     </div>
                     </div>

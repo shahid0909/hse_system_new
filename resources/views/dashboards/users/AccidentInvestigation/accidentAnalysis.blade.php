@@ -65,7 +65,9 @@
                                                         <div class="row g-3 align-items-center">
                                                             <div class="col-md-4">
                                                                 <label class="form-label">Injured Person
-                                                                    Depertment </label>
+                                                                    Depertment 
+                                                                      <span class="text-danger">*</span>
+                                                                </label>
                                                                 <select class="form-select"
                                                                         aria-label="Default select example"
                                                                         id="em_dept" name="em_dept">
@@ -78,6 +80,40 @@
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="employee_name" class="form-label">Injured
+<<<<<<< HEAD
+                                                                    Person Name
+                                                                      <span class="text-danger">*</span>
+                                                                     </label>
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example"
+                                                                        name="employee_name" id="employee_name">
+                                                                    <option selected>-- Select Name --</option>
+                                                                    {{-- <option value="1">India</option>
+                                                                    <option value="2">Australia</option>
+                                                                    <option value="3">Italy</option> --}}
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label">Employee Designation
+                                                                    : 
+                                                                      <span class="text-danger">*</span>
+                                                                </label>
+                                                                <input class="form-control" type="text">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label">Location of Incident
+                                                                    : 
+                                                                      <span class="text-danger">*</span>
+                                                                </label>
+                                                                <input class="form-control" type="text">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label class="form-label">Type of Accident
+                                                                      <span class="text-danger">*</span>
+                                                                 </label>
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example">
+=======
                                                                     Person Name </label>
                                                                 <select
                                                                     name="em_name" 
@@ -102,6 +138,7 @@
                                                             <div class="col-md-4">
                                                                 <label class="form-label">Type of Accident </label>
                                                                 <select class="form-select" name="t_of_accident">
+>>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
                                                                     <option selected>-- Select --</option>
                                                                     <option value="1">Near Miss</option>
                                                                     <option value="2">First Aid Injury</option>
@@ -115,12 +152,21 @@
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label for="cityblock1" class="form-label">Time Of
+<<<<<<< HEAD
+                                                                    Incident
+                                                                      <span class="text-danger">*</span>
+                                                                </label>
+                                                                <input type="time" class="form-control" id="abc"
+=======
                                                                     Incident</label>
                                                                 <input type="time" class="form-control" id="abc" name="tim_of_incident"
+>>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
                                                                        required>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label class="form-label">Report to DOSH </label>
+                                                                <label class="form-label">Report to DOSH 
+                                                                      <span class="text-danger">*</span>
+                                                                </label>
                                                                 <select class="form-select"
                                                                         name="rpt_to_dosh">
                                                                     <option selected>-- Select --</option>
@@ -132,7 +178,9 @@
                                                                 <div
                                                                     class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
                                                                     <h6 class="mb-0 fw-bold ">Status of Investigation
-                                                                        Report</h6>
+                                                                        Report
+
+                                                                    </h6>
                                                                 </div>
                                                                 <div class="card-body">
                                                                     <textarea id="summernote1" name="st_of_invesg"></textarea>
@@ -151,7 +199,9 @@
                                                             <div class="col-md-12">
                                                                 <div
                                                                     class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
-                                                                    <h6 class="mb-0 fw-bold ">Summary of Incident</h6>
+                                                                    <h6 class="mb-0 fw-bold ">Summary of Incident
+                                                                          <span class="text-danger">*</span>
+                                                                    </h6>
                                                                 </div>
                                                                 <div class="card-body">
                                                                     <textarea id="summernote" name="summ_of_incident"></textarea>
@@ -165,33 +215,59 @@
                                                                 <div class="row g-3 align-items-center">
                                                                     <div class="col-md-4">
                                                                         <label class="form-label">Start Date Of
-                                                                            MC</label>
+                                                                            MC 
+                                                                              <span class="text-danger">*</span>
+                                                                        </label>
                                                                         <input type="date" class="form-control"
                                                                                name="start_dateMC[]" id="s_date[]" required>
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <label class="form-label">End Date Of MC</label>
+                                                                        <label class="form-label">End Date Of MC
+                                                                               <span class="text-danger">*</span>
+                                                                        </label>
                                                                         <input type="date" class="form-control"
                                                                                name="end_dateMC[]" id="e_date[]" required>
                                                                     </div>
                                                                     {{-- <button >Show</button> --}}
                                                                     <div class="col-md-4">
                                                                         <label for="postcode1" class="form-label">Total
+<<<<<<< HEAD
+                                                                            Duration
+                                                                              <span class="text-danger">*</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               name="total_duration[]" id="postcode1"
+=======
                                                                             Duration</label>
                                                                         <input type="number"  class="form-control"
                                                                                name="total_duration[]" id="output[]" onclick="calculateDays()" value=""
+>>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
                                                                                required>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label class="form-label">Type of Notification
+<<<<<<< HEAD
+                                                                            : 
+                                                                              <span class="text-danger">*</span>
+                                                                        </label>
+                                                                        <input class="form-control" name="typ_of_notif"
+=======
                                                                             : </label>
                                                                         <input class="form-control" name="typ_of_notif[]"
+>>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
                                                                                type="text">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <label class="form-label">Type of Records
+<<<<<<< HEAD
+                                                                            : 
+                                                                              <span class="text-danger">*</span>
+                                                                        </label>
+                                                                        <input class="form-control" name="typ_of_record"
+=======
                                                                             : </label>
                                                                         <input class="form-control" name="typ_of_record[]"
+>>>>>>> b910d5fba5cf248c924b9f1ddde9736ea6ed61ac
                                                                                type="text">
                                                                     </div>
                                                                     <div class="input-group-append">
