@@ -30,7 +30,7 @@
                     <tbody>
                     <form action="{{ route('accident_report.why_incident_happen_store') }}" method="post">
                         @csrf
-                        <input type="hidden" name="l_employee_id" id="l_employee_id" value="{{ request('id') }}">
+                        <input type="hidden" name="inc_number" id="inc_number" value="{{ request('id') }}">
                         <tr>
                             <td>
                                 <div class="d-flex justify-content-between">

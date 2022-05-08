@@ -13,65 +13,70 @@
     @include('dashboards.users.partial.header')
 
     <!-- Body: Body -->
-        <div class="card">
+
             <div class="card-header">Name Of Incidence</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6">
-
-                        <form action="{{ route('accident_report.reportstore') }}" method="POST" role="search">
+                    <div class="col-lg-8">
+                        <h3 class="text-center bg bg-info">Choose Search Item</h3>
+                        <form action="{{ route('accident_report.search-report') }}"  method="POST">
                           @csrf
                             <div class="input-group">
-                                <select name="report" id="report" class="form-control input-lg dynamic" data-dependent="report">
+                                <select   class="form-control input-lg dynamic" name="inc_number">
                                     <option value="">Choose an item</option>
                                  @foreach($data as $value)
-                                 
                                     <option value="{{ $value->inc_number}}">{{$value->inc_number}} </option>
                                  @endforeach
-                                
-                                <input type="submit">
-                                </span>
+                                </select>
+                              
+                                <button class="bg bg-success text-white">Search</button>
+                               
+                              
                             </div>
+                          
                         </form>   
         
-                <div class="row mt-2">
-                    <div class="col-lg-12 d-flex justify-content-end">
-                        <div class="btn-block next-button">
-
-                        </div>
-                    </div>
-                </div>
-
-                @if(isset($values))
-               
-            <h2>Sample User details</h2>
-            <table class="table table-striped">
+            
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Sample User details</h2>
+            <table class="table table-striped text-center">
                 <thead>
-                    <tr>
-                        <th>Injured Person</th>
-                        
+                    <tr class="bg bg-info">
+                     <th>Department Name</th>
+                      <th>Employee Name</th>
                         <th>Designation</th>
-                        <th>Location </th>
                         <th>Time of Incident</th>
-                       
-                
+                        <th>st_of_invesg</th>
+                        <th>Sum of Incident</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($values as $value)
-                    <tr>
-                        <td>{{ $value->em_name }}</td>
-                        {{-- <td>{{ $value->department_name}}</td> --}}
-                        <td>{{ $value->em_des }}</td>
-                        <td>{{ $value->l_of_incident }}</td>
-                        <td>{!! $value->outcom_of_investg!!}</td>
-                    </tr>
-                    @endforeach
+                  @foreach ($s_data as $data)
+                  <tr >
+                  <td>{{ $data->depertment_name }}</td>
+                 <td>{{ $data->em_name }}</td>
+                <td>{{ $data->em_des }}</td>
+                 <td>{{ $data->tim_of_incident}}</td> 
+                 <td>{!!$data->st_of_invesg!!}</td>
+                 <td>`{!! $data->summ_of_incident!!}</td>
+                 <td>
+                    <div>
+                        <a class="btn btn-primary" href="{{ route('accident_report.why_incident_happen',$data->inc_number) }}" role="button">
+                            <button type="button" class="btn btn-primary">Next</button>
+                        </a>
+                      </div>
+                 </td>
+             </tr>
+
+            
+                @endforeach
                 </tbody>
             </table>
-            @endif
-            </div>
-       
+        
+        </div>
     </div>
 @endsection
 @section('script')

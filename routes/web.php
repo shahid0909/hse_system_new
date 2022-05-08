@@ -363,7 +363,7 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 
         Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
         Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
-        Route::post('report', [AccidentInvestigationController::class, 'report'])->name('reportstore');
+        Route::post('search-report', [AccidentInvestigationController::class, 'searchReport'])->name('search-report');
 
     });
 
@@ -386,8 +386,6 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('hirarc-data-list', [HirarcController::class, 'datatable'])->name('datatable');
         Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
         Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
-
-
         Route::get('getempdesignation/{id}', [HirarcController::class, 'getempdesignation'])->name('getempdesignation');
 
     });
