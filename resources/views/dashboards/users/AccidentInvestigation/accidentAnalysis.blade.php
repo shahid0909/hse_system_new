@@ -89,8 +89,13 @@
                                                             <div class="col-md-4">
                                                                 <label for="employee_designation" class="form-label">Employee Designation </label>
                                                                 <input class="form-control"
+
                                                                        aria-label="Default select example" readonly
                                                                        name="em_des" id="employee_designation">
+
+                                                                        aria-label="Default select example" readonly
+                                                                        name="em_des" id="employee_designation">
+
 
                                                             </div>
                                                             <div class="col-md-4">
@@ -320,7 +325,12 @@
                                     });
 
 
-                                    function calculateDays() {
+
+
+
+
+                                        function calculateDays() {
+
                                         var d1 = document.getElementById("s_date[]").value;
                                         var d2 = document.getElementById("e_date[]").value;
                                         const dateOne = new Date(d1);
@@ -330,6 +340,7 @@
                                         var Myelement = document.getElementById("output[]");
                                         Myelement.value = days;
                                     }
+
 
                                     $('#em_dept').on('change', function () {
                                         let emDepartment = $(this).val();
@@ -356,6 +367,33 @@
                                             $('#employee_name').empty();
                                         }
                                     });
+
+                                            $('#em_dept').on('change', function () {
+                                            let emDepartment = $(this).val();
+                                            if( ((emDepartment !== undefined) || (emDepartment != null)) && emDepartment) {
+                                                $.ajax({
+                                                    url: "get-em-name"+'/'+emDepartment,
+                                                    type: "GET",
+                                                  data : {"_token":"{{ csrf_token() }}"},
+                                                    dataType: "json",
+                                                    success: function (data) {
+                                                        console.log(data)
+                                                        if (data) {
+                                                            $('#employee_name').empty();
+                                                            $('#employee_name').append('<option hidden>Choose Employee</option>');
+                                                            $.each(data, function (key, emp) {
+                                                                $('select[name="employee_name"]').append('<option value="' + key + '">' +emp.em_name + '</option>');
+                                                            });
+                                                        } else {
+                                                            $('#employee_name').empty();
+                                                        }
+                                                    }
+                                                });
+                                            } else {
+                                                $('#employee_name').empty();
+                                            }
+                                        });
+
                                 </script>
 
 @endsection

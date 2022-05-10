@@ -15,8 +15,8 @@ class CreateWhyIncidentHappenTable extends Migration
     {
         Schema::create('why_incident_happen', function (Blueprint $table) {
             $table->id();
-            $table->string('incidence_number');
-            $table->unsignedBigInteger('l_employee_id');
+            $table->string('inc_number');
+            // $table->unsignedBigInteger('l_employee_id');
             $table->string('in_guard')->nullable();
             $table->string('operating_permission')->nullable();
             $table->string('hazard')->nullable();
@@ -46,9 +46,9 @@ class CreateWhyIncidentHappenTable extends Migration
             $table->string('similar_incidents')->nullable();
             $table->timestamps();
 
-            $table->foreign('l_employee_id')
-                ->references('id')->on('l_employees')
-                ->onDelete('cascade');
+            // $table->foreign('l_employee_id')
+            //     ->references('id')->on('l_employees')
+            //     ->onDelete('cascade');
         });
     }
 

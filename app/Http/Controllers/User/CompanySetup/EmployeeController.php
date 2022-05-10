@@ -109,7 +109,7 @@ LEFT join departments dep on (dep.id = e.em_department) ORDER by e.id DESC;');
 
     public function empUpdate(Request $request)
     {
-   
+
         $id = $request->emp_id;
 
         $input = l_employee::find($id);
