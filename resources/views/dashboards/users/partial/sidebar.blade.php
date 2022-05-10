@@ -125,7 +125,7 @@
                 <ul class="sub-menu collapse" id="menu-Accident">
 
                     <li>
-                        <a class="ms-link" href="{{route('workinspection.index')}}">Dashboard</a>
+{{--                        <a class="ms-link" href="{{route('workinspection.index')}}">Dashboard</a>--}}
                     </li>
                     <li>
                         <a class="ms-link" href="{{route('accident_investigation.index')}}">Accident analysis</a>
@@ -137,7 +137,7 @@
                         <a class="ms-link" href="{{route('accident_report.index')}}">Accident Report</a>
                     </li>
                     <li>
-                        <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>
+{{--                        <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>--}}
                     </li>
 
 

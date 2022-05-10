@@ -196,6 +196,15 @@
                                                 >
                                                 <input type="text" class="form-control" name="em_ic_passport_no"/>
                                             </div>
+                                            <div class="col-md-12">
+                                                <label>Company Name</label>
+                                                <select class="form-control" name="company_name" id="company_name">
+                                                    <option value="">---Select---</option>
+                                                    @foreach($company as $list)
+                                                    <option value="{{$list->id}}">{{$list->company_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <div class="col-sm-12">
                                                 <label for="taxtno" class="form-label"
                                                 >Employees Photo
@@ -204,6 +213,14 @@
                                                 <input type="File" class="form-control" name="em_photo" accept="image/*"/>
                                             </div>
                                         </div>
+                                            <div class="col-sm-12">
+                                                <label for="taxtno" class="form-label"
+                                                >Employees Signature
+                                                <span class="text-danger">*</span>
+                                            </label>
+                                                <input type="File" class="form-control" name="em_signature" id="em_signature"  accept="image/*"/>
+                                            </div>
+
                                         <div class="row g-3 mb-3">
                                             <div class="col-sm-6">
                                                 <label for="depone" class="form-label">Country
@@ -315,6 +332,15 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="col-md-12">
+                                                <label>Company Name</label>
+                                                <select class="form-control" name="company_name" id="company_name">
+                                                    <option value="">---Select---</option>
+                                                    @foreach($company as $list)
+                                                        <option value="{{$list->id}}">{{$list->company_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <div class="col-sm-12">
                                                 <label for="item" class="form-label"
                                                 >Employees IC/Passport No</label
@@ -326,8 +352,19 @@
                                                 >Employees Photo</label>
                                                 <input type="file" class="form-control" id="em_photo" name="em_photo"/>
                                             </div>
+
                                             <div class="col-sm-2">
                                                 <img src="" id="emp_photos" alt="" class="mt-4" width="50%">
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <label for="taxtno" class="form-label"
+                                                >Employees Signature
+                                                    <span class="text-danger">*</span>
+                                                </label>
+                                                <input type="File" class="form-control" name="em_signature" id="em_signature"  accept="image/*"/>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <img src="" id="emp_signature" alt="" class="mt-4" width="50%">
                                             </div>
                                         </div>
                                         <div class="row g-3 mb-3">
@@ -427,13 +464,17 @@
                             let department = values[4];
                             let country = values[9];
                             let emp_image = values[12];
+                            let em_signature = values[15];
+                            let company = values[13];
 
-                            console.log(values[7]);
+                            console.log(values);
                             $('#emp_photos').attr('src', "{{ asset('uploads/l_employees') }}"+ '/' + emp_image),
+                            $('#emp_signature').attr('src', "{{ asset('uploads/emp_signature') }}"+ '/' + em_signature),
                             $('#em_name').val(values[1]);
                             $(`#emp_des option[value='${designation}']`).prop('selected', true);
                             $(`#em_department option[value='${department}']`).prop('selected', true);
                             $(`#country option[value='${country}']`).prop('selected', true);
+                            $(`#company_name option[value='${company}']`).prop('selected', true);
                             $('#em_ic_passport_no').val(values[6]);
                             $('#em_email').val(values[7]);
                             $('#em_phone_no').val(values[8]);
@@ -454,7 +495,9 @@
                     var em_ic_passport_no = $('#em_ic_passport_no').val();
                     // var em_photo = $('#em_photo').val().replace("C:\\fakepath\\", "");
                     var em_photo = $('#em_photo').val();
+                    var em_signature = $('#em_signature').val();
                     var country = $('#country option:selected').val();
+                    var company_name = $('#company_name option:selected').val();
                     var em_j_date = $('#em_j_date').val();
                     var em_email = $('#em_email').val();
                     var em_phone_no = $('#em_phone_no').val();
@@ -479,6 +522,8 @@
                             em_j_date: em_j_date,
                             em_email: em_email,
                             em_phone_no: em_phone_no,
+                            company_name:company_name,
+                            em_signature:em_signature,
                         },
                         success: function (data) {
                             console.log(data);

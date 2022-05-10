@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\user\AccidentInvesttigation;
+namespace App\Http\Controllers\user\accidentInvestigation;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyProfile;
@@ -23,7 +23,7 @@ class AccidentInvestController extends Controller
          $des = Designation::all();
         //  $em_data = l_employee::orderBy('id')->with('department')->with('designation')->get();
         //  $data['countries'] = l_country::get(["country","id"]);
-         return view('dashboards.users.AccidentInvestigation.accidentAnalysis',compact('user','dep','des'));
+         return view('dashboards.users.accidentInvestigation.accidentAnalysis',compact('user','dep','des'));
 
      }
 
@@ -62,7 +62,7 @@ class AccidentInvestController extends Controller
         //  dd($request->input('st_of_invesg'));die;
          //dd($request);
         $incnumber=Helper::IDGenerator(new AcciAnnalysis,'inc_number',5,'INC');
-        
+
          $input = new AcciAnnalysis();
          $input->inc_number=$incnumber;
          $input->em_dept  = $request->input('em_dept');
@@ -76,12 +76,12 @@ class AccidentInvestController extends Controller
          $input->outcom_of_investg = $request->input('outcom_of_investg');
          $input->summ_of_incident = $request->input('summ_of_incident');
          $input->save();
-       
+
         // count array value
 
         $count = $request->start_dateMC;
-        
-        
+
+
          foreach($count as $main=>$row)
          {
             $inputMC = new McAnnalysis();
@@ -107,7 +107,7 @@ class AccidentInvestController extends Controller
         left join departments d on d.id = a.em_dept
         left join l_employees e on e.id =a.em_name
         LEFT JOIN designations de on de.id =a.em_des");
-        return view('dashboards.users.AccidentInvestigation.list_accident',compact('user', 'data'));
+        return view('dashboards.users.accidentInvestigation.list_accident',compact('user', 'data'));
      }
 
     //  public function list_view()
@@ -116,7 +116,7 @@ class AccidentInvestController extends Controller
 
     //     b.s_date,b.e_date,b.total_duration,b.typ_of_notif,b.typ_of_record,
 
-    //     d.depertment_name,e.em_name,de.ds_name FROM acci_annalyses A 
+    //     d.depertment_name,e.em_name,de.ds_name FROM acci_annalyses A
     //     LEFT join mc_annalyses B on B.acci_annalyses_id = A.id
     //     left join departments d on d.id = a.depertment_id
     //     left join l_employees e on e.id =a.employee_id

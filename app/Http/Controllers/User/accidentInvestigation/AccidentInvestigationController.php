@@ -27,11 +27,11 @@ class AccidentInvestigationController extends Controller
     {
         $user = Auth::user();
         $data=AcciAnnalysis::all();
-   
+
         return view('dashboards.users.accidentInvestigation.index', compact('user','data'));
     }
 
-   
+
     public function whyWizerd()
     {
         $user = Auth::user();
@@ -139,9 +139,7 @@ class AccidentInvestigationController extends Controller
 
     public function whyIncidentHappenStore(Request $request)
     {
-   
-      
-    
+
         $input = new WhyIncidentHappen();
         $input->incidence_number=$incidence_number;
         $input->l_employee_id = $request->input('l_employee_id');
@@ -174,7 +172,7 @@ class AccidentInvestigationController extends Controller
         $input->similar_incidents = $request->input('similar_incidents');
         $input->save();
 
-      
+
 
         return redirect()->route('accident_report.identify_injured_part', ['id'=>$request->l_employee_id])->with('success', 'Incident Happen Successfully Inserted!!');
     }
@@ -239,7 +237,7 @@ class AccidentInvestigationController extends Controller
 
         return redirect()->route('accident_report.identify_injured_part', ['id'=>$request->l_employee_id])->with('success', 'Injured Body Part Successfully Inserted!!');
     }
-    public function report(Request $request) { 
+    public function report(Request $request) {
         $user=Auth::user();
         $values= DB::table('acci_annalyses')
         ->leftJoin('l_employees', 'l_employees.id', '=', 'acci_annalyses.em_name')->leftJoin('departments','departments.id','=','acci_annalyses.em_dept')
@@ -247,7 +245,7 @@ class AccidentInvestigationController extends Controller
 
         $data=AcciAnnalysis::all();
 
-        return view('dashboards.users.accidentInvestigation.index', compact('values','user','data')); 
+        return view('dashboards.users.accidentInvestigation.index', compact('values','user','data'));
     }
 
 }

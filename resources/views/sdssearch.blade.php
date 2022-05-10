@@ -155,7 +155,7 @@
                 name="sds_search"
                 id="sds_search"
                 class="sds_search"
-                placeholder="Search SDS By Chemical name"
+                placeholder="Search SDS By Chemical Name"
             />
         </div>
     </div>
