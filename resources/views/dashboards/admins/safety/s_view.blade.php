@@ -54,11 +54,11 @@
 
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12">
-                  <div class="row justify-content-center">
+                  <div class="row justify-content-center"   >
                    @if (isset($data->id))
                   <div class="container">
                       <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8" >
                               <form action="{{ route('safety.update', ['id' => $data->id]) }}"   enctype="multipart/form-data" method="POST">
 
                                   @csrf
@@ -106,17 +106,14 @@
                   </div>
                        @else
                        @foreach ($safetys as  $safety)
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12"  
+                  ">
                       <div
                         class="card p-xl-5 p-lg-4 p-0"
-                        style="
-                          box-shadow: 0px 0px 5px 0px #ccc;
-                          background-image: url('assets/images/bg-2.png');
-                          background-size: 100% 100%;
-                        "
+                      
                       >
-                        <div class="card-body">
-                          <div class="mb-3 pb-3 border-bottom text-center">
+                        <div class="card-body" >
+                          <div class="mb-3 pb-3 border-bottom text-center" >
                             <h3><b> SAFETY & HEALTH POLICY</b></h3>
                           </div>
 

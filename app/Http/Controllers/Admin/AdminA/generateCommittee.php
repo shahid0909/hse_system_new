@@ -8,8 +8,11 @@ use App\Models\SafetyCommittee;
 use App\Models\g_committe;
 use App\Models\CompanyProfile;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\mailtest;
+use Mail;
 use Auth;
 use PDF;
+
 
 
 class generateCommittee extends Controller
@@ -98,7 +101,15 @@ WHERE  s.designation = '$request->designation'");
             'company_name' => $request->company_id,
             'em_name'=>$request->employee_id,
         ];
-       
+   
+
+       \Mail::to('jahid181017@gmail.com')->send(new \App\Mail\MyTestMail($data));
+
+//        Mail::send('emails.safety-committe', $data, function($message){
+//         $message->from(env('MAIL_USERNAME'),'Test'); 
+//         $message->to('jahid@gmail.com','jahid')->subject('mailtest');
+//    });
+
          $pdf = PDF::loadView('dashboards.users.safetycommittee.pdf',$data);
          return $pdf->download('Committe.pdf');
     }

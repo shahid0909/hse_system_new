@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b910d5fba5cf248c924b9f1ddde9736ea6ed61ac',
+        'reference' => '93cd88ccf98614e7f2ff3e92d81dffe33f6abe6c',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -430,6 +430,15 @@
                 0 => '*',
             ),
         ),
+        'laracasts/flash' => array(
+            'pretty_version' => '3.2.1',
+            'version' => '3.2.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laracasts/flash',
+            'aliases' => array(),
+            'reference' => 'f64a8d97f901fdb3ce8eb9b28c5308a726455467',
+            'dev_requirement' => false,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v8.83.9',
             'version' => '8.83.9.0',
@@ -445,7 +454,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b910d5fba5cf248c924b9f1ddde9736ea6ed61ac',
+            'reference' => '93cd88ccf98614e7f2ff3e92d81dffe33f6abe6c',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

@@ -67,10 +67,19 @@
                             <h3><b> SAFETY & HEALTH POLICY</b></h3>
                           </div>
 
-                          <div class="row mb-4">
-                            <div class="col-sm-12">
-
+                          @if ( Session::has('success') )
+                          <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              <span class="sr-only">Close</span>
+                            </button>
+                            <strong style="text-align: center;font-size:20px">{{ Session::get('success') }}</strong>
+                            
+                          </div>
+                          @endif
+                              
                                 <form action="{{ route('safety.store') }}"  method="post" enctype="multipart/form-data">
+                                 
                                     @csrf
                                 <ul class="bg bg-danger">
                                     @foreach ($errors->all() as $error)
@@ -152,6 +161,12 @@
                                     <button type="submit" class="btn btn-primary">Create</button>
                                   </form>
                             </div>
+                            <script>
+                              $('#flash-overlay-modal').modal();
+                          </script>
+                          <script>
+                            $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+                            </script>  
                           </div>
                           <!-- Row end  -->
                         
@@ -164,6 +179,7 @@
                   <!-- Row end  -->
                 </div>
               </div>
+              
               <!-- Row end  -->
             </div>
           </div>

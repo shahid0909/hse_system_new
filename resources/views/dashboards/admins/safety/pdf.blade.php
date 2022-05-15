@@ -14,25 +14,24 @@
       .wrap ul li{
        font-size: 15px;
           list-style: none;
-
       }
     </style>
 </head>
 <body>
 
     <div class="wrap">
-             <ul class="text-size" style="width: 100%;word-spacing:5px">
+             <ul class="text-size" style="width: 100%;word-spacing:5px;font-size:15px">
            <li style="text-align: center;font-size: 30px;">Safety Policy Rules</li>
              <li>{{ $data->title }}</li>
              <div>
-              <h6>
+              <li >
                 <strong>GCH RETAIL (M) SDN BHD</strong> is
                 committed to continual improvement in health,
                 safety and welfare of all its employees,
                 customers, contractors and visitors and those
                 under its influence in the neighborhood and
                 community at large.
-              </h6>
+              </li>
              <li>{!!$data->commitment!!}</li>
              <li>{{ $data->tagline}}</li>
          </ul>
@@ -41,6 +40,7 @@
          <p>{{ $data->designation->ds_name }}</p>
          <p>{{ $data->created_at->format('y:m:d') }}</p>
      </div>
+     <h5 style="text-align: center;font-size: 30px;">Thankyou for Using My SDS</h5>
 </body>
 </html>
 

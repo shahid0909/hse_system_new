@@ -90,7 +90,7 @@ class SafeWorkProcedureController extends Controller
             'ppe_name' => 'required',
             'remarks' => 'required',
         ]);
-         $input = s_work_procedure::find($id);
+        $input = s_work_procedure::find($id);
         $input->work_title = $request->input('work_title');
         $input->before_work_rules = $request->input('before_work');
         $input->during_work_rules = $request->input('during_work');

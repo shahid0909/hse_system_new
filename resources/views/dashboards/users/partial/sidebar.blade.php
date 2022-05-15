@@ -69,9 +69,6 @@
                     <li>
                         <a class="ms-link" href="{{ route('safety.index') }}">Safety</a>
                     </li>
-                    <li>
-                        <a class="ms-link" href="{{ route('upload_policy.index') }}">Review/Upload policy</a>
-                    </li>
                 </ul>
             </li>
             <li class="collapsed">

@@ -37,8 +37,9 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'caf23243e9cb3afd48d0414815ebf07e' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/helper.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
-        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
+        'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         '8fde5feda9697fe0ee53a3938c839fb0' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
     );
 
@@ -578,6 +579,13 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
         ),
+        'L' => 
+        array (
+            'Laracasts\\Flash' => 
+            array (
+                0 => __DIR__ . '/..' . '/laracasts/flash/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -640,6 +648,7 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'App\\Http\\Middleware\\isAdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/isAdminMiddleware.php',
         'App\\Http\\Middleware\\isUserMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/isUserMiddleware.php',
         'App\\Http\\Requests\\ScheduleDemoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ScheduleDemoRequest.php',
+        'App\\Mail\\MyTestMail' => __DIR__ . '/../..' . '/app/Mail/MyTestMail.php',
         'App\\Models\\AcciAnnalysis' => __DIR__ . '/../..' . '/app/Models/AcciAnnalysis.php',
         'App\\Models\\Chemical' => __DIR__ . '/../..' . '/app/Models/Chemical.php',
         'App\\Models\\ChemicalListing' => __DIR__ . '/../..' . '/app/Models/ChemicalListing.php',
@@ -676,6 +685,7 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'App\\Models\\s_rule' => __DIR__ . '/../..' . '/app/Models/s_rule.php',
         'App\\Models\\s_work_procedure' => __DIR__ . '/../..' . '/app/Models/s_work_procedure.php',
         'App\\Models\\uploadPolicy' => __DIR__ . '/../..' . '/app/Models/uploadPolicy.php',
+        'App\\Notifications\\mailtest' => __DIR__ . '/../..' . '/app/Notifications/mailtest.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -2960,6 +2970,13 @@ class ComposerStaticInit29aa0275c741fc0f450dda9c1f646a08
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Laracasts\\Flash\\Flash' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Flash.php',
+        'Laracasts\\Flash\\FlashNotifier' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/FlashNotifier.php',
+        'Laracasts\\Flash\\FlashServiceProvider' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/FlashServiceProvider.php',
+        'Laracasts\\Flash\\LaravelSessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/LaravelSessionStore.php',
+        'Laracasts\\Flash\\Message' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Message.php',
+        'Laracasts\\Flash\\OverlayMessage' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/OverlayMessage.php',
+        'Laracasts\\Flash\\SessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/SessionStore.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',

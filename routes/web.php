@@ -230,8 +230,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     });
 
     Route::group(['name'=>'safety','as'=>'safety.'],function(){
+    Route::get('safety/first',[SafetyPolicyController::class,'sfirst'])->name('firstpage');
     Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
     Route::get('policy/generate',[SafetyPolicyController::class,'policyindex'])->name('policy-index');
+    Route::get('policy/view',[SafetyPolicyController::class,'safetyview'])->name('policy-view');
     Route::post('generate/safety',[SafetyPolicyController::class,'store'])->name('store');
     Route::get('safety/view',[SafetyPolicyController::class,'show'])->name('safety-view');
     Route::get('safety/download/{id}',[SafetyPolicyController::class,'download'])->name('download');
@@ -239,6 +241,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::PUT('safety/modify-store/{id}',[SafetyPolicyController::class,'modifystore'])->name('update');
     Route::get('safety/delete/{id}',[SafetyPolicyController::class,'destroy'])->name('destroy');
     Route::get('policy/getdesignation/{id}', [SafetyPolicyController::class, 'getempdesignation'])->name('employeedesignation');
+    Route::get('template',[SafetyPolicyController::class,'safetyTemplate'])->name('template');
     });
 
 

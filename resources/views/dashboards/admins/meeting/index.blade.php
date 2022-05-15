@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('title')
     Meeting
 @endsection
@@ -17,7 +16,7 @@
     .select2-selection__arrow {
         height: 34px !important;
     }
-   
+
 </style>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 @endsection
@@ -40,7 +39,7 @@
 
         <h3 class="bg bg-success text-center text-white p-3">Meeting Minutes</h3>
         <form method="post" action="{{ route('meeting.store') }}"  enctype="multipart/form-data">
-            @csrf       
+            @csrf
             <div class="row g-3 mb-3">
                 <div class="col-sm-4">
                     <label class="form-label">Enter Meeting Date</label>
@@ -66,11 +65,11 @@
                         @endforeach
                     </div>
                   </div>
-  
-                
+
+
                 <div class="col-sm-12">
                     <label class="form-label"> Meeting introduction</label>
-                   <textarea name="introduction"  cols="80"  id="summernote"  class="form-control"></textarea>  
+                   <textarea name="introduction"  cols="80"  id="summernote"  class="form-control"></textarea>
                 </div>
 
                 <div class="col-sm-12">
@@ -86,7 +85,7 @@
                          <th>Agenda</th>
                          <th>Pic</th>
                          <th>Remarks</th>
-                   
+
                      </tr>
                     </thead>
                     <tbody>
@@ -99,11 +98,11 @@
                          </td>
                          <td><button type="button" name="add" id="add_btn" class="btn btn-outline-primary">Add More</button></td>
                      </tr>
- 
+
                     </tbody>
 
                  </table>
- 
+
                 <div class="col-sm-12">
                     <label class="form-label">CLOSING</label>
                    <textarea name="closing" id="summernote2"></textarea>
@@ -131,10 +130,10 @@
                        <div class="col-md-3  bg bg-info text-center p-2">
                          Action
                        </div>
-                      
+
                    </div>
                 </div>
-              
+
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -161,9 +160,9 @@
                     @endforeach
 
                     </div>
-                    
+
                 </div>
-               
+
                 <!-- Row End -->
             </div>
         </div>
@@ -189,7 +188,7 @@
    $(document).ready(function(){
     $("#add_btn").on('click',function () {
         var html=' ';
-        html+='' 
+        html+=''
         html+='<tr>';
         html+='<td><input type="text" name="agenda[]" class="form-control"</td>';
         html+='<td><input type="text" name="pic[]" class="form-control"</td>';
@@ -202,9 +201,7 @@
    $(document).on('click','#remove',function(){
       $(this).closest('tr').remove();
    });
-   
 </script>
         <!-- Row End -->
     </div>
-
 @endsection

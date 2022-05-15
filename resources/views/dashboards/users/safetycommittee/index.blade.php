@@ -6,7 +6,6 @@
 @section('content')
     <!-- sidebar -->
     @include('dashboards.users.partial.sidebar')
-
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
         <!-- Body: Header -->
@@ -38,9 +37,6 @@
                                 <i class="icofont-plus-circle me-2 fs-6"></i>Add Safety
                                 Committee
                             </button>
-
-                    
-                           
                         </div>
                     </div>
                     <div class="card-body" id="card-content">

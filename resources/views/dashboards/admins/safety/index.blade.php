@@ -4,21 +4,17 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <style>
         .inpcol {
-
             outline: 1px solid #5b998d;
         }
-
         .span {
             content: '*';
             color: red;
         }
-
         .toast-top-center {
             top: 2rem;
             left: 0%;
             margin: 0 0 0 0;
         }
-
     </style>
     <!-- Body: Body -->
 @endsection
@@ -39,8 +35,6 @@
         @endif
 
 <div class="body d-flex py-3">
-
-
     <div class="container-xxl">
       <div class="row align-items-center">
         <div class="border-0 mb-4">
@@ -51,130 +45,71 @@
           </div>
         </div>
       </div>
+    
       <!-- Row end  -->
-      <div class="row g-3 mb-xl-3">
+    
+    <div class="row g-3 mb-xl-3">
+      <div
+        class="col-xxl-8 col-xl-8 col-lg-8 col-md-8"
+        style="margin: 0 auto"
+      >
         <div
-          class="col-xxl-8 col-xl-8 col-lg-8 col-md-8"
-          style="margin: 0 auto"
+          class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 row-cols-xxl-1 row-deck g-3"
         >
           <div
-            class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 row-cols-xxl-1 row-deck g-3"
+            class="card"
+            style="
+              padding: 20px;
+              background: rgb(41, 128, 200);
+              color: #fff;
+              font-size: 20px;
+              font-weight: 800;
+              font-family: 'Times New Roman', Times, serif;
+            "
           >
-            <div
-              class="card"
-              style="
-                padding: 20px;
-                background: rgb(36, 133, 212);
-                color: #fff;
-                font-size: 20px;
-                font-weight: 800;
-                font-family: 'Times New Roman', Times, serif;
-              "
-            >
-              <p>
-                OSHA's mission is to ensure that employees work in a safe
-                and healthful environment by setting and enforcing
-                standards, and by providing training, outreach, education
-                and assistance. Employers must comply with all applicable
-                OSHA standards
-              </p>
-            </div>
-            <div class="col">
-              <div
-                class="card profile-card mt-5"
-                style="box-shadow: 0px 0px 5px 2px #1f9163"
-              >
-                <div
-                  class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
-                >
-                  <h6
-                    class="mb-0 fw-bold"
-                    style="text-align: center !important; color: #315948"
-                  >
-                    Next Rewiew Date Of Safety Ploicy
-                  </h6>
-                </div>
-                <div
-                  class="card-body d-flex profile-fulldeatil flex-column"
-                >
-                  <div class="profile-block text-center w220 mx-auto">
-                    <div
-                      class="about-info d-flex align-items-center mt-3 justify-content-center flex-column"
-                    >
-                      <strong class="text-muted">12-12-2022</strong>
-                    </div>
-                  </div>
-                  <div class="profile-info w-100">
-                    <h6
-                      class="mb-0 mt-2 fw-bold d-block fs-6 text-center"
-                    >
-                      Joan Dyer
-                    </h6>
-                    <span
-                      class="py-1 fw-bold small-11 mb-0 mt-1 text-muted text-center mx-auto d-block"
-                      >Chairman, Safety Committee</span
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p>
+              OSHA's mission is to ensure that employees work in a safe
+              and healthful environment by setting and enforcing
+              standards, and by providing training, outreach, education
+              and assistance. Employers must comply with all applicable
+              OSHA standards
+            </p>
           </div>
-        </div>
-      </div>
-      <!-- Row end  -->
-      <div class="row g-3 mb-xl-3">
-        <div
-          class="col-xxl-10 col-xl-10 col-lg-12 col-md-12"
-          style="margin: 0 auto"
-        >
-          <div
-            class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck g-3"
-          >
-            <div class="col mt-5">
+          <div class="col">
+            <div
+              class="card profile-card mt-5"
+              style="box-shadow: 0px 0px 5px 2px #1f9163"
+            >
               <div
-                class="card"
-                style="box-shadow: 0px 0px 5px 2px #1f9163"
+                class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"
               >
-                <div class="card-body">
-                  <div class="justify-content-start text-center">
-                    <h2
-                      style="
-                        text-align: center !important;
-                        color: #315948;
-                      "
-                    >
-                      Already Have Exesting Safety Policy view and Download
-                    </h2>
-                    <br />
-                    <a href="{{ route('safety.safety-view') }}">
-                      <button type="button" class="btn btn-primary">
-                        Click
-                      </button>
-                    </a>
+                <h6
+                  class="mb-0 fw-bold"
+                  style="text-align: center !important; color: #315948"
+                >
+                  Next Rewiew Date Of Safety Ploicy
+                </h6>
+              </div>
+              <div
+                class="card-body d-flex profile-fulldeatil flex-column"
+              >
+                <div class="profile-block text-center w220 mx-auto">
+                  <div
+                    class="about-info d-flex align-items-center mt-3 justify-content-center flex-column"
+                  >
+                    <strong class="text-muted">12-12-2022</strong>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="col mt-5">
-              <div
-                class="card"
-                style="box-shadow: 0px 0px 5px 2px #1f9163"
-              >
-                <div class="card-body">
-                  <div class="justify-content-start text-center">
-                    <h2
-                      style="
-                        text-align: center !important;
-                        color: #315948;
-                      "
-                    >
-                      Don't Have any Safety Policy, Its Easy to Generate
-                    </h2>
-                    <br />
-                    <a href="{{ route('safety.policy-index') }}"><button type="button" class="btn btn-success">
-                        Generate Now
-                      </button></a>
-                  </div>
+                <div class="profile-info w-100">
+                  <h6
+                    class="mb-0 mt-2 fw-bold d-block fs-6 text-center"
+                  >
+                    Joan Dyer
+                  </h6>
+                  <span
+                    class="py-1 fw-bold small-11 mb-0 mt-1 text-muted text-center mx-auto d-block"
+                    >Chairman, Safety Committee</span
+                  >
                 </div>
               </div>
             </div>
@@ -182,5 +117,102 @@
         </div>
       </div>
     </div>
+
+  <div class="row">
+    {{-- <div class="col-md-2"></div>
+    <div class="col-md-8 text-center">
+      <div class="card"  style="box-shadow: 0px 0px 5px 2px #1f9163">
+        <div class="card-body">
+          <h5 class="card-title" style="border-bottom:3px solid rgb(134, 79, 79);background:#2980C8;text-shadow:0px 0px 5px 2px#5b998d;color:white">You have safety policy select Yes Otherwise No:</h5>
+          <form action="#" method="#">
+           
+            <input   type="radio" id="age1" name="val" value="1">
+            <label style="font-size:20px" for="age1">Yes</label>
+            <input type="radio" id="age2" name="val" value="2">
+            <label style="font-size:20px" for="age2">No</label><br>  
+           
+          
+            <input type="submit" value="Submit">
+          </form>
+       
+        </div>
+ 
+     
+    </div>
+  </div>
+  <div class="col-md-2"></div> --}}
+
+    <!-- Row end  -->
+
+   <div class="row g-3 mb-xl-3 mt-3">
+    <div
+      class="col-xxl-10 col-xl-10 col-lg-12 col-md-12"
+      style="margin: 0 auto"
+    >
+      <div
+        class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck g-3"
+      >
+
+
+        <div class="col-mt-5">
+          <div
+            class="card"
+            style="box-shadow: 0px 0px 5px 2px #1f9163"
+          >
+            <div class="card-body">
+           
+           <div class="justify-content-start text-center">
+            <h2
+              style="
+                text-align: center !important;
+                color: #315948;
+              "
+            >
+              Already Have Exesting Safety Policy view and Download
+            </h2>
+            <br />
+            <a href="{{ route('safety.policy-view') }}">
+              <button type="button" class="btn btn-primary">
+               Download
+              </button>
+            </a>
+          </div>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="col mt-5">
+         
+          <div
+            class="card"
+            style="box-shadow: 0px 0px 5px 2px #1f9163"
+          >
+            <div class="card-body">
+           
+           <div class="justify-content-start text-center">
+            <h2
+              style="
+                text-align: center !important;
+                color: #315948;
+              "
+            >
+              Don't Have any Safety Policy, Its Easy to Generate
+            </h2>
+            <br />
+            <a href="{{ route('safety.template') }}"><button type="button" class="btn btn-success">
+                Generate Now
+              </button></a>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+      
+
+
   </div>
   @endsection

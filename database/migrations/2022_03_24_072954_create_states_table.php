@@ -32,3 +32,5 @@ class CreateStatesTable extends Migration
         Schema::drop('cities');
     }
 }
+
+
