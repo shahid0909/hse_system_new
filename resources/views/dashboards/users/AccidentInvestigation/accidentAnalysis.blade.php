@@ -47,10 +47,10 @@
                             <div class="card-body">
                                 <div class="checkout-steps">
                                     @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                @endif
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                    @endif
                                     <ul id="accordionExample">
                                         <li>
                                             <section>
@@ -61,7 +61,7 @@
                                                 <div class="checkout-steps-form-content collapse show" id="collapseOne"
                                                      aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <form class="mt-3" method="POST" action="{{route('accident_investigation.store')}}">
-                                                        @csrf 
+                                                        @csrf
                                                         <div class="row g-3 align-items-center">
                                                             <div class="col-md-4">
                                                                 <label class="form-label">Injured Person
@@ -80,7 +80,7 @@
                                                                 <label for="employee_name" class="form-label">Injured
                                                                     Person Name </label>
                                                                 <select
-                                                                    name="em_name" 
+                                                                    name="em_name"
                                                                     id="employee_list" autofocus
                                                                     class="form-control col-md-12">
                                                                     <option>Select Employee</option>
@@ -89,8 +89,13 @@
                                                             <div class="col-md-4">
                                                                 <label for="employee_designation" class="form-label">Employee Designation </label>
                                                                 <input class="form-control"
+
+                                                                       aria-label="Default select example" readonly
+                                                                       name="em_des" id="employee_designation">
+
                                                                         aria-label="Default select example" readonly
                                                                         name="em_des" id="employee_designation">
+
 
                                                             </div>
                                                             <div class="col-md-4">
@@ -318,14 +323,14 @@
                                         });
 
                                     });
-                                
 
-                                       
-                                
-                                </script>
 
-                                <script>
+
+
+
+
                                         function calculateDays() {
+
                                         var d1 = document.getElementById("s_date[]").value;
                                         var d2 = document.getElementById("e_date[]").value;
                                         const dateOne = new Date(d1);
@@ -335,9 +340,34 @@
                                         var Myelement = document.getElementById("output[]");
                                         Myelement.value = days;
                                     }
-                                </script>
 
-                                <script>
+
+                                    $('#em_dept').on('change', function () {
+                                        let emDepartment = $(this).val();
+                                        if( ((emDepartment !== undefined) || (emDepartment != null)) && emDepartment) {
+                                            $.ajax({
+                                                url: "get-em-name"+'/'+emDepartment,
+                                                type: "GET",
+                                                data : {"_token":"{{ csrf_token() }}"},
+                                                dataType: "json",
+                                                success: function (data) {
+                                                    console.log(data)
+                                                    if (data) {
+                                                        $('#employee_name').empty();
+                                                        $('#employee_name').append('<option hidden>Choose Employee</option>');
+                                                        $.each(data, function (key, emp) {
+                                                            $('select[name="employee_name"]').append('<option value="' + key + '">' +emp.em_name + '</option>');
+                                                        });
+                                                    } else {
+                                                        $('#employee_name').empty();
+                                                    }
+                                                }
+                                            });
+                                        } else {
+                                            $('#employee_name').empty();
+                                        }
+                                    });
+
                                             $('#em_dept').on('change', function () {
                                             let emDepartment = $(this).val();
                                             if( ((emDepartment !== undefined) || (emDepartment != null)) && emDepartment) {
@@ -363,6 +393,7 @@
                                                 $('#employee_name').empty();
                                             }
                                         });
+
                                 </script>
 
 @endsection

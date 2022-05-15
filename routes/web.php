@@ -21,8 +21,9 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Client\ScheduleDemoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+
+use App\Http\Controllers\user\accidentInvestigation\AccidentInvestController;
 use App\Http\Controllers\User\accidentInvestigation\AccidentInvestigationController;
-use App\Http\Controllers\user\AccidentInvesttigation\AccidentInvestController;
 use App\Http\Controllers\User\CompanySetup\CompanyProfileController;
 use App\Http\Controllers\User\CompanySetup\DepartmentController;
 use App\Http\Controllers\User\CompanySetup\DesignationController;
@@ -69,7 +70,6 @@ Route::post('/sds-search-result', [FrontendController::class, 'getSearchResult']
 /** Client Schedule Demo Request */
 //Route::get('/schedule-demo-request', [ScheduleDemoController::class, 'index'])->name('schedule-demo-request.index');
 //Route::post('/schedule-demo-request', [ScheduleDemoController::class, 'store'])->name('schedule-demo-request.store');
-
 
 
 Route::get('/login', [LoginController::class, 'login']);
@@ -204,31 +204,32 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('settings', [UserController::class, 'settings'])->name('user.settings');
 
 });
-    Route::group(['name' => 'department', 'as' => 'department.'], function () {
-        Route::get('department', [DepartmentController::class, 'index'])->name('index');
-        Route::POST('department-store', [DepartmentController::class, 'store'])->name('store');
-       Route::get('department-edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
-       Route::put('department-update/{id}', [DepartmentController::class, 'update'])->name('update');
-       Route::get('department-datatable-list', [DepartmentController::class, 'datatable'])->name('datatable');
-       Route::get('department-destroy/{id}', [DepartmentController::class, 'destroy'])->name('destroy');
-    });
+Route::group(['name' => 'department', 'as' => 'department.'], function () {
+    Route::get('department', [DepartmentController::class, 'index'])->name('index');
+    Route::POST('department-store', [DepartmentController::class, 'store'])->name('store');
+    Route::get('department-edit/{id}', [DepartmentController::class, 'edit'])->name('edit');
+    Route::put('department-update/{id}', [DepartmentController::class, 'update'])->name('update');
+    Route::get('department-datatable-list', [DepartmentController::class, 'datatable'])->name('datatable');
+    Route::get('department-destroy/{id}', [DepartmentController::class, 'destroy'])->name('destroy');
+});
 
-    Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
-        Route::get('designation', [DesignationController::class, 'index'])->name('index');
-        Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
-        Route::get('designation-datatable-list', [DesignationController::class, 'datatable'])->name('datatable');
-        Route::get('designation.edit/{id}', [DesignationController::class, 'designationedit'])->name('designation-edit');
-        Route::put('designation/{id}', [DesignationController::class, 'editstore'])->name('editstore');
-        Route::get('designation-destroy/{id}', [DesignationController::class, 'destroy'])->name('destroy');
-    });
-    Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
-        Route::get('employee', [EmployeeController::class, 'index'])->name('index');
-        Route::Post('employee/store', [EmployeeController::class, 'store'])->name('store');
-        Route::get('emp-information-ajax-data', [EmployeeController::class, 'getempinfo'])->name('getempinfo');
-        Route::post('emp-information-update-data', [EmployeeController::class, 'empUpdate'])->name('empUpdate');
+Route::group(['name' => 'designation', 'as' => 'designation.'], function () {
+    Route::get('designation', [DesignationController::class, 'index'])->name('index');
+    Route::post('designation.store', [DesignationController::class, 'store'])->name('designationstore');
+    Route::get('designation-datatable-list', [DesignationController::class, 'datatable'])->name('datatable');
+    Route::get('designation.edit/{id}', [DesignationController::class, 'designationedit'])->name('designation-edit');
+    Route::put('designation/{id}', [DesignationController::class, 'editstore'])->name('editstore');
+    Route::get('designation-destroy/{id}', [DesignationController::class, 'destroy'])->name('destroy');
+});
+Route::group(['name' => 'employee', 'as' => 'employee.'], function () {
+    Route::get('employee', [EmployeeController::class, 'index'])->name('index');
+    Route::Post('employee/store', [EmployeeController::class, 'store'])->name('store');
+    Route::get('emp-information-ajax-data', [EmployeeController::class, 'getempinfo'])->name('getempinfo');
+    Route::post('emp-information-update-data', [EmployeeController::class, 'empUpdate'])->name('empUpdate');
 
-    });
+});
 
+<<<<<<< HEAD
     Route::group(['name'=>'safety','as'=>'safety.'],function(){
     Route::get('safety/first',[SafetyPolicyController::class,'sfirst'])->name('firstpage');
     Route::get('safety/policy',[SafetyPolicyController::class,'index'])->name('index');
@@ -244,6 +245,19 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
     Route::get('template',[SafetyPolicyController::class,'safetyTemplate'])->name('template');
     });
 
+=======
+Route::group(['name' => 'safety', 'as' => 'safety.'], function () {
+    Route::get('safety/policy', [SafetyPolicyController::class, 'index'])->name('index');
+    Route::get('policy/generate', [SafetyPolicyController::class, 'policyindex'])->name('policy-index');
+    Route::post('generate/safety', [SafetyPolicyController::class, 'store'])->name('store');
+    Route::get('safety/view', [SafetyPolicyController::class, 'show'])->name('safety-view');
+    Route::get('safety/download/{id}', [SafetyPolicyController::class, 'download'])->name('download');
+    Route::get('safety/modify/{id}', [SafetyPolicyController::class, 'modify'])->name('modify');
+    Route::PUT('safety/modify-store/{id}', [SafetyPolicyController::class, 'modifystore'])->name('update');
+    Route::get('safety/delete/{id}', [SafetyPolicyController::class, 'destroy'])->name('destroy');
+    Route::get('policy/getdesignation/{id}', [SafetyPolicyController::class, 'getempdesignation'])->name('employeedesignation');
+});
+>>>>>>> e99034b1a81a8bab09fa58a01e6dbe91d2b0073b
 
 
 //    Route::group(['name' => 'emp_profile', 'as' => 'emp_profile.'], function () {
@@ -252,11 +266,25 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
 //
 //    });
 
+
+Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
+    Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
+    Route::post('com_profile/store', [CompanyProfileController::class, 'store'])->name('store');
+});
+Route::post('get-states-by-country', [CompanyProfileController::class, 'getState']);
+Route::group(['name' => 'workinspection', 'as' => 'workinspection.'], function () {
+    Route::get('workpalce_inspection', [WorkInspectionController::class, 'index'])->name('index');
+    Route::POST('workpalce_inspection-store', [WorkInspectionController::class, 'store'])->name('store');
+    Route::get('workpalce_inspection-edit/{id}', [WorkInspectionController::class, 'edit'])->name('edit');
+    Route::put('workpalce_inspection-update/{id}', [WorkInspectionController::class, 'update'])->name('update');
+    Route::get('workpalce_inspection-datatable-list', [WorkInspectionController::class, 'datatable'])->name('datatable');
+    Route::get('workpalce_inspection-destroy/{id}', [WorkInspectionController::class, 'destroy'])->name('destroy');
+
     Route::group(['name' => 'com_profile', 'as' => 'com_profile.'], function () {
         Route::get('com_profile', [CompanyProfileController::class, 'index'])->name('index');
         Route::post('com_profile/store', [CompanyProfileController::class, 'store'])->name('store');
     });
-    Route::post('get-states-by-country',[CompanyProfileController::class, 'getState']);
+    Route::post('get-states-by-country', [CompanyProfileController::class, 'getState']);
     Route::group(['name' => 'workinspection', 'as' => 'workinspection.'], function () {
         Route::get('workpalce_inspection', [WorkInspectionController::class, 'index'])->name('index');
         Route::POST('workpalce_inspection-store', [WorkInspectionController::class, 'store'])->name('store');
@@ -303,26 +331,84 @@ Route::group(['prefix' => 'user', 'middleware' => ['isUser', 'auth', 'preventBac
         Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
     });
 
-    
-    Route::group(['name'=>'committee','as'=>'committee.'],function(){
+
+    Route::group(['name' => 'committee', 'as' => 'committee.'], function () {
         Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
         // Route::post('store',[generateCommittee::class,'store'])->name('store');
         Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
-        Route::post('committee.insert',[generateCommittee::class,'generatepdf'])->name('store');
+        Route::post('committee.insert', [generateCommittee::class, 'generatepdf'])->name('store');
         Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
     });
 
 
-Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
- Route::get('view-meeting',[meetingController::class,'index'])->name('index');
- Route::post('meeting-store',[meetingController::class,'store'])->name('store');
- Route::get('meeting-datatable',[meetingController::class,' datatable'])->name('datatable');
- Route::get('report.delete/{id}',[meetingController::class,'destroy'])->name('delete');
- Route::get('report.view/{id}',[meetingController::class,'show'])->name('report');
- Route::get('report.pdf/{id}',[meetingController::class,'reportpdf'])->name('report-pdf');
-});
+    Route::group(['name' => 'meeting', 'as' => 'meeting.'], function () {
+        Route::get('view-meeting', [meetingController::class, 'index'])->name('index');
+        Route::post('meeting-store', [meetingController::class, 'store'])->name('store');
+        Route::get('meeting-datatable', [meetingController::class, ' datatable'])->name('datatable');
+        Route::get('report.delete/{id}', [meetingController::class, 'destroy'])->name('delete');
+        Route::get('report.view/{id}', [meetingController::class, 'show'])->name('report');
+        Route::get('report.pdf/{id}', [meetingController::class, 'reportpdf'])->name('report-pdf');
 
- Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
+    });
+
+    Route::group(['name' => 'create_ispection', 'as' => 'create_ispection.'], function () {
+        Route::get('create_ispection', [CreateIspectionController::class, 'index'])->name('index');
+        Route::POST('create_ispection-store', [CreateIspectionController::class, 'store'])->name('store');
+        Route::get('create_ispection-edit/{id}', [CreateIspectionController::class, 'edit'])->name('edit');
+        Route::put('create_ispection-update/{id}', [CreateIspectionController::class, 'update'])->name('update');
+        Route::get('create_ispection-datatable-list', [CreateIspectionController::class, 'datatable'])->name('datatable');
+        Route::get('create_ispection-destroy/{id}', [CreateIspectionController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['name' => 'rectified_inspection', 'as' => 'rectified_inspection.'], function () {
+        Route::get('rectified-inspection', [RectifiedInspectionController::class, 'index'])->name('index');
+        Route::POST('rectified-inspection-store', [RectifiedInspectionController::class, 'store'])->name('store');
+        Route::get('rectified-inspection-edit/{id}', [RectifiedInspectionController::class, 'edit'])->name('edit');
+        Route::put('rectified-inspection-update/{id}', [RectifiedInspectionController::class, 'update'])->name('update');
+        Route::get('rectified-inspection-datatable-list', [RectifiedInspectionController::class, 'datatable'])->name('datatable');
+        Route::get('rectified-inspection-destroy/{id}', [RectifiedInspectionController::class, 'destroy'])->name('destroy');
+    });
+    Route::group(['name' => 'list_inspection', 'as' => 'list_inspection.'], function () {
+
+        Route::get('list-inspection', [ListInspectionController::class, 'index'])->name('index');
+        Route::POST('list-inspection-store', [ListInspectionController::class, 'store'])->name('store');
+        Route::get('list-inspection-edit/{id}', [ListInspectionController::class, 'edit'])->name('edit');
+        Route::put('list-inspection-update/{id}', [ListInspectionController::class, 'update'])->name('update');
+        Route::get('list-inspection-datatable-list', [ListInspectionController::class, 'datatable'])->name('datatable');
+        Route::get('list-inspection-destroy/{id}', [ListInspectionController::class, 'destroy'])->name('destroy');
+    });
+
+
+    Route::group(['name' => 'safety_committee', 'as' => 'safety_committee.'], function () {
+
+        Route::get('safety_committee', [SafetyCommitteeController::class, 'index'])->name('index');
+        Route::get('safety_committee/getData/', [SafetyCommitteeController::class, 'getData'])->name('getData');
+        Route::post('safety_committee/store', [SafetyCommitteeController::class, 'store'])->name('store');
+        Route::post('safety_committee/edit/{id}', [SafetyCommitteeController::class, 'edit'])->name('edit');
+        Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
+
+
+    });
+
+
+    Route::group(['name' => 'committee', 'as' => 'committee.'], function () {
+        Route::get('committee', [generateCommittee ::class, 'index'])->name('index');
+        // Route::post('store',[generateCommittee::class,'store'])->name('store');
+        Route::post('employee-list', [generateCommittee ::class, 'employee'])->name('employee');
+        Route::post('committee.insert', [generateCommittee::class, 'generatepdf'])->name('store');
+        Route::get('delete/{id}', [generateCommittee ::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['name' => 'meeting', 'as' => 'meeting.'], function () {
+        Route::get('view-meeting', [meetingController::class, 'index'])->name('index');
+        Route::post('meeting-store', [meetingController::class, 'store'])->name('store');
+        Route::get('meeting-datatable', [meetingController::class, ' datatable'])->name('datatable');
+        Route::get('report.delete/{id}', [meetingController::class, 'destroy'])->name('delete');
+        Route::get('report.view/{id}', [meetingController::class, 'show'])->name('report');
+        Route::get('report.pdf/{id}', [meetingController::class, 'reportpdf'])->name('report-pdf');
+    });
+
+    Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
         Route::get('upload-policy', [UploadPolicyController::class, 'index'])->name('index');
         Route::POST('policy-store', [UploadPolicyController::class, 'store'])->name('store');
         Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
@@ -330,7 +416,6 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
         Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
     });
-
 
 
     Route::group(['name' => 'accident_investigation', 'as' => 'accident_investigation.'], function () {
@@ -343,7 +428,6 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::POST('Accident-investigation-store', [AccidentInvestController::class, 'store'])->name('store');
         Route::get('list-accident', [AccidentInvestController::class, 'list_acci'])->name('acci_list');
     });
-
 
 
 //     Route::group(['name' => 'list_accident', 'as' => 'list_accident.'], function () {
@@ -363,6 +447,44 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
         Route::get('why-incident-happen/{id}', [AccidentInvestigationController::class, 'whyIncidentHappen'])->name('why_incident_happen');
         Route::get('identify-injured-part/{id}', [AccidentInvestigationController::class, 'identifyInjuredPart'])->name('identify_injured_part');
         Route::post('why-incident-happen-store', [AccidentInvestigationController::class, 'whyIncidentHappenStore'])->name('why_incident_happen_store');
+
+
+        Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
+        Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
+        Route::post('report', [AccidentInvestigationController::class, 'report'])->name('reportstore');
+
+    });
+
+    Route::group(['name' => 'safe_work_procedure', 'as' => 'safe_work_procedure.'], function () {
+
+        Route::get('safe-work-procedure', [SafeWorkProcedureController::class, 'index'])->name('index');
+        Route::post('safe-work-procedure-store', [SafeWorkProcedureController::class, 'store'])->name('store');
+        Route::get('safe-work-procedure-edit/{id}', [SafeWorkProcedureController::class, 'edit'])->name('edit');
+        Route::put('safe-work-procedure-update/{id}', [SafeWorkProcedureController::class, 'update'])->name('update');
+        Route::get('safe-work-procedure-view/{id}', [SafeWorkProcedureController::class, 'swpView'])->name('details');
+        Route::get('safe_work_procedure-destroy/{id}', [SafeWorkProcedureController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['name' => 'hirarc', 'as' => 'hirarc.'], function () {
+        Route::get('hirarc', [HirarcController::class, 'index'])->name('index');
+        Route::POST('hirarc-store', [HirarcController::class, 'store'])->name('store');
+        Route::get('hirarc-edit/{id}', [HirarcController::class, 'edit'])->name('edit');
+        Route::put('hirarc-update/{id}', [HirarcController::class, 'update'])->name('update');
+        Route::get('hirarc-data-list-view', [HirarcController::class, 'listview'])->name('listview');
+        Route::get('hirarc-data-list', [HirarcController::class, 'datatable'])->name('datatable');
+        Route::get('hirarc-destroy/{id}', [HirarcController::class, 'destroy'])->name('destroy');
+        Route::get('hirarc-data-view/{id}', [HirarcController::class, 'view'])->name('view');
+
+
+        Route::get('getempdesignation/{id}', [HirarcController::class, 'getempdesignation'])->name('getempdesignation');
+
+
+    });
+
+    Route::group(['name' => 'accident', 'as' => 'accident.'], function () {
+        Route::get('accident', [AccidentController::class, 'index'])->name('index');
+        Route::post('store', [AccidentController::class, 'store'])->name('store');
+        Route::get('destroy/{id}', [AccidentController::class, 'destroy'])->name('destroy');
 
         Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
         Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
@@ -393,8 +515,10 @@ Route::group(['name'=>'meeting','as'=>'meeting.'],function(){
 
     });
 
-Route::group(['name'=>'accident','as' => 'accident.'],function(){
-  Route::get('accident',[AccidentController::class,'index'])->name('index');
-  Route::post('store',[AccidentController::class,'store'])->name('store');
-  Route::get('destroy/{id}',[AccidentController::class,'destroy'])->name('destroy');
+    Route::group(['name' => 'accident', 'as' => 'accident.'], function () {
+        Route::get('accident', [AccidentController::class, 'index'])->name('index');
+        Route::post('store', [AccidentController::class, 'store'])->name('store');
+        Route::get('destroy/{id}', [AccidentController::class, 'destroy'])->name('destroy');
+
+    });
 });

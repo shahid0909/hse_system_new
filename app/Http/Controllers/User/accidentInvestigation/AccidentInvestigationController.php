@@ -27,10 +27,12 @@ class AccidentInvestigationController extends Controller
     {
         $user = Auth::user();
         $data=AcciAnnalysis::all();
+
         $req=$request->inc_number;
         $s_data=DB::table('acci_annalyses')->leftJoin('departments','departments.id','=','acci_annalyses.em_dept')->leftJoin('l_employees','l_employees.id','=','acci_annalyses.em_name')->where('inc_number','=',$req)->get();
         return view('dashboards.users.accidentInvestigation.index', compact('user','data','s_data'));
     }
+
 
     public function whyWizerd()
     {
@@ -136,6 +138,7 @@ class AccidentInvestigationController extends Controller
 
     public function whyIncidentHappenStore(Request $request)
     {
+
         $inc_number=$request->inc_number;
         $input = new WhyIncidentHappen();
         $input->inc_number=$inc_number;
@@ -169,7 +172,7 @@ class AccidentInvestigationController extends Controller
         $input->similar_incidents = $request->input('similar_incidents');
         $input->save();
 
-      
+
 
         return redirect()->route('accident_report.identify_injured_part', ['id'=>$request->l_employee_id])->with('success', 'Incident Happen Successfully Inserted!!');
     }
@@ -234,14 +237,17 @@ class AccidentInvestigationController extends Controller
 
         return redirect()->route('accident_report.identify_injured_part', ['id'=>$request->l_employee_id])->with('success', 'Injured Body Part Successfully Inserted!!');
     }
-    public function searchReport(Request $r) { 
+
+    public function report(Request $request) {
+
         $user=Auth::user();
-        $req=$r->inc_number;
+        $req=$request->inc_number;
         $data=AcciAnnalysis::all();
-      
+
        $s_data=DB::table('acci_annalyses')->leftJoin('departments','departments.id','=','acci_annalyses.em_dept')->leftJoin('l_employees','l_employees.id','=','acci_annalyses.em_name')->where('inc_number','=',$req)->get();
 
-      return view('dashboards.users.accidentInvestigation.index', compact('user','s_data','data')); 
+
+        return view('dashboards.users.accidentInvestigation.index', compact('values','user','data','s_data',));
     }
 
 }

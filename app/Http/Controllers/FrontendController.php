@@ -65,7 +65,7 @@ if($request->searchQuery != '') {
         ->leftJoin('l_manufactures as m', 'm.id', '=', 'c.manufacturer_id')
         ->leftJoin('l_case as cs', 'cs.id', '=', 'c.cas_id')
         ->leftJoin('l_hazard as h', 'h.id', '=', 'c.hazard_id')
-        ->select('C.chemical_Name AS chemical',
+        ->select('c.chemical_Name AS chemical',
             'c.product_code', 'c.product_indentifier', 'c.che_image', 'c.che_sds_image', 'c.che_sds_bn_image',
             's.SupplierName', 'm.name AS manufacture', 'cs.caseName', 'h.image AS hazard_image')
         ->where('Chemical_Name', 'like', '%' . $request->searchQuery . '%')
