@@ -51,26 +51,13 @@
 
             </li>
 
-            <li class="collapsed">
-                <a class="m-link  active"
-                   data-bs-toggle="collapse"
-                   data-bs-target="#menu-safety"
-                   href="#">
-                    <i class="icofont-users-alt-2 fs-5"></i>
-                    <span>Safety Policy</span>
-                    <span
-                        class="arrow icofont-rounded-down ms-auto text-end fs-5"
-                    ></span
-                    ></a>
-                <!-- Menu: Sub menu ul -->
-
-
-                <ul class="sub-menu collapse" id="menu-safety">
-                    <li>
-                        <a class="ms-link" href="{{ route('safety.index') }}">Safety</a>
-                    </li>
-                </ul>
+            <li>
+                <a class="m-link active" href="{{route('safety.index')}}"
+                ><i class="icofont-users-alt-2 fs-5"></i> <span>Safety Poilicy</span></a
+                >
             </li>
+            
+
             <li class="collapsed">
                 <a class="m-link  active"
                    data-bs-toggle="collapse"
@@ -133,13 +120,13 @@
                     <li>
                         <a class="ms-link" href="{{route('accident_report.index')}}">Accident Report</a>
                     </li>
-<<<<<<< HEAD
+
                     <li>
 {{--                        <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>--}}
                     </li>
-=======
+
                 
->>>>>>> 93cd88ccf98614e7f2ff3e92d81dffe33f6abe6c
+
 
 
                 </ul>

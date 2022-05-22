@@ -116,7 +116,7 @@ class SafetyPolicyController extends Controller
         $input->commitment=$request->input('commitment');
         $input->tagline=$request->input('tagline');
         $input->update();
-        return redirect()->route('safety.safety-view');
+        return redirect()->route('safety.policy-view');
     }
 
 
@@ -139,6 +139,7 @@ class SafetyPolicyController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -153,14 +154,11 @@ class SafetyPolicyController extends Controller
 
 public function  getempdesignation($id)
 {
-
 $designation=DB::selectOne("SELECT d.id, d.ds_name from designations d 
 left join l_employees e on e.em_designation = d.id
 where e.id =  '$id'");
 return $designation;
-
 }
-
     public function safetyTemplate(){
         $user = Auth::user();
         return view('dashboards.admins.safety.safetytemplate',compact('user'));

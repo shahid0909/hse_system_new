@@ -5,11 +5,9 @@
         .select2-selection__rendered {
             line-height: 31px !important;
         }
-
         .select2-container .select2-selection--single {
             height: 35px !important;
         }
-
         .select2-selection__arrow {
             height: 34px !important;
         }
@@ -92,11 +90,6 @@
 
                                                                        aria-label="Default select example" readonly
                                                                        name="em_des" id="employee_designation">
-
-                                                                        aria-label="Default select example" readonly
-                                                                        name="em_des" id="employee_designation">
-
-
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <label class="form-label">Location of Incident
@@ -226,10 +219,8 @@
                                 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
                                 <script>
                                     $(document).ready(function () {
-
                                         $('#em_dept').on('change', function () {
                                             let emDepartment = $(this).val();
-
                                             $.ajaxSetup({
                                                 headers: {
                                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -240,13 +231,10 @@
                                                 url:"get-em-name"+'/'+emDepartment,
                                                 data: {emDepartment:emDepartment},
                                                 success: function (data) {
-
                                                     $('#employee_list').html(data);
                                                 }
                                             });
                                         });
-
-
                                         $('#employee_list').on('change', function () {
                                             let emp_id = $(this).val();
 
@@ -265,26 +253,21 @@
                                                 }
                                             });
                                         });
-
-
                                         $('#summernote').summernote({
                                             placeholder: 'Describe Incident',
                                             tabsize: 2,
                                             height: 100
                                         });
-
                                         $('#summernote1').summernote({
                                             placeholder: 'Describe Incident',
                                             tabsize: 2,
                                             height: 100
                                         });
-
                                         $('#summernote2').summernote({
                                             placeholder: 'Describe Incident',
                                             tabsize: 2,
                                             height: 100
                                         });
-
                                         $(".addROw ").click(function (e) {
                                             e.preventDefault();
                                             $("#show_item").prepend(`
@@ -321,14 +304,7 @@
                                                 $(row_item).remove();
                                             });
                                         });
-
                                     });
-
-
-
-
-
-
                                         function calculateDays() {
 
                                         var d1 = document.getElementById("s_date[]").value;
@@ -340,8 +316,6 @@
                                         var Myelement = document.getElementById("output[]");
                                         Myelement.value = days;
                                     }
-
-
                                     $('#em_dept').on('change', function () {
                                         let emDepartment = $(this).val();
                                         if( ((emDepartment !== undefined) || (emDepartment != null)) && emDepartment) {
@@ -393,7 +367,5 @@
                                                 $('#employee_name').empty();
                                             }
                                         });
-
                                 </script>
-
 @endsection

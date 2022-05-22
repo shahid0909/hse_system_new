@@ -247,7 +247,7 @@ class AccidentInvestigationController extends Controller
        $s_data=DB::table('acci_annalyses')->leftJoin('departments','departments.id','=','acci_annalyses.em_dept')->leftJoin('l_employees','l_employees.id','=','acci_annalyses.em_name')->where('inc_number','=',$req)->get();
 
 
-        return view('dashboards.users.accidentInvestigation.index', compact('values','user','data','s_data',));
+        return view('dashboards.users.accidentInvestigation.index', compact('user','data','s_data',));
     }
 
 }

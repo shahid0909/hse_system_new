@@ -19,7 +19,7 @@
             left: 0%;
             margin: 0 0 0 0;
         }
-
+/* .select-editable select:focus, .select-editable input:focus {outline:none;} */
     </style>
     <!-- Body: Body -->
 @endsection
@@ -98,18 +98,11 @@
                                         <textarea id="summernote" name="commitment" value="{{ old('commitment') }}"></textarea>
                                       </div>
 
-                                    <div class="form-group">
-                                        <label >Tagline</label>
-                                        <select
-                                            name="tagline"
-                                            id="depertment"
-                                            class="col-md-12"
-                                            style=" padding: 10px; border-radius: 3px; border-color: var(--border-color);>
-
-                                        <option value="SAFETY AND HEALTH IS EVERYONE'S BUSINESS">
-                                            SAFETY AND HEALTH IS EVERYONE'S BUSINESS
-                                        </option>
-                                        <option value="Zero injuries does not indicate the presence
+                                      <div class="form-group select-editable form-control" >
+                                        <label for="">---Choose---</label>
+                                        <select onchange="this.nextElementSibling.value=this.value"  name="tagline" class="select2 form-control">
+                                          <option value="">Select The Tagline</option>
+                                          <option value="Zero injuries does not indicate the presence
                                                 of safety.">
                                             Zero injuries does not indicate the presence
                                             of safety.
@@ -126,12 +119,17 @@
                                             <option value="Safety first, to last in life.">
                                                 Safety first, to last in life.
                                             </option>
+
+                                            <option value="SAFETY AND HEALTH IS EVERYONE'S BUSINESS">SAFETY AND HEALTH IS EVERYONE'S BUSINESS</option>
                                         </select>
+                                        <input type="text" name="tagline" value="" class="form-control">
                                       </div>
+
+                                   
 
                                       <div class="form-group">
                                         <label >Company Name</label>
-                                      <select name="company_id" id="" class="form-control">
+                                      <select name="company_id" id="" class="form-control select2">
                                         <option value="">-select--</option>
                                        @foreach ($companies as $company)
 
@@ -183,7 +181,6 @@
               <!-- Row end  -->
             </div>
           </div>
-
         @endsection
         @section('script')
             <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>

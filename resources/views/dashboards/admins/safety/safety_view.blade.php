@@ -155,7 +155,7 @@
            </div>
        </div>
     </div>
-    
+    @if(isset($safetys->id))
     <div class="col-md-6 ">
   
        
@@ -168,19 +168,14 @@
               "
             >
               <div class="card-body">
-             
                 <div class="mb-3 pb-3 border-bottom text-center">
                   <h3><b> SAFETY & HEALTH POLICY</b></h3>
                 </div>
 
-                
                     <h4>{{ $safetys->title }}</h4>
-                        
-                    
-                  
                     <div>
                       <h6 >
-                        <strong >GCH RETAIL (M) SDN BHD</strong> is
+                        <strong >{{$safetys->company->company_name }}</strong> is
                         committed to continual improvement in health,
                         safety and welfare of all its employees,
                         customers, contractors and visitors and those
@@ -190,18 +185,14 @@
                     </div>
                     <div class="mid">
                         <p> {!!$safetys->commitment!!} </p>
+                        <p class="text-center">Tag line</p>
                       <ul>
                         <li>
+                       
                             {{ $safetys->tagline}}
                         </li>
-                      
-                       
-                    
-                    
-                      
-                      </ul>
 
-                      <p style="text-align: center">Tag Line Here</p>
+                      </ul>
                     </div>
                 </div>
                <div class="col-md-3"> <h6> {{$safetys->employee->em_name}}</h6>
@@ -212,12 +203,9 @@
                     <p>{{ $safetys->created_at->format('Y:M:D') }}</p></div>
          
             </div>
-               
-             
+
                 <!-- Row end  -->
-           
-                 
-                 
+
                 <!-- Row end  -->
                 <div>
                     <a href="{{route('upload_policy.index')}}"> <button
@@ -242,20 +230,16 @@
                   </div>
              
               </div>
-              
-              
-       
-           
-          
+              @else
+            <div style="height:100%;width:35%; margin-right:auto;background:green;color:white; font-size:18px">
+              <p style="text-align: center">You Have No Safety Ploicy</p>
+            </div>
+            </div>
+              @endif
       
         <!-- Row end  -->
       </div>
-     
-   
-  
   </div>
-      
-
 
   </div>
   @endsection
