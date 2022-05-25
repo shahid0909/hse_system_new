@@ -6,6 +6,8 @@ use App\Models\s_rule;
 use App\Models\l_employee;
 use App\Models\CompanyProfile;
 use App\Models\designation;
+use Carbon\Carbon;
+use DateTime;
 use Session;
 use Auth;
 use PDF;
@@ -94,9 +96,22 @@ class SafetyPolicyController extends Controller
     public function safetyview()
     {
         $user = Auth::user();
+        $data=DB::table('safety_committees')
+        ->leftJoin('l_employees', 'l_employees.id', '=', 'safety_committees.employee_id')
+        ->first();
         $safetys=s_rule::with('employee','designation','company')->OrderBy('id','desc')->latest()->first();
+        if(isset($safetys->created_at)){
+            $created = new Carbon($safetys->created_at);
+            $datetime1 = new DateTime($created);
+            $newDateTime = $created->addYears(2);
+            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime'));
+        }else{
+            $newDateTime='';
+            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime'));
+        }
+  
 
-        return view('dashboards.admins.safety.safety_view',compact('safetys','user'));
+        return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime'));
     }
 
     /**

@@ -97,14 +97,24 @@
                   <div
                     class="about-info d-flex align-items-center mt-3 justify-content-center flex-column"
                   >
-                    <strong class="text-muted">12-12-2022</strong>
+                    <strong class="text-muted">
+                      @if (isset($safetys->created_at))
+                      {{ $newDateTime->format('Y:m:d')}}
+                      
+                      @else
+                      You Have No safety policy
+                    
+                        
+                      @endif
+                    
+                    </strong>
                   </div>
                 </div>
                 <div class="profile-info w-100">
                   <h6
                     class="mb-0 mt-2 fw-bold d-block fs-6 text-center"
                   >
-                    Joan Dyer
+                    {{ $data->em_name}}
                   </h6>
                   <span
                     class="py-1 fw-bold small-11 mb-0 mt-1 text-muted text-center mx-auto d-block"
@@ -128,8 +138,14 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Next Review Data of Safety policy</h5>
-                  <p class="card-text">Date:11/11/22</p>
-                  <h4>Mentor:Jahid</h4>
+                  <p class="card-text"> @if (isset($safetys->created_at))
+             
+                    {{ $newDateTime->format('Y:m:d')}}
+                    @else
+                    You Have No safety policy
+                      
+                    @endif</p>
+                  <h4>Mentor:   {{ $data->em_name}}</h4>
                 </div>
                
               </div>

@@ -28,4 +28,5 @@ class s_rule extends Model
         return $this->belongsTo(CompanyProfile::class, 'company_id');
     }
 
+
 }
