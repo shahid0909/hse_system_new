@@ -242,7 +242,8 @@ Route::group(['name' => 'safety', 'as' => 'safety.'], function () {
     Route::get('safety/delete/{id}', [SafetyPolicyController::class, 'destroy'])->name('destroy');
     Route::get('policy/getdesignation/{id}', [SafetyPolicyController::class, 'getempdesignation'])->name('employeedesignation');
     Route::get('policy/view',[SafetyPolicyController::class,'safetyview'])->name('policy-view');
-        Route::get('template',[SafetyPolicyController::class,'safetyTemplate'])->name('template');
+    Route::get('template',[SafetyPolicyController::class,'safetytemplate'])->name('template');
+
 });
 
 
@@ -295,12 +296,15 @@ Route::group(['name' => 'list_inspection', 'as' => 'list_inspection.'], function
 
 
 Route::group(['name' => 'safety_committee', 'as' => 'safety_committee.'], function () {
+
     Route::get('safety_committee', [SafetyCommitteeController::class, 'index'])->name('index');
     Route::get('safety_committee/getData/', [SafetyCommitteeController::class, 'getData'])->name('getData');
     Route::get('safety_committee/chart/', [SafetyCommitteeController::class, 'chart'])->name('chart');
     Route::post('safety_committee/store', [SafetyCommitteeController::class, 'store'])->name('store');
     Route::post('safety_committee/edit/{id}', [SafetyCommitteeController::class, 'edit'])->name('edit');
     Route::post('safety_committee/update/{id}', [SafetyCommitteeController::class, 'update'])->name('update');
+
+
 });
 
 
@@ -363,7 +367,8 @@ Route::group(['name' => 'accident_report', 'as' => 'accident_report.'], function
 
     Route::post('identify-injured-part-store', [AccidentInvestigationController::class, 'identifyInjuredPartStore'])->name('identify_injured_part_store');
     Route::post('why-wizerd-store', [AccidentInvestigationController::class, 'store'])->name('store');
-    Route::post('report', [AccidentInvestigationController::class, 'report'])->name('reportstore');
+    // Route::post('report', [AccidentInvestigationController::class, 'report'])->name('reportstore');
+    Route::post('report', [AccidentInvestigationController::class, 'report'])->name('search-report');
 
 });
 
@@ -389,7 +394,6 @@ Route::group(['name' => 'hirarc', 'as' => 'hirarc.'], function () {
 
 
     Route::get('getempdesignation/{id}', [HirarcController::class, 'getempdesignation'])->name('getempdesignation');
-
 
 });
 

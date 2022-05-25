@@ -9,7 +9,7 @@ class uploadPolicy extends Model
 {
 
     protected $table = "policy_upload";
-    protected $fillable = ['id','policy_name','policy_file', 'insertBy'];
+    protected $fillable = ['id','policy_file', 'insertBy'];
     protected $primaryKey = "id";
 
 }

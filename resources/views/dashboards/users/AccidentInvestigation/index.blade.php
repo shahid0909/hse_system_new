@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <h3 class="text-center bg bg-info">Choose Search Item</h3>
-                        <form action="{{ route('accident_report.reportstore') }}"  method="POST">
+                        <form action="{{ route('accident_report.search-report') }}"  method="POST">
                           @csrf
                             <div class="input-group">
                                 <select   class="form-control input-lg dynamic" name="inc_number">
@@ -64,7 +64,7 @@
                  <td>`{!! $data->summ_of_incident!!}</td>
                  <td>
                     <div>
-                        <a class="btn btn-primary" href="{{ route('accident_report.why_wizerd',$data->inc_number) }}" role="button">
+                        <a class="btn btn-primary" href="{{ route('accident_report.why_incident_happen',$data->inc_number) }}" role="button">
                             <button type="button" class="btn btn-primary">Next</button>
                         </a>
                       </div>

@@ -155,7 +155,7 @@
            </div>
        </div>
     </div>
-    @if(isset($safetys->id))
+    @if(isset($safetys->company_id))
     <div class="col-md-6 ">
   
        
@@ -172,7 +172,7 @@
                   <h3><b> SAFETY & HEALTH POLICY</b></h3>
                 </div>
 
-                    <h4>{{ $safetys->title }}</h4>
+
                     <div>
                       <h6 >
                         <strong >{{$safetys->company->company_name }}</strong> is
@@ -185,7 +185,7 @@
                     </div>
                     <div class="mid">
                         <p> {!!$safetys->commitment!!} </p>
-                        <p class="text-center">Tag line</p>
+                        
                       <ul>
                         <li>
                        
@@ -231,9 +231,15 @@
              
               </div>
               @else
-            <div style="height:100%;width:35%; margin-right:auto;background:green;color:white; font-size:18px">
-              <p style="text-align: center">You Have No Safety Ploicy</p>
-            </div>
+              <div class="col-md-6">
+                <div class="text:center" >
+                  <p style="color:green;font-size:24px">You Have No Safety Ploicy</p>
+                  <a  style="text-align: center" href="{{ route('safety.template') }}"> <button type="button" class="btn btn-success btn-lg">  Generate Now</button></a>
+                </div>
+              </div>
+            
+         
+               
             </div>
               @endif
       

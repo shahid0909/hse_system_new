@@ -23,6 +23,7 @@ class ScheduleDemoController extends Controller
 
     public function index(IndustryTypeRepository $industryTypeRepository)
     {
+        dd('dsfsdf');
         $industryTypes = $industryTypeRepository->getIndustryTypes()->get(['id', 'name']);
 
         $employee_size = config('constant.EMPLOYEE_SIZE');

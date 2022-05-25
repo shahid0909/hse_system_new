@@ -52,12 +52,19 @@
             </li>
 
             <li>
-                <a class="m-link active" href="{{route('safety.index')}}"
-                ><i class="icofont-users-alt-2 fs-5"></i> <span>Safety Poilicy</span></a
+                <a class="m-link active" href="{{ route('safety.policy-view') }}"
+                ><i class="icofont-home fs-5"></i> <span>Safety</span></a
                 >
             </li>
-            
+                <!-- Menu: Sub menu ul -->
 
+{{-- 
+                <ul class="sub-menu collapse" id="menu-safety">
+                    <li>
+                        <a class="ms-link" href="{{ route('safety.index') }}">Safety</a>
+                    </li>
+                </ul> --}}
+            </li>
             <li class="collapsed">
                 <a class="m-link  active"
                    data-bs-toggle="collapse"
@@ -109,7 +116,7 @@
                 <ul class="sub-menu collapse" id="menu-Accident">
 
                     <li>
-{{--                        <a class="ms-link" href="{{route('workinspection.index')}}">Dashboard</a>--}}
+                        <a class="ms-link" href="{{route('workinspection.index')}}">Dashboard</a>
                     </li>
                     <li>
                         <a class="ms-link" href="{{route('accident_investigation.index')}}">Accident analysis</a>
@@ -120,13 +127,7 @@
                     <li>
                         <a class="ms-link" href="{{route('accident_report.index')}}">Accident Report</a>
                     </li>
-
-                    <li>
-{{--                        <a class="ms-link" href="{{route('rectified_inspection.index')}}">Rectified Inspection</a>--}}
-                    </li>
-
                 
-
 
 
                 </ul>
@@ -153,6 +154,9 @@
 
                     <li>
                         <a class="ms-link" href="{{route('safety_committee.index')}}">Safety Committee</a>
+                    </li>
+                    <li>
+                        <a class="ms-link" href="{{route('safety_committee.chart')}}">Safety Committee Chart</a>
                     </li>
                     <li>
                         <a class="ms-link" href="{{route('meeting.index')}}">Meeting Minutes</a>

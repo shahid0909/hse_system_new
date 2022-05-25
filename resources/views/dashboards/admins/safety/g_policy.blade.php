@@ -5,15 +5,12 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"/>
     <style>
         .inpcol{
-
             outline: 1px solid #5b998d;
         }
-
         .span{
             content: '*';
             color: red;
         }
-
         .toast-top-center {
             top: 2rem;
             left: 0%;
@@ -194,7 +191,6 @@
             <script>
                 $(document).ready(function() {
                     $('#summernote').summernote();
-
                     $("#employee_id").on("change", function () {
                       let emp_id = $("#employee_id").val();
                  $.ajax({
@@ -206,8 +202,6 @@
                 }
             });
                     });
-
                 });
-
                 </script>
 @endsection

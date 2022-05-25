@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Meeting;
-use App\Models\l_employee;
 use App\Models\SafetyCommittee;
 use Auth;
 use DB;
@@ -25,7 +24,6 @@ class meetingController extends Controller
              ->leftJoin('l_employees', 'l_employees.id', '=', 'safety_committees.employee_id')
             ->get();
             $s_values=Meeting::all();
-          
         return view('dashboards.admins.meeting.index',compact('user','values','s_values'));
     }
 
@@ -47,7 +45,7 @@ class meetingController extends Controller
      */
     public function store(Request $request)
     {
-        $meeting=new Meeting();
+
         $meeting->date=$request->input('date');
         $meeting->time=$request->input('time');
         $meeting->venue=$request->input('venue');

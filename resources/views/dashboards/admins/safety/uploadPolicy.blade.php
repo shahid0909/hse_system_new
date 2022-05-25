@@ -69,14 +69,7 @@
 
                                     @csrf
                                     <div class="row g-3 mb-3">
-                                        <div class="col-sm-12">
-                                            <label for="depone" class="form-label">Policy Name</label>
-                                            <input type="text"
-                                                   class="form-control"
-                                                   id="policy_name"
-                                                   name="policyName" autocomplete="off"
-                                                   value="{{isset($data->policy_name)?$data->policy_name :''}}"/>
-                                        </div>
+                                      
                                         <div class="col-sm-12">
                                             <label for="depone" class="form-label">Policy</label>
                                             <input type="file"
@@ -116,7 +109,7 @@
                                     <thead>
                                     <tr>
                                         <th>Sl.</th>
-                                        <th>policy Name</th>
+                                 
                                         <th>policy File</th>
                                         <th>Action</th>
                                     </tr>
@@ -162,7 +155,7 @@
                         },
                         "columns": [
                             {"data": 'DT_RowIndex', "name": 'DT_RowIndex'},
-                            {"data": "policy_name"},
+                           
                             {"data": "view"},
                             // {"data": "status"},
                             {data: 'action', name: 'action', orderable: false, searchable: false}

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin\AdminA;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyProfile;
 use App\Models\l_employee;
 use App\Models\SafetyCommittee;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function compact;
+use function dd;
+use function view;
 
 class SafetyCommitteeController extends Controller
 {
@@ -16,6 +20,7 @@ class SafetyCommitteeController extends Controller
     {
         $user = Auth::user();
         $employees = l_employee::all();
+        $companies = CompanyProfile::all();
 //        $safetyCommittee = DB::table('safety_committees as sc')
 //            ->leftJoin('l_employees as emp', 'emp.id', '=', 'sc.employee_id')
 //            ->select('sc.*', 'emp.em_name', 'emp.em_ic_passport_no')->get();
@@ -40,7 +45,10 @@ class SafetyCommitteeController extends Controller
             ->where('sc.designation', '=', 'MANAGEMENT/EMPLOYER REPRESENTATIVE')
             ->get();
         $id = '';
-        return view('dashboards.users.safetycommittee.index', compact('user', 'employees', 'id', 'secretary', 'employee_representative', 'management_representative', 'chairman'));
+        return view('dashboards.users.safetycommittee.index',
+            compact('user', 'employees', 'id', 'secretary',
+                'employee_representative', 'companies',
+                'management_representative', 'chairman'));
     }
 
     public function getData()
@@ -71,6 +79,33 @@ class SafetyCommitteeController extends Controller
             'employee_representative'=>$employee_representative,
             'management_representative'=>$management_representative,
         ], 200);
+    }
+
+    public function chart()
+    {
+        $user = Auth::user();
+        $chairman = DB::table('safety_committees as sc')
+            ->leftJoin('l_employees as emp', 'emp.id', '=', 'sc.employee_id')
+            ->select('sc.*', 'emp.em_name', 'emp.em_ic_passport_no')
+            ->where('sc.designation', '=', 'Chairman')
+            ->get();
+        $secretary = DB::table('safety_committees as sc')
+            ->leftJoin('l_employees as emp', 'emp.id', '=', 'sc.employee_id')
+            ->select('sc.*', 'emp.em_name', 'emp.em_ic_passport_no')
+            ->where('sc.designation', '=', 'Secretary')
+            ->get();
+        $employee_representative = DB::table('safety_committees as sc')
+            ->leftJoin('l_employees as emp', 'emp.id', '=', 'sc.employee_id')
+            ->select('sc.*', 'emp.em_name', 'emp.em_ic_passport_no')
+            ->where('sc.designation', '=', 'EMPLOYEE REPRESENTATIVE')
+            ->get();
+        $management_representative = DB::table('safety_committees as sc')
+            ->leftJoin('l_employees as emp', 'emp.id', '=', 'sc.employee_id')
+            ->select('sc.*', 'emp.em_name', 'emp.em_ic_passport_no')
+            ->where('sc.designation', '=', 'MANAGEMENT/EMPLOYER REPRESENTATIVE')
+            ->get();
+        return view('dashboards.users.safetycommittee.chart', compact('user', 'chairman',
+            'secretary', 'employee_representative', 'management_representative'));
     }
     public function store(Request $request)
     {
@@ -136,6 +171,6 @@ class SafetyCommitteeController extends Controller
         return json_encode($update, 200);
     }
     public function committeedetails(){
-        
+
     }
 }

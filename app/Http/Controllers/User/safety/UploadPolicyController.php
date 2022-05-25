@@ -28,7 +28,7 @@ class UploadPolicyController extends Controller
 
         $input = new uploadPolicy();
 
-        $input->policy_name = $request->input('policyName');
+      
 
 
         if ($policy_File = $request->file('policyFile')) {

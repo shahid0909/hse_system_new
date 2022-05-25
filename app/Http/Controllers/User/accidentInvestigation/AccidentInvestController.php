@@ -80,6 +80,8 @@ class AccidentInvestController extends Controller
         // count array value
 
         $count = $request->start_dateMC;
+
+
          foreach($count as $main=>$row)
          {
             $inputMC = new McAnnalysis();

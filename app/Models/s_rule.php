@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
+
 class s_rule extends Model
 {
 
@@ -20,7 +21,7 @@ class s_rule extends Model
     }
     public function designation()
     {
-        return $this->belongsTo(designation::class, 'designation_id');
+        return $this->belongsTo(Designation::class, 'designation_id');
     }
     public function company()
     {

@@ -68,7 +68,7 @@ if($request->searchQuery != '') {
         ->select('c.chemical_Name AS chemical',
             'c.product_code', 'c.product_indentifier', 'c.che_image', 'c.che_sds_image', 'c.che_sds_bn_image',
             's.SupplierName', 'm.name AS manufacture', 'cs.caseName', 'h.image AS hazard_image')
-        ->where('Chemical_Name', 'like', '%' . $request->searchQuery . '%')
+        ->where('chemical_Name', 'like', '%' . $request->searchQuery . '%')
         ->get();
 }else{
     $sdsSearchResult = '';

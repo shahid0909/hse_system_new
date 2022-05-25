@@ -155,7 +155,7 @@
                 name="sds_search"
                 id="sds_search"
                 class="sds_search"
-                placeholder="Search SDS By Chemical Name"
+                placeholder="Search SDS By Chemical name"
             />
         </div>
     </div>
@@ -391,9 +391,10 @@
         $('#sds-search').append('<h3 class="text-center text-warning">Please search by a <b style="color: #012296;">Chemical Name</b></h3>');
         $('#sds_search').on('keyup', function () {
             let searchQuery = $(this).val();
+            // alert(searchQuery);
             // console.log(searchQuery);
             $.ajax({
-                type: 'post',
+                type: 'get',
                 url: '/sds-search-result/',
                 dataType: 'json',
                 data: {

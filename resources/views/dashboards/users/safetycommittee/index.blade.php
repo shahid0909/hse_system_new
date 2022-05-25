@@ -6,6 +6,7 @@
 @section('content')
     <!-- sidebar -->
     @include('dashboards.users.partial.sidebar')
+
     <!-- main body area -->
     <div class="main px-lg-4 px-md-4">
         <!-- Body: Header -->
@@ -18,10 +19,11 @@
         @endif
         <div class="body d-flex py-3">
             <a href="{{ route('committee.index') }}">
-                 <button class="bg bg-info">Generate Committe</button>
-                </a>
-           
-            <div class="container-xxl">
+            <button class="bg bg-info">View Appointment</button>
+              </a>
+       
+
+            <div class="container-xxl" id="contant">
                 <div class="card">
                     <div
                         class="card-header py-3 no-bg bg-transparent d-flex align-items-center justify-content-between border-bottom flex-wrap">
@@ -37,6 +39,9 @@
                                 <i class="icofont-plus-circle me-2 fs-6"></i>Add Safety
                                 Committee
                             </button>
+
+
+
                         </div>
                     </div>
                     <div class="card-body" id="card-content">
@@ -105,7 +110,7 @@
                                                 <select name="designation"
                                                         id="designation" class="form-control col-md-12">
                                                     <option value="">Select Designation</option>
-                                                    <option value="Chairman">Chairman</option>
+                                                    <option id="ch" value="Chairman">Chairman</option>
                                                     <option value="Secretary">Secretary</option>
                                                     <option value="EMPLOYEE REPRESENTATIVE">EMPLOYEE REPRESENTATIVE</option>
                                                     <option value="MANAGEMENT/EMPLOYER REPRESENTATIVE">
@@ -179,7 +184,7 @@
                                                     <span class="text-danger">*</span>
                                                 </label>
                                                 <select name="designation"
-                                                        id="designation" class="form-control col-md-12">
+                                                        id="edit_designation" readonly class="form-control col-md-12">
                                                     <option value="">Select Designation</option>
                                                     <option value="Chairman">Chairman</option>
                                                     <option value="Secretary">Secretary</option>
@@ -235,6 +240,15 @@
             $(this).find('#employees').focus();
         });
         $(document).ready(function (e) {
+
+            $.get('/safety_committee/getData', function (data) {
+                // console.log(data.chairman[0].designation);
+                if (data.chairman[0].designation === 'Chairman')
+                {
+                    $('#ch').css('display', 'none');
+                }
+            }, 'json');
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -273,7 +287,7 @@
                 let formData = new FormData(this);
                 $.ajax({
                     type:'POST',
-                    url: "/user/safety_committee/update"+'/'+ id,
+                    url: "/safety_committee/update"+'/'+ id,
                     data: formData,
                     cache:false,
                     contentType: false,
@@ -441,8 +455,12 @@
                 // console.log(id);
                 $('#edit_committee').find('form')[0].reset();
                 $('#edit_committee').find('span.error-text').text('');
-                $.post('/user/safety_committee/edit'+'/'+ id,{ id:id }, function (data) {
+                $.post('/safety_committee/edit'+'/'+ id,{ id:id }, function (data) {
                     console.log(data);
+                    // $('#designation option:not(:selected)').remove();
+                    // $('select[readonly] option:not(:selected)').prop('disabled', true);
+                    $('#edit_designation').css('pointer-events', 'none');
+
                     $('#edit_committee').find('input[name="id"]').val(data.safety_committee.id);
                     $('#edit_committee').find('select[name="employee_id"]').val(data.safety_committee.employee_id);
                     $('#edit_committee').find('select[name="designation"]').val(data.safety_committee.designation);

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\s_rule;
 use App\Models\l_employee;
 use App\Models\CompanyProfile;
+use App\Models\designation;
 use Session;
 use Auth;
 use PDF;
@@ -93,7 +94,8 @@ class SafetyPolicyController extends Controller
     public function safetyview()
     {
         $user = Auth::user();
-        $safetys=s_rule::OrderBy('id','desc')->latest()->first();
+        $safetys=s_rule::with('employee','designation','company')->OrderBy('id','desc')->latest()->first();
+
         return view('dashboards.admins.safety.safety_view',compact('safetys','user'));
     }
 
@@ -116,7 +118,7 @@ class SafetyPolicyController extends Controller
         $input->commitment=$request->input('commitment');
         $input->tagline=$request->input('tagline');
         $input->update();
-        return redirect()->route('safety.policy-view');
+        return redirect()->route('safety.safety-view');
     }
 
 
@@ -139,7 +141,6 @@ class SafetyPolicyController extends Controller
         //
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
@@ -154,11 +155,14 @@ class SafetyPolicyController extends Controller
 
 public function  getempdesignation($id)
 {
+
 $designation=DB::selectOne("SELECT d.id, d.ds_name from designations d 
 left join l_employees e on e.em_designation = d.id
 where e.id =  '$id'");
 return $designation;
+
 }
+
     public function safetyTemplate(){
         $user = Auth::user();
         return view('dashboards.admins.safety.safetytemplate',compact('user'));
