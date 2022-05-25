@@ -85,10 +85,10 @@
 
                                 </ul>
 
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                       <label >Title</label>
                                       <textarea name="title" id="" cols="65" rows="">{{ old('title') }}</textarea>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group">
                                         <label >Commitment</label>

@@ -62,12 +62,12 @@ class SafetyPolicyController extends Controller
     {
 
         $request->validate([
-            'title'=>'required|string',
+          
             'tagline'=>'required|string',
         ]);
 
         $input=new s_rule();
-        $input->title=$request->input('title');
+        // $input->title=$request->input('title');
         $input->commitment=$request->input('commitment');
         $input->tagline=$request->input('tagline');
         $input->employee_id=$request->input('employee_id');
@@ -129,7 +129,7 @@ class SafetyPolicyController extends Controller
     public function  modifystore(Request $request,$id){
 
         $input=s_rule::find($id);
-        $input->title=$request->input('title');
+        // $input->title=$request->input('title');
         $input->commitment=$request->input('commitment');
         $input->tagline=$request->input('tagline');
         $input->update();
