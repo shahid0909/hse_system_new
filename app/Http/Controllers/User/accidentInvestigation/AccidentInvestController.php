@@ -62,7 +62,6 @@ class AccidentInvestController extends Controller
         //  dd($request->input('st_of_invesg'));die;
          //dd($request);
         $incnumber=Helper::IDGenerator(new AcciAnnalysis,'inc_number',5,'INC');
-
          $input = new AcciAnnalysis();
          $input->inc_number=$incnumber;
          $input->em_dept  = $request->input('em_dept');
@@ -80,8 +79,6 @@ class AccidentInvestController extends Controller
         // count array value
 
         $count = $request->start_dateMC;
-
-
          foreach($count as $main=>$row)
          {
             $inputMC = new McAnnalysis();

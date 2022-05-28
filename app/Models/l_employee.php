@@ -19,7 +19,8 @@ class l_employee extends Model
         'em_country',
         'em_j_date',
         'em_profile',
-        'em_status'
+        'em_status',
+        'em_signature'
     ];
 
 }

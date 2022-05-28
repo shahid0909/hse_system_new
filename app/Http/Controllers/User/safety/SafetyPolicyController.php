@@ -6,12 +6,15 @@ use App\Models\s_rule;
 use App\Models\l_employee;
 use App\Models\CompanyProfile;
 use App\Models\designation;
+use App\Models\uploadPolicy;
 use Carbon\Carbon;
 use DateTime;
 use Session;
 use Auth;
 use PDF;
 use DB;
+use Storage;
+
 
 class SafetyPolicyController extends Controller
 {
@@ -21,22 +24,18 @@ class SafetyPolicyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function sfirst(Request $req){
-        $user = Auth::user();
-        $companies=CompanyProfile::all();
-        $val=$req->company_name;
-         return view('dashboards.admins.safety.sfirst',compact('user','companies','val'));
-     }
 
 
-    public function index(Request $request)
+
+    public function index()
     {
         $user = Auth::user();
+ 
         $values=s_rule::orderby('id','desc')->get();
        $employees=l_employee::all();
-       $companies=CompanyProfile::all();
-       $companyname=$request->company_name;
-       $val=$request->val;
+      
+     
+       
     //    $em=$employees->em_name;
     //    $s_rule=DB::table('s_rules')
     //         ->leftJoin('l_employees', 'l_employees.id', '=', 's_rules.employee_id')
@@ -48,7 +47,8 @@ class SafetyPolicyController extends Controller
     {
         $user = Auth::user();
         $employees=l_employee::all();
-        $companies=CompanyProfile::all();
+        $companies=DB::selectOne("SELECT c.company_name,c.id FROM company_profile c,users u WHERE u.company_id=c.id and  c.id='$user->company_id'");
+        
         return view('dashboards.admins.safety.g_policy',compact('user','employees','companies'));
     }
 
@@ -93,25 +93,43 @@ class SafetyPolicyController extends Controller
         $safetys=s_rule::OrderBy('id','desc')->get();
         return view('dashboards.admins.safety.s_view',compact('safetys','user'));
     }
-    public function safetyview()
+    public function safetyview(Request $request)
     {
         $user = Auth::user();
         $data=DB::table('safety_committees')
         ->leftJoin('l_employees', 'l_employees.id', '=', 'safety_committees.employee_id')
         ->first();
         $safetys=s_rule::with('employee','designation','company')->OrderBy('id','desc')->latest()->first();
+
+        // $safetys = DB::table('s_rules')
+        //     ->leftJoin('l_employees', 'l_employees.id', '=', 's_rules.employee_id')
+        //     ->get();
+
+        $updata= uploadPolicy::orderBy('created_at','desc')->first();
+
+ 
+    
         if(isset($safetys->created_at)){
             $created = new Carbon($safetys->created_at);
-            $datetime1 = new DateTime($created);
+            $datetime = new DateTime($created);
             $newDateTime = $created->addYears(2);
-            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime'));
+            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime','updata'));
         }else{
             $newDateTime='';
-            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime'));
+            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime','updata'));
+        }
+        if(isset($updata->created_at)){
+            $created1 = new Carbon($updata->created_at);
+            $datetime1 = new DateTime($created1);
+            $newDateTime1 = $created1->addYears(2);
+            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime1','updata'));
+        }else{
+            $newDateTime1='';
+            return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime1','updata'));
         }
   
 
-        return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','newDateTime'));
+        return view('dashboards.admins.safety.safety_view',compact('safetys','user','data','updata'));
     }
 
     /**
@@ -139,6 +157,7 @@ class SafetyPolicyController extends Controller
 
 
     public function download($id){
+        
         $data=s_rule::where('id',$id)->first();
         $pdf = PDF::loadView('dashboards.admins.safety.pdf',compact('data'));
          return $pdf->download('SafetyPolicyRules.pdf');
@@ -167,6 +186,12 @@ class SafetyPolicyController extends Controller
         s_rule::find($id)->delete();
         return back();
     }
+    public function updestroy($id){
+        uploadPolicy::find($id)->delete();
+        return back();
+    }
+
+    
 
 public function  getempdesignation($id)
 {

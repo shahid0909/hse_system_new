@@ -6,20 +6,15 @@
 
             outline: 1px solid #5b998d;
         }
-
         .span {
             content: '*';
             color: red;
         }
-
         .toast-top-center {
             top: 2rem;
             left: 0%;
             margin: 0 0 0 0;
         }
-
-        
-
     </style>
     <!-- Body: Body -->
 @endsection
@@ -109,9 +104,6 @@
                                         <div class="work">
                                             <div class="row" style="background-color: grey;">
                                                 <div class="content col-md-5" style="min-height: 150px;background-color: grey;"><p>{!!$values->potential_hazard!!}</p>
-
-                                                    
-
                                                 </div>
                                                 <div class="image col-md-3">
                                                     <img src="/image/SafetyWorkProcedure/potentialHazard/{{$values->potential_hazard_image }}" alt="activity_img" style="width: 100%;transform: translate(50px, 50px);margin-left: -460px;">

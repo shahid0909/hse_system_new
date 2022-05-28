@@ -15,7 +15,6 @@ class CreateSRulesTable extends Migration
     {
         Schema::create('s_rules', function (Blueprint $table) {
             $table->id();
-            $table->longText('title');
             $table->longText('commitment');
             $table->string('tagline');
             $table->integer('employee_id');

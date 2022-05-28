@@ -43,7 +43,7 @@ Report Meeting
                             </h3>
                             <div class="info" style="height:100px">
                                 
-                                    <p><span>Date</span>		:<span>{{ $values->date }}</span></p>
+                                    <p><span>Date</span>		:<span>{{ $values->meeting_date }}</span></p>
                                     <p><span>Time</span>		:<span>{{ $values->time }}</span></p>
                                     <p><span> Venue	</span>	: 	<span>{{ $values->venue }}</span></p>
                                     
@@ -86,11 +86,17 @@ Report Meeting
                                     </tr>
                                 </thead>
                                 <tbody>
+                            
                                     <tr>
                                       
-                                        <td>  @foreach (json_decode($values->agenda, true) as $agenda)
-                                            {{ $agenda }}
+                                        <td> 
+               
+                                            
+                                            @foreach (json_decode($values->agenda, true) as $agenda)
+                                            {{ $agenda  }}
                                         @endforeach</td>
+                                        
+                                      
                                         <td > @foreach (json_decode($values->pic, true) as $pic)
                                             {{ $pic }}
                                             @endforeach</td>

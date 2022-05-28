@@ -10,6 +10,7 @@ use App\Models\uploadPolicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\File;
+use DB;
 
 class UploadPolicyController extends Controller
 {
@@ -17,9 +18,9 @@ class UploadPolicyController extends Controller
     public function index(){
 
         $user = Auth::user();
+        $companies=DB::selectOne("SELECT c.company_name,c.id FROM company_profile c,users u WHERE u.company_id=c.id and  c.id='$user->company_id'");
 
-
-        return view('dashboards.admins.safety.uploadPolicy',compact('user'));
+        return view('dashboards.admins.safety.uploadPolicy',compact('user','companies'));
 
     }
 
@@ -27,44 +28,26 @@ class UploadPolicyController extends Controller
 
 
         $input = new uploadPolicy();
-
-      
-
-
+      $input->company_id=$request->company_id;
         if ($policy_File = $request->file('policyFile')) {
             $destinationPath = 'policy/file';
             $file =$policy_File->getClientOriginalName();
             $policy_File->move($destinationPath, $file);
             $input['policy_File'] = "$file";
         }
-
-
         $input->insert_by = Auth::user()->id;
-
         $input->save();
-
-        return redirect()->back()->with(['success'=>'File is successfully submitted!']);
-
+        return redirect()->route('safety.policy-view');
+        // return redirect()->route('safety.safety-view')->back()->with(['success'=>'File is successfully submitted!']);
     }
-    public function datatable()
-    {
-        $data = uploadPolicy::orderBy('id', 'DESC')->get();
-
-        return datatables()
-            ->of($data)
-//
-            ->editColumn('view', function ($query) {
-                $url=asset("policy/file/$query->policy_file");
-                return '<a href="'.$url.'" target="_blank">'.$query->policy_file.'</a>';
-//
-            })
-            ->editColumn('action', function ($query) {
-                return '<a href="' . route('upload_policy.edit', $query['id']) . '" class=""><i class="icofont-edit"></i></a> || <a href="' . route('upload_policy.destroy', $query['id']) . '" class="" onclick="return confirm(\'Are You Sure You Want To Delete This File?\')"> <i class="icofont-delete-alt"></i></a>';
-            })
-            ->escapeColumns('view')
-            ->addIndexColumn()
-            ->make();
-    }
+    // public function datatable()
+    // {
+    //     $updata= uploadPolicy::all();
+    //     // $updata= uploadPolicy::orderBy('id', 'DESC')->get();
+    // //    $data = uploadPolicy::with('company_id','policy_file')->OrderBy('id','desc')->latest()->first();
+     
+    //     return view('dashboards.admins.safety.safety_view',compact('data','updata'));  
+    // }
 
 
 public function edit(Request $request, $id){

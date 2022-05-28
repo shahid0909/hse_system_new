@@ -15,8 +15,7 @@ use App\Http\Controllers\Admin\AdminA\Setup\SupplierController;
 use App\Http\Controllers\Admin\AdminA\UsercreateController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\user\AccidentController;
-use App\Http\Controllers\Admin\user\meetingController;
+use App\Http\Controllers\User\meeting\meetingController;
 
 
 use App\Http\Controllers\FrontendController;
@@ -243,7 +242,7 @@ Route::group(['name' => 'safety', 'as' => 'safety.'], function () {
     Route::get('policy/getdesignation/{id}', [SafetyPolicyController::class, 'getempdesignation'])->name('employeedesignation');
     Route::get('policy/view',[SafetyPolicyController::class,'safetyview'])->name('policy-view');
     Route::get('template',[SafetyPolicyController::class,'safetytemplate'])->name('template');
-
+    Route::get('policy-destroy/{id}', [SafetyPolicyController::class, 'updestroy'])->name('updelete');
 });
 
 
@@ -323,6 +322,8 @@ Route::group(['name' => 'meeting', 'as' => 'meeting.'], function () {
     Route::get('report.delete/{id}', [meetingController::class, 'destroy'])->name('delete');
     Route::get('report.view/{id}', [meetingController::class, 'show'])->name('report');
     Route::get('report.pdf/{id}', [meetingController::class, 'reportpdf'])->name('report-pdf');
+    Route::get('meeting-edit/{id}', [meetingController::class, 'edit'])->name('meeting-edit');
+    Route::put('meeting-update/{id}', [meetingController::class, 'update'])->name('meeting-update');
 });
 
 Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () {
@@ -331,7 +332,7 @@ Route::group(['name' => 'upload_policy', 'as' => 'upload_policy.'], function () 
     Route::get('policy-edit/{id}', [UploadPolicyController::class, 'edit'])->name('edit');
     Route::put('policy-update/{id}', [UploadPolicyController::class, 'update'])->name('update');
     Route::get('policy-datatable-list', [UploadPolicyController::class, 'datatable'])->name('datatable');
-    Route::get('policy-destroy/{id}', [UploadPolicyController::class, 'destroy'])->name('destroy');
+  
 });
 
 

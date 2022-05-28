@@ -8,13 +8,13 @@
 </head>
 <body>
     
-  <p>{{ $designation_name }}</p> 
+  <p>{{ $em_name}}</p> 
 <p>Food & Beverage Manager</p>
 <p> {{ $company_name }}</p>										
 
 {{-- <h5>Date:{{ $data-> created_at }}</h5> --}}
 
-<h4>RE : APPOINTMENT AS SAFETY & HEALTH COMMITTEE – {{ $em_name}}</h4>
+<h4>RE : APPOINTMENT AS SAFETY & HEALTH COMMITTEE – {{ $designation_name }}</h4>
 
 <p>We are pleased to inform you that you have been appointed as an {{$designation_name}} for the Safety & Health Committee for a period of 2 years.</p>
 
@@ -31,7 +31,7 @@
 
 
 <h4>Thank you.</h4>
-`<p>Yours faithfully,</p>
+`<p>Yours faithfully,Shakib Hasan</p>
 
 
 

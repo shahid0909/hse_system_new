@@ -67,6 +67,8 @@
                     <p class="text-muted">{{   $data->designation->ds_name }}</p>
                     <p>{{$data->company->company_name }}</p>
                     {{ $data->created_at->format('Y:M:D') }}</p>
+                    <img src="/uploads/emp_signature/{{ $data->employee->em_signature }}" alt="not" height="50px";width="50px">
+                  
                   </div>
                   
                 </div>

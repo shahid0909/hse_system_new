@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '93cd88ccf98614e7f2ff3e92d81dffe33f6abe6c',
+        'reference' => '82acb5f77955161c16e767b123620c9ac9afc8c5',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -454,7 +454,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '93cd88ccf98614e7f2ff3e92d81dffe33f6abe6c',
+            'reference' => '82acb5f77955161c16e767b123620c9ac9afc8c5',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -1069,6 +1069,15 @@
             'aliases' => array(),
             'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
             'dev_requirement' => true,
+        ),
+        'smalot/pdfparser' => array(
+            'pretty_version' => 'v2.2.1',
+            'version' => '2.2.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../smalot/pdfparser',
+            'aliases' => array(),
+            'reference' => '7c007090776f29119e72be28f7780e638ea0cbf4',
+            'dev_requirement' => false,
         ),
         'swiftmailer/swiftmailer' => array(
             'pretty_version' => 'v6.3.0',
