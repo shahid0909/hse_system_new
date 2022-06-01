@@ -667,11 +667,11 @@
 
                         "                                        </h4>\n" +
 
-                        "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
-
-                        "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
-
-                        "                                        </p>\n" +
+                        // "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
+                        //
+                        // "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
+                        //
+                        // "                                        </p>\n" +
 
                         "                                    </div>\n" +
 
@@ -730,12 +730,12 @@
                         "                                            Designation: "+value.designation+"\n" +
 
                         "                                        </h4>\n" +
-
-                        "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
-
-                        "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
-
-                        "                                        </p>\n" +
+                        //
+                        // "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
+                        //
+                        // "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
+                        //
+                        // "                                        </p>\n" +
 
                         "                                    </div>\n" +
 
@@ -795,11 +795,11 @@
 
                         "                                        </h4>\n" +
 
-                        "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
-
-                        "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
-
-                        "                                        </p>\n" +
+                        // "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
+                        //
+                        // "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
+                        //
+                        // "                                        </p>\n" +
 
                         "                                    </div>\n" +
 
@@ -859,11 +859,11 @@
 
                         "                                        </h4>\n" +
 
-                        "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
-
-                        "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
-
-                        "                                        </p>\n" +
+                        // "                                        <p style=\"text-align: right; margin-right: 20px\">\n" +
+                        //
+                        // "                                            Rc/Passport NO: "+value.em_ic_passport_no+" \n" +
+                        //
+                        // "                                        </p>\n" +
 
                         "                                    </div>\n" +
 
