@@ -12,4 +12,8 @@ class s_work_procedure extends Model
     {
         return $this->belongsTo(l_ppe::class, 'ppe');
     }
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'dep_id');
+    }
 }

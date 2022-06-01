@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\safety;
 use App\Http\Controllers\Controller;
 use App\Models\l_ppe;
 use App\Models\s_work_procedure;
+use App\Models\Department;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -15,12 +16,13 @@ class SafeWorkProcedureController extends Controller
     public function index(Request $request){
         $user=Auth::user();
         $ppe = l_ppe::all();
+        // $data= s_work_procedure::where('id',$id)->first();
         // DB::table('s_work_procedures as swp')
         // ->leftJoin('l_ppe as pp', 'swp.id', '=', 'pp.id')
         // ->get();
-        // $data=s_work_procedure::all();
+         $data1=Department::all();
        $values=s_work_procedure::orderby('id','desc')->get();
-       return view('dashboards.users.SafeWorkProcedure.index',compact('user','ppe','values'));
+       return view('dashboards.users.SafeWorkProcedure.index',compact('user','ppe','values','data1'));
     }
     public function store(Request $request){
         $request->validate([
@@ -33,12 +35,13 @@ class SafeWorkProcedureController extends Controller
             'remarks' => 'required',
         ]);
          $input = new s_work_procedure();
+         $input->dep_id=$request->input('dep_id');
         $input->work_title = $request->input('work_title');
         $input->before_work_rules = $request->input('before_work');
         $input->during_work_rules = $request->input('during_work');
         $input->after_work_rules = $request->input('after_work');
         $input->potential_hazard = $request->input('potential_hazard');
-        $input['ppe']= json_encode($request->input('ppe_name'));
+        $input['ppe'] = implode(",",$request['ppe_name']);
         $input->remarks = $request->input('remarks');
         if ($before_work_image = $request->file('before_work_image')) {
             $destinationPath = 'image/SafetyWorkProcedure/beforeWork';
@@ -78,7 +81,12 @@ class SafeWorkProcedureController extends Controller
         $ppe = l_ppe::all();
         $values= s_work_procedure::all();
         $data= s_work_procedure::where('id',$id)->first();
-        return view('dashboards.users.SafeWorkProcedure.index',compact('user','data','ppe','values'));
+        // $data2=DB::table('s_work_procedures')
+        // ->leftJoin('departments', 'departments.id', '=', 's_work_procedures.dep_id')
+        // ->get();
+
+        $data1=Department::all();
+        return view('dashboards.users.SafeWorkProcedure.index',compact('user','data','ppe','values','data1'));
     }
     public function update(Request $request,$id){
         $request->validate([
@@ -91,12 +99,13 @@ class SafeWorkProcedureController extends Controller
             'remarks' => 'required',
         ]);
          $input = s_work_procedure::find($id);
+         $input->dep_id=$request->input('dep_id');
         $input->work_title = $request->input('work_title');
         $input->before_work_rules = $request->input('before_work');
         $input->during_work_rules = $request->input('during_work');
         $input->after_work_rules = $request->input('after_work');
         $input->potential_hazard = $request->input('potential_hazard');
-        $input->ppe = $request->input('ppe_name');
+        $input['ppe'] = implode(",",$request['ppe_name']);
         $input->remarks = $request->input('remarks');
         if ($before_work_image = $request->file('before_work_image')) {
             $destinationPath = 'image/SafetyWorkProcedure/beforeWork';
@@ -132,7 +141,7 @@ class SafeWorkProcedureController extends Controller
             unset($input['potential_hazard_image']);
         }
         $input->update();
-        return back();
+        return redirect()->route('safe_work_procedure.index');
     }
     public function destroy(Request $request){
         $data=s_work_procedure::find($request->id);

@@ -56,6 +56,26 @@
                         @csrf
 
                         <div class="row">
+                        <div class="col-md-6">
+
+               
+                                <label><strong>Depart Name<small> (Safe Work procedure For)</small> <span
+                                            class="span">*</span></strong></label>
+                                            <select name="dep_id" id="" class="form-control">
+                                                <option value="">Select</option>
+                                                @foreach($data1 as $list)
+                                                <option value="{{$list->id }}" 
+                                                    @if (isset($data->id))
+                                                        {{($list->id ==$data->dep_id) ? 'selected':''}}
+                                                    @endif
+                                                  >
+                                                  {{ $list->depertment_name}}
+                                                {{-- <option value="{{ $list->id }}" {{ ($list->id == $data->depertment_id) ? 'selected': ''}} >{{ $list->depertment_name }}</option> --}}
+                                                @endforeach
+                                            </select>
+
+                              
+                            </div>
                             <div class="col-md-6">
                                 <label><strong>Work Tittle<small> (Safe Work procedure For)</small> <span
                                             class="span">*</span></strong></label>
@@ -141,9 +161,19 @@
 
                                 <h5>PPE</h5>
                                 <div id="checkboxes">
+                                    
                                     @foreach ($ppe as $pp)
                                     <label>
-                                        <input type="checkbox" name="ppe_name[]" value="{{ $pp->ppeName  }}" />{{ $pp->ppeName }}</label><br>
+                                        <input type="checkbox" name="ppe_name[]" value="{{ $pp->ppeName  }}  
+                                   
+                                        " />{{ $pp->ppeName }}</label>
+                                        <br>
+
+
+                                        {{-- @if (isset($data->id))
+                                        {{($list->id ==$data->dep_id) ? 'selected':''}}
+                                    @endif --}}
+
                                     @endforeach
 
                             </div>

@@ -15,6 +15,7 @@ class CreateSWorkProceduresTable extends Migration
     {
         Schema::create('s_work_procedures', function (Blueprint $table) {
             $table->id();
+            $table->integer('dep_id');
             $table->string('work_title');
             $table->longText('before_work_rules');
              $table->string('before_work_image');
