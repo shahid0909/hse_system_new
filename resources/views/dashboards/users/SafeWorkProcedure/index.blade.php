@@ -42,7 +42,7 @@
             <div class="card ">
                 <h5 class="card-header bg-info-light"><b>Safe Work Procedure</b></h5>
 
-                <div class="card-body">
+        
 
                     <form  name="supplierForm" id="supplierForm" method="post" enctype="multipart/form-data" 
                    
@@ -56,10 +56,21 @@
                         @csrf
 
                         <div class="row">
+
+
+                            <label >Company Name</label>
+                            <input name="company_name" id="" class="form-control" value="{{ $companies->company_name }}" readonly>
+            
+                            
+                           
+                            <input type="hidden" name="company_id" id="" class="form-control" value="{{ $companies->id }}">
+
+
                         <div class="col-md-6">
 
+                            <input type="hidden"  name="swork_id">
                
-                                <label><strong>Depart Name<small> (Safe Work procedure For)</small> <span
+                                <label><strong>Department Name<small> (Safe Work procedure For)</small> <span
                                             class="span">*</span></strong></label>
                                             <select name="dep_id" id="" class="form-control">
                                                 <option value="">Select</option>
@@ -70,17 +81,13 @@
                                                     @endif
                                                   >
                                                   {{ $list->depertment_name}}
-                                                {{-- <option value="{{ $list->id }}" {{ ($list->id == $data->depertment_id) ? 'selected': ''}} >{{ $list->depertment_name }}</option> --}}
                                                 @endforeach
                                             </select>
-
-                              
                             </div>
                             <div class="col-md-6">
                                 <label><strong>Work Tittle<small> (Safe Work procedure For)</small> <span
                                             class="span">*</span></strong></label>
                                 <input type="text"
-                                   
                                        class="form-control inpcol"
                                        id="work_title"
                                        name="work_title"
@@ -160,22 +167,15 @@
                             <div class="col-md-6">
 
                                 <h5>PPE</h5>
-                                <div id="checkboxes">
-                                    
+                                <div id="checkboxes">  
                                     @foreach ($ppe as $pp)
                                     <label>
-                                        <input type="checkbox" name="ppe_name[]" value="{{ $pp->ppeName  }}  
-                                   
-                                        " />{{ $pp->ppeName }}</label>
-                                        <br>
-
-
-                                        {{-- @if (isset($data->id))
-                                        {{($list->id ==$data->dep_id) ? 'selected':''}}
-                                    @endif --}}
-
+                                        <input type="checkbox" name="ppe_name[]" value="{{ $pp->ppeName  }}" @if (isset($data->id))
+                                        @foreach ($c_data as $v)
+                                        {{ ($pp->ppeName==$v->ppe) ? 'checked':''}}
+                                        @endforeach
+                                        @endif  />{{ $pp->ppeName }}</label>
                                     @endforeach
-
                             </div>
 
                             <div class="col-md-6">
@@ -188,16 +188,21 @@
                         <div class="row mb-4 mt-4">
 
                             <div class="d-flex justify-content-end pe-4">
+                                @if(isset($data->id))
+                                <input type="hidden" name="swork_id" value="{{$data->id}}" >
+                                <button type="submit" class="btn btn-primary shadow mr-1 me-1 mb-1 point-e">
+                                   update
+                                </button>
+                                @else
                                 <button type="submit" class="btn btn-primary shadow mr-1 me-1 mb-1 point-e">
                                     Save
                                 </button>
                                 <button type="reset" class="btn btn-outline shadow mb-1 btn-danger cursor-auto">
                                     Clear
                                 </button>
-
+                                @endif
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -216,11 +221,8 @@
                                           <th>SL</th>
                                            <th>Work Tittle</th>
                                              <th>After Work</th>
-                                            
                                                <th> Remarks</th>
-                                               {{-- <th>PPE</th> --}}
                                                <th>Action</th>
-                                               
                                          </tr>
                                          @foreach ($values as $key=>$value)
                                          <tr>

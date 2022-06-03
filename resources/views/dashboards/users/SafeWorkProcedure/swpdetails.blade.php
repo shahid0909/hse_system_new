@@ -62,6 +62,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                           <tr>
+                                            <th scope="col">Company Name</th>
                                             <th scope="col">Department name</th>
                                             <th scope="col">Title</th>
                                             <th scope="col">before work</th>
@@ -80,6 +81,7 @@
                                         </thead>
                                         <tbody>
                                           <tr>
+                                            <td>{{ $values->company_name }}</td>
                                               <td>{{ $values->department->depertment_name }}</td>
                                             <td>{{ $values->work_title }}</td>
                                             <td>{!!$values->before_work_rules!!}</td>
@@ -87,7 +89,11 @@
                                             <td> {!!$values->after_work_rules!!}</td>
                                             <td>{!!$values->potential_hazard!!}</td>
                                             <td>{!! $values->during_work_rules!!}</td>
-                                            <td>{{ $values->ppe }}</td>
+                                            <td>
+                                                @foreach ($pp_data as $pp)
+                                                {{ $pp->ppe }}{{ ','}}
+                                                @endforeach
+                                                </td>
                                             <td> <img src="/image/SafetyWorkProcedure/potentialHazard/{{$values->potential_hazard_image }}" alt="activity_img" style="width:50px;"></td>
                                             <td> <img src="/image/SafetyWorkProcedure/duringWork/{{$values->during_work_image }}" alt="activity_img" style="width:50px;"></td>
                                             <td> <img src="/image/SafetyWorkProcedure/afterWork/{{$values->after_work_image }}" alt="activity_img" style="width:50px;"></td>
@@ -96,10 +102,7 @@
                                          
                                         </tbody>
                                       </table>
-
-
                 </div> <!-- Row end  -->
             </div>
         </div>
-
         @endsection

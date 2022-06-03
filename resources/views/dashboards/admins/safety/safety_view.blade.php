@@ -78,14 +78,17 @@
                             @if (isset($safetys->company_id))
                             @elseif (isset($updata->company_id))
                             @else
-                                <p>Have you any existing safety policy, if you have uploaded it or if you have not, just
+                            <div class="alert alert-primary" role="alert">
+                                <p style="font-size: 18px">Have you any existing safety policy, if you have uploaded it or if you have not, just
                                     generated it. its easy and just take a few clicks</p>
+                              </div>
+                               
                                 <span style="text-align: center">
                                     <a href="{{ route('upload_policy.index') }}">
-                                        <button class="btn btn-primary">Upload</button>
+                                        <button class="btn btn-primary btn-lg">Upload</button>
                                     </a>
                                     <a href="{{ route('safety.template') }}">
-                                        <button class="ms-5 btn btn-primary">Generate</button>
+                                        <button class="ms-5 btn btn-primary btn-lg">Generate</button>
                                     </a>
                                     <span>
                             @endif
@@ -104,11 +107,7 @@
                                                 <div
                                                     class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
                                                     <strong class="text-muted">
-
                                                         {{ $newDateTime->format('d:m:Y') }}
-
-
-
                                                     </strong>
                                                 </div>
                                             </div>

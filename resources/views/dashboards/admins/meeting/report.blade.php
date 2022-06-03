@@ -43,13 +43,15 @@ Report Meeting
                             </h3>
                             <div class="info" style="height:100px">
                                 
-                                    <p><span>Date</span>		:<span>{{ $data1->meeting_date }}</span></p>
-                                    <p><span>Time</span>		:<span>{{ $data1->time }}</span></p>
-                                    <p><span> Venue	</span>	: 	<span>{{ $data1->venue }}</span></p>
+                                    <p><span>Date</span>		:<span>{{ $data->meeting_date }}</span></p>
+                                    <p><span>Time</span>		:<span>{{ $data->time }}</span></p>
+                                    <p><span> Venue	</span>	: 	<span>{{ $data->venue }}</span></p>
                                     <div>
                                         <h5>Present Member</h5>
                          
-                                        {{ $data1->p_member}}
+                                     @foreach ($data2 as $datas)
+                                         {{ $datas->p_member}}{{ ','}}
+                                     @endforeach
                                        
                                 
                                           
@@ -65,12 +67,12 @@ Report Meeting
                             <h3>INTRODUCTION</h3>
                             <div class="info">
                                 <ul>
-                                    <li>{!!$data1->introduction!!}</li>
+                                    <li>{!!$data->introduction!!}</li>
                                 </ul>
                                 <h3>Endorsement	</h3>
                                 <div class="info">
                                     <ul>
-                                        <li>{!!$data1->endorsement!!}</li>
+                                        <li>{!!$data->endorsement!!}</li>
                                     </ul>
                                     
                             </div>
@@ -94,11 +96,11 @@ Report Meeting
                                     </tr>
                                 </thead>
                                 <tbody>
-                            @foreach($data2 as $data)
+                            @foreach($data1 as $datas)
                                     <tr>
-                                         <td> {{ $data->agenda}}  </td>           
-                                        <td > {{ $data->pic}}</td>
-                                        <td >{{ $data->remarks}}</td>
+                                         <td> {{ $datas->agenda}}  </td>           
+                                        <td > {{ $datas->pic}}</td>
+                                        <td >{{ $datas->remarks}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -119,7 +121,7 @@ Report Meeting
                         </div>
                         <div class="card-body">
                             <h5>Closing</h5>
-                            <p>{!!$data1->closing!!}</p>
+                            <p>{!!$data->closing!!}</p>
                         </div>
                     </div>
                 </div>
@@ -152,7 +154,7 @@ Report Meeting
 
             <div class="row">
                 <div class="col-md-12">
-                 <a href="{{ route('meeting.report-pdf',$data1->id) }}"><button type="button" class="bg bg-info">Download</button></a> 
+                 <a href="{{ route('meeting.report-pdf',$data->id) }}"><button type="button" class="bg bg-info">Download</button></a> 
                 </div>
             </div>
 

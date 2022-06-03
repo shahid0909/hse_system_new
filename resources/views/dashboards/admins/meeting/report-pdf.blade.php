@@ -40,13 +40,23 @@
                 <h4 style="text-align: center">MINUTES OF MEETING
                     INAUGURAL SAFETY COMMITTEE MEETING
                 </h4>
-                <p style="text-align: center;margin:0px">Date:{{ $data1->meeting_date }}</p>
-                <p style="text-align: center;margin:0px">Time:{{ $data1->time }}</p>
-                <p style="text-align: center;margin:0px">venue:{{ $data1->venue }}</p>
+                <p style="text-align: center;margin:0px">Date:{{ $data->meeting_date }}</p>
+                <p style="text-align: center;margin:0px">Time:{{ $data->time }}</p>
+                <p style="text-align: center;margin:0px">venue:{{ $data->venue }}</p>
                 <p style="margin: 0px 10px">Introduction:</p>
-                <p style="margin: 0px 20px">{!! $data1->introduction !!}</p>
+                <p style="margin: 0px 20px">{!! $data->introduction !!}</p>
                 <p style="margin: 0px 10px">ENDORSEMENT OF THE PREVIOUS MEETING MINUTES </p>
-                <p style="margin: 0px 20px">{!! $data1->endorsement !!}</p>
+                <p style="margin: 0px 20px">{!! $data->endorsement !!}</p>
+                <div>
+                  <h5>Present Member</h5>
+   
+               @foreach ($data2 as $datas)
+                   {{ $datas->p_member}}{{ ','}}
+               @endforeach
+                 
+          
+                    
+              </div>
             
                 <table id="customers">
                     <tr>
@@ -56,23 +66,23 @@
                     </tr>
                     <tr>
                       <td>                
-                          @foreach ($data2 as $data)
-                            <p style="margin: 20px 0px"> {{ $data->agenda }}</p><br />
+                          @foreach ($data1 as $value1)
+                            <p style="margin: 20px 0px"> {{ $value1->agenda }}</p><br />
                         @endforeach
                     </td>
                       <td>               
-                        @foreach ($data2 as $data)
-                            <p style="margin: 20px 0px">{{ $data->pic }}</p><br />
+                        @foreach ($data1 as $value2)
+                            <p style="margin: 20px 0px">{{ $value2->pic }}</p><br />
                         @endforeach</td>
                       <td>
-                        @foreach ($data2 as $data)
-                            <p>{{ $data->remarks }}</p>
+                        @foreach ($data1 as $value3)
+                            <p>{{ $value3->remarks }}</p>
                         @endforeach
                       </td>
                     </tr>
                   </table>
                 <p>Closing </p>
-                <p style="margin: 0px 10px">{!! $data1->closing !!}</p>
+                <p style="margin: 0px 10px">{!! $data->closing !!}</p>
                     <table>
                         <tr>
                             <td style="float:right">                        
@@ -96,5 +106,4 @@
     </div>
     <script src="{{ public_path('bootstrap/js') }}"></script>
 </body>
-
 </html>

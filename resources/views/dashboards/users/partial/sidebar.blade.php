@@ -148,13 +148,13 @@
                 <ul class="sub-menu collapse {{ (request()->is('accident-investigation') or request()->is('list-accident') or request()->is('accident-report')) ? 'show':'' }} " id="menu-Accident">
 
                     <li>
-                        <a class="ms-link {{ (request()->is('accident-investigation')) ? 'active':'' }} " href="{{route('accident_investigation.index')}}">Accident analysis</a>
+                        <a class="ms-link {{ (request()->is('accident-investigation')) ? 'active':'' }} " href="{{route('accident_investigation.index')}}">ACCIDENT & INCIDENT REPORTING SYSTEM</a>
                     </li>
                     <li>
-                        <a class="ms-link {{ (request()->is('list-accident')) ? 'active':'' }} " href="{{route('accident_investigation.acci_list')}}">list of Accident</a>
+                        <a class="ms-link {{ (request()->is('list-accident')) ? 'active':'' }} " href="{{route('accident_investigation.acci_list')}}">list of Accident & Incident</a>
                     </li>
                     <li>
-                        <a class="ms-link {{ (request()->is('accident-report')) ? 'active':'' }} " href="{{route('accident_report.index')}}">Accident Report</a>
+                        <a class="ms-link {{ (request()->is('accident-report')) ? 'active':'' }} " href="{{route('accident_report.index')}}">why5</a>
                     </li>
 
 
